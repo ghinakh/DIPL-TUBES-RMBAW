@@ -37,8 +37,42 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<nav class="navbar navbar-expand-lg navbar-default">
 		<div class="container-fluid px-0">
-			<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="" /></a>
+			<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="" width="200" /></a>
 			<!-- Collapse -->
+			<!-- Mobile view nav wrap -->
+			<ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap ">
+				<li class="dropdown stopevent">
+					<a href="<?= base_url('login') ?>" class="btn btn-primary">Login</a>
+				</li>
+				<li class="dropdown ml-2">
+					<a href="<?= base_url('register') ?>" class="btn btn-white">Register</a>
+				</li>
+			</ul>
+			<!-- Button -->
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="icon-bar top-bar mt-0"></span>
+				<span class="icon-bar middle-bar"></span>
+				<span class="icon-bar bottom-bar"></span>
+			</button>
+			<!-- Collapse -->
+			<div class="collapse navbar-collapse" id="navbar-default">
+				<form class="mt-3 mt-lg-0 ml-lg-3 d-flex align-items-center">
+					<span class="position-absolute pl-3 search-icon">
+						<i class="fe fe-search"></i>
+					</span>
+					<input type="search" class="form-control pl-6" placeholder="Search Courses" />
+				</form>
+				<ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
+					<li class="dropdown d-inline-block stopevent">
+						<a href="<?= base_url('login') ?>" class="btn btn-primary">Login</a>
+					</li>
+					<li class="dropdown ml-2 d-inline-block">
+						<a href="<?= base_url('register') ?>" class="btn btn-white">Register</a>
+					</li>
+			</div>
+			</li>
+			</ul>
+		</div>
 		</div>
 	</nav>
 
