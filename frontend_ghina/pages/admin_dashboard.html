@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- Libs CSS -->
+  <link href="../assets/fonts/feather/feather.css" rel="stylesheet" />
+  <link href="../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+  <link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link href="../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+  <link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+  <link href="../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+  <link href="../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+  <link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+  <link href="../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+  <link href="../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="../assets/css/theme.min.css">
+  <title>Dashboard | RentalKuy</title>
+</head>
+
+<body>
+  <!-- Wrapper -->
+  <div id="db-wrapper">
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar">
+      <div class="nav-scroller">
+        <!-- Brand logo -->
+        <a class="navbar-brand" href=""><img src="../assets/images/logo-negative.png" alt="" width="200" /></a>
+        <!-- Navbar nav -->
+        <ul class="navbar-nav flex-column" id="sideNavbar">
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link active" href="admin_dashboard.html">
+              <i class="nav-icon fe fe-home mr-2"></i>Dashboard
+            </a>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link active" href="admin_mobil.html">
+              <i class="nav-icon fa fa-car mr-2"></i>Cars
+            </a>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link active" href="admin_penyewa.html">
+              <i class="nav-icon fe fe-users mr-2"></i>Renter
+            </a>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link active" href="admin_staffgarasi.html">
+              <i class="nav-icon fe fe-user-check mr-2"></i>Garage Staff
+            </a>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item ">
+            <div class="nav-divider">
+            </div>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link active" href="">
+              <i class="nav-icon fe fe-power mr-2"></i>Sign Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- sidebar -->
+    <!-- Page Content -->
+    <div id="page-content">
+      <div class="header">
+        <!-- navbar -->
+        <nav class="navbar-default navbar navbar-expand-lg">
+          <a id="nav-toggle" href="#!"><i class="fe fe-menu"></i></a>
+          <ul class="navbar-nav navbar-right-wrap ml-auto  d-flex nav-top-wrap ">
+            <li class="dropdown ml-2">
+              <a class="rounded-circle " href="#!" role="button" id="dropdownUser" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-md">
+                  <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle">
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
+                <div class="dropdown-item">
+                  <div class="d-flex">
+                    <div class="avatar avatar-md">
+                      <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle">
+                    </div>
+                    <div class="ml-3 lh-1">
+                      <h5 class="mb-1">Admin</h5>
+                      <p class="mb-0 text-muted">emailadmin@gmail.com</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown-divider"></div>
+                <ul class="list-unstyled">
+                  <li>
+                    <a class="dropdown-item" href="../index.html">
+                      <i class="fe fe-power mr-2"></i>Sign Out
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Page Header -->
+      <!-- Container fluid -->
+      <div class="container-fluid p-4">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-12">
+            <div class="border-bottom pb-4 mb-4 d-lg-flex justify-content-between align-items-center">
+              <div>
+                <h1 class="mb-0 h2 font-weight-bold">Dashboard</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+            <!-- Card -->
+            <div class="card mb-4">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                  <div>
+                    <span class="font-size-xs text-uppercase font-weight-semi-bold">Transaction</span>
+                  </div>
+                  <div>
+                    <span class="fa fa-money font-size-lg text-primary"></span>
+                  </div>
+                </div>
+                <h2 class="font-weight-bold mb-1">
+                  Rp.10,000,000
+                </h2>
+                <span class="text-success font-weight-semi-bold"><i
+                    class="fe fe-trending-up mr-1"></i>+Rp.200,000</span>
+                <span class="ml-1 font-weight-medium">Number of Transaction</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+            <!-- Card -->
+            <div class="card mb-4">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                  <div>
+                    <span class="font-size-xs text-uppercase font-weight-semi-bold">Cars</span>
+                  </div>
+                  <div>
+                    <span class=" fa fa-car font-size-lg text-primary"></span>
+                  </div>
+                </div>
+                <h2 class="font-weight-bold mb-1">
+                  2,456
+                </h2>
+                <span class="text-success font-weight-semi-bold"><i class="fe fe-trending-up mr-1"></i>+20</span>
+                <span class="ml-1 font-weight-medium">Number of New Cars</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+            <!-- Card -->
+            <div class="card mb-4">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                  <div>
+                    <span class="font-size-xs text-uppercase font-weight-semi-bold">Renters</span>
+                  </div>
+                  <div>
+                    <span class=" fe fe-users font-size-lg text-primary"></span>
+                  </div>
+                </div>
+                <h2 class="font-weight-bold mb-1">
+                  122,456
+                </h2>
+                <span class="text-success font-weight-semi-bold"><i class="fe fe-trending-up mr-1"></i>+1200</span>
+                <span class="ml-1 font-weight-medium">Renter</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+            <!-- Card -->
+            <div class="card mb-4">
+              <!-- Card body -->
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3 lh-1">
+                  <div>
+                    <span class="font-size-xs text-uppercase font-weight-semi-bold">Garage Staff</span>
+                  </div>
+                  <div>
+                    <span class=" fe fe-user-check font-size-lg text-primary"></span>
+                  </div>
+                </div>
+                <h2 class="font-weight-bold mb-1">
+                  22,786
+                </h2>
+                <span class="text-success font-weight-semi-bold"><i class="fe fe-trending-up mr-1"></i>+200</span>
+                <span class="ml-1 font-weight-medium">Garage Staff</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-4">
+            <!-- Card -->
+            <div class="card h-100">
+              <!-- Card header -->
+              <div class="card-header d-flex align-items-center
+                              justify-content-between card-header-height">
+                <h4 class="mb-0">Popular Cars</h4>
+              </div>
+              <!-- Card body -->
+              <div class="card-body">
+                <!-- List group -->
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item px-0 pt-0 ">
+                    <div class="row">
+                      <div class="col-auto">
+                        <div class="avatar avatar-md">
+                          <img alt="mobil" src="../assets/images/mobil/avanza-preview.png" class="rounded-circle">
+                        </div>
+                      </div>
+                      <div class="col ml-n3">
+                        <h4 class="mb-0 h5">(CAR-04) Toyota Avanza - Bahan Bakar Bensin</h4>
+                        <span class="mr-2 font-size-xs">
+                          <span class="text-dark  mr-1 font-weight-semi-bold">1724</span>Renters</span>
+                        <span class="font-size-xs">
+                          <span class="text-dark  mr-1 font-weight-semi-bold">Rating</span>
+                          4.7
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- List group -->
+                  <li class="list-group-item px-0">
+                    <div class="row">
+                      <div class="col-auto">
+                        <div class="avatar avatar-md">
+                          <img alt="avatar" src="../assets/images/mobil/civic-preview.png" class="rounded-circle">
+                        </div>
+                      </div>
+                      <div class="col ml-n3">
+                        <h4 class="mb-0 h5">(CAR-05) Honda Civic - Bahan Bakar Bensin</h4>
+                        <span class="mr-2 font-size-xs">
+                          <span class="text-dark  mr-1 font-weight-semi-bold">1304</span>Renters</span>
+                        <span class="font-size-xs">
+                          <span class="text-dark  mr-1 font-weight-semi-bold">Rating</span>
+                          4.6
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- List group -->
+                  <li class="list-group-item px-0">
+                    <div class="row">
+                      <div class="col-auto">
+                        <div class="avatar avatar-md">
+                          <img alt="avatar" src="../assets/images/mobil/portuner-preview.png" class="rounded-circle">
+                        </div>
+                      </div>
+                      <div class="col ml-n3">
+                        <h4 class="mb-0 h5">(CAR-06) Toyota Fortuner - Bahan Bakar Diesel</h4>
+                        <span class="mr-2 font-size-xs">
+                          <span class="text-dark  mr-1 font-weight-semi-bold">1104</span>Renters</span>
+                        <span class="font-size-xs">
+                          <span class="text-dark  mr-1 font-weight-semi-bold">Rating</span>
+                          4.6
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-4">
+            <!-- Card -->
+            <div class="card h-100">
+              <!-- Card header -->
+              <div class="card-header d-flex align-items-center
+                              justify-content-between card-header-height">
+                <h4 class="mb-0">Recent Cars</h4>
+                <a href="admin_mobil.html" class="btn btn-outline-white btn-sm">View all</a>
+              </div>
+              <!-- Card body -->
+              <div class="card-body">
+                <!-- List group flush -->
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item px-0 pt-0">
+                    <div class="row">
+                      <!-- Col -->
+                      <div class="col-auto">
+                        <a href="#!">
+                          <img src="../assets/images/mobil/portuner-preview.png" alt=""
+                            class="img-fluid rounded img-4by3-lg" /></a>
+                      </div>
+                      <!-- Col -->
+                      <div class="col pl-0">
+                        <a href="#!">
+                          <h5 class="text-primary-hover">
+                            (CAR-07) Toyota Fortuner - Bahan Bakar Diesel
+                          </h5>
+                        </a>
+                        <div class="d-flex align-items-center">
+                          <img src="../assets/images/avatar/avatar-7.jpg" alt=""
+                            class="rounded-circle avatar-xs mr-2" />
+                          <span class="font-size-xs">Jarwo</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <!-- List group -->
+                  <li class="list-group-item px-0">
+                    <div class="row">
+                      <div class="col-auto">
+                        <a href="#!"><img src="../assets/images/mobil/inova-preview.png" alt=""
+                            class="img-fluid rounded img-4by3-lg" /></a>
+                      </div>
+                      <div class="col pl-0">
+                        <a href="#!">
+                          <h5 class="text-primary-hover">
+                            (CAR-08) Toyota Inova - Bahan Bakar Diesel
+                          </h5>
+                        </a>
+                        <div class="d-flex align-items-center">
+                          <img src="../assets/images/avatar/avatar-8.jpg" alt=""
+                            class="rounded-circle avatar-xs mr-2" />
+                          <span class="font-size-xs">Claire Robertson</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Script -->
+  <!-- Libs JS -->
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/odometer/odometer.min.js"></script>
+  <script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+  <script src="../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="../assets/libs/quill/dist/quill.min.js"></script>
+  <script src="../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
+  <script src="../assets/libs/dragula/dist/dragula.min.js"></script>
+  <script src="../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+  <script src="../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+  <script src="../assets/libs/jQuery.print/jQuery.print.js"></script>
+  <script src="../assets/libs/prismjs/prism.js"></script>
+  <script src="../assets/libs/prismjs/components/prism-scss.min.js"></script>
+  <script src="../assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
+  <script src="../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+  <script src="../assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+  <script src="../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+  <script src="../assets/libs/typed.js/lib/typed.min.js"></script>
+
+  <!-- clipboard -->
+  <script src="../../../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
+  <!-- Theme JS -->
+  <script src="../assets/js/theme.min.js"></script>
+
+</body>
+
+
+</html>
