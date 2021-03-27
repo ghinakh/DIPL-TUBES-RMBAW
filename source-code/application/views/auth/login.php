@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +49,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <span>Don’t have an account? <a href="sign-up.html" class="ml-1">Sign up</a></span>
                         </div>
                         <!-- Form -->
-                        <form>
+                        <form role="form" method="POST" id="login" autocomplete="off">
+                            <!-- Username -->
+                            <?php
+                            if ($notif_error) { ?>
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= $notif_error ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <!-- Username -->
                             <div class="form-group">
                                 <label for="email" class="form-label">Username or email</label>
