@@ -44,9 +44,10 @@ error_reporting(0);
                     <!-- Card body -->
                     <div class="card-body p-6">
                         <div class="mb-4">
-                            <a href="<?= base_url() ?>index.html"><img src="<?= base_url() ?>assets/images/brand/logo/logo-icon.svg" class="mb-4" alt=""></a>
-                            <h1 class="mb-1 font-weight-bold">Sign in</h1>
-                            <span>Don’t have an account? <a href="sign-up.html" class="ml-1">Sign up</a></span>
+                            <center>
+                                <a href="<?= base_url() ?>"><img src="<?= base_url("assets/images/logo.png") ?>" width="300" class="mb-1" alt=""></a>
+                            </center>
+                            <span>Don’t have an account? <a href="<?= base_url('register') ?>" class="ml-1">Sign up</a></span>
                         </div>
                         <!-- Form -->
                         <form role="form" method="POST" id="login" autocomplete="off">
@@ -76,7 +77,7 @@ error_reporting(0);
                                     <label class="custom-control-label " for="rememberme">Remember me</label>
                                 </div>
                                 <div>
-                                    <a href="forget-password.html">Forgot your password?</a>
+                                    <a href="<?= base_url('register-car') ?>">Daftarkan Mobil Anda!</a>
                                 </div>
                             </div>
                             <div>
@@ -84,24 +85,6 @@ error_reporting(0);
                                 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                             </div>
                             <hr class="my-4">
-                            <div class="mt-4 text-center">
-                                <!--Facebook-->
-                                <a href="#!" class="btn-social btn-social-outline btn-facebook">
-                                    <i class="fab fa-facebook"></i>
-                                </a>
-                                <!--Twitter-->
-                                <a href="#!" class="btn-social btn-social-outline btn-twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <!--LinkedIn-->
-                                <a href="#!" class="btn-social btn-social-outline btn-linkedin">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <!--GitHub-->
-                                <a href="#!" class="btn-social btn-social-outline btn-github">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
                         </form>
                     </div>
                 </div>

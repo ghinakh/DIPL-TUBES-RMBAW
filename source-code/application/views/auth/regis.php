@@ -36,6 +36,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
     <!-- Page content -->
     <div class="container d-flex flex-column">
+        <br /><br />
         <div class="row align-items-center justify-content-center no-gutters min-vh-100">
             <div class="col-lg-5 col-md-8 py-8 py-xl-0">
                 <!-- Card -->
@@ -43,8 +44,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <!-- Card body -->
                     <div class="card-body p-6">
                         <div class="mb-4">
-                            <a href="<?= base_url() ?>index.html"><img src="<?= base_url() ?>assets/images/brand/logo/logo-icon.svg" class="mb-4" alt=""></a>
-                            <h1 class="mb-1 font-weight-bold">Sign up</h1>
+                            <center>
+                                <a href="<?= base_url() ?>"><img src="<?= base_url("assets/images/logo.png") ?>" width="300" class="mb-1" alt=""></a>
+                            </center>
                             <span>Already have an account? <a href="<?= base_url('login') ?>" class="ml-1">Sign In</a></span>
                         </div>
                         <!-- Form -->
@@ -87,13 +89,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <!-- Button -->
                                 <button type="submit" class="btn btn-primary btn-block">Create Account</button>
                             </div>
+                            <hr class="my-4">
+                            <center><a href="<?= base_url('register-car') ?>">DAFTARKAN MOBIL ANDA</a></center>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <br /><br />
     <!-- Scripts -->
     <!-- Libs JS -->
     <script src="<?= base_url() ?>assets/libs/jquery/dist/jquery.min.js"></script>

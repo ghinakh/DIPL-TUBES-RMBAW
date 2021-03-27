@@ -81,9 +81,9 @@ class Users extends CI_Controller
                 else :
                     $data['notif_error'] = 'Email/Password Salah mohon inputkan ulang.';
                 endif;
-                $this->load->view('auth/regis');
+                $this->load->view('auth/regis', $data);
             else :
-                $this->load->view('auth/regis');
+                $this->load->view('auth/regis', $data);
             endif;
         else :
             redirect(base_url());
