@@ -63,12 +63,13 @@ class Users extends CI_Controller
     public function register()
     {
         if (!$this->session->userdata('credentials')) :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web")[0];
             if ($this->input->post('nama') && $this->input->post('nik') && $this->input->post('sim') && $this->input->post('email') && $this->input->post('password')) :
                 $con['returnType'] = 'count';
                 $con['conditions'] = array(
                     'email' => $this->input->post('email'),
                 );
-                $cek_user = $this->Database->getData($con);
+                $cek_user = $this->Database->getData("penyewa", $con);
                 if ($cek_user == 1) :
                     $data['notif_error'] = 'Email is already registered, please log in.';
                 else :
@@ -79,12 +80,16 @@ class Users extends CI_Controller
                         'email' => $this->input->post('email'),
                         'password' => md5($this->input->post('password')),
                     );
-                    $insert = json_decode($this->Database->insert($sql));
-                    $data['notif_sukses'] = 'Email/Password Salah mohon inputkan ulang.';
+                    $insert = json_decode($this->Database->insert("penyewa", $sql));
+                    if ($insert) :
+                        $data['notif_sukses'] = 'Email registered successfully.';
+                    else :
+                        $data['notif_error'] = 'Error Insert.';
+                    endif;
                 endif;
                 $this->load->view('auth/regis', $data);
             else :
-                $this->load->view('auth/regis');
+                $this->load->view('auth/regis', $data);
             endif;
         else :
             redirect(base_url());

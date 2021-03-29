@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,10 +10,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
     <!-- Favicon icon-->
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/images/favicon/favicon.ico">
-
 
     <!-- Libs CSS -->
     <link href="<?= base_url() ?>assets/fonts/feather/feather.css" rel="stylesheet" />
@@ -27,10 +26,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link href="<?= base_url() ?>assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
 
-
     <!-- Theme CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/theme.min.css">
-    <title>Sign Up | RentalKuy </title>
+    <title>Sign Up - <?= $web_config['nama_website'] ?> </title>
 </head>
 
 <body>
@@ -50,8 +48,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <span>Already have an account? <a href="<?= base_url('login') ?>" class="ml-1">Sign In</a></span>
                         </div>
                         <!-- Form -->
-                        <form>
+                        <form role="form" method="POST" id="regis" autocomplete="off">
                             <!-- Nama -->
+                            <?php if ($notif_error) { ?>
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= $notif_error ?>
+                                    </div>
+                                </div>
+                            <?php } else if ($notif_sukses) { ?>
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= $notif_sukses ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="form-group">
                                 <label for="nama" class="form-label">Full Name</label>
                                 <input type="text" id="nama" class="form-control" name="nama" placeholder="Full Name" required>
@@ -77,9 +88,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <input type="password" id="password" class="form-control" name="password" placeholder="**************" required>
                             </div>
                             <!-- Checkbox -->
-                            <div class="d-lg-flex justify-content-between align-items-center mb-4">
+                            <div class="form-group">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="rememberme">
+                                    <input type="checkbox" class="custom-control-input" id="agreeCheck" required>
                                     <label class="custom-control-label" for="agreeCheck"><span>I agree to the <a href="#!">Terms of
                                                 Service </a>and
                                             <a href="#!">Privacy Policy.</a></span></label>
@@ -90,7 +101,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <button type="submit" class="btn btn-primary btn-block">Create Account</button>
                             </div>
                             <hr class="my-4">
-                            <center><a href="<?= base_url('register-car') ?>">DAFTARKAN MOBIL ANDA</a></center>
+                            <center><a href="<?= base_url('register-car') ?>">REGISTER YOUR CAR</a></center>
                         </form>
                     </div>
                 </div>
