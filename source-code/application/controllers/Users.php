@@ -41,7 +41,7 @@ class Users extends CI_Controller
                     $user_live = "staff_garasi";
                 }
                 if ($cek_user_admin == 1 || $cek_user_user == 1 || $cek_user_garasi == 1) :
-                    $info_akun = $this->Pengguna->getData($user_live, array('email' => $this->input->post('email')));
+                    $info_akun = $this->Database->getData($user_live, array('email' => $this->input->post('email')));
                     if ($info_akun['status'] == 0) :
                         $data['notif_error'] = 'Akun anda di non-aktifkan, segerah hubungi admin.';
                     else :
@@ -63,27 +63,28 @@ class Users extends CI_Controller
     public function register()
     {
         if (!$this->session->userdata('credentials')) :
-            if ($this->input->post('email') && $this->input->post('password')) :
+            if ($this->input->post('nama') && $this->input->post('nik') && $this->input->post('sim') && $this->input->post('email') && $this->input->post('password')) :
                 $con['returnType'] = 'count';
                 $con['conditions'] = array(
                     'email' => $this->input->post('email'),
-                    'password' => md5($this->input->post('password')),
                 );
-                $cek_user = $this->Pengguna->getData($con);
+                $cek_user = $this->Database->getData($con);
                 if ($cek_user == 1) :
-                    $info_akun = $this->Pengguna->getData(array('email' => $this->input->post('email')));
-                    if ($info_akun['status'] == 0) :
-                        $data['notif_error'] = 'Akun anda di non-aktifkan, segerah hubungi admin.';
-                    else :
-                        $data['notif_sukses'] = 'Selamat menikmati Layanan Kami	.';
-                        $this->session->set_userdata('credentials', $info_akun);
-                    endif;
+                    $data['notif_error'] = 'Email is already registered, please log in.';
                 else :
-                    $data['notif_error'] = 'Email/Password Salah mohon inputkan ulang.';
+                    $sql = array(
+                        'nama_lengkap' => $this->input->post('nama'),
+                        'nik' => $this->input->post('nik'),
+                        'sim' => $this->input->post('sim'),
+                        'email' => $this->input->post('email'),
+                        'password' => md5($this->input->post('password')),
+                    );
+                    $insert = json_decode($this->Database->insert($sql));
+                    $data['notif_sukses'] = 'Email/Password Salah mohon inputkan ulang.';
                 endif;
                 $this->load->view('auth/regis', $data);
             else :
-                $this->load->view('auth/regis', $data);
+                $this->load->view('auth/regis');
             endif;
         else :
             redirect(base_url());
