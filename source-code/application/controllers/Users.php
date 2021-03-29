@@ -42,12 +42,8 @@ class Users extends CI_Controller
                 }
                 if ($cek_user_admin == 1 || $cek_user_user == 1 || $cek_user_garasi == 1) :
                     $info_akun = $this->Database->getData($user_live, array('email' => $this->input->post('email')));
-                    if ($info_akun['status'] == 0) :
-                        $data['notif_error'] = 'Akun anda di non-aktifkan, segerah hubungi admin.';
-                    else :
-                        $data['notif_sukses'] = 'Selamat menikmati Layanan Kami	.';
-                        $this->session->set_userdata('credentials', $info_akun);
-                    endif;
+                    $data['notif_sukses'] = 'Selamat menikmati Layanan Kami	.';
+                    $this->session->set_userdata('credentials', $info_akun);
                 else :
                     $data['notif_error'] = 'Email/Password Salah mohon inputkan ulang.';
                 endif;
