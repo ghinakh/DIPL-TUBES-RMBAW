@@ -56,4 +56,4 @@ $route['translate_uri_dashes'] = FALSE;
 /* ROUTE EXTERNAL */
 $route['login'] = 'Users/login';
 $route['register'] = 'Users/register';
-$route['register-car'] = 'Users/register-staff';
+$route['register-car'] = 'Users/register_staff';

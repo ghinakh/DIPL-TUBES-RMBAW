@@ -91,4 +91,40 @@ class Users extends CI_Controller
             redirect(base_url());
         endif;
     }
+
+    public function register_staff()
+    {
+        if (!$this->session->userdata('credentials')) :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web")[0];
+            if ($this->input->post('nama') && $this->input->post('nik') && $this->input->post('sim') && $this->input->post('email') && $this->input->post('password')) :
+                $con['returnType'] = 'count';
+                $con['conditions'] = array(
+                    'email' => $this->input->post('email'),
+                );
+                $cek_user = $this->Database->getData("penyewa", $con);
+                if ($cek_user == 1) :
+                    $data['notif_error'] = 'Email is already registered, please log in.';
+                else :
+                    $sql = array(
+                        'nama_lengkap' => $this->input->post('nama'),
+                        'nik' => $this->input->post('nik'),
+                        'sim' => $this->input->post('sim'),
+                        'email' => $this->input->post('email'),
+                        'password' => md5($this->input->post('password')),
+                    );
+                    $insert = json_decode($this->Database->insert("penyewa", $sql));
+                    if ($insert) :
+                        $data['notif_sukses'] = 'Email registered successfully.';
+                    else :
+                        $data['notif_error'] = 'Error Insert.';
+                    endif;
+                endif;
+                $this->load->view('auth/regis', $data);
+            else :
+                $this->load->view('auth/regis', $data);
+            endif;
+        else :
+            redirect(base_url());
+        endif;
+    }
 }

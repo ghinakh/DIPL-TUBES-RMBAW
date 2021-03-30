@@ -59,4 +59,14 @@ class Database extends CI_Model
         $delete = $this->db->delete($nama_database, array('id' => $id));
         return $delete ? true : false;
     }
+
+    public function urut_secara($nama_database, $mode, $by)
+    {
+        $this->db->select('*');
+        $this->db->from($nama_database);
+        $this->db->order_by($by, $mode);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
+    }
 }
