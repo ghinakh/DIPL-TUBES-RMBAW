@@ -24,8 +24,19 @@ class Welcome extends CI_Controller
 		if (!$this->session->userdata('credentials')) :
 			$this->load->view('welcome_message');
 		else :
-			$ses = $this->session->userdata('credentials')[0];
-			$data['user'] =  $ses;
+			$ses = $this->session->userdata('credentials');
+			$data['user'] =  $ses[0];
+			$n = explode(' ', $ses[0]["nama_lengkap"]);
+			$foto = '';
+			if (count($n) > 2) {
+				$total = 2;
+			} else {
+				$total = count($n) - 1;
+			}
+			for ($x = 0; $x <= $total; $x++) {
+				$foto .= substr($n[$x], 0, 1);
+			}
+			$data["foto_profile"] = $foto;
 			$this->load->view('include/head', $data);
 		endif;
 	}

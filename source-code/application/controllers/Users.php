@@ -41,9 +41,13 @@ class Users extends CI_Controller
                     $user_live = "staff_garasi";
                 }
                 if ($cek_user_admin == 1 || $cek_user_user == 1 || $cek_user_garasi == 1) :
-                    $info_akun = $this->Database->getData($user_live, array('email' => $this->input->post('email')));
+                    $con['returnType'] = 'single';
+                    $con['conditions'] = array(
+                        'email' => $this->input->post('email'),
+                    );
+                    $info_akun = $this->Database->getData($user_live, $con);
                     $data['notif_sukses'] = 'Selamat menikmati Layanan Kami	.';
-                    $this->session->set_userdata('credentials', array($info_akun[0], $user_live));
+                    $this->session->set_userdata('credentials', array($info_akun, $user_live));
                     redirect(base_url());
                 else :
                     $data['notif_error'] = 'Email/Password Salah mohon inputkan ulang.';

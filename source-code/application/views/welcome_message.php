@@ -37,7 +37,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 	<nav class="navbar navbar-expand-lg navbar-default">
 		<div class="container-fluid px-0">
-			<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="" width="200" /></a>
+			<a class="navbar-brand" href="<?= base_url() ?>"><img src="assets/images/logo.png" alt="" width="200" /></a>
 			<!-- Collapse -->
 			<!-- Mobile view nav wrap -->
 			<ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap ">
