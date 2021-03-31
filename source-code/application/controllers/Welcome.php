@@ -28,8 +28,8 @@ class Welcome extends CI_Controller
 			$data['user'] =  $ses[0];
 			$n = explode(' ', $ses[0]["nama_lengkap"]);
 			$foto = '';
-			if (count($n) > 2) {
-				$total = 2;
+			if (count($n) > 1) {
+				$total = 1;
 			} else {
 				$total = count($n) - 1;
 			}
