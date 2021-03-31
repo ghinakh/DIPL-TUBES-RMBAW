@@ -57,3 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'Users/login';
 $route['register'] = 'Users/register';
 $route['register-car'] = 'Users/register_staff';
+$route['logout'] = 'Users/logout';
+
+/* ROUTE PROFILE */
+$route['profile'] = 'Users/profile';

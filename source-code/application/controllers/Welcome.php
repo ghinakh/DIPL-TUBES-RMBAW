@@ -24,7 +24,9 @@ class Welcome extends CI_Controller
 		if (!$this->session->userdata('credentials')) :
 			$this->load->view('welcome_message');
 		else :
-			var_dump("Session di terima, Tampilan dalam tahap pembuatan");
+			$ses = $this->session->userdata('credentials')[0];
+			$data['user'] =  $ses;
+			$this->load->view('include/head', $data);
 		endif;
 	}
 }

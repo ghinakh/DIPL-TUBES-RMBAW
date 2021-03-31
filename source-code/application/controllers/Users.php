@@ -43,11 +43,12 @@ class Users extends CI_Controller
                 if ($cek_user_admin == 1 || $cek_user_user == 1 || $cek_user_garasi == 1) :
                     $info_akun = $this->Database->getData($user_live, array('email' => $this->input->post('email')));
                     $data['notif_sukses'] = 'Selamat menikmati Layanan Kami	.';
-                    $this->session->set_userdata('credentials', $info_akun);
+                    $this->session->set_userdata('credentials', array($info_akun[0], $user_live));
+                    redirect(base_url());
                 else :
                     $data['notif_error'] = 'Email/Password Salah mohon inputkan ulang.';
+                    $this->load->view('auth/login', $data);
                 endif;
-                $this->load->view('auth/login', $data);
             else :
                 $this->load->view('auth/login');
             endif;
@@ -125,6 +126,40 @@ class Users extends CI_Controller
             endif;
         else :
             redirect(base_url());
+        endif;
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url());
+    }
+
+    public function profile()
+    {
+        if (!$this->session->userdata('credentials')) :
+            redirect(base_url('login'));
+        else :
+            $ses = $this->session->userdata('credentials');
+            $data['user'] =  $ses[0];
+            $n = explode(' ', $ses[0]["nama_lengkap"]);
+            $foto = '';
+            for ($x = 0; $x <= 1; $x++) {
+                $foto .= substr($n[$x], 0, 1);
+            }
+            $data["foto_profile"] = $foto;
+            if ($ses[1] == "penyewa") {
+                $con['returnType'] = 'count';
+                $con['conditions'] = array(
+                    'id_penyewa' => $ses[0]["id"],
+                );
+                $data["total_orderan"] = $this->Database->getData("riwayat", $con);
+                $data["level"] = "Penyewa";
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
+            }
+            $this->load->view('include/head', $data);
+            $this->load->view('auth/profile', $data);
         endif;
     }
 }
