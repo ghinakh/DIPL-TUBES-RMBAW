@@ -1,5 +1,32 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+error_reporting(0);
+$jumlah = count($nama_dipisah);
+if ($jumlah > 2) {
+    $j = 0;
+    $n_depan = array();
+    $ar_bl = array();
+    foreach ($nama_dipisah as $nl) {
+        if ($j == 1) {
+            array_push($ar_bl, $nl);
+        } else {
+            $j++;
+            $n_depan = $nl;
+        }
+    }
+    $ta = false;
+    foreach ($ar_bl as $d) {
+        if ($ta) {
+            $n_belakang .= " ";
+            $ta = false;
+        }
+        $n_belakang .= $d;
+        $ta = true;
+    }
+} else {
+    $n_depan = $nama_dipisah[0];
+    $n_belakang = $nama_dipisah[1];
+}
 ?>
 <div class="pt-5 pb-5">
     <div class="container">
@@ -60,7 +87,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <ul class="list-unstyled ml-n2 mb-4">
                                 <!-- Nav item -->
                                 <li class="nav-item">
-                                    <a class="nav-link" href="student-subscriptions.html"><i class="fas fa-car nav-icon"></i>History Car</a>
+                                    <a class="nav-link" href="student-subscriptions.html"><i class=" fe fe-calendar nav-icon"></i>History Car</a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item">
@@ -122,17 +149,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <!-- First name -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="fname">First Name</label>
-                                    <input type="text" id="fname" class="form-control" placeholder="First Name" required />
+                                    <input type="text" id="fname" class="form-control" placeholder="First Name" value="<?= $n_depan ?>" required />
                                 </div>
                                 <!-- Last name -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="lname">Last Name</label>
-                                    <input type="text" id="lname" class="form-control" placeholder="Last Name" required />
+                                    <input type="text" id="lname" class="form-control" placeholder="Last Name" value="<?= $n_belakang ?>" required />
                                 </div>
                                 <!-- Phone -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="phone">Phone</label>
-                                    <input type="text" id="phone" class="form-control" placeholder="Phone" required />
+                                    <input type="text" id="phone" class="form-control" placeholder="Phone" value="<?= $user["phone"] ?>" required />
                                 </div>
                                 <!-- Birthday -->
                                 <div class="form-group col-12 col-md-6">

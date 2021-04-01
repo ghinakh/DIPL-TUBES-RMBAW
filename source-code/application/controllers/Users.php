@@ -147,6 +147,7 @@ class Users extends CI_Controller
             $ses = $this->session->userdata('credentials');
             $data['user'] =  $ses[0];
             $n = explode(' ', $ses[0]["nama_lengkap"]);
+            $data["nama_dipisah"] = $n;
             $foto = '';
             for ($x = 0; $x <= 1; $x++) {
                 $foto .= substr($n[$x], 0, 1);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Mar 2021 pada 04.59
+-- Waktu pembuatan: 01 Apr 2021 pada 06.50
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -79,18 +79,15 @@ CREATE TABLE `mobil` (
 CREATE TABLE `penyewa` (
   `id` int(11) NOT NULL,
   `nama_lengkap` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `address` text NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
   `nik` int(25) NOT NULL,
   `sim` int(25) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `penyewa`
---
-
-INSERT INTO `penyewa` (`id`, `nama_lengkap`, `nik`, `sim`, `email`, `password`) VALUES
-(1, 'Jhon Na', 1234567890, 1234567890, 'user@jhon.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
 
@@ -230,13 +227,13 @@ ALTER TABLE `konfigurasi_web`
 -- AUTO_INCREMENT untuk tabel `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `penyewa`
 --
 ALTER TABLE `penyewa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `promo`
