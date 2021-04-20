@@ -161,40 +161,15 @@ if ($jumlah > 2) {
                                     <label class="form-label" for="phone">Phone</label>
                                     <input type="text" id="phone" class="form-control" placeholder="Phone" value="<?= $user["phone"] ?>" required />
                                 </div>
-                                <!-- Birthday -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="birth">Birthday</label>
-                                    <input class="form-control flatpickr" type="text" placeholder="Birth of Date" id="birth" name="birth" />
-                                </div>
                                 <!-- Address -->
                                 <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="address">Address Line 1</label>
-                                    <input type="text" id="address" class="form-control" placeholder="Address" required />
-                                </div>
-                                <!-- Address -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="address2">Address Line 2</label>
-                                    <input type="text" id="address2" class="form-control" placeholder="Address" required />
+                                    <label class="form-label" for="address">Address</label>
+                                    <input type="text" id="address" class="form-control" placeholder="Address" value="<?= $user["address"] ?>" required />
                                 </div>
                                 <!-- State -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label">State</label>
-                                    <select class="selectpicker" data-width="100%">
-                                        <option value="">Select State</option>
-                                        <option value="1">Gujarat</option>
-                                        <option value="2">Rajasthan</option>
-                                        <option value="3">Maharashtra</option>
-                                    </select>
-                                </div>
-                                <!-- Country -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label">Country</label>
-                                    <select class="selectpicker" data-width="100%">
-                                        <option value="">Select Country</option>
-                                        <option value="1">India</option>
-                                        <option value="2">UK</option>
-                                        <option value="3">USA</option>
-                                    </select>
+                                <div class="form-group col-12 col-md-12">
+                                    <label class="form-label">City</label>
+                                    <input type="text" id="address" class="form-control" placeholder="Address" value="<?= $user["city"] ?>" required />
                                 </div>
                                 <div class="col-12">
                                     <!-- Button -->

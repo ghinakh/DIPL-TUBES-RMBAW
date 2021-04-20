@@ -77,7 +77,7 @@ error_reporting(0);
                                     <label class="custom-control-label " for="rememberme">Remember me</label>
                                 </div>
                                 <div>
-                                    <a href="<?= base_url('register-car') ?>">Daftarkan Mobil Anda!</a>
+                                    <a href="<?= base_url('register-car') ?>">Register Your Car</a>
                                 </div>
                             </div>
                             <div>

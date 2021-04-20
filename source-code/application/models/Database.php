@@ -13,7 +13,7 @@ class Database extends CI_Model
     {
         $this->db->select('*');
         $this->db->from($nama_database);
-
+        $this->db->order_by('id', 'DESC');
         if (array_key_exists("conditions", $params)) {
             foreach ($params['conditions'] as $key => $value) {
                 $this->db->where($key, $value);
