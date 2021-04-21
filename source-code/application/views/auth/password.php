@@ -102,11 +102,11 @@ if ($jumlah > 2) {
                             <span class="navbar-header">Account Settings</span>
                             <ul class="list-unstyled ml-n2 mb-0">
                                 <!-- Nav item -->
-                                <li class="nav-item active">
+                                <li class="nav-item">
                                     <a class="nav-link" href="<?= base_url('edit/profile') ?>"><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
                                 </li>
                                 <!-- Nav item -->
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link" href="<?= base_url('change/password') ?>"><i class="fe fe-lock nav-icon"></i>Change Password</a>
                                 </li>
                                 <!-- Nav item -->
@@ -123,9 +123,9 @@ if ($jumlah > 2) {
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">Personal Details</h3>
+                        <h3 class="mb-0">Change password</h3>
                         <p class="mb-0">
-                            Edit your personal information and address.
+                            Change Password if your account feels suspicious activity.
                         </p>
                     </div>
                     <!-- Card body -->
@@ -137,38 +137,22 @@ if ($jumlah > 2) {
                                         <?= $laporan ?>
                                     </div>
                                 <?php endif; ?>
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="fname">First Name</label>
-                                    <input type="text" name="fname" class="form-control" placeholder="First Name" value="<?= $n_depan ?>" required />
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="lname">Last Name</label>
-                                    <input type="text" name="lname" class="form-control" placeholder="Last Name" value="<?= $n_belakang ?>" required />
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="phone">Phone</label>
-                                    <input type="text" name="phone" class="form-control" placeholder="Phone" value="<?= $user["phone"] ?>" required />
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="address">Address</label>
-                                    <input type="text" name="address" class="form-control" placeholder="Address" value="<?= $user["address"] ?>" required />
-                                </div>
                                 <div class="form-group col-12 col-md-12">
-                                    <label class="form-label">City</label>
-                                    <input type="text" name="city" class="form-control" placeholder="Address" value="<?= $user["city"] ?>" required />
+                                    <label class="form-label" for="fname">Old password</label>
+                                    <input type="password" name="oldpass" class="form-control" placeholder="Old password" required />
                                 </div>
-                                <div class="form-group col-12 col-md-12">
-                                    <label class="form-label">NIK</label>
-                                    <input type="text" id="address" class="form-control" value="<?= $user["nik"] ?>" disabled />
+                                <div class="form-group col-12 col-md-6">
+                                    <label class="form-label" for="lname">New Password</label>
+                                    <input type="password" name="newpass" class="form-control" placeholder="New Password" required />
                                 </div>
-                                <div class="form-group col-12 col-md-12">
-                                    <label class="form-label">SIM</label>
-                                    <input type="text" id="address" class="form-control" value="<?= $user["sim"] ?>" disabled />
+                                <div class="form-group col-12 col-md-6">
+                                    <label class="form-label" for="phone">Confirm Password</label>
+                                    <input type="password" name="cpass" class="form-control" placeholder="Confirm Password" required />
                                 </div>
                                 <div class="col-12">
                                     <!-- Button -->
                                     <button class="btn btn-primary" type="submit">
-                                        Update Profile
+                                        Change Password
                                     </button>
                                 </div>
                             </form>

@@ -159,6 +159,35 @@ class Users extends CI_Controller
         endif;
     }
 
+    public function password()
+    {
+        if (!$this->session->userdata('credentials')) :
+            redirect(base_url('login'));
+        else :
+            $ses = $this->session->userdata('credentials');
+            $data['user'] =  $ses[0];
+            $n = explode(' ', $ses[0]["nama_lengkap"]);
+            $data["nama_dipisah"] = $n;
+            $foto = '';
+            for ($x = 0; $x <= 1; $x++) {
+                $foto .= substr($n[$x], 0, 1);
+            }
+            $data["foto_profile"] = $foto;
+            if ($ses[1] == "penyewa") {
+                $con['returnType'] = 'count';
+                $con['conditions'] = array(
+                    'id_penyewa' => $ses[0]["id"],
+                );
+                $data["total_orderan"] = $this->Database->getData("riwayat", $con);
+                $data["level"] = "Penyewa";
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
+            }
+            $this->load->view('include/head', $data);
+            $this->load->view('auth/password', $data);
+        endif;
+    }
+
     public function logout()
     {
         $this->session->sess_destroy();

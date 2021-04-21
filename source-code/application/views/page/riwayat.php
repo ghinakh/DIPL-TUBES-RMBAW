@@ -57,7 +57,7 @@ function tanggal_indonesia($tanggal)
                             </div>
                         </div>
                         <div>
-                            <a href="dashboard-student.html" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
+                            <a href="<?= base_url('dashboard') ?>" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
                                 Dashboard</a>
                         </div>
                     </div>
@@ -83,7 +83,7 @@ function tanggal_indonesia($tanggal)
                                 <ul class="list-unstyled ml-n2 mb-4">
                                     <!-- Nav item -->
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="history_car.html"><i class="fe fe-calendar nav-icon"></i>Car History
+                                        <a class="nav-link" href="<?= base_url('history') ?>"><i class="fe fe-calendar nav-icon"></i>Car History
                                         </a>
                                     </li>
                                     <!-- Nav item -->
@@ -100,15 +100,15 @@ function tanggal_indonesia($tanggal)
                                 <ul class="list-unstyled ml-n2 mb-0">
                                     <!-- Nav item -->
                                     <li class="nav-item">
-                                        <a class="nav-link" href=""><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
+                                        <a class="nav-link" href="<?= base_url('edit/profile') ?>"><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
                                     </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
-                                        <a class="nav-link" href=""><i class="fe fe-user nav-icon"></i>Security</a>
+                                        <a class="nav-link" href="<?= base_url('change/password') ?>"><i class="fe fe-lock nav-icon"></i>Change Password</a>
                                     </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
-                                        <a class="nav-link" href=""><i class="fe fe-power nav-icon"></i>Sign Out</a>
+                                        <a class="nav-link" href="<?= base_url('logout') ?>"><i class="fe fe-power nav-icon"></i>Sign Out</a>
                                     </li>
                                 </ul>
                             </div>

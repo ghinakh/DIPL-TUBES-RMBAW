@@ -60,5 +60,6 @@ $route['register-car'] = 'Users/register_staff';
 $route['logout'] = 'Users/logout';
 
 /* ROUTE USER */
-$route['profile'] = 'Users/profile';
+$route['edit/profile'] = 'Users/profile';
 $route['history'] = 'Users/Riwayat';
+$route['change/password'] = 'Users/Password';

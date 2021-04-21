@@ -11,24 +11,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/images/favicon/favicon.ico">
 
 
     <!-- Libs CSS -->
-    <link href="assets/fonts/feather/feather.css" rel="stylesheet" />
-    <link href="assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
-    <link href="assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
-    <link href="assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
-    <link href="assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
-    <link href="assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
-    <link href="assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
-    <link href="assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
-    <link href="assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/fonts/feather/feather.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
 
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="assets/css/theme.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/theme.min.css">
     <title>RentalKuy | Your Car Rental Solution</title>
 </head>
 
@@ -37,7 +37,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <nav class="navbar navbar-expand-lg navbar-default">
         <div class="container-fluid px-0">
-            <a class="navbar-brand" href="<?= base_url() ?>"><img src="assets/images/logo.png" alt="" width="200" /></a>
+            <a class="navbar-brand" href="<?= base_url() ?>"><img src="<?= base_url('assets/images/logo.png') ?>" alt="" width="200" /></a>
             <!-- Mobile view nav wrap -->
             <ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap ">
                 <li class="dropdown stopevent">
