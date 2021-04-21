@@ -138,6 +138,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('credentials')) :
             redirect(base_url('login'));
         else :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
             $data['user'] =  $ses[0];
             $n = explode(' ', $ses[0]["nama_lengkap"]);
@@ -164,7 +165,30 @@ class Users extends CI_Controller
         if (!$this->session->userdata('credentials')) :
             redirect(base_url('login'));
         else :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
+            if ($this->input->post('oldpass') && $this->input->post('newpass') && $this->input->post('cpass')) :
+                $old = md5($this->input->post('oldpass'));
+                $new = md5($this->input->post('newpass'));
+                $konfrim = md5($this->input->post('cpass'));
+                if ($old == $ses[0]['password']) :
+                    if ($new == $konfrim) :
+                        $sql = array(
+                            'password' => $konfrim,
+                        );
+                        $update = json_decode($this->Database->update($ses[1], $sql, $ses[0]['id']));
+                        if ($update) :
+                            redirect(base_url('logout'));
+                        else :
+                            $data['laporan'] = '<div class="alert alert-danger" role="alert">There is data that is still blank, please fill in first.</div>';
+                        endif;
+                    else :
+                        $data['laporan'] = '<div class="alert alert-danger" role="alert">The new password is not the same as the confirmation password. Please retype it.</div>';
+                    endif;
+                else :
+                    $data['laporan'] = '<div class="alert alert-danger" role="alert">Incorrect password, please enter correctly.</div>';
+                endif;
+            endif;
             $data['user'] =  $ses[0];
             $n = explode(' ', $ses[0]["nama_lengkap"]);
             $data["nama_dipisah"] = $n;
@@ -199,6 +223,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('credentials')) :
             redirect(base_url('login'));
         else :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
             if ($this->input->post('fname') && $this->input->post('lname') && $this->input->post('phone') && $this->input->post('address') && $this->input->post('city')) :
                 $sql = array(
@@ -207,7 +232,7 @@ class Users extends CI_Controller
                     'city' => $this->input->post('city'),
                     'phone' => $this->input->post('phone'),
                 );
-                $update = json_decode($this->Database->update("penyewa", $sql, $ses[0]['id']));
+                $update = json_decode($this->Database->update($ses[1], $sql, $ses[0]['id']));
                 if ($update) :
                     $data['laporan'] = '<div class="alert alert-success" role="alert">The data has been updated successfully, make sure the data is valid.</div>';
                 else :
