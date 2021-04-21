@@ -95,7 +95,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</div>
 				</div>
 				<div class=" col-xl-7 col-lg-6 col-md-12 text-lg-right text-center">
-					<img src="https://www.paylesscar.com/content/dam/cars/l/2017/nissan/2017-nissan-versa-sv-auto-sedan-blue_featured.png" alt="" class="img-fluid" />
+					<img src="<?= base_url('assets/images/gambar-depan.png') ?>" alt="" class="img-fluid" />
 				</div>
 			</div>
 			<br /><br /><br /><br />
