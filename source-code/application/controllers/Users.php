@@ -171,6 +171,27 @@ class Users extends CI_Controller
             redirect(base_url('login'));
         else :
             $ses = $this->session->userdata('credentials');
+            if ($this->input->post('fname') && $this->input->post('lname') && $this->input->post('phone') && $this->input->post('address') && $this->input->post('city')) :
+                $sql = array(
+                    'nama_lengkap' => $this->input->post('fname') . ' ' . $this->input->post('lname'),
+                    'address' => $this->input->post('address'),
+                    'city' => $this->input->post('city'),
+                    'phone' => $this->input->post('phone'),
+                );
+                $update = json_decode($this->Database->update("penyewa", $sql, $ses[0]['id']));
+                if ($update) :
+                    $data['laporan'] = '<div class="alert alert-success" role="alert">The data has been updated successfully, make sure the data is valid.</div>';
+                else :
+                    $data['laporan'] = '<div class="alert alert-danger" role="alert">There is data that is still blank, please fill in first.</div>';
+                endif;
+                $con['returnType'] = 'single';
+                $con['conditions'] = array(
+                    'id' => $ses[0]['id'],
+                );
+                $info_akun = $this->Database->getData($ses[1], $con);
+                $this->session->set_userdata('credentials', array($info_akun, $ses[1]));
+                $ses = $this->session->userdata('credentials');
+            endif;
             $data['user'] =  $ses[0];
             $n = explode(' ', $ses[0]["nama_lengkap"]);
             $data["nama_dipisah"] = $n;

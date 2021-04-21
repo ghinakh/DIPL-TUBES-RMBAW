@@ -145,31 +145,39 @@ if ($jumlah > 2) {
                     <!-- Card body -->
                     <div class="card-body">
                         <div>
-                            <form class="form-row">
-                                <!-- First name -->
+                            <form class="form-row" method="POST" autocomplete="off">
+                                <?php if ($laporan) : ?>
+                                    <div class="form-group col-12 col-md-12">
+                                        <?= $laporan ?>
+                                    </div>
+                                <?php endif; ?>
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="fname">First Name</label>
-                                    <input type="text" id="fname" class="form-control" placeholder="First Name" value="<?= $n_depan ?>" required />
+                                    <input type="text" name="fname" class="form-control" placeholder="First Name" value="<?= $n_depan ?>" required />
                                 </div>
-                                <!-- Last name -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="lname">Last Name</label>
-                                    <input type="text" id="lname" class="form-control" placeholder="Last Name" value="<?= $n_belakang ?>" required />
+                                    <input type="text" name="lname" class="form-control" placeholder="Last Name" value="<?= $n_belakang ?>" required />
                                 </div>
-                                <!-- Phone -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="phone">Phone</label>
-                                    <input type="text" id="phone" class="form-control" placeholder="Phone" value="<?= $user["phone"] ?>" required />
+                                    <input type="text" name="phone" class="form-control" placeholder="Phone" value="<?= $user["phone"] ?>" required />
                                 </div>
-                                <!-- Address -->
                                 <div class="form-group col-12 col-md-6">
                                     <label class="form-label" for="address">Address</label>
-                                    <input type="text" id="address" class="form-control" placeholder="Address" value="<?= $user["address"] ?>" required />
+                                    <input type="text" name="address" class="form-control" placeholder="Address" value="<?= $user["address"] ?>" required />
                                 </div>
-                                <!-- State -->
                                 <div class="form-group col-12 col-md-12">
                                     <label class="form-label">City</label>
-                                    <input type="text" id="address" class="form-control" placeholder="Address" value="<?= $user["city"] ?>" required />
+                                    <input type="text" name="city" class="form-control" placeholder="Address" value="<?= $user["city"] ?>" required />
+                                </div>
+                                <div class="form-group col-12 col-md-12">
+                                    <label class="form-label">NIK</label>
+                                    <input type="text" id="address" class="form-control" value="<?= $user["nik"] ?>" disabled />
+                                </div>
+                                <div class="form-group col-12 col-md-12">
+                                    <label class="form-label">SIM</label>
+                                    <input type="text" id="address" class="form-control" value="<?= $user["sim"] ?>" disabled />
                                 </div>
                                 <div class="col-12">
                                     <!-- Button -->

@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [About the Project](#about-the-project)
-  - [Team](#dataset)
+  - [Team](#Team)
   - [Built With](#built-with)
 
 ## About The Project
