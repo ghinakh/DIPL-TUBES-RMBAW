@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<!-- Favicon icon-->
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+
+
+	<!-- Libs CSS -->
+	<link href="../assets/fonts/feather/feather.css" rel="stylesheet" />
+	<link href="../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+	<link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+	<link href="../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+	<link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+	<link href="../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+	<link href="../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+	<link href="../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+	<link href="../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="../assets/css/theme.min.css">
+	<title>Search for Cars | RentalKuy</title>
+</head>
+
+<body>
+	<!-- Page header -->
+	<div class="bg-dark py-4 py-lg-6">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-12">
+					<div>
+						<h1 class="mb-0 text-white display-4">Rental Car for All of Your Activity Needs</h1>
+						<h3 class="mb-0 text-white">We provide the best deals for you</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Content -->
+	<div class="py-6">
+		<div class="container">
+			<div class="row">
+				<!-- sidebar -->
+				<div class="col-xl-3 col-lg-3 col-md-4 col-12 mb-4 mb-lg-0">
+					<!-- Card -->
+					<div class="card">
+						<!-- Card header -->
+						<div class="card-header text-dark font-size-lg">
+							<i class="fe fe-filter"></i> Filter
+						</div>
+						<!-- Card body -->
+						<div class="card-body">
+							<span class="dropdown-header px-0 mb-2">Cars</span>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="all" checked>
+								<label class="custom-control-label" for="all">All</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="avanza">
+								<label class="custom-control-label" for="avanza">Toyota Avanza</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="agya">
+								<label class="custom-control-label" for="agya">Toyota Agya</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="xenia">
+								<label class="custom-control-label" for="xenia">Daihatsu Xenia</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="calya">
+								<label class="custom-control-label" for="calya">Toyota Calya</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="innova">
+								<label class="custom-control-label" for="innova">Toyota Innova</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="ertiga">
+								<label class="custom-control-label" for="ertiga">Suzuki Ertiga</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="fortuner">
+								<label class="custom-control-label" for="fortuner">Toyota Fortuner</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="others">
+								<label class="custom-control-label" for="others">Others</label>
+							</div>
+						</div>
+						<!-- Card body -->
+						<div class="card-body border-top">
+							<span class="dropdown-header px-0 mb-2"> Ratings</span>
+							<!-- Custom control -->
+							<div class="custom-control custom-radio mb-1">
+								<input type="radio" class="custom-control-input" id="starRadio1" name="customRadio">
+								<label class="custom-control-label" for="starRadio1">
+									<span class="font-size-xs font-weight-medium">4.5+</span>
+									<i class="mdi mdi-star text-warning "></i>
+								</label>
+							</div>
+							<!-- Custom control -->
+							<div class="custom-control custom-radio mb-1">
+								<input type="radio" class="custom-control-input" id="starRadio2" name="customRadio">
+								<label class="custom-control-label" for="starRadio2">
+									<span class="font-size-xs font-weight-medium">4.0+</span>
+									<i class="mdi mdi-star text-warning "></i>
+								</label>
+							</div>
+							<!-- Custom control -->
+							<div class="custom-control custom-radio mb-1">
+								<input type="radio" class="custom-control-input" id="starRadio3" name="customRadio">
+								<label class="custom-control-label" for="starRadio3">
+									<span class="font-size-xs font-weight-medium">3.5+</span>
+									<i class="mdi mdi-star text-warning "></i>
+								</label>
+							</div>
+							<!-- Custom control -->
+							<div class="custom-control custom-radio mb-1">
+								<input type="radio" class="custom-control-input" id="starRadio4" name="customRadio">
+								<label class="custom-control-label" for="starRadio4">
+									<span class="font-size-xs font-weight-medium">3.0+</span>
+									<i class="mdi mdi-star text-warning "></i>
+								</label>
+							</div>
+						</div>
+						<!-- Card body -->
+						<div class="card-body border-top">
+							<span class="dropdown-header px-0 mb-2">Type</span>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="allTwoCheck" checked>
+								<label class="custom-control-label" for="allTwoCheck">All</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="beginnerTwoCheck">
+								<label class="custom-control-label" for="beginnerTwoCheck">Premium(?)</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="intermediateCheck">
+								<label class="custom-control-label" for="intermediateCheck">Pertalite(?)</label>
+							</div>
+							<!-- Checkbox -->
+							<div class="custom-control custom-checkbox mb-1">
+								<input type="checkbox" class="custom-control-input" id="AdvancedTwoCheck">
+								<label class="custom-control-label" for="AdvancedTwoCheck">Bensin(?)</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Tab content -->
+				<div class="col-xl-9 col-lg-9 col-md-8 col-12">
+					<div class="tab-content">
+						<!-- Tab pane -->
+						<div class="tab-pane fade show active pb-4 " id="tabPaneList" role="tabpanel"
+							aria-labelledby="tabPaneList">
+							<!-- Card -->
+							<div class="card mb-4 card-hover">
+								<div class="row no-gutters">
+									<a class="col-12 col-md-12 col-xl-3 col-lg-3 bg-cover img-left-rounded"
+										style="background-image: url(../assets/images/mobil/avanza-preview.png);"
+										href="#!">
+										<img src="../assets/images/mobil/avanza-preview.png" alt="..."
+											class="img-fluid d-lg-none invisible">
+									</a>
+									<div class="col-lg-9 col-md-12 col-12">
+										<!-- Card body -->
+										<div class="card-body">
+											<div class="row align-items-center no-gutters">
+												<div class="col">
+													<h3 class="mb-2 text-truncate-line-2 ">(CAR-01) Toyota Avanza</h3>
+													<!-- List inline -->
+													<ul class="mb-5 list-inline">
+														<li class="list-inline-item">
+															<div class="bg mr-2">
+																<div>Manual</div>
+															</div>
+														</li>
+														<li class="list-inline-item"> <span>
+																<i class="fe fe-users mr-1"></i>
+																<span class="font-size-xs text-muted mr-2">6</span>
+																<i class="fe fe-bar-chart mr-1"></i>
+																<span
+																	class="font-size-xs text-muted mr-2">Pertalite</span>
+																<i class="mdi mdi-star text-warning "></i>
+																<span class="text-warning">4.5</span>
+																<span class="font-size-xs text-muted">(9,300)</span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-auto">
+													<h3 class="mb-2 text-truncate-line-2">IDR 400,000<span
+															class="font-size-xs text-muted">/ day</span>
+													</h3>
+												</div>
+											</div>
+											<!-- Row -->
+											<div class="row align-items-center no-gutters">
+												<div class="col-auto">
+													<img src="../assets/images/avatar/avatar-2.jpg"
+														class="rounded-circle avatar-xs" alt="">
+												</div>
+												<div class="col ml-2">
+													<span>Joanne Shin</span>
+												</div>
+												<div class="col-auto">
+													<a href="penyewaan.html" class="btn btn-success btn-sm">Rent this
+														car</a>
+												</div>
+											</div>
+											<div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card mb-4 card-hover">
+								<div class="row no-gutters">
+									<a class="col-12 col-md-12 col-xl-3 col-lg-3 bg-cover img-left-rounded"
+										style="background-image: url(../assets/images/mobil/avanza-preview.png);"
+										href="#!">
+										<img src="../assets/images/mobil/avanza-preview.png" alt="..."
+											class="img-fluid d-lg-none invisible">
+									</a>
+									<div class="col-lg-9 col-md-12 col-12">
+										<!-- Card body -->
+										<div class="card-body">
+											<div class="row align-items-center no-gutters">
+												<div class="col">
+													<h3 class="mb-2 text-truncate-line-2 ">(CAR-01) Toyota Avanza</h3>
+													<!-- List inline -->
+													<ul class="mb-5 list-inline">
+														<li class="list-inline-item">
+															<div class="bg mr-2">
+																<div>Manual</div>
+															</div>
+														</li>
+														<li class="list-inline-item"> <span>
+																<i class="fe fe-users mr-1"></i>
+																<span class="font-size-xs text-muted mr-2">6</span>
+																<i class="fe fe-bar-chart mr-1"></i>
+																<span
+																	class="font-size-xs text-muted mr-2">Pertalite</span>
+																<i class="mdi mdi-star text-warning "></i>
+																<span class="text-warning">4.5</span>
+																<span class="font-size-xs text-muted">(9,300)</span>
+														</li>
+													</ul>
+												</div>
+												<div class="col-auto">
+													<h3 class="mb-2 text-truncate-line-2">IDR 400,000<span
+															class="font-size-xs text-muted">/ day</span>
+													</h3>
+												</div>
+											</div>
+											<!-- Row -->
+											<div class="row align-items-center no-gutters">
+												<div class="col-auto">
+													<img src="../assets/images/avatar/avatar-2.jpg"
+														class="rounded-circle avatar-xs" alt="">
+												</div>
+												<div class="col ml-2">
+													<span>Joanne Shin</span>
+												</div>
+												<div class="col-auto">
+													<a href="penyewaan.html" class="btn btn-success btn-sm">Rent this
+														car</a>
+												</div>
+											</div>
+											<div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+
+	<div class="footer">
+		<div class="container">
+			<div class="row align-items-center no-gutters border-top py-2">
+				<!-- Desc -->
+				<div class="col-md-6 col-12 text-center text-md-left">
+					<span>© 2021 RentalKuy. All Rights Reserved.</span>
+				</div>
+				<!-- Links -->
+				<div class="col-12 col-md-6">
+					<nav class="nav nav-footer justify-content-center justify-content-md-end">
+						<a class="nav-link active pl-0" href="">Privacy</a>
+						<a class="nav-link" href="">Terms </a>
+						<a class="nav-link" href="">Feedback</a>
+						<a class="nav-link" href="">Support</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Scripts -->
+	<!-- Libs JS -->
+	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/libs/odometer/odometer.min.js"></script>
+	<script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+	<script src="../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+	<script src="../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+	<script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/libs/quill/dist/quill.min.js"></script>
+	<script src="../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
+	<script src="../assets/libs/dragula/dist/dragula.min.js"></script>
+	<script src="../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+	<script src="../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+	<script src="../assets/libs/jQuery.print/jQuery.print.js"></script>
+	<script src="../assets/libs/prismjs/prism.js"></script>
+	<script src="../assets/libs/prismjs/components/prism-scss.min.js"></script>
+	<script src="../assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
+	<script src="../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+	<script src="../assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+	<script src="../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+	<script src="../assets/libs/typed.js/lib/typed.min.js"></script>
+
+	<!-- clipboard -->
+	<script src="../../../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
+	<!-- Theme JS -->
+	<script src="../assets/js/theme.min.js"></script>
+
+</body>
+
+</html>
