@@ -43,19 +43,19 @@
         <ul class="navbar-nav flex-column" id="sideNavbar">
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link active" href="admin_dashboard.html">
+            <a class="nav-link " href="admin_dashboard.html">
               <i class="nav-icon fe fe-home mr-2"></i>Dashboard
             </a>
           </li>
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link active" href="admin_mobil.html">
+            <a class="nav-link " href="admin_mobil.html">
               <i class="nav-icon fa fa-car mr-2"></i>Cars
             </a>
           </li>
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link active" href="admin_penyewa.html">
+            <a class="nav-link " href="admin_penyewa.html">
               <i class="nav-icon fe fe-users mr-2"></i>Renter
             </a>
           </li>
@@ -66,13 +66,19 @@
             </a>
           </li>
           <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link " href="admin_promo.html">
+              <i class="nav-icon fe fe-percent mr-2"></i>Promo
+            </a>
+          </li>
+          <!-- Nav item -->
           <li class="nav-item ">
             <div class="nav-divider">
             </div>
           </li>
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link active" href="">
+            <a class="nav-link " href="">
               <i class="nav-icon fe fe-power mr-2"></i>Sign Out
             </a>
           </li>
@@ -109,7 +115,7 @@
                 <div class="dropdown-divider"></div>
                 <ul class="list-unstyled">
                   <li>
-                    <a class="dropdown-item" href="../index.html">
+                    <a class="dropdown-item" href="">
                       <i class="fe fe-power mr-2"></i>Sign Out
                     </a>
                   </li>
@@ -235,82 +241,38 @@
                               <span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified
                             </td>
                             <td class="align-middle border-top-0">
-                              <a href="" class="btn btn-secondary btn-sm">Change Status</a>
+                              <a type="button" class="btn btn-secondary btn-sm" data-toggle="modal"
+                                data-target="#modal_change_status">Change Status</a>
+                              <a href="" class="btn btn-danger btn-sm">Delete</a>
                             </td>
-                          </tr>
-                          <tr>
-                            <td class="border-top-0">
-                              <h4 class="mb-1 text-primary-hover">
-                                Julia Ch
-                              </h4>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                1122334455667788
+                            <!-- Modal "Change Status"-->
+                            <div class="modal fade" id="modal_change_status" tabindex="-1" role="dialog"
+                              aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h3 class="modal-title" id="exampleModalScrollableTitle">Change Status</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <select class="custom-select">
+                                      <option selected>select status</option>
+                                      <option value="1">Pending</option>
+                                      <option value="2">Verified</option>
+                                      <option value="3">Rejected</option>
+                                    </select>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                      data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-success btn-sm">Submit</button>
+                                  </div>
+                                </div>
                               </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              nomor SIM (?)
-                            </td>
-                            <td class="align-middle border-top-0">
-                              staff3@gmail.com
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <a href="" class="btn btn-outline-white btn-sm">Reject</a>
-                              <a href="" class="btn btn-success btn-sm">Approved</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="border-top-0">
-                              <h4 class="mb-1 text-primary-hover">
-                                Lucy Hw
-                              </h4>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                1122334455667788
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              nomor SIM (?)
-                            </td>
-                            <td class="align-middle border-top-0">
-                              staff4@gmail.com
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <a href="" class="btn btn-secondary btn-sm">Change Status</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="border-top-0">
-                              <h4 class="mb-1 text-primary-hover">
-                                Judy Law
-                              </h4>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                1122334455667788
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              nomor SIM (?)
-                            </td>
-                            <td class="align-middle border-top-0">
-                              staff5@gmail.com
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <a href="" class="btn btn-outline-white btn-sm">Reject</a>
-                              <a href="" class="btn btn-success btn-sm">Approved</a>
-                            </td>
+                            </div>
+                            <!-- End Modal "Change Status" -->
                           </tr>
                         </tbody>
                       </table>

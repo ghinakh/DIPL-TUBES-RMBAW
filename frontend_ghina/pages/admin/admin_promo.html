@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Favicon icon-->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- Libs CSS -->
+    <link href="../assets/fonts/feather/feather.css" rel="stylesheet" />
+    <link href="../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+    <link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+    <link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+    <link href="../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+    <link href="../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+    <link href="../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+    <link href="../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../assets/css/theme.min.css">
+    <title>Manage Promo | RentalKuy</title>
+</head>
+
+<body>
+    <div id="db-wrapper">
+        <!-- Sidebar -->
+        <nav class="navbar-vertical navbar">
+            <div class="nav-scroller">
+                <!-- Brand logo -->
+                <a class="navbar-brand" href=""><img src="../assets/images/logo-negative.png" alt="" width="200" /></a>
+                <!-- Navbar nav -->
+                <ul class="navbar-nav flex-column" id="sideNavbar">
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin_dashboard.html">
+                            <i class="nav-icon fe fe-home mr-2"></i>Dashboard
+                        </a>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin_mobil.html">
+                            <i class="nav-icon fa fa-car mr-2"></i>Cars
+                        </a>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin_penyewa.html">
+                            <i class="nav-icon fe fe-users mr-2"></i>Renter
+                        </a>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="admin_staffgarasi.html">
+                            <i class="nav-icon fe fe-user-check mr-2"></i>Garage Staff
+                        </a>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="admin_promo.html">
+                            <i class="nav-icon fe fe-percent mr-2"></i>Promo
+                        </a>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item ">
+                        <div class="nav-divider">
+                        </div>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="">
+                            <i class="nav-icon fe fe-power mr-2"></i>Sign Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content -->
+        <div id="page-content">
+            <div class="header">
+                <!-- navbar -->
+                <nav class="navbar-default navbar navbar-expand-lg">
+                    <a id="nav-toggle" href="#!"><i class="fe fe-menu"></i></a>
+                    <ul class="navbar-nav navbar-right-wrap ml-auto  d-flex nav-top-wrap ">
+                        <li class="dropdown ml-2">
+                            <a class="rounded-circle " href="#!" role="button" id="dropdownUser" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div class="avatar avatar-md">
+                                    <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle">
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
+                                <div class="dropdown-item">
+                                    <div class="d-flex">
+                                        <div class="avatar avatar-md">
+                                            <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg"
+                                                class="rounded-circle">
+                                        </div>
+                                        <div class="ml-3 lh-1">
+                                            <h5 class="mb-1">Admin</h5>
+                                            <p class="mb-0 text-muted">emailadmin@gmail.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a class="dropdown-item" href="">
+                                            <i class="fe fe-power mr-2"></i>Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Container fluid -->
+            <div class="container-fluid p-4">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <!-- Page Header -->
+                        <div class="border-bottom pb-4 mb-4 d-lg-flex align-items-center justify-content-between">
+                            <div class="mb-2 mb-lg-0">
+                                <h1 class="mb-1 h2 font-weight-bold">Promo</h1>
+                                <!-- Breadcrumb -->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="admin_dashboard.html">Dashboard</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            Promo
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <!-- Card -->
+                        <div class="card rounded-lg">
+                            <div class="p-4 row">
+                                <a href="" class="btn btn-outline-success btn-sm">Create Promo</a>
+                            </div>
+                            <div>
+                                <!-- Table -->
+                                <div class="tab-content" id="tabContent">
+                                    <!--Tab pane -->
+                                    <div class="tab-pane fade show active" id="courses" role="tabpanel"
+                                        aria-labelledby="courses-tab">
+                                        <div class="table-responsive border-0 overflow-y-hidden">
+                                            <table class="table mb-0 ">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" class="border-0 text-uppercase">
+                                                            CODE PROMO
+                                                        </th>
+                                                        <th scope="col" class="border-0 text-uppercase">
+                                                            DATE START
+                                                        </th>
+                                                        <th scope="col" class="border-0 text-uppercase">
+                                                            DATE END
+                                                        </th>
+                                                        <th scope="col" class="border-0 text-uppercase">
+                                                            TERMS & CONDITIONS
+                                                        </th>
+                                                        <th scope="col" class="border-0 text-uppercase">
+                                                            ACTION
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle border-top-0">
+                                                            <div class="d-flex align-items-center">
+                                                                <h5 class="mb-0">RENTALDIRENTALKUY</h5>
+                                                            </div>
+                                                        </td>
+                                                        <td class="align-middle border-top-0">
+                                                            <div class="d-flex align-items-center">
+                                                                <h5 class="mb-0">DD/MM/YYYY</h5>
+                                                            </div>
+                                                        </td>
+                                                        <td class="align-middle border-top-0">
+                                                            <div class="d-flex align-items-center">
+                                                                <h5 class="mb-0">DD/MM/YYYY</h5>
+                                                            </div>
+                                                        </td>
+                                                        <td class="align-middle border-top-0">
+                                                            - Berlaku untuk pembayaran dengan saldo <br>
+                                                            - ... <br>
+                                                            - ... <br>
+                                                        </td>
+                                                        <td class="align-middle border-top-0">
+                                                            <a href="" class="btn btn-warning btn-sm">Edit</a>
+                                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--Tab pane -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <!-- Libs JS -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/odometer/odometer.min.js"></script>
+    <script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../assets/libs/quill/dist/quill.min.js"></script>
+    <script src="../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
+    <script src="../assets/libs/dragula/dist/dragula.min.js"></script>
+    <script src="../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+    <script src="../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="../assets/libs/jQuery.print/jQuery.print.js"></script>
+    <script src="../assets/libs/prismjs/prism.js"></script>
+    <script src="../assets/libs/prismjs/components/prism-scss.min.js"></script>
+    <script src="../assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
+    <script src="../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="../assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+    <script src="../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- clipboard -->
+    <script src="../../../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
+    <!-- Theme JS -->
+    <script src="../assets/js/theme.min.js"></script>
+
+</body>
+
+</html>

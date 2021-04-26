@@ -23,9 +23,9 @@
     <link href="../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
     <link href="../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
 
-
     <!-- Theme CSS -->
     <link rel="stylesheet" href="../assets/css/theme.min.css">
+
     <title>Car History | RentalKuy</title>
 </head>
 
@@ -42,7 +42,8 @@
                                     background-size: cover;
                                 ">
                     </div>
-                    <div class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
+                    <div
+                        class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
                         <div class="d-flex align-items-center">
                             <div class="mr-2 position-relative d-flex justify-content-end align-items-end mt-n5">
                                 <span class="avatar-xl rounded-circle avatar-warning border-width-4 border-white">
@@ -52,8 +53,10 @@
                             <div class="lh-1">
                                 <h2 class="mb-0">
                                     <?= $user["nama_lengkap"] ?>
-                                    <a href="#!" class="text-decoration-none" data-toggle="tooltip" data-placement="top" title="<?= $level ?>">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="#!" class="text-decoration-none" data-toggle="tooltip" data-placement="top"
+                                        title="<?= $level ?>">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
                                             <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
                                             <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
@@ -64,7 +67,8 @@
                             </div>
                         </div>
                         <div>
-                            <a href="dashboard-student.html" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
+                            <a href="dashboard-student.html" class="btn btn-outline-primary btn-sm d-none d-md-block">Go
+                                to
                                 Dashboard</a>
                         </div>
                     </div>
@@ -75,6 +79,117 @@
 
             <div class="row mt-4">
                 <div class="col-lg-3 col-md-4 col-12">
+                    <div class="card mb-4">
+                        <!-- Card header -->
+                        <div class="card-header">
+                            <div class="mb-lg-0 mb-3 ">
+                                <span>My Saldo</span>
+                                <h3 class="mb-1">Rp.2000,000</h3>
+                                <a type="button" class="btn btn-outline-success btn-sm" data-toggle="modal"
+                                    data-target="#modal_topup">Top Up</a>
+                                <!-- Modal "Topup"-->
+                                <div class="modal fade" id="modal_topup" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="exampleModalScrollableTitle">Topup Saldo
+                                                </h3>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- Form -->
+                                                <form class="form-row">
+                                                    <!-- Full name  -->
+                                                    <div class="form-group col-12 col-md-12">
+                                                        <label class="form-label" for="nominal">Nominal</label>
+                                                        <input type="number" id="nominal" class="form-control"
+                                                            placeholder="Nominal" required>
+                                                    </div>
+                                                    <!-- Radio -->
+                                                    <h4 class="form-label col-12 col-md-12 mb-2">Payment Method</h4>
+                                                    <!-- Custom control -->
+                                                    <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                                        <div class="custom-control custom-radio ">
+                                                            <input type="radio" class="custom-control-input" id="ovo"
+                                                                name="pay">
+                                                            <label class="custom-control-label" for="ovo"><img
+                                                                    src="../assets/images/pembayaran/ovo.png"
+                                                                    width="60">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Custom control -->
+                                                    <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="gopay"
+                                                                name="pay">
+                                                            <label class="custom-control-label" for="gopay"><img
+                                                                    src="../assets/images/pembayaran/gopay.png"
+                                                                    width="90">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Custom control -->
+                                                    <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="dana"
+                                                                name="pay">
+                                                            <label class="custom-control-label" for="dana"><img
+                                                                    src="../assets/images/pembayaran/dana.jfif"
+                                                                    width="70">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Custom control -->
+                                                    <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="vc1"
+                                                                name="pay">
+                                                            <label class="custom-control-label m-0 p-0"
+                                                                for="vc1">Virtual
+                                                                Account BNI
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Custom control -->
+                                                    <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="vc2"
+                                                                name="pay">
+                                                            <label class="custom-control-label" for="vc2">Virtual
+                                                                Account BRI
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Custom control -->
+                                                    <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" class="custom-control-input" id="vc3"
+                                                                name="pay">
+                                                            <label class="custom-control-label" for="vc3">DLL (gatau
+                                                                bayar pake apa lagi)
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary btn-sm"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary btn-sm">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal "Topup" -->
+                            </div>
+                        </div>
+                    </div>
                     <!-- Side navbar -->
                     <nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
                         <!-- Menu -->
@@ -101,24 +216,18 @@
                                         <a class="nav-link" href="history_payment.html"><i
                                                 class="fe fe-credit-card nav-icon"></i>Payment History</a>
                                     </li>
-                                    <!-- Nav item -->
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="info_saldo.html"><i
-                                                class="fe fe-credit-card nav-icon"></i>Topup Saldo</a>
-                                    </li>
                                 </ul>
                                 <!-- Navbar header -->
                                 <span class="navbar-header">Account Settings</span>
                                 <ul class="list-unstyled ml-n2 mb-0">
                                     <!-- Nav item -->
                                     <li class="nav-item">
-                                        <a class="nav-link" href=""><i
-                                                class="fe fe-settings nav-icon"></i>Edit Profile</a>
+                                        <a class="nav-link" href=""><i class="fe fe-settings nav-icon"></i>Edit
+                                            Profile</a>
                                     </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
-                                        <a class="nav-link" href=""><i
-                                                class="fe fe-user nav-icon"></i>Security</a>
+                                        <a class="nav-link" href=""><i class="fe fe-user nav-icon"></i>Security</a>
                                     </li>
                                     <!-- Nav item -->
                                     <li class="nav-item">
@@ -184,36 +293,9 @@
                                                     <span class="badge badge-danger">Ongoing</span>
                                                 </td>
                                                 <td class="align-middle border-top-0">
-                                                    <a type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                                        data-target="#modal_return_now">Return Now</a>
+                                                    <a type="button" class="btn btn-success btn-sm"
+                                                        href="pengembalian.html">Return Now</a>
                                                 </td>
-                                                <!-- Modal "Return Now"-->
-                                                <div class="modal fade" id="modal_return_now" tabindex="-1"
-                                                    role="dialog" aria-labelledby="exampleModalScrollableTitle"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title"
-                                                                    id="exampleModalScrollableTitle">Returning</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                ...
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close</button>
-                                                                <button type="button"
-                                                                    class="btn btn-primary">Submit</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Modal "Return Now" -->
                                             </tr>
                                             <tr>
                                                 <td class="border-top-0">
@@ -246,21 +328,26 @@
                                                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title"
-                                                                    id="exampleModalScrollableTitle">Rating</h5>
+                                                                <h3 class="modal-title"
+                                                                    id="exampleModalScrollableTitle">Rating</h3>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                ...
+                                                                <p>
+                                                                    <label for="range_weight">Decimal: </label>
+                                                                    <input type="range" name="decimal" class="slider"
+                                                                        min="0.001" max="2" value="0.08" step="0.001">
+                                                                    <span class="slider_label"></span>
+                                                                </p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
+                                                                <button type="button" class="btn btn-secondary btn-sm"
                                                                     data-dismiss="modal">Close</button>
                                                                 <button type="button"
-                                                                    class="btn btn-primary">Submit</button>
+                                                                    class="btn btn-success btn-sm">Submit</button>
                                                             </div>
                                                         </div>
                                                     </div>

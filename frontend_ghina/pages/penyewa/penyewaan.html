@@ -35,13 +35,6 @@
 			else
 				document.getElementById("additional").style.display = 'none';
 		}
-
-		function show_additional_(x) {
-			if (x == 0)
-				document.getElementById("digipay").style.display = 'block';
-			else
-				document.getElementById("digipay").style.display = 'none';
-		}
 	</script>
 
 	<title>Form Rent Car | RentalKuy</title>
@@ -121,56 +114,19 @@
 									<input type="date" id="tgl_selesai" class="form-control">
 								</div>
 								<!-- Radio -->
+								<h4 class="form-label col-12 col-md-12 mb-2">Payment Method</h4>
 								<div class="form-group custom-control custom-radio custom-control-inline">
 									<input type="radio" id="cardRadioone" name="cardRadioone"
-										class="custom-control-input" onclick="show_additional_(0)">
+										class="custom-control-input">
 									<label class="custom-control-label " for="cardRadioone"><span
-											class="text-dark">Digital Payment</span></label>
+											class="text-dark">Saldo</span></label>
 								</div>
 								<!-- Radio -->
 								<div class="form-group custom-control custom-radio custom-control-inline">
 									<input type="radio" id="cardRadioTwo" name="cardRadioone"
-										class="custom-control-input" onclick="show_additional_(1)">
+										class="custom-control-input">
 									<label class="custom-control-label" for="cardRadioTwo"><span
 											class="text-dark">COD</span></label>
-								</div>
-								<div class="col-12 col-md-12" id="digipay">
-									<h4 class="form-label">Pay with :</h4>
-									<div class="form-group col-12 col-md-12 mb-1 p-0">
-										<div class="custom-control custom-radio ">
-											<input type="radio" class="custom-control-input" id="saldo" name="pay">
-											<label class="custom-control-label font-weight-bolder" for="saldo">Saldo
-												(Jumlah Saldo Penyewa)
-											</label>
-										</div>
-									</div>
-									<!-- Custom control -->
-									<div class="form-group col-12 col-md-12 mb-1 p-0">
-										<div class="custom-control custom-radio ">
-											<input type="radio" class="custom-control-input" id="ovo" name="pay">
-											<label class="custom-control-label" for="ovo"><img
-													src="../assets/images/pembayaran/ovo.png" width="60">
-											</label>
-										</div>
-									</div>
-									<!-- Custom control -->
-									<div class="form-group col-12 col-md-12 mb-1 p-0">
-										<div class="custom-control custom-radio">
-											<input type="radio" class="custom-control-input" id="gopay" name="pay">
-											<label class="custom-control-label" for="gopay"><img
-													src="../assets/images/pembayaran/gopay.png" width="90">
-											</label>
-										</div>
-									</div>
-									<!-- Custom control -->
-									<div class="form-group col-12 col-md-12 mb-4 p-0">
-										<div class="custom-control custom-radio">
-											<input type="radio" class="custom-control-input" id="dana" name="pay">
-											<label class="custom-control-label" for="dana"><img
-													src="../assets/images/pembayaran/dana.jfif" width="70">
-											</label>
-										</div>
-									</div>
 								</div>
 								<hr>
 								<h4 class="form-label col-12 col-md-12 mb-2">Discount Codes</h4>
@@ -178,8 +134,7 @@
 									<input type="text" class="form-control" id="couponCode"
 										placeholder="Enter your code" aria-describedby="couponCode">
 									<div class="input-group-append">
-										<input type="button" class="btn btn-secondary" id="couponbtn"
-											onclick="apply_discount();" value="Apply" />
+										<input type="button" class="btn btn-secondary" id="couponbtn" value="Apply" />
 									</div>
 								</div>
 								<!-- Total Bayar -->
@@ -188,8 +143,7 @@
 									<h4 class="form-label m-0 p-0" id="total">IDR 345000</h4>
 								</div>
 								<div>
-									<button type="submit"
-										class="btn btn-outline-dark mb-3 mb-lg-0 mr-4">Checkout</button>
+									<a type="submit" class="btn btn-outline-dark mb-3 mb-lg-0 mr-4" href="">Checkout</a>
 								</div>
 							</form>
 						</div>

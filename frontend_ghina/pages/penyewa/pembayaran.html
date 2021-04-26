@@ -27,7 +27,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="../assets/css/theme.min.css">
 
-    <title>Form Return Car | RentalKuy</title>
+    <title>Payment Information | RentalKuy</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                     <div>
-                        <h1 class="text-white display-4 mb-0">Return Information</h1>
+                        <h1 class="text-white display-4 mb-0">Payment Information</h1>
                     </div>
                 </div>
             </div>
@@ -50,57 +50,23 @@
                 <div class="col-xl-8 col-lg-8 col-md-12 col-12 m-auto">
                     <!-- Card -->
                     <div class="card  mb-4">
-                        <!-- Card header -->
-                        <div class="card-header">
-                            <h3 class="mb-0">Fill the form</h3>
-                        </div>
                         <!-- Card body -->
                         <div class="card-body">
-                            <!-- Form -->
-                            <form class="form-row">
-                                <!-- Full name  -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="fname">Full Name</label>
-                                    <input type="text" id="fname" class="form-control" placeholder="Full Name" required>
+                            <center>
+                                <h4>Thank you, you have successfully checkout the order by selecting
+                                    (DANA/Gopay/OVO/Virtual Account) payment</h4>
+                                <div
+                                    class="box-amount bg-warning pt-2 col-xl-5 col-lg-5 col-md-12 col-12 m-auto rounded">
+                                    <h6 class="mb-1 pb-0">Amount that should be paid</h6>
+                                    <h2 class="font-weight-bolder pb-1">IDR 300000</h2>
                                 </div>
-                                <!-- Phone number  -->
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="form-label" for="phone">Phone Number</label>
-                                    <input type="text" id="phone" class="form-control" placeholder="Phone" required>
+                                <div
+                                    class="box-amount bg-success pt-2  col-xl-5 col-lg-5 col-md-12 col-12 m-auto rounded">
+                                    <h6 class="mb-1 pb-0">Payment Code</h6>
+                                    <h2 class="font-weight-bolder pb-1">112385267422594</h2>
                                 </div>
-                                <!-- Tanggal mengembalikan mobil -->
-                                <div class="form-group col-12 col-md-12 mb-3">
-                                    <label class="form-label" for="tgl_kembali">Return Date</label>
-                                    <input type="date" id="tgl_kembali" class="form-control"
-                                        value="default tgl hari ini">
-                                </div>
-                                <!-- Custom control -->
-                                <div class="form-group custom-control custom-radio mr-3 mb-3">
-                                    <input type="radio" class="custom-control-input" id="self" name="service"
-                                        onclick="show_additional(1)">
-                                    <label class="custom-control-label" for="self">Self-Service
-                                    </label>
-                                </div>
-                                <div class="form-group custom-control custom-radio mr-3 mb-3 ">
-                                    <input type="radio" class="custom-control-input" id="staff" name="service"
-                                        onclick="show_additional(0)">
-                                    <label class="custom-control-label" for="staff">Staff-Service
-                                    </label>
-                                </div>
-                                <div class="form-group col-12 col-md-12" id="additional">
-                                    <label class="form-label" for="address_jemput">Address Pickup</label>
-                                    <input type="text" id="address_jemput" class="form-control"
-                                        placeholder="Address Pickup">
-                                </div>
-                                <!-- Batas Custom control -->
-                                <div class="form-group col-12 col-md-12">
-                                    <button type="submit" class="btn btn-outline-dark btn-sm mb-1 mb-lg-0 mr-2">Apply
-                                        for
-                                        Return</button>
-                                    <small>After apply for return please wait for confirmation from our garage
-                                        staff</small>
-                                </div>
-                            </form>
+                                <a class="btn btn-outline-dark mt-3" href="">Confirm Payment</a>
+                            </center>
                         </div>
                     </div>
                 </div>

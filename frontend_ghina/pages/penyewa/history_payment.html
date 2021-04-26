@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<!-- Favicon icon-->
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+
+
+	<!-- Libs CSS -->
+	<link href="../assets/fonts/feather/feather.css" rel="stylesheet" />
+	<link href="../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+	<link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+	<link href="../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+	<link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+	<link href="../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+	<link href="../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+	<link href="../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+	<link href="../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="../assets/css/theme.min.css">
+	<title>Payment History | RentalKuy</title>
+</head>
+
+<body>
+	<div class="pt-5 pb-5">
+		<div class="container">
+			<!-- User info -->
+			<div class="row align-items-center">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-12">
+					<!-- Bg -->
+					<div class="pt-16 rounded-top" style="
+                                    background: url(../assets/images/background/profile-bg.png) no-repeat;
+                                    background-size: cover;
+                                ">
+					</div>
+					<div
+						class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
+						<div class="d-flex align-items-center">
+							<div class="mr-2 position-relative d-flex justify-content-end align-items-end mt-n5">
+								<span class="avatar-xl rounded-circle avatar-warning border-width-4 border-white">
+									<span class="avatar-initials rounded-circle"><?= $foto_profile ?></span>
+								</span>
+							</div>
+							<div class="lh-1">
+								<h2 class="mb-0">
+									<?= $user["nama_lengkap"] ?>
+									<a href="#!" class="text-decoration-none" data-toggle="tooltip" data-placement="top"
+										title="<?= $level ?>">
+										<svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<rect x="3" y="8" width="2" height="6" rx="1" fill="#754FFE"></rect>
+											<rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
+											<rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
+										</svg>
+									</a>
+								</h2>
+								<p class="mb-0 d-block"><?= $level ?></p>
+							</div>
+						</div>
+						<div>
+							<a href="dashboard-student.html" class="btn btn-outline-primary btn-sm d-none d-md-block">Go
+								to
+								Dashboard</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Content -->
+
+			<div class="row mt-4">
+				<div class="col-lg-3 col-md-4 col-12">
+					<div class="card mb-4">
+						<!-- Card header -->
+						<div class="card-header">
+							<div class="mb-lg-0 mb-3 ">
+								<span>My Saldo</span>
+								<h3 class="mb-1">Rp.2000,000</h3>
+								<a type="button" class="btn btn-outline-success btn-sm" data-toggle="modal"
+									data-target="#modal_topup">Top Up</a>
+								<!-- Modal "Topup"-->
+								<div class="modal fade" id="modal_topup" tabindex="-1" role="dialog"
+									aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-scrollable" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h3 class="modal-title" id="exampleModalScrollableTitle">Topup Saldo
+												</h3>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<!-- Form -->
+												<form class="form-row">
+													<!-- Full name  -->
+													<div class="form-group col-12 col-md-12">
+														<label class="form-label" for="nominal">Nominal</label>
+														<input type="number" id="nominal" class="form-control"
+															placeholder="Nominal" required>
+													</div>
+													<!-- Radio -->
+													<h4 class="form-label col-12 col-md-12 mb-2">Payment Method</h4>
+													<!-- Custom control -->
+													<div class="form-group col-12 col-md-12 mb-1 p-0">
+														<div class="custom-control custom-radio ">
+															<input type="radio" class="custom-control-input" id="ovo"
+																name="pay">
+															<label class="custom-control-label" for="ovo"><img
+																	src="../assets/images/pembayaran/ovo.png"
+																	width="60">
+															</label>
+														</div>
+													</div>
+													<!-- Custom control -->
+													<div class="form-group col-12 col-md-12 mb-1 p-0">
+														<div class="custom-control custom-radio">
+															<input type="radio" class="custom-control-input" id="gopay"
+																name="pay">
+															<label class="custom-control-label" for="gopay"><img
+																	src="../assets/images/pembayaran/gopay.png"
+																	width="90">
+															</label>
+														</div>
+													</div>
+													<!-- Custom control -->
+													<div class="form-group col-12 col-md-12 mb-1 p-0">
+														<div class="custom-control custom-radio">
+															<input type="radio" class="custom-control-input" id="dana"
+																name="pay">
+															<label class="custom-control-label" for="dana"><img
+																	src="../assets/images/pembayaran/dana.jfif"
+																	width="70">
+															</label>
+														</div>
+													</div>
+													<!-- Custom control -->
+													<div class="form-group col-12 col-md-12 mb-1 p-0">
+														<div class="custom-control custom-radio">
+															<input type="radio" class="custom-control-input" id="vc1"
+																name="pay">
+															<label class="custom-control-label m-0 p-0"
+																for="vc1">Virtual
+																Account BNI
+															</label>
+														</div>
+													</div>
+													<!-- Custom control -->
+													<div class="form-group col-12 col-md-12 mb-1 p-0">
+														<div class="custom-control custom-radio">
+															<input type="radio" class="custom-control-input" id="vc2"
+																name="pay">
+															<label class="custom-control-label" for="vc2">Virtual
+																Account BRI
+															</label>
+														</div>
+													</div>
+													<!-- Custom control -->
+													<div class="form-group col-12 col-md-12 mb-1 p-0">
+														<div class="custom-control custom-radio">
+															<input type="radio" class="custom-control-input" id="vc3"
+																name="pay">
+															<label class="custom-control-label" for="vc3">DLL (gatau
+																bayar pake apa lagi)
+															</label>
+														</div>
+													</div>
+
+												</form>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary btn-sm"
+													data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary btn-sm">Submit</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- End Modal "Topup" -->
+							</div>
+						</div>
+					</div>
+					<!-- Side navbar -->
+					<nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
+						<!-- Menu -->
+						<a class="d-xl-none d-lg-none d-md-none text-inherit font-weight-bold" href="#!">Menu</a>
+						<!-- Button -->
+						<button class="navbar-toggler d-md-none icon-shape icon-sm rounded bg-primary text-light"
+							type="button" data-toggle="collapse" data-target="#sidenav" aria-controls="sidenav"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="fe fe-menu"></span>
+						</button>
+						<!-- Collapse navbar -->
+						<div class="collapse navbar-collapse" id="sidenav">
+							<div class="navbar-nav flex-column">
+								<span class="navbar-header">History</span>
+								<ul class="list-unstyled ml-n2 mb-4">
+									<!-- Nav item -->
+									<li class="nav-item ">
+										<a class="nav-link" href="history_car.html"><i
+												class="fe fe-calendar nav-icon"></i>Car History
+										</a>
+									</li>
+									<!-- Nav item -->
+									<li class="nav-item active">
+										<a class="nav-link" href="history_payment.html"><i
+												class="fe fe-credit-card nav-icon"></i>Payment History</a>
+									</li>
+								</ul>
+								<!-- Navbar header -->
+								<span class="navbar-header">Account Settings</span>
+								<ul class="list-unstyled ml-n2 mb-0">
+									<!-- Nav item -->
+									<li class="nav-item">
+										<a class="nav-link" href=""><i class="fe fe-settings nav-icon"></i>Edit
+											Profile</a>
+									</li>
+									<!-- Nav item -->
+									<li class="nav-item">
+										<a class="nav-link" href=""><i class="fe fe-user nav-icon"></i>Security</a>
+									</li>
+									<!-- Nav item -->
+									<li class="nav-item">
+										<a class="nav-link" href=""><i class="fe fe-power nav-icon"></i>Sign Out</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+				<div class="col-lg-9 col-md-8 col-12">
+					<!-- Card -->
+					<div class="card mb-4">
+						<div class="d-lg-flex justify-content-between align-items-center card-header">
+							<div class="mb-3 mb-lg-0">
+								<h3 class="mb-0">Ongoing Payment</h3>
+							</div>
+						</div>
+						<!-- Card body -->
+						<!-- Table -->
+						<div class="tab-content" id="tabContent">
+							<!--Tab pane -->
+							<div class="tab-pane fade show active" id="courses" role="tabpanel"
+								aria-labelledby="courses-tab">
+								<div class="table-responsive border-0 overflow-y-hidden">
+									<table class="table mb-0 ">
+										<thead>
+											<tr>
+												<th scope="col" class="border-0 text-uppercase">
+													TYPE
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													PAYMENT CODE
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													METHOD
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													TOTAL
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													STATUS
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													ACTION
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="align-middle border-top-0">
+													<div class="text-inherit">
+														<div class="d-lg-flex align-items-center">
+															<div class="ml-lg-3 mt-2 mt-lg-0">
+																<h4 class="mb-1 text-primary-hover">
+																	Saldo
+																</h4>
+																<span class="text-inherit">Pay before 28 Maret,
+																	2021 11:30 AM</span>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td class="align-middle border-top-0">
+													<h4 class="mb-1">
+														607948756392837
+													</h4>
+												</td>
+												<td class="align-middle border-top-0">
+													<h4 class="mb-1">
+														BNI Virtual Account
+													</h4>
+												</td>
+												<td class="align-middle border-top-0">
+													<h4 class="mb-1">
+														Rp.350,000
+													</h4>
+												</td>
+												<td class="align-middle border-top-0">
+													<span class="badge badge-warning">Waiting</span>
+												</td>
+												<td class="align-middle border-top-0">
+													<a type="button" class="btn btn-success btn-sm" data-toggle="modal"
+														data-target="#modal_pay">Pay</a>
+												</td>
+												<!-- Modal "Pay"-->
+												<div class="modal fade" id="modal_pay" tabindex="-1" role="dialog"
+													aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+													<div class="modal-dialog modal-dialog-scrollable" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h3 class="modal-title"
+																	id="exampleModalScrollableTitle">Detail Payment</h3>
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">
+																<center>
+																	<div
+																		class="box-amount bg-warning pt-2 col-xl-12 col-lg-12 col-md-12 col-12 m-auto rounded">
+																		<h6 class="mb-1 pb-0">Amount that should be paid
+																		</h6>
+																		<h2 class="font-weight-bolder pb-1">IDR 350000
+																		</h2>
+																	</div>
+																	<div
+																		class="box-amount bg-success pt-2  col-xl-12 col-lg-12 col-md-12 col-12 m-auto rounded">
+																		<h6 class="mb-1 pb-0">Payment Code (BNI Virtual
+																			Account)</h6>
+																		<h2 class="font-weight-bolder pb-1">
+																			607948756392837</h2>
+																	</div>
+																</center>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary btn-sm"
+																	data-dismiss="modal">Close</button>
+																<button type="button"
+																	class="btn btn-success btn-sm">Confirm</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- End Modal "Pay" -->
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!--Tab pane -->
+						</div>
+					</div>
+					<!-- Card -->
+					<div class="card mb-4">
+						<div class="d-lg-flex justify-content-between align-items-center card-header">
+							<div class="mb-3 mb-lg-0">
+								<h3 class="mb-0">Invoices</h3>
+							</div>
+						</div>
+						<!-- Card body -->
+						<!-- Table -->
+						<div class="tab-content" id="tabContent">
+							<!--Tab pane -->
+							<div class="tab-pane fade show active" id="courses" role="tabpanel"
+								aria-labelledby="courses-tab">
+								<div class="table-responsive border-0 overflow-y-hidden">
+									<table class="table mb-0 ">
+										<thead>
+											<tr>
+												<th scope="col" class="border-0 text-uppercase">
+													TYPE
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													DATE
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													TOTAL
+												</th>
+												<th scope="col" class="border-0 text-uppercase">
+													STATUS
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="align-middle border-top-0">
+													<div class="text-inherit">
+														<div class="d-lg-flex align-items-center">
+															<div class="ml-lg-3 mt-2 mt-lg-0">
+																<h4 class="mb-1 text-primary-hover">
+																	Rent
+																</h4>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td class="align-middle border-top-0">
+													<h4 class="mb-1">
+														20 February, 2021 07.30 PM
+													</h4>
+												</td>
+												<td class="align-middle border-top-0">
+													<h4 class="mb-1">
+														Rp.350,000
+													</h4>
+												</td>
+												<td class="align-middle border-top-0">
+													<span class="badge badge-success">Completed</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="align-middle border-top-0">
+													<div class="text-inherit">
+														<div class="d-lg-flex align-items-center">
+															<div class="ml-lg-3 mt-2 mt-lg-0">
+																<h4 class="mb-1 text-primary-hover">
+																	Rent
+																</h4>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td class="align-middle border-top-0">
+													<h4 class="mb-1">
+														18 February, 2021 05.30 PM
+													</h4>
+												</td>
+												<td class="align-middle border-top-0">
+													<h4 class="mb-1">
+														Rp.550,000
+													</h4>
+												</td>
+												<td class="align-middle border-top-0">
+													<span class="badge badge-danger">Due</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!--Tab pane -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+
+	<div class="footer">
+		<div class="container">
+			<div class="row align-items-center no-gutters border-top py-2">
+				<!-- Desc -->
+				<div class="col-md-6 col-12 text-center text-md-left">
+					<span>© 2020 Geeks. All Rights Reserved.</span>
+				</div>
+				<!-- Links -->
+				<div class="col-12 col-md-6">
+					<nav class="nav nav-footer justify-content-center justify-content-md-end">
+						<a class="nav-link active pl-0" href="#!">Privacy</a>
+						<a class="nav-link" href="#!">Terms </a>
+						<a class="nav-link" href="#!">Feedback</a>
+						<a class="nav-link" href="#!">Support</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Scripts -->
+	<!-- Libs JS -->
+	<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/libs/odometer/odometer.min.js"></script>
+	<script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+	<script src="../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+	<script src="../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+	<script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+	<script src="../assets/libs/quill/dist/quill.min.js"></script>
+	<script src="../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
+	<script src="../assets/libs/dragula/dist/dragula.min.js"></script>
+	<script src="../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+	<script src="../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+	<script src="../assets/libs/jQuery.print/jQuery.print.js"></script>
+	<script src="../assets/libs/prismjs/prism.js"></script>
+	<script src="../assets/libs/prismjs/components/prism-scss.min.js"></script>
+	<script src="../assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
+	<script src="../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+	<script src="../assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+	<script src="../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+	<script src="../assets/libs/typed.js/lib/typed.min.js"></script>
+
+	<!-- clipboard -->
+	<script src="../../../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
+	<!-- Theme JS -->
+	<script src="../assets/js/theme.min.js"></script>
+
+</body>
+
+</html>
