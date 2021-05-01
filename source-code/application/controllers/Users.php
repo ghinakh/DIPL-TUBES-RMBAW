@@ -160,6 +160,39 @@ class Users extends CI_Controller
         endif;
     }
 
+    public function invoice()
+    {
+        if (!$this->session->userdata('credentials')) :
+            redirect(base_url('login'));
+        else :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
+            $ses = $this->session->userdata('credentials');
+            $data['user'] =  $ses[0];
+            $n = explode(' ', $ses[0]["nama_lengkap"]);
+            $data["nama_dipisah"] = $n;
+            $foto = '';
+            for ($x = 0; $x <= 1; $x++) {
+                $foto .= substr($n[$x], 0, 1);
+            }
+            $data["foto_profile"] = $foto;
+            if ($ses[1] == "penyewa") {
+                $orderan = $this->Database->getData("riwayat", array('id_penyewa' => $ses[0]["id"]));
+                $saldo = $this->Database->getData("saldo", array('id_penyewa' => $ses[0]["id"]));
+                if ($saldo) :
+                    $data['database'] = array_merge($orderan, $saldo);
+                else :
+                    $data['database'] = $orderan;
+                endif;
+                $data["mobil"] = $this->Database->getData("mobil");
+                $data["level"] = "Penyewa";
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
+            }
+            $this->load->view('include/head', $data);
+            $this->load->view('page/invoice', $data);
+        endif;
+    }
+
     public function password()
     {
         if (!$this->session->userdata('credentials')) :

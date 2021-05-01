@@ -401,7 +401,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <div class="dropdown-divider"></div>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a class="dropdown-item" href="<?= base_url('profile') ?>">
+                                    <a class="dropdown-item" href="<?= base_url('edit/profile') ?>">
                                         <i class="fe fe-user mr-2"></i>Profile
                                     </a>
                                 </li>

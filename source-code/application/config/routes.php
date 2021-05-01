@@ -63,3 +63,5 @@ $route['logout'] = 'Users/logout';
 $route['edit/profile'] = 'Users/profile';
 $route['history'] = 'Users/Riwayat';
 $route['change/password'] = 'Users/Password';
+$route['invoice'] = 'Users/Invoice';
+$route['invoice/(:any)'] = 'Depo/Detail/$1';

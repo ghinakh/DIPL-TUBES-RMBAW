@@ -38,6 +38,99 @@
 
 <div class="row mt-4">
     <div class="col-lg-3 col-md-4 col-12">
+        <div class="mb-lg-0 mb-3 ">
+            <div class="card mb-4">
+                <!-- Card header -->
+                <div class="card-header">
+                    <span>My Saldo</span>
+                    <h3 class="mb-1">Rp. <?= number_format($user["saldo"], 0, ',', '.') ?></h3>
+                    <a type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#modal_topup">Top Up</a>
+                    <!-- Modal "Topup"-->
+                    <div class="modal fade" id="modal_topup" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="exampleModalScrollableTitle">Topup Saldo
+                                    </h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form -->
+                                    <form class="form-row">
+                                        <!-- Full name  -->
+                                        <div class="form-group col-12 col-md-12">
+                                            <label class="form-label" for="nominal">Nominal</label>
+                                            <input type="number" id="nominal" class="form-control" placeholder="Nominal" required>
+                                        </div>
+                                        <!-- Radio -->
+                                        <h4 class="form-label col-12 col-md-12 mb-2">Payment Method</h4>
+                                        <!-- Custom control -->
+                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                            <div class="custom-control custom-radio ">
+                                                <input type="radio" class="custom-control-input" id="ovo" name="pay">
+                                                <label class="custom-control-label" for="ovo"><img src="../assets/images/pembayaran/ovo.png" width="60">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Custom control -->
+                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="gopay" name="pay">
+                                                <label class="custom-control-label" for="gopay"><img src="../assets/images/pembayaran/gopay.png" width="90">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Custom control -->
+                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="dana" name="pay">
+                                                <label class="custom-control-label" for="dana"><img src="../assets/images/pembayaran/dana.jfif" width="70">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Custom control -->
+                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="vc1" name="pay">
+                                                <label class="custom-control-label m-0 p-0" for="vc1">Virtual
+                                                    Account BNI
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Custom control -->
+                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="vc2" name="pay">
+                                                <label class="custom-control-label" for="vc2">Virtual
+                                                    Account BRI
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- Custom control -->
+                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="vc3" name="pay">
+                                                <label class="custom-control-label" for="vc3">DLL (gatau
+                                                    bayar pake apa lagi)
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary btn-sm">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Modal "Topup" -->
+                </div>
+            </div>
+        </div>
         <!-- Side navbar -->
         <nav class="navbar navbar-expand-md navbar-light shadow-sm mb-4 mb-lg-0 sidenav">
             <!-- Menu -->
@@ -58,7 +151,7 @@
                         </li>
                         <!-- Nav item -->
                         <li class="nav-item">
-                            <a class="nav-link" href="history_payment.html"><i class="fe fe-credit-card nav-icon"></i>Payment History</a>
+                            <a class="nav-link" href="<?= base_url('invoice') ?>"><i class="fe fe-credit-card nav-icon"></i>Payment History</a>
                         </li>
                     </ul>
                     <!-- Navbar header -->
@@ -66,14 +159,10 @@
                     <ul class="list-unstyled ml-n2 mb-0">
                         <!-- Nav item -->
                         <li class="nav-item">
-                            <a class="nav-link" href="info_saldo.html"><i class="fe fe-credit-card nav-icon"></i>Topup Saldo</a>
-                        </li>
-                        <!-- Nav item -->
-                        <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('edit/profile') ?>"><i class="fe fe-settings nav-icon"></i>Edit Profile</a>
                         </li>
                         <!-- Nav item -->
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="<?= base_url('change/password') ?>"><i class="fe fe-lock nav-icon"></i>Change Password</a>
                         </li>
                         <!-- Nav item -->
