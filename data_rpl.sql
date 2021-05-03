@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Apr 2021 pada 10.12
+-- Waktu pembuatan: 03 Bulan Mei 2021 pada 17.01
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -94,6 +94,7 @@ CREATE TABLE `penyewa` (
   `province` varchar(255) NOT NULL,
   `nik` int(25) NOT NULL,
   `sim` int(25) NOT NULL,
+  `saldo` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -102,9 +103,9 @@ CREATE TABLE `penyewa` (
 -- Dumping data untuk tabel `penyewa`
 --
 
-INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `email`, `password`) VALUES
-(1, 'Jhon Na', '081312161412', 'Jl Kenangan Manis Pamungkas', 'Bandung', 'Jawa Barat', 1234567890, 1234567890, 'user@jhon.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
-(2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `saldo`, `email`, `password`) VALUES
+(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '999999', 'user@jhon.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
 
@@ -134,16 +135,31 @@ CREATE TABLE `riwayat` (
   `tanggal_mulai` date NOT NULL,
   `tanggal_selesai` date NOT NULL,
   `status` varchar(255) NOT NULL,
-  `rate` varchar(50) NOT NULL
+  `rate` varchar(50) NOT NULL,
+  `id_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `riwayat`
 --
 
-INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `tanggal_mulai`, `tanggal_selesai`, `status`, `rate`) VALUES
-(1, 3, 1, 'Penyewa', '2021-04-18', '2021-04-19', '0', '4.5'),
-(2, 2, 1, 'Penyewa', '2021-04-19', '2021-04-20', '1', '0');
+INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `tanggal_mulai`, `tanggal_selesai`, `status`, `rate`, `id_url`) VALUES
+(1, 3, 1, 'Penyewa', '2021-04-18', '2021-04-19', '0', '4.5', 'cf2f6ed3086ad55fcce87369a8692a2f'),
+(2, 2, 1, 'Penyewa', '2021-04-19', '2021-04-20', '1', '0', '62690c9c38ccb2e55ef01bf38687507a');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `riwayat_saldo`
+--
+
+CREATE TABLE `riwayat_saldo` (
+  `id` int(11) NOT NULL,
+  `id_penyewa` int(11) DEFAULT NULL,
+  `id_staff` int(11) DEFAULT NULL,
+  `nominal` int(50) NOT NULL,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -153,10 +169,21 @@ INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `tanggal_
 
 CREATE TABLE `saldo` (
   `id` int(11) NOT NULL,
-  `id_penyewa` int(11) NOT NULL,
-  `id_staff` int(11) NOT NULL,
-  `nominal` int(50) NOT NULL
+  `id_penyewa` int(11) DEFAULT NULL,
+  `id_staff` int(11) DEFAULT NULL,
+  `nominal` int(50) NOT NULL,
+  `pembayaran` varchar(255) NOT NULL,
+  `tanggal` date DEFAULT NULL,
+  `status` int(5) NOT NULL,
+  `id_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `saldo`
+--
+
+INSERT INTO `saldo` (`id`, `id_penyewa`, `id_staff`, `nominal`, `pembayaran`, `tanggal`, `status`, `id_url`) VALUES
+(2, 1, NULL, 999999, 'OVO Payment', '2021-04-26', 0, 'a2b7b07a571b0a6de1794a3153cea321');
 
 -- --------------------------------------------------------
 
@@ -227,6 +254,14 @@ ALTER TABLE `riwayat`
   ADD KEY `riwayat_penyewa_fk2` (`id_penyewa`);
 
 --
+-- Indeks untuk tabel `riwayat_saldo`
+--
+ALTER TABLE `riwayat_saldo`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `saldo_penyewa_fk1` (`id_penyewa`),
+  ADD KEY `saldo_staff_fk2` (`id_staff`);
+
+--
 -- Indeks untuk tabel `saldo`
 --
 ALTER TABLE `saldo`
@@ -281,10 +316,16 @@ ALTER TABLE `riwayat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT untuk tabel `riwayat_saldo`
+--
+ALTER TABLE `riwayat_saldo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `saldo`
 --
 ALTER TABLE `saldo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `staff_garasi`
