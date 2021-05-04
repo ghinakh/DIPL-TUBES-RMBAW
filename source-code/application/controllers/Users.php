@@ -132,9 +132,28 @@ class Users extends CI_Controller
             redirect(base_url());
         endif;
     }
+    /*
+        Controllers User/Riwayat
+        
+        Pendahuluan :
+        User melihat semua data penyewa mobil terbaru hinggal terlama, dengan persyaratan sudah login/masuk ke dalam aplikasi.
 
+
+        Parameters :
+        Method : GET
+        $sess : array<string, array<string,mixed>>
+
+        Return Values :
+        Menampilkan Tampilan views/include/head
+        Menampilkan Tampilan views/page/riwayat
+        $data : array
+
+    */
     public function riwayat()
     {
+        /* 
+            Pengecekan Session
+        */
         if (!$this->session->userdata('credentials')) :
             redirect(base_url('login'));
         else :
@@ -148,6 +167,9 @@ class Users extends CI_Controller
                 $foto .= substr($n[$x], 0, 1);
             }
             $data["foto_profile"] = $foto;
+            /* 
+                Pengecekan LEVEL User
+            */
             if ($ses[1] == "penyewa") {
                 $data["orderan"] = $this->Database->getData("riwayat", array('id_penyewa' => $ses[0]["id"]));
                 $data["mobil"] = $this->Database->getData("mobil");
@@ -155,6 +177,9 @@ class Users extends CI_Controller
             } else if ($ses[1] == "admin") {
             } else if ($ses[1] == "staff_garasi") {
             }
+            /*
+                Return tampilan beserta variable $data
+            */
             $this->load->view('include/head', $data);
             $this->load->view('page/riwayat', $data);
         endif;
