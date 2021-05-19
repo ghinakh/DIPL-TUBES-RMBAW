@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div>
-                <a href="<?= base_url('dashboard') ?>" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
+                <a href="<?= base_url() ?>" class="btn btn-outline-primary btn-sm d-none d-md-block">Go to
                     Dashboard</a>
             </div>
         </div>

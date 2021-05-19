@@ -19,11 +19,19 @@ class Welcome extends CI_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+		$this->load->model('Database');
+	}
+
 	public function index()
 	{
 		if (!$this->session->userdata('credentials')) :
 			$this->load->view('welcome_message');
 		else :
+			$data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
 			$ses = $this->session->userdata('credentials');
 			$data['user'] =  $ses[0];
 			$n = explode(' ', $ses[0]["nama_lengkap"]);
@@ -37,7 +45,16 @@ class Welcome extends CI_Controller
 				$foto .= substr($n[$x], 0, 1);
 			}
 			$data["foto_profile"] = $foto;
-			$this->load->view('include/head', $data);
+			if ($ses[1] == "penyewa") {
+				$con['conditions'] = array(
+					'id_penyewa' => $ses[0]["id"],
+				);
+				$data["orderan"] = $this->Database->getData("riwayat", $con);
+				$data["mobil"] = $this->Database->getData("mobil");
+				$data["level"] = "Penyewa";
+				$this->load->view('include/head', $data);
+				$this->load->view('page/dashboard_penyewa', $data);
+			}
 		endif;
 	}
 }
