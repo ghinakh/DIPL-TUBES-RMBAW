@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Bulan Mei 2021 pada 17.01
+-- Waktu pembuatan: 23 Bulan Mei 2021 pada 15.27
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -67,17 +67,19 @@ CREATE TABLE `mobil` (
   `stnk` int(25) NOT NULL,
   `nama_mobil` varchar(255) NOT NULL,
   `jenis` varchar(255) NOT NULL,
+  `harga` int(60) NOT NULL,
   `gambar` varchar(255) NOT NULL,
-  `rating` float NOT NULL
+  `rating` float NOT NULL,
+  `url_view` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `mobil`
 --
 
-INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `gambar`, `rating`) VALUES
-(2, 1, 5001155, 'Toyota Avanza', 'Bensin', 'avanza-preview.png', 4.5),
-(3, 1, 125415111, 'Toyota Fortuner', 'Diesel', 'portuner-preview.png', 0);
+INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `harga`, `gambar`, `rating`, `url_view`) VALUES
+(2, 1, 5001155, 'Toyota Avanza', 'Bensin', 180000, 'avanza-preview.png', 4.5, 'f7b9537b861317161e2cb9eec8462698'),
+(3, 1, 125415111, 'Toyota Fortuner', 'Diesel', 320000, 'portuner-preview.png', 0, '8f99136e6dd0a0e50f191c54236049ac');
 
 -- --------------------------------------------------------
 

@@ -90,6 +90,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     $gambar = $sewa['gambar'];
                                     $rate = $sewa['rating'];
                                     $price = $sewa['harga'];
+                                    $view_detail = $sewa['url_view'];
                                     $punya = $kendaraan['nama_lengkap'];
                                 }
                             }
@@ -101,7 +102,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <img src="assets/images/mobil/<?= $gambar ?>" alt="..." class="card-img-top rounded-top" style="height: 200px">
                                     </a> <!-- Card Body -->
                                     <div class="card-body p-3 pb-0">
-                                        <h4 class="mb-2 text-truncate-line-2 "><a class="text-inherit"><?= $nama_ken ?></a></h4>
+                                        <h4 class="mb-2 text-truncate-line-2 "><a href="<?= base_url('cars/detail/' . $view_detail) ?>" class=" text-inherit"><?= $nama_ken ?></a></h4>
                                         <div class="">
                                             <div class="bg mb-2 mr-2">
                                                 <span>
@@ -118,7 +119,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                 </h3>
                                             </div>
                                             <div class="bg mb-1 mr-2">
-                                                <a href="penyewaan.html" class="btn btn-success btn-sm">Rent again</a>
+                                                <a href="<?= base_url('cars/detail/' . $view_detail) ?>" class="btn btn-success btn-sm">Rent again</a>
                                             </div>
                                         </div>
                                     </div>
@@ -158,6 +159,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 $gambar = $sewa['gambar'];
                                 $rate = $sewa['rating'];
                                 $price = $sewa['harga'];
+                                $view_detail = $sewa['url_view'];
                                 $punya = $kendaraan['nama_lengkap'];
                             }
                         }
@@ -169,7 +171,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <img src="assets/images/mobil/<?= $gambar ?>" alt="..." class="card-img-top rounded-top" style="height: 200px">
                                 </a> <!-- Card Body -->
                                 <div class="card-body p-3 pb-0">
-                                    <h4 class="mb-2 text-truncate-line-2 "><a class="text-inherit"><?= $nama_ken ?></a></h4>
+                                    <h4 class="mb-2 text-truncate-line-2 "><a href="<?= base_url('cars/detail/' . $view_detail) ?>" class="text-inherit"><?= $nama_ken ?></a></h4>
                                     <div class="">
                                         <div class="bg mb-2 mr-2">
                                             <span>
@@ -186,7 +188,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             </h3>
                                         </div>
                                         <div class="bg mb-1 mr-2">
-                                            <a href="penyewaan.html" class="btn btn-success btn-sm">Rent again</a>
+                                            <a href="<?= base_url('cars/detail/' . $view_detail) ?>" class="btn btn-success btn-sm">Rent again</a>
                                         </div>
                                     </div>
                                 </div>
