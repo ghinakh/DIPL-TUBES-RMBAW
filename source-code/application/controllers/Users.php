@@ -133,11 +133,11 @@ class Users extends CI_Controller
         endif;
     }
     /*
-        Controllers User/Riwayat
+        Controllers Users/Riwayat
         
         Pendahuluan :
         User melihat semua data penyewa mobil terbaru hinggal terlama, dengan persyaratan sudah login/masuk ke dalam aplikasi.
-
+        Fungsi ini merujuk kebutuhan fungsional <Lihat Riwayat Penyewa> dan <Lihat Riwayat Staff Garasi>
 
         Parameters :
         Method : GET
@@ -168,14 +168,20 @@ class Users extends CI_Controller
             }
             $data["foto_profile"] = $foto;
             /* 
-                Pengecekan LEVEL User
+                Pengecekan LEVEL User (Penyewa, Staff Garasi, atau Admin)
             */
             if ($ses[1] == "penyewa") {
+                /*
+                    <Lihat Riwayat Penyewa>
+                */
                 $data["orderan"] = $this->Database->getData("riwayat", array('id_penyewa' => $ses[0]["id"]));
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
             } else if ($ses[1] == "admin") {
             } else if ($ses[1] == "staff_garasi") {
+                /* 
+                    <Lihat Riwayat Staff Garasi>
+                */
             }
             /*
                 Return tampilan beserta variable $data
@@ -185,8 +191,29 @@ class Users extends CI_Controller
         endif;
     }
 
+    /*
+        Controllers Users/Invoice
+        
+        Pendahuluan :
+        Pembayaran/Deposit Saldo akan mendapatkan rincian mulai dari tanggal melakukan pembayaran atau deposit, 
+        id-order, nominal pembayaran yang sudah dibayar/harus dibayar.
+        Fungsi ini merujuk kebutuhan fungsional <Tagihan>
+
+        Parameters :
+        Method : GET
+        $sess : array<string, array<string,mixed>>
+
+        Return Values :
+        Menampilkan Tampilan views/include/head
+        Menampilkan Tampilan views/page/invoice
+        $data : array
+
+    */
     public function invoice()
     {
+        /* 
+            Pengecekan Session
+        */
         if (!$this->session->userdata('credentials')) :
             redirect(base_url('login'));
         else :
@@ -200,7 +227,13 @@ class Users extends CI_Controller
                 $foto .= substr($n[$x], 0, 1);
             }
             $data["foto_profile"] = $foto;
+            /* 
+                Pengecekan LEVEL User (Penyewa, Staff Garasi, atau Admin)
+            */
             if ($ses[1] == "penyewa") {
+                /* 
+                    Mengambil data dari ID User (Penyewa)
+                */
                 $orderan = $this->Database->getData("riwayat", array('id_penyewa' => $ses[0]["id"]));
                 $saldo = $this->Database->getData("saldo", array('id_penyewa' => $ses[0]["id"]));
                 if ($saldo) :
@@ -213,6 +246,9 @@ class Users extends CI_Controller
             } else if ($ses[1] == "admin") {
             } else if ($ses[1] == "staff_garasi") {
             }
+            /*
+                Return tampilan beserta variable $data
+            */
             $this->load->view('include/head', $data);
             $this->load->view('page/invoice', $data);
         endif;

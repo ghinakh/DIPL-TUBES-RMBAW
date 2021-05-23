@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 ?>
 
 <body>
@@ -83,16 +82,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="sliderFirst">
                     <?php
                     if (!empty($orderan)) {
-                        foreach ($orderan as $sewa) {
-                            foreach ($mobil as $kendaraan) {
-                                if ($kendaraan['id'] ==  $sewa['id_mobil']) {
-                                    $nama_ken = $kendaraan['nama_mobil'];
-                                    $jenis = $kendaraan['jenis'];
-                                    $gambar = $kendaraan['gambar'];
-                                    $rate = $kendaraan['rating'];
+                        foreach ($mobil as $sewa) {
+                            foreach ($pemilik as $kendaraan) {
+                                if ($kendaraan['id'] ==  $sewa['id_staff']) {
+                                    $nama_ken = $sewa['nama_mobil'];
+                                    $jenis = $sewa['jenis'];
+                                    $gambar = $sewa['gambar'];
+                                    $rate = $sewa['rating'];
+                                    $price = $sewa['harga'];
+                                    $punya = $kendaraan['nama_lengkap'];
                                 }
                             }
-                            ?>
+                    ?>
                             <div class="item">
                                 <!-- Card -->
                                 <div class="card mb-4 card-hover">
@@ -100,20 +101,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <img src="assets/images/mobil/<?= $gambar ?>" alt="..." class="card-img-top rounded-top" style="height: 200px">
                                     </a> <!-- Card Body -->
                                     <div class="card-body p-3 pb-0">
-                                        <h4 class="mb-2 text-truncate-line-2 "><a class="text-inherit">(CAR-0<?= $sewa['id_mobil'] ?>) <?= $nama_ken ?></a></h4>
+                                        <h4 class="mb-2 text-truncate-line-2 "><a class="text-inherit"><?= $nama_ken ?></a></h4>
                                         <div class="">
                                             <div class="bg mb-2 mr-2">
                                                 <span>
                                                     <i class="fe fe-users mr-1"></i>
-                                                    <span class="font-size-xs text-muted mr-2">6</span>
+                                                    <span class="font-size-xs text-muted mr-2"><?= $punya ?></span>
                                                     <i class="fe fe-bar-chart mr-1"></i>
-                                                    <span class="font-size-xs text-muted mr-2"><?= $jenis ?></span>
+                                                    <span class="font-size-xs text-muted mr-2"><?= $jenis ?></span><br />
                                                     <i class="mdi mdi-star text-warning "></i>
                                                     <span class="text-warning"><?= $rate ?></span>
                                                 </span>
                                             </div>
                                             <div class="bg mb-3 mr-2">
-                                                <h3 class="mb-0 text-truncate-line-2">IDR 400,000<span class="font-size-xs text-muted">/ day</span>
+                                                <h3 class="mb-0 text-truncate-line-2">IDR <?= number_format($price, 0, ',', '.') ?><span class="font-size-xs text-muted">/ day</span>
                                                 </h3>
                                             </div>
                                             <div class="bg mb-1 mr-2">
@@ -130,9 +131,74 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <br /><br /><br />
     </div>
-
+    <div class="pb-lg-3 pt-lg-3">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="mb-0">Recommendations for you</h2>
+                </div>
+            </div>
+            <div class="position-relative">
+                <ul class="controls " id="sliderSecondControls">
+                    <li class="prev">
+                        <i class="fe fe-chevron-left"></i>
+                    </li>
+                    <li class="next">
+                        <i class="fe fe-chevron-right"></i>
+                    </li>
+                </ul>
+                <div class="sliderSecond">
+                    <?php
+                    foreach ($mobil_rekomendasi as $sewa) {
+                        foreach ($pemilik as $kendaraan) {
+                            if ($kendaraan['id'] ==  $sewa['id_staff']) {
+                                $nama_ken = $sewa['nama_mobil'];
+                                $jenis = $sewa['jenis'];
+                                $gambar = $sewa['gambar'];
+                                $rate = $sewa['rating'];
+                                $price = $sewa['harga'];
+                                $punya = $kendaraan['nama_lengkap'];
+                            }
+                        }
+                    ?>
+                        <div class="item">
+                            <!-- Card -->
+                            <div class="card mb-4 card-hover">
+                                <a class="card-img-top">
+                                    <img src="assets/images/mobil/<?= $gambar ?>" alt="..." class="card-img-top rounded-top" style="height: 200px">
+                                </a> <!-- Card Body -->
+                                <div class="card-body p-3 pb-0">
+                                    <h4 class="mb-2 text-truncate-line-2 "><a class="text-inherit"><?= $nama_ken ?></a></h4>
+                                    <div class="">
+                                        <div class="bg mb-2 mr-2">
+                                            <span>
+                                                <i class="fe fe-users mr-1"></i>
+                                                <span class="font-size-xs text-muted mr-2"><?= $punya ?></span>
+                                                <i class="fe fe-bar-chart mr-1"></i>
+                                                <span class="font-size-xs text-muted mr-2"><?= $jenis ?></span><br />
+                                                <i class="mdi mdi-star text-warning "></i>
+                                                <span class="text-warning"><?= $rate ?></span>
+                                            </span>
+                                        </div>
+                                        <div class="bg mb-3 mr-2">
+                                            <h3 class="mb-0 text-truncate-line-2">IDR <?= number_format($price, 0, ',', '.') ?><span class="font-size-xs text-muted">/ day</span>
+                                            </h3>
+                                        </div>
+                                        <div class="bg mb-1 mr-2">
+                                            <a href="penyewaan.html" class="btn btn-success btn-sm">Rent again</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
 
     <div class="footer">

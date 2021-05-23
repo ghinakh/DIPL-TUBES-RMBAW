@@ -44,17 +44,19 @@ class Welcome extends CI_Controller
 			for ($x = 0; $x <= $total; $x++) {
 				$foto .= substr($n[$x], 0, 1);
 			}
+			$con['conditions'] = array(
+				'id_penyewa' => $ses[0]["id"],
+			);
+			$data["orderan"] = $this->Database->getData("riwayat", $con);
 			$data["foto_profile"] = $foto;
-			if ($ses[1] == "penyewa") {
-				$con['conditions'] = array(
-					'id_penyewa' => $ses[0]["id"],
-				);
-				$data["orderan"] = $this->Database->getData("riwayat", $con);
-				$data["mobil"] = $this->Database->getData("mobil");
-				$data["level"] = "Penyewa";
-				$this->load->view('include/head', $data);
-				$this->load->view('page/dashboard_penyewa', $data);
-			}
+			$data["pemilik"] = $this->Database->getData("staff_garasi");
+			$data["mobil"] = $this->Database->getData("mobil");
+			$rekomendasi_by = array("jenis", "harga", "rating");
+			$rekomendasi = array_rand($rekomendasi_by);
+			$data["mobil_rekomendasi"] = $this->Database->urut_secara("mobil", "rand", $rekomendasi_by[$rekomendasi]);
+			// $data["level"] = "Penyewa";
+			$this->load->view('include/head', $data);
+			$this->load->view('page/dashboard_penyewa', $data);
 		endif;
 	}
 }
