@@ -7,10 +7,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="row align-items-center">
             <div class="col-xl-7 col-lg-7 col-md-12">
                 <div>
-                    <h1 class="text-white display-4 font-weight-semi-bold">Getting Started with JavaScript</h1>
-                    <p class="text-white mb-6 lead">
-                        JavaScript is the popular programming language which powers web pages and web applications. This course will get you started coding in JavaScript.
-                    </p>
+                    <h1 class="text-white display-4 font-weight-semi-bold"><?= $data_mobil['nama_mobil'] ?></h1>
                     <div class="d-flex align-items-center">
                         <a href="#!" class="bookmark text-white text-decoration-none">
                             <i class="fe fe-bookmark text-white-50 mr-2"></i>Bookmark
@@ -1117,7 +1114,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                     <!-- Rating -->
                                     <div class="media border-bottom pb-4 mb-4">
-                                        <img src="../assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
+                                        <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
                                         <div class="media-body ml-3">
                                             <h4 class="mb-1">
                                                 Max Hawkins
@@ -1140,7 +1137,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                     <!-- Rating -->
                                     <div class="media border-bottom pb-4 mb-4">
-                                        <img src="../assets/images/avatar/avatar-3.jpg" alt="" class="rounded-circle avatar-lg" />
+                                        <img src="<?= base_url() ?>assets/images/avatar/avatar-3.jpg" alt="" class="rounded-circle avatar-lg" />
                                         <div class="media-body ml-3">
                                             <h4 class="mb-1">Arthur Williamson <span class="ml-1 font-size-xs text-muted">3 Days ago</span>
                                             </h4>
@@ -1161,7 +1158,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                     <!-- Rating -->
                                     <div class="media border-bottom pb-4 mb-4">
-                                        <img src="../assets/images/avatar/avatar-4.jpg" alt="" class="rounded-circle avatar-lg" />
+                                        <img src="<?= base_url() ?>assets/images/avatar/avatar-4.jpg" alt="" class="rounded-circle avatar-lg" />
                                         <div class="media-body ml-3">
                                             <h4 class="mb-1">Claire Jones <span class="ml-1 font-size-xs text-muted">4 Days ago</span></h4>
                                             <div class="font-size-xs mb-2">
@@ -1183,7 +1180,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                     <!-- Rating -->
                                     <div class="media">
-                                        <img src="../assets/images/avatar/avatar-5.jpg" alt="" class="rounded-circle avatar-lg" />
+                                        <img src="<?= base_url() ?>assets/images/avatar/avatar-5.jpg" alt="" class="rounded-circle avatar-lg" />
                                         <div class="media-body ml-3">
                                             <h4 class="mb-1">
                                                 Bessie Pena
@@ -1299,7 +1296,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <!-- Card -->
                 <div class="card mb-3 mb-4">
                     <div class="p-1">
-                        <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-lg bg-cover" style="background-image: url(../assets/images/course/course-javascript.jpg);">
+                        <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-lg bg-cover" style="background-image: url(<?= base_url() ?>assets/images/course/course-javascript.jpg);">
                             <a class="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none" href="https://www.youtube.com/watch?v=JRzWRZahOVU">
                                 <i class="fe fe-play"></i>
                             </a>
@@ -1339,9 +1336,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="position-relative">
-                                <img src="../assets/images/avatar/avatar-1.jpg" alt="" class="rounded-circle avatar-xl" />
+                                <img src="<?= base_url() ?>assets/images/avatar/avatar-1.jpg" alt="" class="rounded-circle avatar-xl" />
                                 <a href="#!" class="position-absolute mt-2 ml-n3" data-toggle="tooltip" data-placement="top" title="Verifed">
-                                    <img src="../assets/images/svg/checked-mark.svg" alt="" height="30" width="30" />
+                                    <img src="<?= base_url() ?>assets/images/svg/checked-mark.svg" alt="" height="30" width="30" />
                                 </a>
                             </div>
                             <div class="ml-4">
@@ -1387,7 +1384,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Card -->
                     <div class="card mb-4 card-hover">
-                        <a href="course-single.html" class="card-img-top"><img src="../assets/images/course/course-react.jpg" alt="" class="card-img-top rounded-top" /></a>
+                        <a href="course-single.html" class="card-img-top"><img src="<?= base_url() ?>assets/images/course/course-react.jpg" alt="" class="card-img-top rounded-top" /></a>
                         <!-- Card body -->
                         <div class="card-body">
                             <h4 class="mb-2 text-truncate-line-2"><a href="course-single.html" class="text-inherit">How to
@@ -1418,7 +1415,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="card-footer">
                             <div class="row align-items-center no-gutters">
                                 <div class="col-auto">
-                                    <img src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle avatar-xs" alt="" />
+                                    <img src="<?= base_url() ?>assets/images/avatar/avatar-1.jpg" class="rounded-circle avatar-xs" alt="" />
                                 </div>
                                 <div class="col ml-2">
                                     <span>Morris Mccoy</span>
@@ -1435,7 +1432,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Card -->
                     <div class="card mb-4 card-hover">
-                        <a href="course-single.html" class="card-img-top"><img src="../assets/images/course/course-graphql.jpg" alt="" class="card-img-top rounded-top" /></a>
+                        <a href="course-single.html" class="card-img-top"><img src="<?= base_url() ?>assets/images/course/course-graphql.jpg" alt="" class="card-img-top rounded-top" /></a>
                         <!-- Card body -->
                         <div class="card-body">
                             <h4 class="mb-2 text-truncate-line-2"><a href="course-single.html" class="text-inherit">GraphQL:
@@ -1466,7 +1463,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="card-footer">
                             <div class="row align-items-center no-gutters">
                                 <div class="col-auto">
-                                    <img src="../assets/images/avatar/avatar-2.jpg" class="rounded-circle avatar-xs" alt="" />
+                                    <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" class="rounded-circle avatar-xs" alt="" />
                                 </div>
                                 <div class="col ml-2">
                                     <span>Ted Hawkins</span>
@@ -1483,7 +1480,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="col-lg-3 col-md-6 col-12">
                     <!-- Card -->
                     <div class="card mb-4 card-hover">
-                        <a href="course-single.html" class="card-img-top"><img src="../assets/images/course/course-angular.jpg" alt="" class="card-img-top rounded-top" /></a>
+                        <a href="course-single.html" class="card-img-top"><img src="<?= base_url() ?>assets/images/course/course-angular.jpg" alt="" class="card-img-top rounded-top" /></a>
                         <div class="card-body">
                             <h4 class="mb-2 text-truncate-line-2"><a href="course-single.html" class="text-inherit">Angular -
                                     the complete guide for beginner</a></h4>
@@ -1514,7 +1511,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="card-footer">
                             <div class="row align-items-center no-gutters">
                                 <div class="col-auto">
-                                    <img src="../assets/images/avatar/avatar-3.jpg" class="rounded-circle avatar-xs" alt="" />
+                                    <img src="<?= base_url() ?>assets/images/avatar/avatar-3.jpg" class="rounded-circle avatar-xs" alt="" />
                                 </div>
                                 <div class="col ml-2">
                                     <span>Juanita Bell</span>
@@ -1530,7 +1527,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="card mb-4 card-hover">
-                        <a href="course-single.html" class="card-img-top"><img src="../assets/images/course/course-python.jpg" alt="" class="card-img-top rounded-top" /></a>
+                        <a href="course-single.html" class="card-img-top"><img src="<?= base_url() ?>assets/images/course/course-python.jpg" alt="" class="card-img-top rounded-top" /></a>
                         <div class="card-body">
                             <h4 class="mb-2 text-truncate-line-2"><a href="course-single.html" class="text-inherit">The Python
                                     Course: build web application</a></h4>
@@ -1560,7 +1557,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="card-footer">
                             <div class="row align-items-center no-gutters">
                                 <div class="col-auto">
-                                    <img src="../assets/images/avatar/avatar-4.jpg" class="rounded-circle avatar-xs" alt="" />
+                                    <img src="<?= base_url() ?>assets/images/avatar/avatar-4.jpg" class="rounded-circle avatar-xs" alt="" />
                                 </div>
                                 <div class="col ml-2">
                                     <span>Claire Robertson</span>
@@ -1599,40 +1596,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </div>
 </div>
-
 <!-- Scripts -->
 <!-- Libs JS -->
-<script src="assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/libs/odometer/odometer.min.js"></script>
-<script src="assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-<script src="assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script src="assets/libs/flatpickr/dist/flatpickr.min.js"></script>
-<script src="assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
-<script src="assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-<script src="assets/libs/quill/dist/quill.min.js"></script>
-<script src="assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
-<script src="assets/libs/dragula/dist/dragula.min.js"></script>
-<script src="assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
-<script src="assets/libs/dropzone/dist/min/dropzone.min.js"></script>
-<script src="assets/libs/jQuery.print/jQuery.print.js"></script>
-<script src="assets/libs/prismjs/prism.js"></script>
-<script src="assets/libs/prismjs/components/prism-scss.min.js"></script>
-<script src="assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
-<script src="assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
-<script src="assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
-<script src="assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
-<script src="assets/libs/typed.js/lib/typed.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/odometer/odometer.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/quill/dist/quill.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/dragula/dist/dragula.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/dropzone/dist/min/dropzone.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/jQuery.print/jQuery.print.js"></script>
+<script src="<?= base_url() ?>assets/libs/prismjs/prism.js"></script>
+<script src="<?= base_url() ?>assets/libs/prismjs/components/prism-scss.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/@yaireo/tagify/dist/tagify.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
+<script src="<?= base_url() ?>assets/libs/@popperjs/core/dist/umd/popper.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/typed.js/lib/typed.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
+<script src="<?= base_url() ?>assets/libs/jsvectormap/dist/maps/world.js"></script>
+
+
 
 <!-- clipboard -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
 
 
 <!-- Theme JS -->
-<script src="assets/js/theme.min.js"></script>
-
-
+<script src="<?= base_url() ?>assets/js/theme.min.js"></script>
 </body>
 
 </html>

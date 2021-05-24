@@ -18,10 +18,11 @@ class Mobil extends CI_Controller
         $route_url = $this->Database->getData("mobil", $con);
         if ($route_url) {
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
+            $data['data_mobil'] = $route_url[0];
             $this->load->view('include/head', $data);
             $this->load->view('page/detail_mobil', $data);
         } else {
-            $this->load->view('errors/error');
+            $this->load->view('page/error');
         }
     }
 }
