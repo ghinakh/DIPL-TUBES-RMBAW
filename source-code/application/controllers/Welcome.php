@@ -29,7 +29,13 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		if (!$this->session->userdata('credentials')) :
-			$this->load->view('welcome_message');
+			$data["pemilik"] = $this->Database->getData("staff_garasi");
+			$data["mobil"] = $this->Database->getData("mobil");
+			$rekomendasi_by = array("jenis", "harga", "rating");
+			$rekomendasi = array_rand($rekomendasi_by);
+			$data["mobil_rekomendasi"] = $this->Database->urut_secara("mobil", "rand", $rekomendasi_by[$rekomendasi]);
+			$this->load->view('include/head', $data);
+			$this->load->view('welcome_message', $data);
 		else :
 			$data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
 			$ses = $this->session->userdata('credentials');
@@ -54,7 +60,6 @@ class Welcome extends CI_Controller
 			$rekomendasi_by = array("jenis", "harga", "rating");
 			$rekomendasi = array_rand($rekomendasi_by);
 			$data["mobil_rekomendasi"] = $this->Database->urut_secara("mobil", "rand", $rekomendasi_by[$rekomendasi]);
-			// $data["level"] = "Penyewa";
 			$this->load->view('include/head', $data);
 			$this->load->view('page/dashboard_penyewa', $data);
 		endif;
