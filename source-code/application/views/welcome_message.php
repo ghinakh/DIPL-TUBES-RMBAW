@@ -115,7 +115,7 @@ if (!empty($orderan)) {
 											</span>
 										</div>
 										<div class="bg mb-3 mr-2">
-											<h3 class="mb-0 text-truncate-line-2">IDR <?= number_format($price, 0, ',', '.') ?><span class="font-size-xs text-muted">/ day</span>
+											<h3 class="mb-0 text-truncate-line-2">Rp. <?= number_format($price, 0, ',', '.') ?><span class="font-size-xs text-muted">/ day</span>
 											</h3>
 										</div>
 										<div class="bg mb-1 mr-2">
@@ -184,11 +184,11 @@ if (!empty($orderan)) {
 												</span>
 											</div>
 											<div class="bg mb-3 mr-2">
-												<h3 class="mb-0 text-truncate-line-2">IDR <?= number_format($price, 0, ',', '.') ?><span class="font-size-xs text-muted">/ day</span>
+												<h3 class="mb-0 text-truncate-line-2">Rp. <?= number_format($price, 0, ',', '.') ?><span class="font-size-xs text-muted">/ day</span>
 												</h3>
 											</div>
 											<div class="bg mb-1 mr-2">
-												<a href="<?= base_url('cars/detail/' . $view_detail) ?>" class="btn btn-success btn-sm">Rent again</a>
+												<a href="<?= base_url('cars/detail/' . $view_detail) ?>" class="btn btn-success btn-sm">Rent Car</a>
 											</div>
 										</div>
 									</div>

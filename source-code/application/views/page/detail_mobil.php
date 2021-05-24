@@ -1296,21 +1296,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <!-- Card -->
                 <div class="card mb-3 mb-4">
                     <div class="p-1">
-                        <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-lg bg-cover" style="background-image: url(<?= base_url() ?>assets/images/course/course-javascript.jpg);">
-                            <a class="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none" href="https://www.youtube.com/watch?v=JRzWRZahOVU">
-                                <i class="fe fe-play"></i>
-                            </a>
+                        <div class="d-flex justify-content-center position-relative rounded py-15 border-white border rounded-lg bg-cover" style="background-image: url(<?= base_url('assets/images/mobil/' . $data_mobil['gambar']) ?>);">
                         </div>
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
                         <!-- Price single page -->
                         <div class="mb-3">
-                            <span class="text-dark font-weight-bold h2">$600</span>
-                            <del class="font-size-md text-muted">$750</del>
+                            <span class="text-dark font-weight-bold h2">Rp. <?= number_format($data_mobil['harga'], 0, ',', '.') ?></span><br />
                         </div>
-                        <a href="#!" class="btn btn-primary btn-block">Start Free Month</a>
-                        <a href="pricing.html" class="btn btn-outline-primary btn-block">Get Full Access</a>
+                        <a href="#!" class="btn btn-success btn-block">Rent Now</a>
                     </div>
                 </div>
                 <!-- Card -->
