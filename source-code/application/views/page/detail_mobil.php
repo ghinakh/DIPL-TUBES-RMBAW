@@ -9,7 +9,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div>
                     <h1 class="text-white display-4 font-weight-semi-bold"><?= $data_mobil['nama_mobil'] ?></h1>
                     <div class="d-flex align-items-center">
+<<<<<<< HEAD
                         <span class="text-white ml-3"><i class="fe fe-user text-white-50"></i> <?= $total_pemesanan ?> Menyewa Mobil ini </span>
+=======
+                        <span class="text-white ml-3"><i class="fe fe-user text-white-50"></i> <?= count($rate) ?> rent this car </span>
+>>>>>>> 0b65188c0e5e50081fe0edbd69c8e762ba5309cb
                         <span class="text-white ml-4 d-none d-md-block">
                             <svg width="16" height="16" viewBox="0 0 16
                               16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <div class="d-lg-flex align-items-center justify-content-between mb-5">
                                         <!-- Reviews -->
                                         <div class="mb-3 mb-lg-0">
-                                            <h3 class="mb-0">Reviews</h3>
+                                            <h3 class="mb-0">Reviewss</h3>
                                         </div>
                                     </div>
                                     <?php
@@ -72,6 +76,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                     $comment = $pemakai['note'];
                                                 }
                                             }
+<<<<<<< HEAD
                                     ?>
                                             <!-- Rating -->
                                             <div class="media border-bottom pb-4 mb-4">
@@ -85,6 +90,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                         <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
                                                     </div>
                                                     <p><?= $comment ?></p>
+=======
+                                        }
+                                        ?>
+                                        <!-- Rating -->
+                                        <div class="media border-bottom pb-4 mb-4">
+                                            <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
+                                            <div class="media-body ml-3">
+                                                <h4 class="mb-1">
+                                                    <?= $nama ?><br />
+                                                    <span class="font-size-xs text-muted">Rent : <?= $sewa ?></span>
+                                                </h4>
+                                                <div class="font-size-xs mb-2">
+                                                    <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
+>>>>>>> 0b65188c0e5e50081fe0edbd69c8e762ba5309cb
                                                 </div>
                                             </div>
                                     <?php
@@ -97,37 +116,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
                                 <!-- FAQ -->
                                 <div>
-                                    <h3 class="mb-3">Course - Frequently Asked Questions</h3>
+                                    <h3 class="mb-3">Frequently Asked Questions</h3>
                                     <div class="mb-4">
-                                        <h4>How this course help me to design layout?</h4>
+                                        <h4>What form of identification do I need to rental the car?</h4>
                                         <p>
-                                            My name is Jason Woo and I work as human duct tape at Gatsby, that means that I do a lot of different things. Everything from dev roll to writing content to writing code. And I used to work as an architect at IBM. I live in Portland, Oregon.
+                                            To rent the car you need an ID card and Driver License (Surat Izin Mengemudi / SIM A)
                                         </p>
                                     </div>
                                     <div class="mb-4">
-                                        <h4>What is important of this course?</h4>
+                                        <h4>What about fuel costs? It is included?</h4>
                                         <p>
-                                            We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use the pieces of it that we need to build in Gatsby. We're not gonna be doing a deep dive into what GraphQL is or the language specifics. We're also gonna get into MDX. MDX is a way
-                                            to write React components in your markdown.
+                                            No, It is not. The rental price does not include fuel costs.
                                         </p>
                                     </div>
                                     <div class="mb-4">
-                                        <h4>Why Take This Course?</h4>
+                                        <h4>How do I pay?</h4>
                                         <p>
-                                            We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use the pieces of it that we need to build in Gatsby. We're not gonna be doing a deep dive into what GraphQL is or the language specifics. We're also gonna get into MDX. MDX is a way
-                                            to write React components in your markdown.
+                                            We provide two ways to pay. First, you can use your balance on our website or pay directly to the staff when you get the rental car.
                                         </p>
                                     </div>
                                     <div class="mb-4">
-                                        <h4>Is able to create application after this course?</h4>
-                                        <p>
-                                            We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use the pieces of it that we need to build in Gatsby. We're not gonna be doing a deep dive into what GraphQL is or the language specifics. We're also gonna get into MDX. MDX is a way
-                                            to write React components in your markdown.
-                                        </p>
-                                        <p>
-                                            We'll dive into GraphQL, the fundamentals of GraphQL. We're only gonna use the pieces of it that we need to build in Gatsby. We're not gonna be doing a deep dive into what GraphQL is or the language specifics. We're also gonna get into MDX. MDX is a way
-                                            to write React components in your markdown.
-                                        </p>
+                                        <h4>Can I rent a car if I don't have a credit card?</h4>
+                                        <p>Yes, you can pay directly to the staff when you get the rental car. </p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h4>How do I return the car?</h4>
+                                        <p>On the web you can go to Car History > Return Car and fill out the return form. </p>
                                     </div>
                                 </div>
                             </div>
@@ -162,15 +176,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div>
                         <!-- Card header -->
                         <div class="card-header">
-                            <h4 class="mb-0">What’s included</h4>
+                            <h4 class="mb-0">Facilities</h4>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item bg-transparent"><i class="fe fe-play-circle align-middle mr-2 text-primary"></i>12 hours video</li>
-                            <li class="list-group-item bg-transparent"><i class="fe fe-award mr-2 align-middle text-success"></i>Certificate</li>
-                            <li class="list-group-item bg-transparent"><i class="fe fe-calendar align-middle mr-2 text-info"></i>12 Article
-                            </li>
-                            <li class="list-group-item bg-transparent"><i class="fe fe-video align-middle mr-2 text-secondary"></i>Watch Offline</li>
-                            <li class="list-group-item bg-transparent border-bottom-0"><i class="fe fe-clock align-middle mr-2 text-warning"></i>Lifetime access</li>
+                            <li class="list-group-item bg-transparent"><i class="fe fe-check-circle align-middle mr-2 text-primary"></i>4-6 Adult Passengers</li>
+                            <li class="list-group-item bg-transparent"><i class="fe fe-briefcase mr-2 align-middle text-success"></i>2 Large Suitcases</li>
+                            <li class="list-group-item bg-transparent"><i class="fe fe-cloud-snow align-middle mr-2 text-info"></i>Air Conditioner</li>
+                            <li class="list-group-item bg-transparent"><i class="fe fe-circle align-middle mr-2 text-warning"></i>Manual</li>
                         </ul>
                     </div>
                 </div>
