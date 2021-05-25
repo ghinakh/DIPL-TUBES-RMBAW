@@ -9,11 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div>
                     <h1 class="text-white display-4 font-weight-semi-bold"><?= $data_mobil['nama_mobil'] ?></h1>
                     <div class="d-flex align-items-center">
-<<<<<<< HEAD
                         <span class="text-white ml-3"><i class="fe fe-user text-white-50"></i> <?= $total_pemesanan ?> Menyewa Mobil ini </span>
-=======
-                        <span class="text-white ml-3"><i class="fe fe-user text-white-50"></i> <?= count($rate) ?> rent this car </span>
->>>>>>> 0b65188c0e5e50081fe0edbd69c8e762ba5309cb
                         <span class="text-white ml-4 d-none d-md-block">
                             <svg width="16" height="16" viewBox="0 0 16
                               16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +57,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <div class="d-lg-flex align-items-center justify-content-between mb-5">
                                         <!-- Reviews -->
                                         <div class="mb-3 mb-lg-0">
-                                            <h3 class="mb-0">Reviewss</h3>
+                                            <h3 class="mb-0">Reviews</h3>
                                         </div>
                                     </div>
                                     <?php
@@ -76,7 +72,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                     $comment = $pemakai['note'];
                                                 }
                                             }
-<<<<<<< HEAD
                                     ?>
                                             <!-- Rating -->
                                             <div class="media border-bottom pb-4 mb-4">
@@ -90,20 +85,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                         <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
                                                     </div>
                                                     <p><?= $comment ?></p>
-=======
-                                        }
-                                        ?>
-                                        <!-- Rating -->
-                                        <div class="media border-bottom pb-4 mb-4">
-                                            <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
-                                            <div class="media-body ml-3">
-                                                <h4 class="mb-1">
-                                                    <?= $nama ?><br />
-                                                    <span class="font-size-xs text-muted">Rent : <?= $sewa ?></span>
-                                                </h4>
-                                                <div class="font-size-xs mb-2">
-                                                    <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
->>>>>>> 0b65188c0e5e50081fe0edbd69c8e762ba5309cb
                                                 </div>
                                             </div>
                                     <?php
