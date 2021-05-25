@@ -68,6 +68,7 @@ $route['invoice/(:any)'] = 'Depo/Detail/$1';
 
 /* CAR DETAILS */
 $route['cars/detail/(:any)'] = 'Mobil/getDetail/$1';
+$route['payment/carnow/(:any)'] = 'Mobil/Buy/$1';
 
 /* Bagian Ghina */
 $route['admin/mobil'] = 'Admin/mobil';

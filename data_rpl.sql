@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Bulan Mei 2021 pada 15.27
+-- Waktu pembuatan: 25 Bulan Mei 2021 pada 17.59
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -106,7 +106,7 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `saldo`, `email`, `password`) VALUES
-(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '999999', 'user@jhon.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '999999', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
 (2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
@@ -138,6 +138,7 @@ CREATE TABLE `riwayat` (
   `tanggal_selesai` date NOT NULL,
   `status` varchar(255) NOT NULL,
   `rate` varchar(50) NOT NULL,
+  `note` text DEFAULT NULL,
   `id_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -145,9 +146,10 @@ CREATE TABLE `riwayat` (
 -- Dumping data untuk tabel `riwayat`
 --
 
-INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `tanggal_mulai`, `tanggal_selesai`, `status`, `rate`, `id_url`) VALUES
-(1, 3, 1, 'Penyewa', '2021-04-18', '2021-04-19', '0', '4.5', 'cf2f6ed3086ad55fcce87369a8692a2f'),
-(2, 2, 1, 'Penyewa', '2021-04-19', '2021-04-20', '1', '0', '62690c9c38ccb2e55ef01bf38687507a');
+INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `tanggal_mulai`, `tanggal_selesai`, `status`, `rate`, `note`, `id_url`) VALUES
+(1, 3, 1, 'Penyewa', '2021-04-18', '2021-04-19', '1', '1', NULL, 'cf2f6ed3086ad55fcce87369a8692a2f'),
+(2, 2, 1, 'Penyewa', '2021-04-19', '2021-04-20', '0', '5', 'gila kaleeee', '62690c9c38ccb2e55ef01bf38687507a'),
+(3, 2, 2, 'Penyewa', '2021-05-24', '2021-05-26', '0', '1', 'Kotor banget tapi mobil anak muda', '3f76818f507fe7eb6422bd0703c64c88');
 
 -- --------------------------------------------------------
 
@@ -315,7 +317,7 @@ ALTER TABLE `promo`
 -- AUTO_INCREMENT untuk tabel `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `riwayat_saldo`

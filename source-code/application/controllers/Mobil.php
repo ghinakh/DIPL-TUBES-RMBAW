@@ -49,4 +49,8 @@ class Mobil extends CI_Controller
             $this->load->view('page/error');
         }
     }
+
+    public function Buy($id_mobil)
+    {
+    }
 }
