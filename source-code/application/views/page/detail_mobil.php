@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div>
                     <h1 class="text-white display-4 font-weight-semi-bold"><?= $data_mobil['nama_mobil'] ?></h1>
                     <div class="d-flex align-items-center">
-                        <span class="text-white ml-3"><i class="fe fe-user text-white-50"></i> <?= count($rate) ?> Menyewa Mobil ini </span>
+                        <span class="text-white ml-3"><i class="fe fe-user text-white-50"></i> <?= $total_pemesanan ?> Menyewa Mobil ini </span>
                         <span class="text-white ml-4 d-none d-md-block">
                             <svg width="16" height="16" viewBox="0 0 16
                               16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,31 +61,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <?php
-                                    foreach ($rate as $pemakai) {
-                                        foreach ($penyewa as $akun) {
-                                            if ($pemakai['id_penyewa'] == $akun['id']) {
-                                                $nama = $akun['nama_lengkap'];
-                                                $sewa = $pemakai['tanggal_mulai'];
-                                                $reting = $pemakai['rate'];
-                                                $comment = $pemakai['note'];
+                                    if (empty($rate)) {
+                                    } else {
+                                        foreach ($rate as $pemakai) {
+                                            foreach ($penyewa as $akun) {
+                                                if ($pemakai['id_penyewa'] == $akun['id']) {
+                                                    $nama = $akun['nama_lengkap'];
+                                                    $sewa = $pemakai['tanggal_mulai'];
+                                                    $reting = $pemakai['rate'];
+                                                    $comment = $pemakai['note'];
+                                                }
                                             }
-                                        }
                                     ?>
-                                        <!-- Rating -->
-                                        <div class="media border-bottom pb-4 mb-4">
-                                            <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
-                                            <div class="media-body ml-3">
-                                                <h4 class="mb-1">
-                                                    <?= $nama ?><br />
-                                                    <span class="font-size-xs text-muted">Rent : <?= $sewa ?></span>
-                                                </h4>
-                                                <div class="font-size-xs mb-2">
-                                                    <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
+                                            <!-- Rating -->
+                                            <div class="media border-bottom pb-4 mb-4">
+                                                <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
+                                                <div class="media-body ml-3">
+                                                    <h4 class="mb-1">
+                                                        <?= $nama ?><br />
+                                                        <span class="font-size-xs text-muted">Rent : <?= $sewa ?></span>
+                                                    </h4>
+                                                    <div class="font-size-xs mb-2">
+                                                        <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
+                                                    </div>
+                                                    <p><?= $comment ?></p>
                                                 </div>
-                                                <p><?= $comment ?></p>
                                             </div>
-                                        </div>
                                     <?php
+                                        }
                                     }
                                     ?>
                                 </div>
@@ -147,7 +150,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <hr class="mx-3" />
                             <span class="font-size-medium"><span class="text-warning">4.5</span><span class="mdi mdi-star text-warning mr-2"></span>
                         </div>
-                        <a href="<?= base_url("/payment/carnow/" . $data_mobil['url_view']) ?>" class="btn btn-success btn-block">Rent Now</a>
+                        <?php if ($data_mobil['full'] == 1) { ?>
+                            <button type="button" class="btn btn-success btn-block" disabled>Mobil sedang digunakan</button>
+                        <?php } else { ?>
+                            <a href="<?= base_url("/payment/carnow/" . $data_mobil['url_view'] . "/" . md5("RentalKuy" . rand(10000000, 99999999))) ?>" class="btn btn-success btn-block">Rent Now</a>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- Card -->

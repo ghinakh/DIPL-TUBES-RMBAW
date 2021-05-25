@@ -38,11 +38,17 @@ class Mobil extends CI_Controller
                 'id_mobil' => $route_url[0]['id'],
                 'status' => 0,
             );
+            $riwayat = $this->Database->getData("riwayat", $con);
+            if ($riwayat) {
+                $data['total_pemesanan'] = count($riwayat);
+            } else {
+                $data['total_pemesanan'] = 0;
+            }
+            $data['rate'] = $riwayat;
             $data['bintang'] = $this->Database->avg_data("riwayat", $route_url[0]['id']);
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $data['data_mobil'] = $route_url[0];
             $data['penyewa'] = $this->Database->getData("penyewa");
-            $data['rate'] = $this->Database->getData("riwayat", $con);
             $this->load->view('include/head', $data);
             $this->load->view('page/detail_mobil', $data);
         } else {
@@ -50,7 +56,16 @@ class Mobil extends CI_Controller
         }
     }
 
-    public function Buy($id_mobil)
+    public function Buy($id_mobil, $rand)
     {
+
+        $con['conditions'] = array(
+            'url_view' => $id_mobil,
+        );
+        $route_url = $this->Database->getData("mobil", $con);
+        if ($route_url) {
+        } else {
+            $this->load->view('page/error');
+        }
     }
 }

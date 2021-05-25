@@ -174,7 +174,10 @@ class Users extends CI_Controller
                 /*
                     <Lihat Riwayat Penyewa>
                 */
-                $data["orderan"] = $this->Database->getData("riwayat", array('id_penyewa' => $ses[0]["id"]));
+                $con['conditions'] = array(
+                    'id_penyewa' => $ses[0]["id"],
+                );
+                $data["orderan"] = $this->Database->getData("riwayat", $con);
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
             } else if ($ses[1] == "admin") {
@@ -234,8 +237,11 @@ class Users extends CI_Controller
                 /* 
                     Mengambil data dari ID User (Penyewa)
                 */
-                $orderan = $this->Database->getData("riwayat", array('id_penyewa' => $ses[0]["id"]));
-                $saldo = $this->Database->getData("saldo", array('id_penyewa' => $ses[0]["id"]));
+                $con['conditions'] = array(
+                    'id_penyewa' => $ses[0]["id"],
+                );
+                $orderan = $this->Database->getData("riwayat", $con);
+                $saldo = $this->Database->getData("saldo", $con);
                 if ($saldo) :
                     $data['database'] = array_merge($orderan, $saldo);
                 else :

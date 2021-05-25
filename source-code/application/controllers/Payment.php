@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Depo extends CI_Controller
+class Payment extends CI_Controller
 {
     public function __construct()
     {
@@ -10,9 +10,8 @@ class Depo extends CI_Controller
         $this->load->model('Database');
     }
 
-    public function Detail()
+    public function Detail($id)
     {
-
         $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
         $ses = $this->session->userdata('credentials');
         $data['user'] =  $ses[0];

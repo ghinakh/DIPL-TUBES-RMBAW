@@ -64,11 +64,11 @@ $route['edit/profile'] = 'Users/profile';
 $route['history'] = 'Users/Riwayat';
 $route['change/password'] = 'Users/Password';
 $route['invoice'] = 'Users/Invoice';
-$route['invoice/(:any)'] = 'Depo/Detail/$1';
+$route['invoice/(:any)'] = 'Payment/Detail/$1';
 
 /* CAR DETAILS */
 $route['cars/detail/(:any)'] = 'Mobil/getDetail/$1';
-$route['payment/carnow/(:any)'] = 'Mobil/Buy/$1';
+$route['payment/carnow/(:any)/(:any)'] = 'Mobil/Buy/$1/$2';
 
 /* Bagian Ghina */
 $route['admin/mobil'] = 'Admin/mobil';

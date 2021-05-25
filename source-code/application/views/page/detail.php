@@ -37,12 +37,8 @@ function tanggal_indonesia($tanggal)
                         <div class="d-flex justify-content-between mb-6">
                             <div>
                                 <!-- Img -->
-                                <img src="<?= base_url('assets/images/logo.png') ?>">
-                                <h4 class=" mb-0"><?= $web_config['nama_website'] ?></h4>
-                                <small>INVOICE ID: #1001</small>
-                            </div>
-                            <div>
-                                <a href="#!" class="text-muted print-link no-print"><i class="fe fe-printer"></i></a>
+                                <h2 class=" mb-0"><?= $web_config['nama_website'] ?></h2>
+                                <small>INVOICE ID: #<?=?></small>
                             </div>
                         </div>
                         <!-- Row -->
