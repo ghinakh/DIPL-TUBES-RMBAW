@@ -34,8 +34,15 @@ class Mobil extends CI_Controller
                 }
                 $data["foto_profile"] = $foto;
             endif;
+            $con['conditions'] = array(
+                'id_mobil' => $route_url[0]['id'],
+                'status' => 0,
+            );
+            $data['bintang'] = $this->Database->avg_data("riwayat", $route_url[0]['id']);
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $data['data_mobil'] = $route_url[0];
+            $data['penyewa'] = $this->Database->getData("penyewa");
+            $data['rate'] = $this->Database->getData("riwayat", $con);
             $this->load->view('include/head', $data);
             $this->load->view('page/detail_mobil', $data);
         } else {

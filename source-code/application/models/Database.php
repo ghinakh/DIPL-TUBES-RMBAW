@@ -69,4 +69,14 @@ class Database extends CI_Model
         $result = $query->result_array();
         return $result;
     }
+    public function avg_data($nama_database, $by)
+    {
+        $this->db->select('*');
+        $this->db->where("id_mobil", $by);
+        $this->db->where("status", 0);
+        $this->db->select_avg("rate");
+        $query = $this->db->get($nama_database);
+        $result = $query->result_array();
+        return $result[0]["rate"];
+    }
 }
