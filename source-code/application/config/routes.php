@@ -73,5 +73,12 @@ $route['payment/carnow/(:any)/(:any)'] = 'Mobil/Buy/$1/$2';
 /* Bagian Ghina */
 $route['admin/mobil'] = 'Admin/mobil';
 $route['admin/staff'] = 'Admin/staff';
+$route['admin/change-status'] = 'Admin/change_status';
+$route['admin/penyewa'] = 'Admin/penyewa';
+$route['admin/promo'] = 'Admin/promo';
+$route['tambah_promo'] = 'Admin/tambah_promo';
+
 $route['staff'] = 'Staff';
 $route['staff/new-car'] = 'Staff/insert';
+$route['topup'] = 'Users/topup';
+$route['rating'] = 'Mobil/rate_car';

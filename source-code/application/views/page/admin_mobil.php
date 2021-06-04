@@ -15,19 +15,19 @@
 
 
   <!-- Libs CSS -->
-  <link href="../assets/fonts/feather/feather.css" rel="stylesheet" />
-  <link href="../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
-  <link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
-  <link href="../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
-  <link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
-  <link href="../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
-  <link href="../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-  <link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
-  <link href="../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
-  <link href="../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/fonts/feather/feather.css" rel="stylesheet" />
+  <link href="<?= base_url() ?>assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+  <link href="<?= base_url() ?>assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link href="<?= base_url() ?>assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
+  <link href="<?= base_url() ?>assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+  <link href="<?= base_url() ?>assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+  <link href="<?= base_url() ?>assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
 
   <!-- Theme CSS -->
-  <link rel="stylesheet" href="../assets/css/theme.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/theme.min.css">
 
   <title>Cars | RentalKuy</title>
 </head>
@@ -38,7 +38,7 @@
     <nav class="navbar-vertical navbar">
       <div class="nav-scroller">
         <!-- Brand logo -->
-        <a class="navbar-brand" href=""><img src="../assets/images/logo-negative.png" alt="" width="200" /></a>
+        <a class="navbar-brand" href=""><img src="<?= base_url() ?>assets/images/logo-negative.png" alt="" width="200" /></a>
 
         <!-- Navbar nav -->
         <ul class="navbar-nav flex-column" id="sideNavbar">
@@ -56,8 +56,14 @@
           </li>
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link " href="admin_staffgarasi.html">
-              <i class="nav-icon fe fe-dollar-sign mr-2"></i>Payments
+            <a class="nav-link " href="<?= base_url('admin/penyewa') ?>">
+              <i class="nav-icon fe fe-user mr-2"></i>Renter
+            </a>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('admin/promo') ?>">
+              <i class="nav-icon fe fe-percent mr-2"></i>Promo
             </a>
           </li>
           <!-- Nav item -->
@@ -67,7 +73,7 @@
           </li>
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link " href="">
+            <a class="nav-link " href="<?= base_url('logout') ?>">
               <i class="nav-icon fe fe-power mr-2"></i>Sign Out
             </a>
           </li>
@@ -79,31 +85,31 @@
       <div class="header">
         <!-- navbar -->
         <nav class="navbar-default navbar navbar-expand-lg">
-          <a id="nav-toggle" href="#!"><i class="fe fe-menu"></i></a>
+          <a id="nav-toggle" href=""><i class="fe fe-menu"></i></a>
           <ul class="navbar-nav navbar-right-wrap ml-auto  d-flex nav-top-wrap ">
             <li class="dropdown ml-2">
               <a class="rounded-circle " href="#!" role="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-md">
-                  <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle">
+                  <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
                 <div class="dropdown-item">
                   <div class="d-flex">
                     <div class="avatar avatar-md">
-                      <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle">
+                      <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
                     </div>
                     <div class="ml-3 lh-1">
-                      <h5 class="mb-1">Admin</h5>
-                      <p class="mb-0 text-muted">emailadmin@gmail.com</p>
+                      <h5 class="mb-1"><?= $user['nama_lengkap'] ?></h5>
+                      <p class="mb-0 text-muted"><?= $user['email'] ?></p>
                     </div>
                   </div>
                 </div>
                 <div class="dropdown-divider"></div>
                 <ul class="list-unstyled">
-                  <li>
-                    <a class="dropdown-item" href="">
-                      <i class="fe fe-power mr-2"></i>Sign Out
+                  <li class="nav-item">
+                    <a class="nav-link " href="<?= base_url('logout') ?>">
+                      <i class="nav-icon fe fe-power mr-2"></i>Sign Out
                     </a>
                   </li>
                 </ul>
@@ -144,7 +150,7 @@
                 <!-- Table -->
                 <div class="tab-content" id="tabContent">
                   <!--Tab pane -->
-                  <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+                  <div class="tab-pane fade show active" id="cars" role="tabpanel" aria-labelledby="cars-tab">
                     <div class="table-responsive border-0 overflow-y-hidden">
                       <table class="table mb-0 ">
                         <thead>
@@ -162,128 +168,90 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="border-top-0">
-                              <div class="text-inherit">
-                                <div class="d-lg-flex align-items-center">
-                                  <div>
-                                    <img src="../assets/images/mobil/avanza-preview.png" alt="" class="img-4by3-lg rounded" />
-                                  </div>
-                                  <div class="ml-lg-3 mt-2 mt-lg-0">
-                                    <h4 class="mb-1 text-primary-hover">
-                                      (CAR-01) Toyota Avanza
-                                    </h4>
-                                    <span class="text-inherit">Added on 27 March, 2021</span>
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                <img src="../assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-xs mr-2" />
-                                <h5 class="mb-0">Joanne Shin</h5>
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <!-- Button trigger modal -->
-                              <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_detail">
-                                Detail
-                              </button>
-                              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_edit">
-                                Edit
-                              </button>
-                              <!-- Modal "Detail" -->
-                              <div class="modal fade" id="modal_detail" tabindex="-1" role="dialog" aria-labelledby="title_detail" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title h3 " id="title_detail">Car Title</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
+                          <?php
+                          foreach ($mobil as $kendaraan) {
+                            foreach ($pemilik as $staff) {
+                              if ($kendaraan['id_staff'] == $staff['id']) {
+                                ?>
+                                <tr>
+                                  <td class="border-top-0">
+                                    <div class="text-inherit">
+                                      <div class="d-lg-flex align-items-center">
+                                        <div>
+                                          <img src="<?= base_url() ?>assets/images/mobil/<?= $kendaraan['gambar'] ?>" alt="" class="img-4by3-lg rounded" />
+                                        </div>
+                                        <div class="ml-lg-3 mt-2 mt-lg-0">
+                                          <h4 class="mb-1 text-primary-hover">
+                                            (CAR-<?= $kendaraan['id'] ?>) <?= $kendaraan['nama_mobil'] ?>
+                                          </h4>
+                                          <span class="text-inherit">Added on 27 March, 2021</span>
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div class="modal-body">
-                                      <form>
-                                        <div class="form-group">
-                                          <label for="nama_mobil" class="col-form-label">Car Name:</label>
-                                          <input type="text" class="form-control" id="nama_mobil" readonly value="">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nama_staff" class="col-form-label">Staff Name:</label>
-                                          <input type="text" class="form-control" id="nama_staff" readonly value="">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="stnk" class="col-form-label">Driver License:</label>
-                                          <input type="text" class="form-control" id="stnk" readonly value="">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="jenis" class="col-form-label">Type:</label>
-                                          <input type="text" class="form-control" id="jenis" readonly value="">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="harga" class="col-form-label">Price:</label>
-                                          <input type="text" class="form-control" id="harga" readonly value="">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="rating" class="col-form-label">Rating:</label>
-                                          <input type="text" class="form-control" id="rating" readonly value="">
-                                        </div>
-                                      </form>
+                                  </td>
+                                  <td class="align-middle border-top-0">
+                                    <div class="d-flex align-items-center">
+                                      <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-xs mr-2" />
+                                      <h5 class="mb-0"><?= $staff['nama_lengkap'] ?></h5>
                                     </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                  </td>
+                                  <td class="align-middle border-top-0">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_detail<?= $kendaraan['id'] ?>">
+                                      Detail
+                                    </button>
+                                    <!-- Modal "Detail" -->
+                                    <div class="modal fade" id="modal_detail<?= $kendaraan['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="title_detail" aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title h3 " id="title_detail">Car Detail</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <form>
+                                              <div class="form-group">
+                                                <label for="nama_mobil" class="col-form-label">Car Name:</label>
+                                                <input type="text" class="form-control" id="nama_mobil" readonly value="<?= $kendaraan['nama_mobil'] ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="nama_staff" class="col-form-label">Staff Name:</label>
+                                                <input type="text" class="form-control" id="nama_staff" readonly value="<?= $staff['nama_lengkap'] ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="stnk" class="col-form-label">Driver License:</label>
+                                                <input type="text" class="form-control" id="stnk" readonly value="<?= $kendaraan['stnk'] ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="jenis" class="col-form-label">Type:</label>
+                                                <input type="text" class="form-control" id="jenis" readonly value="<?= $kendaraan['jenis'] ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="harga" class="col-form-label">Price:</label>
+                                                <input type="text" class="form-control" id="harga" readonly value="<?= $kendaraan['harga'] ?>">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="rating" class="col-form-label">Rating:</label>
+                                                <input type="text" class="form-control" id="rating" readonly value="<?= $kendaraan['rating'] ?>">
+                                              </div>
+                                            </form>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- End Modal "Detail" -->
-                              <!-- Modal "Edit" -->
-                              <div class="modal fade" id="modal_edit" tabindex="-1" role="dialog" aria-labelledby="title_edit" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title h3 " id="title_edit">Edit Cars</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form>
-                                        <div class="form-group">
-                                          <label for="nama_mobil" class="col-form-label">Car Name:</label>
-                                          <input type="text" class="form-control" id="nama_mobil" value="" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nama_staff" class="col-form-label">Staff Name:</label>
-                                          <input type="text" class="form-control" id="nama_staff" value="" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="stnk" class="col-form-label">Driver License:</label>
-                                          <input type="text" class="form-control" id="stnk" value="" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="jenis" class="col-form-label">Type:</label>
-                                          <input type="text" class="form-control" id="jenis" value="">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="harga" class="col-form-label">Price:</label>
-                                          <input type="text" class="form-control" id="harga" value="">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="rating" class="col-form-label">Rating:</label>
-                                          <input type="text" class="form-control" id="rating" value="">
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Submit</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- End Modal "Edit" -->
-                            </td>
-                          </tr>
+                                    <!-- End Modal "Detail" -->
+
+                                  </td>
+                                </tr>
+                          <?php
+                              }
+                            }
+                          } ?>
                         </tbody>
                       </table>
                     </div>

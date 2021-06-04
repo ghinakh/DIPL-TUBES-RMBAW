@@ -18,7 +18,7 @@ function tanggal_indonesia($tanggal)
     );
 
     $pecahkan = explode('-', $tanggal);
-    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+    return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
 }
 ?>
 
@@ -63,44 +63,91 @@ function tanggal_indonesia($tanggal)
                                         <?php
                                         foreach ($orderan as $sewa) {
                                             foreach ($mobil as $kendaraan) {
-                                                if ((int)$sewa['status'] == 1) {
-                                                    $status = '<span class="badge badge-success">Returned</span>';
-                                                    $button = '<a href="javascript:;" data-id="' . $sewa['id'] . '" data-toggle="modal" data-target="#edit-data"><button  data-toggle="modal" data-target="#ubah-data" class="btn btn-info">Rate Now</button></a>';
-                                                } else if ((int)$sewa['status'] == 0) {
-                                                    $status = '<span class="badge badge-success">Returned</span>';
-                                                    $button = '<span class="text-warning">' . $sewa['rate'] . '<i class="mdi mdi-star"></i></span>';
-                                                }
                                                 if ($kendaraan['id'] ==  $sewa['id_mobil']) {
                                                     $nama_ken = $kendaraan['nama_mobil'];
                                                     $jenis = $kendaraan['jenis'];
                                                     $gambar = $kendaraan['gambar'];
-                                                }
-                                            }
-                                        ?>
-                                            <tr>
-                                                <td class="border-top-0">
-                                                    <div class="text-inherit">
-                                                        <div class="d-lg-flex align-items-center">
-                                                            <div>
-                                                                <img src="assets/images/mobil/<?= $gambar ?>" alt="" class="img-4by3-lg rounded" />
+
+                                                    ?>
+                                                    <tr>
+                                                        <td class="border-top-0">
+                                                            <div class="text-inherit">
+                                                                <div class="d-lg-flex align-items-center">
+                                                                    <div>
+                                                                        <img src="assets/images/mobil/<?= $gambar ?>" alt="" class="img-4by3-lg rounded" />
+                                                                    </div>
+                                                                    <div class="ml-lg-3 mt-2 mt-lg-0">
+                                                                        <h4 class="mb-1 text-primary-hover">
+                                                                            (CAR-<?= $kendaraan['id'] ?>) <?= $nama_ken ?>
+                                                                        </h4>
+                                                                        <span class="text-inherit">Returned on <?= tanggal_indonesia($sewa['tanggal_selesai']); ?></span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="ml-lg-3 mt-2 mt-lg-0">
-                                                                <h4 class="mb-1 text-primary-hover">
-                                                                    (CAR-<?= $sewa['id'] ?>) <?= $nama_ken ?>
-                                                                </h4>
-                                                                <span class="text-inherit">Returned on <?= tanggal_indonesia($sewa['tanggal_selesai']); ?></span>
+                                                        </td>
+                                                        <td class="align-middle border-top-0">
+                                                            <?php
+                                                                        if ((int) $sewa['status'] == 1) {
+                                                                            $status = '<span class="badge badge-success">Returned</span>';
+                                                                        } else if ((int) $sewa['status'] == 0) {
+                                                                            $status = '<span class="badge badge-success">Returned</span>';
+                                                                        }
+                                                                        echo $status;
+                                                                        ?>
+                                                        </td>
+                                                        <td class="align-middle border-top-0">
+                                                            <?php
+                                                                        if ((int) $sewa['status'] == 1) {
+                                                                            $button = '<a href="javascript:;" data-toggle="modal" data-target="#edit-data' . $sewa['id'] . '" class="btn btn-sm btn-success">Rate Now</a>';
+                                                                        } else if ((int) $sewa['status'] == 0) {
+                                                                            $button = '<span class="text-warning">' . $sewa['rate'] . '<i class="mdi mdi-star"></i></span>';
+                                                                        }
+                                                                        echo $button; ?>
+                                                        </td>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="edit-data<?= $sewa['id'] ?>" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Rate Now</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="POST" action="<?= base_url('rating') ?>">
+                                                                            <input type="hidden" class="form-control mb-2" name="id_sewa" id="id_sewa" value="<?= $sewa['id'] ?>">
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang1" value="1">
+                                                                                <label class="form-check-label" for="bintang1">1</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang2" value="2">
+                                                                                <label class="form-check-label" for="bintang2">2</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang3" value="3">
+                                                                                <label class="form-check-label" for="bintang3">3</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang4" value="4">
+                                                                                <label class="form-check-label" for="bintang4">4</label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang5" value="5">
+                                                                                <label class="form-check-label" for="bintang5">5</label>
+                                                                            </div>
+                                                                            <div><button type="submit" class="btn btn-success btn-sm mt-3">Submit</button></div>
+                                                                        </form>
+                                                                    </div>
+
+                                                                </div>
+
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="align-middle border-top-0">
-                                                    <?= $status ?>
-                                                </td>
-                                                <td class="align-middle border-top-0">
-                                                    <?= $button ?>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
+                                                    </tr>
+                                        <?php }
+                                            }
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>

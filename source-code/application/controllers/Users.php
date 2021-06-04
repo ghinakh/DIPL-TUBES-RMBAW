@@ -180,12 +180,10 @@ class Users extends CI_Controller
                 $data["orderan"] = $this->Database->getData("riwayat", $con);
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
                 /* 
                     <Lihat Riwayat Staff Garasi>
-                */
-            }
+                */ }
             /*
                 Return tampilan beserta variable $data
             */
@@ -249,9 +247,7 @@ class Users extends CI_Controller
                 endif;
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
-            }
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
             /*
                 Return tampilan beserta variable $data
             */
@@ -304,9 +300,7 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
-            }
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
             $this->load->view('include/head', $data);
             $this->load->view('auth/password', $data);
         endif;
@@ -361,11 +355,30 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
-            }
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
             $this->load->view('include/head', $data);
             $this->load->view('auth/profile', $data);
         endif;
+    }
+
+    public function topup()
+    {
+        $id  = $this->input->post('id_penyewa');
+        date_default_timezone_set('Asia/Jakarta');
+        $tanggal = date('Y-m-d H:i:s');
+        $data = [
+            'id_penyewa' => $id,
+            'nominal' => $this->input->post('nominal'),
+            'pembayaran' => $this->input->post('pay'),
+            'tanggal' => $tanggal,
+            'status' => 0
+        ];
+        $update_saldo = $data['nominal'] + $this->input->post('saldo');
+        $update = [
+            'saldo' => $update_saldo
+        ];
+        $this->Database->update("penyewa", $update, $id);
+        $this->Database->insert("saldo", $data);
+        redirect(base_url('history'));
     }
 }

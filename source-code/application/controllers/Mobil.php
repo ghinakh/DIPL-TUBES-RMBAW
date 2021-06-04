@@ -63,9 +63,19 @@ class Mobil extends CI_Controller
             'url_view' => $id_mobil,
         );
         $route_url = $this->Database->getData("mobil", $con);
-        if ($route_url) {
-        } else {
+        if ($route_url) { } else {
             $this->load->view('page/error');
         }
+    }
+
+    public function rate_car()
+    {
+        $id  = $this->input->post('id_sewa');
+        $data = [
+            'rate' => $this->input->post('rating'),
+            'status' => 0
+        ];
+        $this->Database->update("riwayat", $data, $id);
+        redirect(base_url('history'));
     }
 }

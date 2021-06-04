@@ -55,8 +55,14 @@
           </li>
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link " href="admin_staffgarasi.html">
-              <i class="nav-icon fe fe-dollar-sign mr-2"></i>Payments
+            <a class="nav-link " href="<?= base_url('admin/penyewa') ?>">
+              <i class="nav-icon fe fe-user mr-2"></i>Renter
+            </a>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('admin/promo') ?>">
+              <i class="nav-icon fe fe-percent mr-2"></i>Promo
             </a>
           </li>
           <!-- Nav item -->
@@ -66,7 +72,7 @@
           </li>
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link " href="">
+            <a class="nav-link " href="<?= base_url('logout') ?>">
               <i class="nav-icon fe fe-power mr-2"></i>Sign Out
             </a>
           </li>
@@ -84,26 +90,26 @@
             <li class="dropdown ml-2">
               <a class="rounded-circle " href="#!" role="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-md">
-                  <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle">
+                  <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
                 <div class="dropdown-item">
                   <div class="d-flex">
                     <div class="avatar avatar-md">
-                      <img alt="avatar" src="../assets/images/avatar/avatar-1.jpg" class="rounded-circle">
+                      <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
                     </div>
                     <div class="ml-3 lh-1">
-                      <h5 class="mb-1">Admin</h5>
-                      <p class="mb-0 text-muted">emailadmin@gmail.com</p>
+                      <h5 class="mb-1"><?= $user['nama_lengkap'] ?></h5>
+                      <p class="mb-0 text-muted"><?= $user['email'] ?></p>
                     </div>
                   </div>
                 </div>
                 <div class="dropdown-divider"></div>
                 <ul class="list-unstyled">
-                  <li>
-                    <a class="dropdown-item" href="">
-                      <i class="fe fe-power mr-2"></i>Sign Out
+                  <li class="nav-item">
+                    <a class="nav-link " href="<?= base_url('logout') ?>">
+                      <i class="nav-icon fe fe-power mr-2"></i>Sign Out
                     </a>
                   </li>
                 </ul>
@@ -170,82 +176,87 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="border-top-0">
-                              <h4 class="mb-1 text-primary-hover">
-                                Hussey Shin
-                              </h4>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                1234567890123456
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              nomor SIM (?)
-                            </td>
-                            <td class="align-middle border-top-0">
-                              staff1@gmail.com
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <a href="" class="btn btn-outline-white btn-sm">Reject</a>
-                              <a href="" class="btn btn-success btn-sm">Approved</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="border-top-0">
-                              <h4 class="mb-1 text-primary-hover">
-                                Joanne Shin
-                              </h4>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                1100998877226633
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              nomor SIM (?)
-                            </td>
-                            <td class="align-middle border-top-0">
-                              staff2@gmail.com
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <a type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal_change_status">Change Status</a>
-                              <a href="" class="btn btn-danger btn-sm">Delete</a>
-                            </td>
-                            <!-- Modal "Change Status"-->
-                            <div class="modal fade" id="modal_change_status" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h3 class="modal-title" id="exampleModalScrollableTitle">Change Status</h3>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <select class="custom-select">
-                                      <option selected>select status</option>
-                                      <option value="1">Pending</option>
-                                      <option value="2">Verified</option>
-                                      <option value="3">Rejected</option>
-                                    </select>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-success btn-sm">Submit</button>
+                          <?php
+                          foreach ($pemilik as $staff) {
+                            ?>
+                            <tr>
+                              <td class="border-top-0">
+                                <h4 class="mb-1 text-primary-hover">
+                                  <?= $staff['nama_lengkap'] ?>
+                                </h4>
+                              </td>
+                              <td class="align-middle border-top-0">
+                                <div class="d-flex align-items-center">
+                                  <?= $staff['nik'] ?>
+                                </div>
+                              </td>
+                              <td class="align-middle border-top-0">
+                                <?= $staff['sim'] ?>
+                              </td>
+                              <td class="align-middle border-top-0">
+                                <?= $staff['email'] ?>
+                              </td>
+                              <td class="align-middle border-top-0">
+                                <?php
+                                  if ($staff['status'] == 'PENDING') {
+                                    $status = '<span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending';
+                                  } else if ($staff['status'] == 'AKTIF') {
+                                    $status = '<span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified';
+                                  } else if ($staff['status'] == 'REJECT') {
+                                    $status = '<span class="badge-dot bg-danger mr-1 d-inline-block align-middle"></span>Rejected';
+                                  }
+                                  echo $status;
+                                  ?>
+                              </td>
+                              <td class="align-middle border-top-0">
+                                <?php
+                                  if ($staff['status'] == 'PENDING') {
+                                    $button = '<a href="' . base_url() . 'Admin/reject_status/' . $staff['id'] . '" class="btn btn-outline-white btn-sm">Reject</a>
+                                    <a href="' . base_url() . 'Admin/approve_status/' . $staff['id'] . '" class="btn btn-success btn-sm">Approved</a>';
+                                  } else if ($staff['status'] == 'AKTIF') {
+                                    $button = '<a type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal_change_status' . $staff['id'] . '">Change Status</a>
+                                    <a href="' . base_url() . 'Admin/delete_staff/' . $staff['id'] . '" class="btn btn-danger btn-sm">Delete</a>';
+                                  } else {
+                                    $button = '';
+                                  }
+                                  echo $button;
+                                  ?>
+                              </td>
+                              <!-- Modal -->
+                              <div class="modal fade" id="modal_change_status<?= $staff['id'] ?>" role="dialog">
+                                <div class="modal-dialog">
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">Change Staff Status</h4>
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form method="POST" action="<?= base_url('admin/change-status') ?>">
+                                        <input type="hidden" class="form-control mb-2" name="id_staff" id="id_staff" value="<?= $staff['id'] ?>">
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="status" id="pending" value="PENDING" <?php if ($staff['status'] == 'PENDING') {
+                                                                                                                                      echo "checked";
+                                                                                                                                    } ?>>
+                                          <label class="form-check-label" for="pending">Pending</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="status" id="aktif" value="AKTIF" <?php if ($staff['status'] == 'AKTIF') {
+                                                                                                                                  echo "checked";
+                                                                                                                                } ?>>
+                                          <label class="form-check-label" for="aktif">Verified</label>
+                                        </div>
+
+                                        <div><button type="submit" class="btn btn-success btn-sm mt-3">Submit</button></div>
+                                      </form>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                            <!-- End Modal "Change Status" -->
-                          </tr>
+                            </tr>
+
+                          <?php
+                          } ?>
                         </tbody>
                       </table>
                     </div>

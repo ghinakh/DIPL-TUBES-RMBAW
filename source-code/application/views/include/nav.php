@@ -58,72 +58,49 @@
                                 </div>
                                 <div class="modal-body">
                                     <!-- Form -->
-                                    <form class="form-row">
+                                    <form class="form-row" method="POST" action="<?= base_url('topup') ?>">
                                         <!-- Full name  -->
+                                        <input type="hidden" class="form-control mb-2" name="id_penyewa" id="id_penyewa" value="<?= $user['id'] ?>">
+
+                                        <div class="form-group col-12 col-md-12">
+                                            <label class="form-label" for="saldo">Saldo Sekarang</label>
+                                            <input type="text" class="form-control mb-2" name="saldo" id="saldo" value="<?= $user['saldo'] ?>" readonly="readonly" style="border: 0">
+                                        </div>
                                         <div class="form-group col-12 col-md-12">
                                             <label class="form-label" for="nominal">Nominal</label>
-                                            <input type="number" id="nominal" class="form-control" placeholder="Nominal" required>
+                                            <input type="number" id="nominal" name="nominal" class="form-control" placeholder="Nominal" value="" required>
                                         </div>
                                         <!-- Radio -->
                                         <h4 class="form-label col-12 col-md-12 mb-2">Payment Method</h4>
                                         <!-- Custom control -->
                                         <div class="form-group col-12 col-md-12 mb-1 p-0">
                                             <div class="custom-control custom-radio ">
-                                                <input type="radio" class="custom-control-input" id="ovo" name="pay">
-                                                <label class="custom-control-label" for="ovo"><img src="../assets/images/pembayaran/ovo.png" width="60">
+                                                <input type="radio" class="custom-control-input" id="ovo" name="pay" value="OVO Payment">
+                                                <label class="custom-control-label" for="ovo"><img src="<?= base_url() ?>assets/images/pembayaran/ovo.png" width="60">
                                                 </label>
                                             </div>
                                         </div>
                                         <!-- Custom control -->
                                         <div class="form-group col-12 col-md-12 mb-1 p-0">
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="gopay" name="pay">
-                                                <label class="custom-control-label" for="gopay"><img src="../assets/images/pembayaran/gopay.png" width="90">
+                                                <input type="radio" class="custom-control-input" id="gopay" name="pay" value="GOPAY Payment">
+                                                <label class="custom-control-label" for="gopay"><img src="<?= base_url() ?>assets/images/pembayaran/gopay.png" width="90">
                                                 </label>
                                             </div>
                                         </div>
                                         <!-- Custom control -->
                                         <div class="form-group col-12 col-md-12 mb-1 p-0">
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="dana" name="pay">
-                                                <label class="custom-control-label" for="dana"><img src="../assets/images/pembayaran/dana.jfif" width="70">
+                                                <input type="radio" class="custom-control-input" id="dana" name="pay" value="DANA Payment">
+                                                <label class="custom-control-label" for="dana"><img src="<?= base_url() ?>assets/images/pembayaran/dana.jfif" width="70">
                                                 </label>
                                             </div>
                                         </div>
-                                        <!-- Custom control -->
-                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="vc1" name="pay">
-                                                <label class="custom-control-label m-0 p-0" for="vc1">Virtual
-                                                    Account BNI
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- Custom control -->
-                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="vc2" name="pay">
-                                                <label class="custom-control-label" for="vc2">Virtual
-                                                    Account BRI
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- Custom control -->
-                                        <div class="form-group col-12 col-md-12 mb-1 p-0">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="vc3" name="pay">
-                                                <label class="custom-control-label" for="vc3">DLL (gatau
-                                                    bayar pake apa lagi)
-                                                </label>
-                                            </div>
-                                        </div>
-
+                                        <button class="btn btn-secondary btn-sm my-3" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success btn-sm m-3">Submit</button>
                                     </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary btn-sm">Submit</button>
-                                </div>
+
                             </div>
                         </div>
                     </div>

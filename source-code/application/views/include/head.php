@@ -41,7 +41,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- Mobile view nav wrap -->
             <?php
             if (!empty($user)) {
-            ?>
+                ?>
                 <ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap ">
                     <li class="dropdown stopevent">
                         <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary" href="#!" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -249,15 +249,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbar-default">
 
-                <form class="mt-3 mt-lg-0 ml-lg-3 d-flex align-items-center">
-                    <span class="position-absolute pl-3 search-icon">
-                        <i class="fe fe-search"></i>
-                    </span>
-                    <input type="search" class="form-control pl-6" placeholder="Search Courses" />
-                </form>
+
                 <?php
                 if (empty($user)) {
-                ?>
+                    ?>
                     <ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
                         <li class="dropdown d-inline-block stopevent">
                             <a href="<?= base_url('login') ?>" class="btn btn-primary">Login</a>
