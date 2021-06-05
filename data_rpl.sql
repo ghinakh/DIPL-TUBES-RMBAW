@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Bulan Mei 2021 pada 17.59
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 7.4.15
+-- Generation Time: Jun 04, 2021 at 07:02 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,10 +34,17 @@ CREATE TABLE `admin` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `nama_lengkap`, `email`, `password`) VALUES
+(1, 'admin satu', 'admin@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konfigurasi_web`
+-- Table structure for table `konfigurasi_web`
 --
 
 CREATE TABLE `konfigurasi_web` (
@@ -49,7 +56,7 @@ CREATE TABLE `konfigurasi_web` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `konfigurasi_web`
+-- Dumping data for table `konfigurasi_web`
 --
 
 INSERT INTO `konfigurasi_web` (`id`, `nama_website`, `author`, `logo`, `deskripsi`) VALUES
@@ -58,7 +65,7 @@ INSERT INTO `konfigurasi_web` (`id`, `nama_website`, `author`, `logo`, `deskrips
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mobil`
+-- Table structure for table `mobil`
 --
 
 CREATE TABLE `mobil` (
@@ -74,7 +81,7 @@ CREATE TABLE `mobil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mobil`
+-- Dumping data for table `mobil`
 --
 
 INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `harga`, `gambar`, `rating`, `url_view`) VALUES
@@ -84,7 +91,7 @@ INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `harga`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penyewa`
+-- Table structure for table `penyewa`
 --
 
 CREATE TABLE `penyewa` (
@@ -102,17 +109,17 @@ CREATE TABLE `penyewa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `penyewa`
+-- Dumping data for table `penyewa`
 --
 
 INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `saldo`, `email`, `password`) VALUES
-(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '999999', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '1000000', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
 (2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `promo`
+-- Table structure for table `promo`
 --
 
 CREATE TABLE `promo` (
@@ -123,10 +130,18 @@ CREATE TABLE `promo` (
   `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `promo`
+--
+
+INSERT INTO `promo` (`id`, `id_mobil`, `id_admin`, `kode_promo`, `deskripsi`) VALUES
+(1, 2, 1, 'RENTALKUY', 'ini deskripsi dari kode promo'),
+(2, 3, 1, 'ASDFGHJ', 'aaavvvvbbbbbnnnnmmmmmm');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `riwayat`
+-- Table structure for table `riwayat`
 --
 
 CREATE TABLE `riwayat` (
@@ -143,18 +158,18 @@ CREATE TABLE `riwayat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `riwayat`
+-- Dumping data for table `riwayat`
 --
 
 INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `tanggal_mulai`, `tanggal_selesai`, `status`, `rate`, `note`, `id_url`) VALUES
-(1, 3, 1, 'Penyewa', '2021-04-18', '2021-04-19', '1', '1', NULL, 'cf2f6ed3086ad55fcce87369a8692a2f'),
+(1, 3, 1, 'Penyewa', '2021-04-18', '2021-04-19', '0', '3', NULL, 'cf2f6ed3086ad55fcce87369a8692a2f'),
 (2, 2, 1, 'Penyewa', '2021-04-19', '2021-04-20', '0', '5', 'gila kaleeee', '62690c9c38ccb2e55ef01bf38687507a'),
 (3, 2, 2, 'Penyewa', '2021-05-24', '2021-05-26', '0', '1', 'Kotor banget tapi mobil anak muda', '3f76818f507fe7eb6422bd0703c64c88');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `riwayat_saldo`
+-- Table structure for table `riwayat_saldo`
 --
 
 CREATE TABLE `riwayat_saldo` (
@@ -168,7 +183,7 @@ CREATE TABLE `riwayat_saldo` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `saldo`
+-- Table structure for table `saldo`
 --
 
 CREATE TABLE `saldo` (
@@ -183,16 +198,17 @@ CREATE TABLE `saldo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `saldo`
+-- Dumping data for table `saldo`
 --
 
 INSERT INTO `saldo` (`id`, `id_penyewa`, `id_staff`, `nominal`, `pembayaran`, `tanggal`, `status`, `id_url`) VALUES
-(2, 1, NULL, 999999, 'OVO Payment', '2021-04-26', 0, 'a2b7b07a571b0a6de1794a3153cea321');
+(2, 1, NULL, 999999, 'OVO Payment', '2021-04-26', 0, 'a2b7b07a571b0a6de1794a3153cea321'),
+(4, 1, NULL, 1, 'DANA Payment', '2021-06-04', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `staff_garasi`
+-- Table structure for table `staff_garasi`
 --
 
 CREATE TABLE `staff_garasi` (
@@ -206,43 +222,45 @@ CREATE TABLE `staff_garasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `staff_garasi`
+-- Dumping data for table `staff_garasi`
 --
 
 INSERT INTO `staff_garasi` (`id`, `nama_lengkap`, `nik`, `sim`, `email`, `password`, `status`) VALUES
-(1, 'Gready Michael', 1215123156, 1321589494, 'staff@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'AKTIF');
+(1, 'Gready Michael', 1215123156, 1321589494, 'staff@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'AKTIF'),
+(2, 'Joanne Sh', 12334567, 76544332, 'staff2@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'PENDING'),
+(3, 'Staff Garasi', 987654321, 989876543, 'staffgarasi@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'REJECT');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `konfigurasi_web`
+-- Indexes for table `konfigurasi_web`
 --
 ALTER TABLE `konfigurasi_web`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `mobil`
+-- Indexes for table `mobil`
 --
 ALTER TABLE `mobil`
   ADD PRIMARY KEY (`id`),
   ADD KEY `mobil_staff_fk1` (`id_staff`);
 
 --
--- Indeks untuk tabel `penyewa`
+-- Indexes for table `penyewa`
 --
 ALTER TABLE `penyewa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `promo`
+-- Indexes for table `promo`
 --
 ALTER TABLE `promo`
   ADD PRIMARY KEY (`id`),
@@ -250,7 +268,7 @@ ALTER TABLE `promo`
   ADD KEY `promo_admin_fk2` (`id_admin`);
 
 --
--- Indeks untuk tabel `riwayat`
+-- Indexes for table `riwayat`
 --
 ALTER TABLE `riwayat`
   ADD PRIMARY KEY (`id`),
@@ -258,7 +276,7 @@ ALTER TABLE `riwayat`
   ADD KEY `riwayat_penyewa_fk2` (`id_penyewa`);
 
 --
--- Indeks untuk tabel `riwayat_saldo`
+-- Indexes for table `riwayat_saldo`
 --
 ALTER TABLE `riwayat_saldo`
   ADD PRIMARY KEY (`id`),
@@ -266,7 +284,7 @@ ALTER TABLE `riwayat_saldo`
   ADD KEY `saldo_staff_fk2` (`id_staff`);
 
 --
--- Indeks untuk tabel `saldo`
+-- Indexes for table `saldo`
 --
 ALTER TABLE `saldo`
   ADD PRIMARY KEY (`id`),
@@ -274,95 +292,95 @@ ALTER TABLE `saldo`
   ADD KEY `saldo_staff_fk2` (`id_staff`);
 
 --
--- Indeks untuk tabel `staff_garasi`
+-- Indexes for table `staff_garasi`
 --
 ALTER TABLE `staff_garasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `konfigurasi_web`
+-- AUTO_INCREMENT for table `konfigurasi_web`
 --
 ALTER TABLE `konfigurasi_web`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `mobil`
+-- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `penyewa`
+-- AUTO_INCREMENT for table `penyewa`
 --
 ALTER TABLE `penyewa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `promo`
+-- AUTO_INCREMENT for table `promo`
 --
 ALTER TABLE `promo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `riwayat`
+-- AUTO_INCREMENT for table `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `riwayat_saldo`
+-- AUTO_INCREMENT for table `riwayat_saldo`
 --
 ALTER TABLE `riwayat_saldo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `saldo`
+-- AUTO_INCREMENT for table `saldo`
 --
 ALTER TABLE `saldo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `staff_garasi`
+-- AUTO_INCREMENT for table `staff_garasi`
 --
 ALTER TABLE `staff_garasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `mobil`
+-- Constraints for table `mobil`
 --
 ALTER TABLE `mobil`
   ADD CONSTRAINT `mobil_staff_fk1` FOREIGN KEY (`id_staff`) REFERENCES `staff_garasi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `promo`
+-- Constraints for table `promo`
 --
 ALTER TABLE `promo`
   ADD CONSTRAINT `promo_admin_fk2` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `promo_mobil_fk1` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `riwayat`
+-- Constraints for table `riwayat`
 --
 ALTER TABLE `riwayat`
   ADD CONSTRAINT `riwayat_mobil_fk1` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `riwayat_penyewa_fk2` FOREIGN KEY (`id_penyewa`) REFERENCES `penyewa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `saldo`
+-- Constraints for table `saldo`
 --
 ALTER TABLE `saldo`
   ADD CONSTRAINT `saldo_penyewa_fk1` FOREIGN KEY (`id_penyewa`) REFERENCES `penyewa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
