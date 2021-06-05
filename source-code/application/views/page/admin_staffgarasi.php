@@ -8,26 +8,26 @@
 
 
   <!-- Favicon icon-->
-  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/') ?>images/favicon/favicon.ico">
 
   <!-- Font Awesome Icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
   <!-- Libs CSS -->
-  <link href="../assets/fonts/feather/feather.css" rel="stylesheet" />
-  <link href="../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
-  <link href="../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
-  <link href="../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
-  <link href="../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
-  <link href="../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
-  <link href="../assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-  <link href="../assets/libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
-  <link href="../assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
-  <link href="../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>fonts/feather/feather.css" rel="stylesheet" />
+  <link href="<?= base_url('assets/') ?>libs/dragula/dist/dragula.min.css" rel="stylesheet" />
+  <link href="<?= base_url('assets/') ?>libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+  <link href="<?= base_url('assets/') ?>libs/prismjs/themes/prism.css" rel="stylesheet" />
+  <link href="<?= base_url('assets/') ?>libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+  <link href="<?= base_url('assets/') ?>libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+  <link href="<?= base_url('assets/') ?>libs/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>libs/%40yaireo/tagify/dist/tagify.css" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>libs/tippy.js/dist/tippy.css" rel="stylesheet">
 
   <!-- Theme CSS -->
-  <link rel="stylesheet" href="../assets/css/theme.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>css/theme.min.css">
   <title>Garage Staff | RentalKuy</title>
 </head>
 
@@ -38,7 +38,7 @@
     <nav class="navbar-vertical navbar">
       <div class="nav-scroller">
         <!-- Brand logo -->
-        <a class="navbar-brand" href=""><img src="../assets/images/logo-negative.png" alt="" width="200" /></a>
+        <a class="navbar-brand" href=""><img src="<?= base_url('assets/') ?>images/logo-negative.png" alt="" width="200" /></a>
         <!-- Navbar nav -->
         <ul class="navbar-nav flex-column" id="sideNavbar">
           <!-- Nav item -->
@@ -178,7 +178,7 @@
                         <tbody>
                           <?php
                           foreach ($pemilik as $staff) {
-                            ?>
+                          ?>
                             <tr>
                               <td class="border-top-0">
                                 <h4 class="mb-1 text-primary-hover">
@@ -198,29 +198,29 @@
                               </td>
                               <td class="align-middle border-top-0">
                                 <?php
-                                  if ($staff['status'] == 'PENDING') {
-                                    $status = '<span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending';
-                                  } else if ($staff['status'] == 'AKTIF') {
-                                    $status = '<span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified';
-                                  } else if ($staff['status'] == 'REJECT') {
-                                    $status = '<span class="badge-dot bg-danger mr-1 d-inline-block align-middle"></span>Rejected';
-                                  }
-                                  echo $status;
-                                  ?>
+                                if ($staff['status'] == 'PENDING') {
+                                  $status = '<span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending';
+                                } else if ($staff['status'] == 'AKTIF') {
+                                  $status = '<span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified';
+                                } else if ($staff['status'] == 'REJECT') {
+                                  $status = '<span class="badge-dot bg-danger mr-1 d-inline-block align-middle"></span>Rejected';
+                                }
+                                echo $status;
+                                ?>
                               </td>
                               <td class="align-middle border-top-0">
                                 <?php
-                                  if ($staff['status'] == 'PENDING') {
-                                    $button = '<a href="' . base_url() . 'Admin/reject_status/' . $staff['id'] . '" class="btn btn-outline-white btn-sm">Reject</a>
+                                if ($staff['status'] == 'PENDING') {
+                                  $button = '<a href="' . base_url() . 'Admin/reject_status/' . $staff['id'] . '" class="btn btn-outline-white btn-sm">Reject</a>
                                     <a href="' . base_url() . 'Admin/approve_status/' . $staff['id'] . '" class="btn btn-success btn-sm">Approved</a>';
-                                  } else if ($staff['status'] == 'AKTIF') {
-                                    $button = '<a type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal_change_status' . $staff['id'] . '">Change Status</a>
+                                } else if ($staff['status'] == 'AKTIF') {
+                                  $button = '<a type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal_change_status' . $staff['id'] . '">Change Status</a>
                                     <a href="' . base_url() . 'Admin/delete_staff/' . $staff['id'] . '" class="btn btn-danger btn-sm">Delete</a>';
-                                  } else {
-                                    $button = '';
-                                  }
-                                  echo $button;
-                                  ?>
+                                } else {
+                                  $button = '';
+                                }
+                                echo $button;
+                                ?>
                               </td>
                               <!-- Modal -->
                               <div class="modal fade" id="modal_change_status<?= $staff['id'] ?>" role="dialog">
@@ -236,14 +236,14 @@
                                         <input type="hidden" class="form-control mb-2" name="id_staff" id="id_staff" value="<?= $staff['id'] ?>">
                                         <div class="form-check form-check-inline">
                                           <input class="form-check-input" type="radio" name="status" id="pending" value="PENDING" <?php if ($staff['status'] == 'PENDING') {
-                                                                                                                                      echo "checked";
-                                                                                                                                    } ?>>
+                                                                                                                                    echo "checked";
+                                                                                                                                  } ?>>
                                           <label class="form-check-label" for="pending">Pending</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                           <input class="form-check-input" type="radio" name="status" id="aktif" value="AKTIF" <?php if ($staff['status'] == 'AKTIF') {
-                                                                                                                                  echo "checked";
-                                                                                                                                } ?>>
+                                                                                                                                echo "checked";
+                                                                                                                              } ?>>
                                           <label class="form-check-label" for="aktif">Verified</label>
                                         </div>
 
@@ -273,35 +273,35 @@
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <!-- Libs JS -->
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/libs/odometer/odometer.min.js"></script>
-  <script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-  <script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-  <script src="../assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-  <script src="../assets/libs/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="../assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
-  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="../assets/libs/quill/dist/quill.min.js"></script>
-  <script src="../assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
-  <script src="../assets/libs/dragula/dist/dragula.min.js"></script>
-  <script src="../assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
-  <script src="../assets/libs/dropzone/dist/min/dropzone.min.js"></script>
-  <script src="../assets/libs/jQuery.print/jQuery.print.js"></script>
-  <script src="../assets/libs/prismjs/prism.js"></script>
-  <script src="../assets/libs/prismjs/components/prism-scss.min.js"></script>
-  <script src="../assets/libs/%40yaireo/tagify/dist/tagify.min.js"></script>
-  <script src="../assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
-  <script src="../assets/libs/%40popperjs/core/dist/umd/popper.min.js"></script>
-  <script src="../assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
-  <script src="../assets/libs/typed.js/lib/typed.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/jquery/dist/jquery.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/odometer/odometer.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/flatpickr/dist/flatpickr.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/inputmask/dist/jquery.inputmask.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/quill/dist/quill.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/dragula/dist/dragula.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/dropzone/dist/min/dropzone.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/jQuery.print/jQuery.print.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/prismjs/prism.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/prismjs/components/prism-scss.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/%40yaireo/tagify/dist/tagify.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/tiny-slider/dist/min/tiny-slider.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/%40popperjs/core/dist/umd/popper.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
+  <script src="<?= base_url('assets/') ?>libs/typed.js/lib/typed.min.js"></script>
 
   <!-- clipboard -->
   <script src="../../../cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
 
 
   <!-- Theme JS -->
-  <script src="../assets/js/theme.min.js"></script>
+  <script src="<?= base_url('assets/') ?>js/theme.min.js"></script>
 
 
 </body>

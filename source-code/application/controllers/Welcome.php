@@ -64,6 +64,21 @@ class Welcome extends CI_Controller
 				$this->load->view('include/head', $data);
 				$this->load->view('page/dashboard_penyewa', $data);
 			} else {
+				if (count($n) > 1) {
+					$total = 1;
+				} else {
+					$total = count($n) - 1;
+				}
+				for ($x = 0; $x <= $total; $x++) {
+					$foto .= substr($n[$x], 0, 1);
+				}
+				$data["foto_profile"] = $foto;
+				$con['conditions'] = array(
+					'id_staff' => $ses[0]["id"],
+				);
+				$data["mobil"] = $this->Database->getData("mobil", $con);
+				$this->load->view('include/nav_staff', $data);
+				$this->load->view('page/dashboard_staff', $data);
 			}
 		endif;
 	}
