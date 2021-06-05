@@ -1,223 +1,273 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-?>
-<!-- Page header -->
-<div class="pt-lg-8 pb-lg-16 pt-8 pb-12 bg-primary">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-xl-7 col-lg-7 col-md-12">
-                <div>
-                    <h1 class="text-white display-4 font-weight-semi-bold"><?= $data_mobil['nama_mobil'] ?></h1>
-                    <div class="d-flex align-items-center">
-                        <span class="text-white ml-3"><i class="fe fe-user text-white-50"></i> <?= $total_pemesanan ?> Menyewa Mobil ini </span>
-                        <span class="text-white ml-4 d-none d-md-block">
-                            <svg width="16" height="16" viewBox="0 0 16
-                              16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="3" y="8" width="2" height="6" rx="1" fill="#DBD8E9"></rect>
-                                <rect x="7" y="5" width="2" height="9" rx="1" fill="#DBD8E9"></rect>
-                                <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
-                            </svg>
-                            <span class="align-middle">
-                                <?= $data_mobil['jenis'] ?>
-                            </span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Page content -->
-<div class="pb-10">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 col-12 mt-n8 mb-4 mb-lg-0">
-                <!-- Card -->
-                <div class="card rounded-lg">
-                    <!-- Card header -->
-                    <div class="card-header border-bottom-0 p-0">
-                        <div>
-                            <!-- Nav -->
-                            <ul class="nav nav-lb-tab" id="tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="review-tab" data-toggle="pill" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="faq-tab" data-toggle="pill" href="#faq" role="tab" aria-controls="faq" aria-selected="false">FAQ</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="tab-content" id="tabContent">
-                            <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-                                <!-- Reviews -->
-                                <div class="mb-3">
-                                    <div class="d-lg-flex align-items-center justify-content-between mb-5">
-                                        <!-- Reviews -->
-                                        <div class="mb-3 mb-lg-0">
-                                            <h3 class="mb-0">Reviews</h3>
-                                        </div>
-                                    </div>
-                                    <?php
-                                    if (empty($rate)) {
-                                    } else {
-                                        foreach ($rate as $pemakai) {
-                                            foreach ($penyewa as $akun) {
-                                                if ($pemakai['id_penyewa'] == $akun['id']) {
-                                                    $nama = $akun['nama_lengkap'];
-                                                    $sewa = $pemakai['tanggal_mulai'];
-                                                    $reting = $pemakai['rate'];
-                                                    $comment = $pemakai['note'];
-                                                }
-                                            }
-                                    ?>
-                                            <!-- Rating -->
-                                            <div class="media border-bottom pb-4 mb-4">
-                                                <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
-                                                <div class="media-body ml-3">
-                                                    <h4 class="mb-1">
-                                                        <?= $nama ?><br />
-                                                        <span class="font-size-xs text-muted">Rent : <?= $sewa ?></span>
-                                                    </h4>
-                                                    <div class="font-size-xs mb-2">
-                                                        <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
-                                                    </div>
-                                                    <p><?= $comment ?></p>
-                                                </div>
-                                            </div>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                            <!-- Tab pane -->
-                            <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
-                                <!-- FAQ -->
-                                <div>
-                                    <h3 class="mb-3">Frequently Asked Questions</h3>
-                                    <div class="mb-4">
-                                        <h4>What form of identification do I need to rental the car?</h4>
-                                        <p>
-                                            To rent the car you need an ID card and Driver License (Surat Izin Mengemudi / SIM A)
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <h4>What about fuel costs? It is included?</h4>
-                                        <p>
-                                            No, It is not. The rental price does not include fuel costs.
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <h4>How do I pay?</h4>
-                                        <p>
-                                            We provide two ways to pay. First, you can use your balance on our website or pay directly to the staff when you get the rental car.
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <h4>Can I rent a car if I don't have a credit card?</h4>
-                                        <p>Yes, you can pay directly to the staff when you get the rental car. </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <h4>How do I return the car?</h4>
-                                        <p>On the web you can go to Car History > Return Car and fill out the return form. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-12 mt-lg-n22">
-                <!-- Card -->
-                <div class="card mb-3 mb-4">
-                    <div class="p-1">
-                        <div class="d-flex justify-content-center position-relative rounded py-15 border-white border rounded-lg bg-cover" style="background-image: url(<?= base_url('assets/images/mobil/' . $data_mobil['gambar']) ?>);">
-                        </div>
-                    </div>
-                    <!-- Card body -->
-                    <div class="card-body">
-                        <!-- Price single page -->
-                        <div class="mb-3">
-                            <span class="text-dark font-weight-bold h2">Rp. <?= number_format($data_mobil['harga'], 0, ',', '.') ?></span><br />
-                            <hr class="mx-3" />
-                            <span class="font-size-medium"><span class="text-warning">4.5</span><span class="mdi mdi-star text-warning mr-2"></span>
-                        </div>
-                        <?php if ($data_mobil['full'] == 1) { ?>
-                            <button type="button" class="btn btn-success btn-block" disabled>Mobil sedang digunakan</button>
-                        <?php } else { ?>
-                            <a href="<?= base_url("/payment/carnow/" . $data_mobil['url_view'] . "/" . md5("RentalKuy" . rand(10000000, 99999999))) ?>" class="btn btn-success btn-block">Rent Now</a>
-                        <?php } ?>
-                    </div>
-                </div>
-                <!-- Card -->
-                <div class="card mb-4">
-                    <div>
-                        <!-- Card header -->
-                        <div class="card-header">
-                            <h4 class="mb-0">Facilities</h4>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item bg-transparent"><i class="fe fe-check-circle align-middle mr-2 text-primary"></i>4-6 Adult Passengers</li>
-                            <li class="list-group-item bg-transparent"><i class="fe fe-briefcase mr-2 align-middle text-success"></i>2 Large Suitcases</li>
-                            <li class="list-group-item bg-transparent"><i class="fe fe-cloud-snow align-middle mr-2 text-info"></i>Air Conditioner</li>
-                            <li class="list-group-item bg-transparent"><i class="fe fe-circle align-middle mr-2 text-warning"></i>Manual</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer -->
-<!-- Footer -->
-<div class="footer">
-    <div class="container">
-        <div class="row align-items-center no-gutters border-top py-2">
-            <!-- Desc -->
-            <div class="col-md-6 col-12 text-center text-md-left">
-                <span>© 2021 RentalKuy. All Rights Reserved.</span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Scripts -->
-<!-- Libs JS -->
-<script src="<?= base_url() ?>assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/odometer/odometer.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/flatpickr/dist/flatpickr.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/inputmask/dist/jquery.inputmask.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/quill/dist/quill.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/file-upload-with-preview/dist/file-upload-with-preview.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/dragula/dist/dragula.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/bs-stepper/dist/js/bs-stepper.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/dropzone/dist/min/dropzone.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/jQuery.print/jQuery.print.js"></script>
-<script src="<?= base_url() ?>assets/libs/prismjs/prism.js"></script>
-<script src="<?= base_url() ?>assets/libs/prismjs/components/prism-scss.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/@yaireo/tagify/dist/tagify.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/tiny-slider/dist/min/tiny-slider.js"></script>
-<script src="<?= base_url() ?>assets/libs/@popperjs/core/dist/umd/popper.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/tippy.js/dist/tippy-bundle.umd.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/typed.js/lib/typed.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>
-<script src="<?= base_url() ?>assets/libs/jsvectormap/dist/maps/world.js"></script>
 
+class Service extends MY_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+        if (admin() == false) exit(redirect(base_url('admin/auth/logout')));
+    }
+    public function index()
+    {
+        // FORM INPUT //
+        $field = [
+            'service.id' => 'ID',
+            'service_category.name' => 'KATEGORI',
+            'api.name' => 'API',
+            'service.api_service_id' => 'API ID LAYANAN',
+            'service.name' => 'NAMA',
+            'service.price' => 'HARGA',
+            'service.profit' => 'KEUNTUNGAN',
+            'service.status' => 'STATUS',
+        ];
+        $operator = [
+            'equal' => 'WHERE =',
+            'not_equal' => 'WHERE <>',
+            'less_than' => 'WHERE <=',
+            'more_than' => 'WHERE >=',
+            'like' => 'LIKE %value%'
+        ];
+        $status = [
+            '1' => ['name' => '<i class="fa fa-check fa-fw"></i>', 'color' => 'success'],
+            '0' => ['name' => '<i class="fa fa-times fa-fw"></i>', 'color' => 'danger'],
+        ];
+        // END FORM INPUT //
+        // SETTINGS //
+        $data_query = [
+            'select' => 'service.*, service_category.name AS service_category_name, api.name AS api_name',
+            'join' => [
+                [
+                    'table' => 'service_category',
+                    'on' => 'service_category.id = service.service_category_id',
+                    'param' => 'left'
+                ],
+                [
+                    'table' => 'api',
+                    'on' => 'api.id = service.api_id',
+                    'param' => 'left'
+                ]
+            ],
+            'order_by' => 'service.id DESC',
+            'limit' => '30',
+            'offset' => ($this->uri->segment(4)) ? $this->uri->segment(4) : 0
+        ];
+        // END SETTINGS //
+        // SORT & SEARCH
+        if ($this->input->get('sort_field') <> '' and $this->input->get('sort_type') <> '') {
+            if (array_key_exists($this->input->get('sort_field'), $field) == false) {
+                exit(redirect(base_url('admin/' . $this->uri->segment(2) . '/index')));
+            }
+            if (in_array($this->input->get('sort_type'), array('asc', 'desc')) == false) {
+                exit(redirect(base_url('admin/' . $this->uri->segment(2) . '/index')));
+            }
+            $data_query['order_by'] = $this->input->get('sort_field') . ' ' . $this->input->get('sort_type');
+        }
+        if ($this->input->get('field') <> '' and $this->input->get('operator') <> '' and $this->input->get('value') <> '') {
+            if (array_key_exists($this->input->get('field'), $field) == false) {
+                exit(redirect(base_url('admin/' . $this->uri->segment(2) . '/index')));
+            }
+            if (array_key_exists($this->input->get('operator'), $operator) == false) {
+                exit(redirect(base_url('admin/' . $this->uri->segment(2) . '/index')));
+            }
+            if ($this->input->get('operator') == 'equal') {
+                $data_query['where'][] = [$this->input->get('field') => $this->input->get('value')];
+            } elseif ($this->input->get('operator') == 'not_equal') {
+                $data_query['where'][] = [$this->input->get('field') . ' <>' => $this->input->get('value')];
+            } elseif ($this->input->get('operator') == 'less_than') {
+                $data_query['where'][] = [$this->input->get('field') . ' <=' => $this->input->get('value')];
+            } elseif ($this->input->get('operator') == 'more_than') {
+                $data_query['where'][] = [$this->input->get('field') . ' >=' => $this->input->get('value')];
+            } else {
+                $data_query['where'][] = $this->input->get('field') . " LIKE '%" . $this->input->get('value') . "%'";
+            }
+        }
+        // END SORT & SEARCH
+        // SESSION FILTER //
+        if ($this->session->userdata('filter_service_service_category') <> '') {
+            $data_query['where'][]['service.service_category_id'] = $this->session->userdata('filter_service_service_category');
+        }
+        if ($this->session->userdata('filter_service_api') <> '') {
+            $data_query['where'][]['service.api_id'] = $this->session->userdata('filter_service_api');
+        }
+        // END SESSION FILTER //
+        // PAGINATION //
+        if ($this->uri->segment(4) <> '' and is_numeric($this->uri->segment(4)) == false) exit('No direct script access allowed');
+        $config['base_url'] = base_url('admin/' . $this->uri->segment(2) . '/index');
+        $config['total_rows'] = $this->service_model->get_count($data_query);
+        $config['per_page'] = $data_query['limit'];
+        $this->pagination->initialize($config);
+        // END PAGINATION //
+        $this->render_admin('admin/' . $this->uri->segment(2) . '/index', ['table' => $this->service_model->get_rows($data_query), 'total_data' => $config['total_rows'], 'field' => $field, 'operator' => $operator, 'status' => $status, 'service_category' => $this->service_category_model->get_rows(), 'api' => $this->api_model->get_rows()]);
+    }
+    public function form($i = '')
+    {
+        $target = $this->service_model->get_by_id($i);
+        $last = $this->db->order_by('id', "desc")->limit(1)->get('service')->row();
+        if ($target == false) { // add
+            if ($this->input->post()) {
+                $this->form_validation->set_rules('service_category_id', 'Kategori', 'required|numeric');
+                $this->form_validation->set_rules('api_id', 'API', 'required|numeric');
+                $this->form_validation->set_rules('api_service_id', 'API ID Layanan', 'required|alpha_numeric_spaces');
+                $this->form_validation->set_rules('name', 'Nama', 'required|min_length[1]|max_length[100]');
+                $this->form_validation->set_rules('description', 'Deskripsi', 'required');
+                $this->form_validation->set_rules('price', 'Harga', 'required|numeric');
+                $this->form_validation->set_rules('profit', 'Keuntungan', 'required|numeric');
+                $this->form_validation->set_rules('min', 'Minimal Pesan', 'required|numeric');
+                $this->form_validation->set_rules('max', 'Maksimal Pesan', 'required|numeric');
+                $this->form_validation->set_rules('type', 'Tipe', 'required|in_list[primary,custom_comments,custom_link]');
+                if ($this->form_validation->run() == true) {
+                    $data_input = [
+                        'service_category_id' => $this->db->escape_str($this->input->post('service_category_id')),
+                        'api_id' => $this->db->escape_str($this->input->post('api_id')),
+                        'api_service_id' => $this->db->escape_str($this->input->post('api_service_id')),
+                        'name' => $this->db->escape_str($this->input->post('name')),
+                        'description' => strip_tags($this->input->post('description')),
+                        'price' => $this->db->escape_str($this->input->post('price')),
+                        'profit' => $this->db->escape_str($this->input->post('profit')),
+                        'min' => $this->db->escape_str($this->input->post('min')),
+                        'max' => $this->db->escape_str($this->input->post('max')),
+                        'api' => ($this->input->post('api') <> '') ? '1' : '0',
+                        'type' => $this->db->escape_str($this->input->post('type')),
+                    ];
+                    if ($this->service_model->get_row(['name' => $data_input['name']])) {
+                        $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => 'Nama sudah ada didatabase.'));
+                    } else {
+                        $report = [
+                            'service_id' => $last->id + 1,
+                            'type' => "enable",
+                            'description' => "LAYANAN DIAKTIFKAN",
+                            'created_at' => date('Y-m-d H:i:s'),
+                        ];
+                        $insert_data = $this->service_model->insert_report($report);
+                        $insert_data = $this->service_model->insert($data_input);
+                        if ($insert_data) {
+                            $this->session->set_flashdata('result', array('alert' => 'success', 'title' => 'Tambah data berhasil!', 'msg' => 'Data <b>#' . $insert_data . '</b> berhasil ditambahkan.'));
+                            exit(redirect(base_url('admin/' . $this->uri->segment(2))));
+                        } else {
+                            $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => 'Kesalahan tidak terduga.'));
+                        }
+                    }
+                } else {
+                    $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => '<br />' . validation_errors()));
+                }
+            }
+            $this->render_admin('admin/' . $this->uri->segment(2) . '/add', ['service_category' => $this->service_category_model->get_rows(), 'api' => $this->api_model->get_rows()]);
+        } else { // edit
+            if ($this->input->post()) {
+                $this->form_validation->set_rules('service_category_id', 'Kategori', 'required|numeric');
+                $this->form_validation->set_rules('api_id', 'API', 'required|numeric');
+                $this->form_validation->set_rules('api_service_id', 'API ID Layanan', 'required|alpha_numeric_spaces');
+                $this->form_validation->set_rules('name', 'Nama', 'required|min_length[1]|max_length[100]');
+                $this->form_validation->set_rules('description', 'Deskripsi', 'required');
+                $this->form_validation->set_rules('price', 'Harga', 'required|numeric');
+                $this->form_validation->set_rules('profit', 'Keuntungan', 'required|numeric');
+                $this->form_validation->set_rules('min', 'Minimal Pesan', 'required|numeric');
+                $this->form_validation->set_rules('max', 'Maksimal Pesan', 'required|numeric');
+                $this->form_validation->set_rules('type', 'Tipe', 'required|in_list[primary,custom_comments,custom_link]');
+                if ($this->form_validation->run() == true) {
+                    $data_input = [
+                        'service_category_id' => $this->db->escape_str($this->input->post('service_category_id')),
+                        'api_id' => $this->db->escape_str($this->input->post('api_id')),
+                        'api_service_id' => $this->db->escape_str($this->input->post('api_service_id')),
+                        'name' => $this->db->escape_str($this->input->post('name')),
+                        'description' => strip_tags($this->input->post('description')),
+                        'price' => $this->db->escape_str($this->input->post('price')),
+                        'profit' => $this->db->escape_str($this->input->post('profit')),
+                        'min' => $this->db->escape_str($this->input->post('min')),
+                        'max' => $this->db->escape_str($this->input->post('max')),
+                        'api' => ($this->input->post('api') <> '') ? '1' : '0',
+                        'type' => $this->db->escape_str($this->input->post('type')),
+                    ];
+                    if ($data_input['name'] <> $target->name and $this->service_model->get_row(['name' => $data_input['name']])) {
+                        $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => 'Nama sudah ada didatabase.'));
+                    } else {
+                        $update_target = $this->service_model->update($data_input, ['id' => $i]);
+                        if ($update_target) {
 
-
-<!-- clipboard -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
-
-
-<!-- Theme JS -->
-<script src="<?= base_url() ?>assets/js/theme.min.js"></script>
-</body>
-
-</html>
+                            $report = [
+                                'service_id' => $i,
+                                'type' => "enable",
+                                'description' => "LAYANAN DIAKTIFKAN",
+                                'created_at' => date('Y-m-d H:i:s'),
+                            ];
+                            $this->service_model->insert_report($report);
+                            $this->session->set_flashdata('result', array('alert' => 'success', 'title' => 'Perubahan data berhasil!', 'msg' => 'Data <b>#' . $i . '</b> berhasil diperbaharui.'));
+                            exit(redirect(base_url('admin/' . $this->uri->segment(2))));
+                        } else {
+                            $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => 'Kesalahan tidak terduga.'));
+                        }
+                    }
+                } else {
+                    $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => '<br />' . validation_errors()));
+                }
+            }
+            $this->render_admin('admin/' . $this->uri->segment(2) . '/edit', ['target' => $target, 'service_category' => $this->service_category_model->get_rows(), 'api' => $this->api_model->get_rows()]);
+        }
+    }
+    public function delete($i = '')
+    {
+        $target = $this->service_model->get_by_id($i);
+        if ($target == false) show_404();
+        $delete_target = $this->service_model->delete(['id' => $i]);
+        if ($delete_target) {
+            $this->session->set_flashdata('result', array('alert' => 'success', 'title' => 'Hapus data berhasil!', 'msg' => 'Data <b>#' . $i . '</b> berhasil dihapus.'));
+        } else {
+            $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => 'Kesalahan tidak terduga.'));
+        }
+        redirect(base_url('admin/' . $this->uri->segment(2)));
+    }
+    public function detail($i = '')
+    {
+        $target = $this->service_model->get_by_id($i);
+        if ($target == false) show_404();
+        $this->load->view('admin/' . $this->uri->segment(2) . '/detail', ['target' => $target, 'service_category' => $this->service_category_model->get_by_id($target->service_category_id), 'api' => $this->api_model->get_by_id($target->api_id)]);
+    }
+    public function status($i = '', $status = '')
+    {
+        $target = $this->service_model->get_by_id($i);
+        if ($target == false) show_404();
+        if (in_array($status, ['0', '1']) == false) show_404();
+        if ($status == 1) {
+            $report = [
+                'service_id' => $i,
+                'type' => "enable",
+                'description' => "LAYANAN DIAKTIFKAN",
+                'created_at' => date('Y-m-d H:i:s'),
+            ];
+            $this->service_model->insert_report($report);
+        } else if ($status == 0) {
+            $report = [
+                'service_id' => $i,
+                'type' => "disable",
+                'description' => "LAYANAN DINONAKTIFKAN",
+                'created_at' => date('Y-m-d H:i:s'),
+            ];
+            $this->service_model->insert_report($report);
+        }
+        $update_target = $this->service_model->update(['status' => $status], ['id' => $i]);
+        if ($update_target) {
+            $this->session->set_flashdata('result', array('alert' => 'success', 'title' => 'Perubahan status berhasil!', 'msg' => 'Data <b>#' . $i . '</b> berhasil diubah.'));
+        } else {
+            $this->session->set_flashdata('result', array('alert' => 'danger', 'title' => 'Gagal!', 'msg' => 'Kesalahan tidak terduga.'));
+        }
+        redirect(base_url('admin/' . $this->uri->segment(2)));
+    }
+    public function filter()
+    {
+        $api = $this->api_model->get_by_id($this->input->post('api'));
+        if ($api) {
+            $this->session->set_userdata('filter_service_api', $this->input->post('api'));
+        } else {
+            $this->session->unset_userdata('filter_service_api');
+        }
+        $service_category = $this->service_category_model->get_by_id($this->input->post('service_category'));
+        if ($service_category) {
+            $this->session->set_userdata('filter_service_service_category', $this->input->post('service_category'));
+        } else {
+            $this->session->unset_userdata('filter_service_service_category');
+        }
+        redirect(base_url('admin/' . $this->uri->segment(2)));
+    }
+}
