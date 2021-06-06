@@ -53,6 +53,11 @@
                             <i class="nav-icon fa fa-plus mr-2"></i>Add Car
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="<?= base_url('staff/rating') ?>">
+                            <i class="nav-icon fa fa-star mr-2"></i> Lihat Rating
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

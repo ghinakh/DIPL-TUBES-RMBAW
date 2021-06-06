@@ -22,36 +22,127 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <!-- Form -->
-                    <form class="form-row">
+                    <form class="form-row" action="" method="post" enctype="multipart/form-data">
                         <div class="form-group col-12 col-md-6">
                             <label class="form-label" for="nama_mobil">Car Name</label>
-                            <input type="text" id="nama_mobil" class="form-control" placeholder="Car Name" required>
+                            <input type="text" name="nama_mobil" class="form-control" placeholder="Car Name" required>
                         </div>
                         <div class="form-group col-12 col-md-6">
                             <label class="form-label" for="stnk">STNK</label>
-                            <input type="text" id="stnk" class="form-control" placeholder="STNK" required>
+                            <input type="number" name="stnk" class="form-control" placeholder="STNK" required>
                         </div>
                         <div class="form-group col-12 col-md-6">
                             <label class="form-label">Fuel Type</label>
-                            <select class="selectpicker" data-width="100%">
+                            <select class="selectpicker" name="tipe" data-width="100%">
                                 <option value="">Select Type</option>
-                                <option value="1">Bensin</option>
-                                <option value="2">Diesel</option>
+                                <option value="Bensin">Bensin</option>
+                                <option value="Diesel">Diesel</option>
                             </select>
                         </div>
                         <div class="form-group col-12 col-md-6">
                             <label class="form-label" for="harga">Price</label>
-                            <input type="text" id="harga" class="form-control" placeholder="Price" required>
+                            <input type="text" name="harga" class="form-control" placeholder="Price" required>
                         </div>
                         <div class="form-group col-12 col-md-12">
                             <label for="gambar">Upload Picture</label>
-                            <div class="custom-file">
-                                <input type="file" id="gambar" class="custom-file-input">
-                                <label class="form-control custom-file-label" for="gambar">Choose file</label>
-                            </div>
+                            <input type="file" class="form-control" size="20" name="gambarnya" multiple="multiple" required="" />
                         </div>
                         <button type="submit" class="btn btn-success">Add Car</button>
                     </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
+            <!-- Page Header -->
+            <div class="border-bottom pb-4 mb-4 d-lg-flex align-items-center justify-content-between">
+                <div class="mb-2 mb-lg-0">
+                    <h1 class="mb-1 h2 font-weight-bold">Pending Cars</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-12">
+        <!-- Card -->
+        <div class="card rounded-lg">
+            <!-- Card header -->
+            <div class="card-header border-bottom-0 p-0 bg-white">
+            </div>
+            <div>
+                <!-- Table -->
+                <div class="tab-content" id="tabContent">
+                    <!--Tab pane -->
+                    <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+                        <div class="table-responsive border-0 overflow-y-hidden">
+                            <table class="table mb-0 ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            CAR NAME
+                                        </th>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            STNK
+                                        </th>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            PRICE
+                                        </th>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            TYPE
+                                        </th>
+                                        <th scope="col" class="border-0 text-uppercase">
+                                            RATING
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($mobil as $pemilik) { ?>
+                                        <tr>
+                                            <td class="border-top-0">
+                                                <div class="text-inherit">
+                                                    <div class="d-lg-flex align-items-center">
+                                                        <div>
+                                                            <img src="<?= base_url('assets/images/mobil/' . $pemilik['gambar']) ?>" alt="<?= $pemilik['nama_mobil'] ?>" class="img-4by3-lg rounded" />
+                                                        </div>
+                                                        <div class="ml-lg-3 mt-2 mt-lg-0">
+                                                            <h4 class="mb-1 text-primary-hover">
+                                                                <?= $pemilik['nama_mobil'] ?>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle border-top-0">
+                                                <div class="d-flex align-items-center">
+                                                    <?= $pemilik['stnk'] ?>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle border-top-0">
+                                                <div class="d-flex align-items-center">
+                                                    Rp. <?= number_format($pemilik['harga'], 0, ',', '.') ?>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle border-top-0">
+                                                <div class="d-flex align-items-center">
+                                                    <?= $pemilik['jenis'] ?>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle border-top-0">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="mdi mdi-star mr-n1 text-warning">
+                                                        <?= $pemilik['rating'] ?></p>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--Tab pane -->
                 </div>
             </div>
         </div>

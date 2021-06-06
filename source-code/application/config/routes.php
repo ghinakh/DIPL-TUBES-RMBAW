@@ -66,6 +66,9 @@ $route['change/password'] = 'Users/Password';
 $route['invoice'] = 'Users/Invoice';
 $route['invoice/(:any)'] = 'Payment/Detail/$1';
 
+$route['topup'] = 'Users/topup';
+$route['rating'] = 'Mobil/rate_car';
+
 /* CAR DETAILS */
 $route['cars/detail/(:any)'] = 'Mobil/getDetail/$1';
 $route['payment/carnow/(:any)/(:any)'] = 'Mobil/Buy/$1/$2';
@@ -78,7 +81,6 @@ $route['admin/penyewa'] = 'Admin/penyewa';
 $route['admin/promo'] = 'Admin/promo';
 $route['tambah_promo'] = 'Admin/tambah_promo';
 
-$route['staff'] = 'Staff';
+/* Staff Route */
 $route['staff/new-car'] = 'Staff/insert';
-$route['topup'] = 'Users/topup';
-$route['rating'] = 'Mobil/rate_car';
+$route['staff/rating'] = 'Staff/show_rating';
