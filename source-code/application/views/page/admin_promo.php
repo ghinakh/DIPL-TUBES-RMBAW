@@ -44,7 +44,7 @@
                 <ul class="navbar-nav flex-column" id="sideNavbar">
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link " href="<?= base_url('admin/mobil') ?>">
+                        <a class="nav-link " href="<?= base_url() ?>">
                             <i class="nav-icon fa fa-car mr-2"></i>Cars
                         </a>
                     </li>
@@ -167,6 +167,10 @@
                                                         <input type="text" class="form-control" id="kode_promo" name="kode_promo">
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="diskon" class="col-form-label">Discount:</label>
+                                                        <input type="text" class="form-control" id="diskon" name="diskon">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="deskripsi" class="col-form-label">Description:</label>
                                                         <input type="text" class="form-control" id="deskripsi" name="deskripsi">
                                                     </div>
@@ -195,6 +199,9 @@
                                                             CODE PROMO
                                                         </th>
                                                         <th scope="col" class="border-0 text-uppercase">
+                                                            DISCOUNT
+                                                        </th>
+                                                        <th scope="col" class="border-0 text-uppercase">
                                                             DESCRIPTION
                                                         </th>
                                                         <th scope="col" class="border-0 text-uppercase"></th>
@@ -216,6 +223,11 @@
                                                                         <td class="align-middle border-top-0">
                                                                             <div class="d-flex align-items-center">
                                                                                 <h5 class="mb-0"><?= $p['kode_promo'] ?></h5>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="align-middle border-top-0">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <h5 class="mb-0"><?= $p['diskon'] ?></h5>
                                                                             </div>
                                                                         </td>
                                                                         <td class="align-middle border-top-0">

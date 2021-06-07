@@ -108,6 +108,7 @@ class Admin extends CI_Controller
                     'id_mobil' => $this->input->post('mobil'),
                     'id_admin' => $data['user']['id'],
                     'kode_promo' => $this->input->post('kode_promo'),
+                    'diskon' => $this->input->post('diskon'),
                     'deskripsi' => $this->input->post('deskripsi')
                 ];
                 $this->Database->insert("promo", $data);

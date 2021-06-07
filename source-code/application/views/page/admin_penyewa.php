@@ -44,7 +44,7 @@
                 <ul class="navbar-nav flex-column" id="sideNavbar">
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link " href="<?= base_url('admin/mobil') ?>">
+                        <a class="nav-link " href="<?= base_url() ?>">
                             <i class="nav-icon fa fa-car mr-2"></i>Cars
                         </a>
                     </li>

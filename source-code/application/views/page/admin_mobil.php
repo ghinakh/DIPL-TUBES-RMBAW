@@ -42,9 +42,17 @@
                         GARAGE STAFF
                       </th>
                       <th scope="col" class="border-0 text-uppercase">
-                        ACTION
+                        DRIVER LICENSE
                       </th>
-                      <th scope="col" class="border-0 text-uppercase"></th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        TYPE
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        PRICE
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        RATING
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -52,7 +60,7 @@
                     foreach ($mobil as $kendaraan) {
                       foreach ($pemilik as $staff) {
                         if ($kendaraan['id_staff'] == $staff['id']) {
-                    ?>
+                          ?>
                           <tr>
                             <td class="border-top-0">
                               <div class="text-inherit">
@@ -75,57 +83,26 @@
                                 <h5 class="mb-0"><?= $staff['nama_lengkap'] ?></h5>
                               </div>
                             </td>
+                            <!-- ce -->
                             <td class="align-middle border-top-0">
-                              <!-- Button trigger modal -->
-                              <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal_detail<?= $kendaraan['id'] ?>">
-                                Detail
-                              </button>
-                              <!-- Modal "Detail" -->
-                              <div class="modal fade" id="modal_detail<?= $kendaraan['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="title_detail" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title h3 " id="title_detail">Car Detail</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form>
-                                        <div class="form-group">
-                                          <label for="nama_mobil" class="col-form-label">Car Name:</label>
-                                          <input type="text" class="form-control" id="nama_mobil" readonly value="<?= $kendaraan['nama_mobil'] ?>">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nama_staff" class="col-form-label">Staff Name:</label>
-                                          <input type="text" class="form-control" id="nama_staff" readonly value="<?= $staff['nama_lengkap'] ?>">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="stnk" class="col-form-label">Driver License:</label>
-                                          <input type="text" class="form-control" id="stnk" readonly value="<?= $kendaraan['stnk'] ?>">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="jenis" class="col-form-label">Type:</label>
-                                          <input type="text" class="form-control" id="jenis" readonly value="<?= $kendaraan['jenis'] ?>">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="harga" class="col-form-label">Price:</label>
-                                          <input type="text" class="form-control" id="harga" readonly value="<?= $kendaraan['harga'] ?>">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="rating" class="col-form-label">Rating:</label>
-                                          <input type="text" class="form-control" id="rating" readonly value="<?= $kendaraan['rating'] ?>">
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                                    </div>
-                                  </div>
-                                </div>
+                              <div class="d-flex align-items-center">
+                                <h5 class="mb-0"><?= $kendaraan['stnk'] ?></h5>
                               </div>
-                              <!-- End Modal "Detail" -->
-
+                            </td>
+                            <td class="align-middle border-top-0">
+                              <div class="d-flex align-items-center">
+                                <h5 class="mb-0"><?= $kendaraan['jenis'] ?></h5>
+                              </div>
+                            </td>
+                            <td class="align-middle border-top-0">
+                              <div class="d-flex align-items-center">
+                                <h5 class="mb-0"><?= $kendaraan['harga'] ?></h5>
+                              </div>
+                            </td>
+                            <td class="align-middle border-top-0">
+                              <div class="d-flex align-items-center">
+                                <h5 class="mb-0"><?= $kendaraan['rating'] ?></h5>
+                              </div>
                             </td>
                           </tr>
                     <?php

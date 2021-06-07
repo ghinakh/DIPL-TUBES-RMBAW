@@ -28,18 +28,17 @@ $harga_acak = $mobil['harga'] + $rand;
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
-                        <form>
-                            <div>
-                                <label>Nama</label> <br>
-                                <input name="nama" type="text" placeholder="Masukkan nama">
+                        <form class="form-row" action="" method="post" enctype="multipart/form-data">
+                            <div class="form-group col-12 col-md-6">
+                                <label class="form-label" for="nama">Name</label>
+                                <input type="text" name="nama" class="form-control" placeholder="nama" required>
                             </div>
-                            <div>
-                                <label>Alamat</label> <br>
-                                <input name="alamat" type="text" placeholder="Masukkan alamat">
+                            <div class="form-group col-12 col-md-6">
+                                <label class="form-label" for="alamat">Address</label>
+                                <input type="text" name="alamat" class="form-control" placeholder="alamat" required>
                             </div>
-                            <div>
-                                <button>Submit</button>
-                            </div>
+
+                            <input type="submit" class="btn btn-success btn-sm" value="Add Car">
                         </form>
                     </div>
                 </div>

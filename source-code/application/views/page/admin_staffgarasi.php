@@ -43,7 +43,7 @@
         <ul class="navbar-nav flex-column" id="sideNavbar">
           <!-- Nav item -->
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin/mobil') ?>">
+            <a class="nav-link" href="<?= base_url() ?>">
               <i class="nav-icon fa fa-car mr-2"></i>Cars
             </a>
           </li>
@@ -178,7 +178,7 @@
                         <tbody>
                           <?php
                           foreach ($pemilik as $staff) {
-                          ?>
+                            ?>
                             <tr>
                               <td class="border-top-0">
                                 <h4 class="mb-1 text-primary-hover">
@@ -198,29 +198,29 @@
                               </td>
                               <td class="align-middle border-top-0">
                                 <?php
-                                if ($staff['status'] == 'PENDING') {
-                                  $status = '<span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending';
-                                } else if ($staff['status'] == 'AKTIF') {
-                                  $status = '<span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified';
-                                } else if ($staff['status'] == 'REJECT') {
-                                  $status = '<span class="badge-dot bg-danger mr-1 d-inline-block align-middle"></span>Rejected';
-                                }
-                                echo $status;
-                                ?>
+                                  if ($staff['status'] == 'PENDING') {
+                                    $status = '<span class="badge-dot bg-warning mr-1 d-inline-block align-middle"></span>Pending';
+                                  } else if ($staff['status'] == 'AKTIF') {
+                                    $status = '<span class="badge-dot bg-success mr-1 d-inline-block align-middle"></span>Verified';
+                                  } else if ($staff['status'] == 'REJECT') {
+                                    $status = '<span class="badge-dot bg-danger mr-1 d-inline-block align-middle"></span>Rejected';
+                                  }
+                                  echo $status;
+                                  ?>
                               </td>
                               <td class="align-middle border-top-0">
                                 <?php
-                                if ($staff['status'] == 'PENDING') {
-                                  $button = '<a href="' . base_url() . 'Admin/reject_status/' . $staff['id'] . '" class="btn btn-outline-white btn-sm">Reject</a>
+                                  if ($staff['status'] == 'PENDING') {
+                                    $button = '<a href="' . base_url() . 'Admin/reject_status/' . $staff['id'] . '" class="btn btn-outline-white btn-sm">Reject</a>
                                     <a href="' . base_url() . 'Admin/approve_status/' . $staff['id'] . '" class="btn btn-success btn-sm">Approved</a>';
-                                } else if ($staff['status'] == 'AKTIF') {
-                                  $button = '<a type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal_change_status' . $staff['id'] . '">Change Status</a>
+                                  } else if ($staff['status'] == 'AKTIF') {
+                                    $button = '<a type="button" class="btn btn-secondary btn-sm mb-1" data-toggle="modal" data-target="#modal_change_status' . $staff['id'] . '">Change Status</a>
                                     <a href="' . base_url() . 'Admin/delete_staff/' . $staff['id'] . '" class="btn btn-danger btn-sm">Delete</a>';
-                                } else {
-                                  $button = '';
-                                }
-                                echo $button;
-                                ?>
+                                  } else {
+                                    $button = '';
+                                  }
+                                  echo $button;
+                                  ?>
                               </td>
                               <!-- Modal -->
                               <div class="modal fade" id="modal_change_status<?= $staff['id'] ?>" role="dialog">
@@ -236,14 +236,14 @@
                                         <input type="hidden" class="form-control mb-2" name="id_staff" id="id_staff" value="<?= $staff['id'] ?>">
                                         <div class="form-check form-check-inline">
                                           <input class="form-check-input" type="radio" name="status" id="pending" value="PENDING" <?php if ($staff['status'] == 'PENDING') {
-                                                                                                                                    echo "checked";
-                                                                                                                                  } ?>>
+                                                                                                                                      echo "checked";
+                                                                                                                                    } ?>>
                                           <label class="form-check-label" for="pending">Pending</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                           <input class="form-check-input" type="radio" name="status" id="aktif" value="AKTIF" <?php if ($staff['status'] == 'AKTIF') {
-                                                                                                                                echo "checked";
-                                                                                                                              } ?>>
+                                                                                                                                  echo "checked";
+                                                                                                                                } ?>>
                                           <label class="form-check-label" for="aktif">Verified</label>
                                         </div>
 
