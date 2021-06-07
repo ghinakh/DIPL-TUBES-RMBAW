@@ -83,6 +83,29 @@ class Welcome extends CI_Controller
 				$data["mobil"] = $this->Database->getData("mobil", $con);
 				$this->load->view('include/nav_staff', $data);
 				$this->load->view('page/dashboard_staff', $data);
+			} else if ($ses[1] == "admin") {
+				$data['user'] =  $ses[0];
+				$n = explode(' ', $ses[0]["nama_lengkap"]);
+				$foto = '';
+				if (count($n) > 1) {
+					$total = 1;
+				} else {
+					$total = count($n) - 1;
+				}
+				for ($x = 0; $x <= $total; $x++) {
+					$foto .= substr($n[$x], 0, 1);
+				}
+				$data["mobil"] = $this->Database->getData("mobil");
+				$data["pemilik"] = $this->Database->getData("staff_garasi");
+				$data["level"] = "admin";
+				$data["foto_profile"] = $foto;
+				$con['conditions'] = array(
+					'id_staff' => $ses[0]["id"],
+					'status' => 'Aktif',
+				);
+				$data["mobil"] = $this->Database->getData("mobil", $con);
+				$this->load->view('include/nav_admin', $data);
+				$this->load->view('page/admin_mobil', $data);
 			}
 		endif;
 	}

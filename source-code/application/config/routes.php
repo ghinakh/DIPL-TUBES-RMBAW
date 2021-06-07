@@ -73,8 +73,7 @@ $route['rating'] = 'Mobil/rate_car';
 $route['cars/detail/(:any)'] = 'Mobil/getDetail/$1';
 $route['payment/carnow/(:any)/(:any)'] = 'Mobil/Buy/$1/$2';
 
-/* Bagian Ghina */
-$route['admin/mobil'] = 'Admin/mobil';
+/* Adnub Route */
 $route['admin/staff'] = 'Admin/staff';
 $route['admin/change-status'] = 'Admin/change_status';
 $route['admin/penyewa'] = 'Admin/penyewa';
