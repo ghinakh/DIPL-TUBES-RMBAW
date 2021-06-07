@@ -15,8 +15,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<p class="text-white-50 mb-4 lead">
 						We give you the best of the best of our services. We provide facts that you need to know. From car rating, what's included and pick-up information
 					</p>
-					<a href="pages/course-filter-list.html" class="btn btn-success">Find Car</a>
-					<a href="pages/sign-in.html" class="btn btn-white">Are You Rent?</a>
 				</div>
 			</div>
 			<div class=" col-xl-7 col-lg-6 col-md-12 text-lg-right text-center">
@@ -211,14 +209,6 @@ if (!empty($orderan)) {
 						<span>© 2020 Geeks. All Rights Reserved.</span>
 					</div>
 					<!-- Links -->
-					<div class="col-12 col-md-6">
-						<nav class="nav nav-footer justify-content-center justify-content-md-end">
-							<a class="nav-link active pl-0" href="#!">Privacy</a>
-							<a class="nav-link" href="#!">Terms </a>
-							<a class="nav-link" href="#!">Feedback</a>
-							<a class="nav-link" href="#!">Support</a>
-						</nav>
-					</div>
 				</div>
 			</div>
 		</div>

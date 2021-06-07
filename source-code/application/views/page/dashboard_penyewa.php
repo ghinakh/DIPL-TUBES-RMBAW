@@ -15,8 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </h1>
                         <p class="text-white-50 mb-4 lead">
                             We give you the best of the best of our services. We provide facts that you need to know. From car rating, what's included and pick-up information
-                        </p>
-                        <a href="pages/course-filter-list.html" class="btn btn-success">Find Car</a>
+                        </p> 
                     </div>
                 </div>
                 <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-right text-center">
@@ -188,7 +187,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                             </h3>
                                         </div>
                                         <div class="bg mb-1 mr-2">
-                                            <a href="<?= base_url('cars/detail/' . $view_detail) ?>" class="btn btn-success btn-sm">Rent again</a>
+                                            <a href="<?= base_url('cars/detail/' . $view_detail) ?>" class="btn btn-success btn-sm">Rent Car</a>
                                         </div>
                                     </div>
                                 </div>
