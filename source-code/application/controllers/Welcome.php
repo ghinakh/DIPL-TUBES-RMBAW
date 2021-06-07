@@ -57,7 +57,10 @@ class Welcome extends CI_Controller
 				$data["orderan"] = $this->Database->getData("riwayat", $con);
 				$data["foto_profile"] = $foto;
 				$data["pemilik"] = $this->Database->getData("staff_garasi");
-				$data["mobil"] = $this->Database->getData("mobil");
+				$datamobil['conditions'] = array(
+					'status' => "Aktif",
+				);
+				$data["mobil"] = $this->Database->getData("mobil", $datamobil);
 				$rekomendasi_by = array("jenis", "harga", "rating");
 				$rekomendasi = array_rand($rekomendasi_by);
 				$data["mobil_rekomendasi"] = $this->Database->urut_secara("mobil", "rand", $rekomendasi_by[$rekomendasi]);

@@ -84,6 +84,10 @@ class Mobil extends CI_Controller
             );
             $route_url = $this->Database->getData("mobil", $con);
             if ($route_url) {
+                if ($this->input->post('rentbysaldo')) {
+                    var_dump("awawa");
+                    exit();
+                }
                 $data['mobil'] = $route_url[0];
                 $this->load->view('include/head', $data);
                 $this->load->view('page/checkout', $data);

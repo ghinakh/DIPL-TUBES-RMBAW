@@ -64,6 +64,7 @@ class Database extends CI_Model
     {
         $this->db->select('*');
         $this->db->from($nama_database);
+        $this->db->where("status", "Aktif");
         $this->db->order_by($by, $mode);
         $query = $this->db->get();
         $result = $query->result_array();
