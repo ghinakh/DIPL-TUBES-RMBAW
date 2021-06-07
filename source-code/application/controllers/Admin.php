@@ -12,39 +12,6 @@ class Admin extends CI_Controller
     }
 
 
-    public function mobil()
-    {
-        /* 
-            Pengecekan Session
-        */
-        if (!$this->session->userdata('credentials')) :
-            redirect(base_url('login'));
-        else :
-            $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
-            $ses = $this->session->userdata('credentials');
-            $data['user'] =  $ses[0];
-            $n = explode(' ', $ses[0]["nama_lengkap"]);
-            $foto = '';
-            if (count($n) > 1) {
-                $total = 1;
-            } else {
-                $total = count($n) - 1;
-            }
-            for ($x = 0; $x <= $total; $x++) {
-                $foto .= substr($n[$x], 0, 1);
-            }
-            $data["foto_profile"] = $foto;
-            if ($ses[1] == "admin") {
-                $data["mobil"] = $this->Database->getData("mobil");
-                $data["pemilik"] = $this->Database->getData("staff_garasi");
-                $data["level"] = "admin";
-            }
-            $this->load->view('page/admin_mobil', $data);
-        endif;
-    }
-
-
-
     public function staff()
     {
         if (!$this->session->userdata('credentials')) :

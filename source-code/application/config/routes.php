@@ -65,13 +65,14 @@ $route['history'] = 'Users/Riwayat';
 $route['change/password'] = 'Users/Password';
 $route['invoice'] = 'Users/Invoice';
 $route['invoice/(:any)'] = 'Payment/Detail/$1';
+$route['kupon'] = 'Users/kupon/';
 
 $route['topup'] = 'Users/topup';
 $route['rating'] = 'Mobil/rate_car';
 
 /* CAR DETAILS */
 $route['cars/detail/(:any)'] = 'Mobil/getDetail/$1';
-$route['payment/carnow/(:any)/(:any)'] = 'Mobil/Buy/$1/$2';
+$route['payment-rent/(:any)'] = 'Mobil/Buy/$1';
 
 /* Adnub Route */
 $route['admin/staff'] = 'Admin/staff';

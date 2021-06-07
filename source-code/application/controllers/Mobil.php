@@ -56,16 +56,41 @@ class Mobil extends CI_Controller
         }
     }
 
-    public function Buy($id_mobil, $rand)
+    public function Buy($id_mobil)
     {
-
-        $con['conditions'] = array(
-            'url_view' => $id_mobil,
-        );
-        $route_url = $this->Database->getData("mobil", $con);
-        if ($route_url) { } else {
-            $this->load->view('page/error');
-        }
+        if (!$this->session->userdata('credentials')) :
+            redirect(base_url());
+        else :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
+            $ses = $this->session->userdata('credentials');
+            $data['user'] =  $ses[0];
+            $n = explode(' ', $ses[0]["nama_lengkap"]);
+            $foto = '';
+            if (count($n) > 1) {
+                $total = 1;
+            } else {
+                $total = count($n) - 1;
+            }
+            for ($x = 0; $x <= $total; $x++) {
+                $foto .= substr($n[$x], 0, 1);
+            }
+            $con['conditions'] = array(
+                'id_penyewa' => $ses[0]["id"],
+            );
+            $data["orderan"] = $this->Database->getData("riwayat", $con);
+            $data["foto_profile"] = $foto;
+            $con['conditions'] = array(
+                'url_view' => $id_mobil,
+            );
+            $route_url = $this->Database->getData("mobil", $con);
+            if ($route_url) {
+                $data['mobil'] = $route_url[0];
+                $this->load->view('include/head', $data);
+                $this->load->view('page/checkout', $data);
+            } else {
+                $this->load->view('page/error');
+            }
+        endif;
     }
 
     public function rate_car()

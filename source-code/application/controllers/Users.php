@@ -180,10 +180,12 @@ class Users extends CI_Controller
                 $data["orderan"] = $this->Database->getData("riwayat", $con);
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 /* 
                     <Lihat Riwayat Staff Garasi>
-                */ }
+                */
+            }
             /*
                 Return tampilan beserta variable $data
             */
@@ -247,7 +249,9 @@ class Users extends CI_Controller
                 endif;
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
+            }
             /*
                 Return tampilan beserta variable $data
             */
@@ -300,7 +304,9 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
+            }
             $this->load->view('include/head', $data);
             $this->load->view('auth/password', $data);
         endif;
@@ -355,7 +361,9 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
+            }
             $this->load->view('include/head', $data);
             $this->load->view('auth/profile', $data);
         endif;
@@ -380,5 +388,23 @@ class Users extends CI_Controller
         $this->Database->update("penyewa", $update, $id);
         $this->Database->insert("saldo", $data);
         redirect(base_url('history'));
+    }
+
+    public function kupon()
+    {
+        if (!$this->session->userdata('credentials')) :
+            redirect(base_url('login'));
+        else :
+            $kode = $this->input->post('kode');
+            $con['conditions'] = array(
+                'kode_promo' => $kode,
+            );
+            $orderan = $this->Database->getData("promo", $con);
+            if ($orderan) {
+                print json_encode(array("result" => 1, "content" => "Promo berhasil ditambahkan", "price" => $orderan[0]['diskon']));
+            } else {
+                print json_encode(array("result" => 0, "content" => 'Kode promo tidak ditemukan.'));
+            }
+        endif;
     }
 }
