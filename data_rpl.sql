@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Jun 2021 pada 13.21
+-- Waktu pembuatan: 07 Jun 2021 pada 10.22
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -77,6 +77,7 @@ CREATE TABLE `mobil` (
   `harga` int(60) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `status` varchar(60) DEFAULT NULL,
+  `full` int(1) DEFAULT NULL,
   `rating` float NOT NULL,
   `url_view` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -85,11 +86,11 @@ CREATE TABLE `mobil` (
 -- Dumping data untuk tabel `mobil`
 --
 
-INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `harga`, `gambar`, `status`, `rating`, `url_view`) VALUES
-(2, 3, 5001155, 'Toyota Avanza', 'Bensin', 180000, 'avanza-preview.png', 'Aktif', 4.5, 'f7b9537b861317161e2cb9eec8462698'),
-(3, 1, 125415111, 'Toyota Fortuner', 'Diesel', 320000, 'portuner-preview.png', 'Aktif', 0, '8f99136e6dd0a0e50f191c54236049ac'),
-(4, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977897-image.jpg', NULL, 0, 'd93e37d3c844cde1acf6d969c9c1eda7'),
-(5, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977908-image.jpg', NULL, 0, '8e1fcc833a20d91d3694ce10c2eb1ff4');
+INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `harga`, `gambar`, `status`, `full`, `rating`, `url_view`) VALUES
+(2, 3, 5001155, 'Toyota Avanza', 'Bensin', 180000, 'avanza-preview.png', 'Aktif', NULL, 4.5, 'f7b9537b861317161e2cb9eec8462698'),
+(3, 1, 125415111, 'Toyota Fortuner', 'Diesel', 320000, 'portuner-preview.png', 'Aktif', 1, 0, '8f99136e6dd0a0e50f191c54236049ac'),
+(4, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977897-image.jpg', NULL, NULL, 0, 'd93e37d3c844cde1acf6d969c9c1eda7'),
+(5, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977908-image.jpg', NULL, NULL, 0, '8e1fcc833a20d91d3694ce10c2eb1ff4');
 
 -- --------------------------------------------------------
 
@@ -130,6 +131,7 @@ CREATE TABLE `promo` (
   `id_mobil` int(11) NOT NULL,
   `id_admin` int(11) NOT NULL,
   `kode_promo` varchar(255) NOT NULL,
+  `diskon` varchar(120) NOT NULL,
   `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -137,9 +139,9 @@ CREATE TABLE `promo` (
 -- Dumping data untuk tabel `promo`
 --
 
-INSERT INTO `promo` (`id`, `id_mobil`, `id_admin`, `kode_promo`, `deskripsi`) VALUES
-(1, 2, 1, 'RENTALKUY', 'ini deskripsi dari kode promo'),
-(2, 3, 1, 'ASDFGHJ', 'aaavvvvbbbbbnnnnmmmmmm');
+INSERT INTO `promo` (`id`, `id_mobil`, `id_admin`, `kode_promo`, `diskon`, `deskripsi`) VALUES
+(1, 2, 1, 'RENTALKUY', '100000', 'ini deskripsi dari kode promo'),
+(2, 3, 1, 'ASDFGHJ', '25000', 'aaavvvvbbbbbnnnnmmmmmm');
 
 -- --------------------------------------------------------
 
@@ -216,7 +218,7 @@ CREATE TABLE `staff_garasi` (
 
 INSERT INTO `staff_garasi` (`id`, `nama_lengkap`, `nik`, `sim`, `email`, `password`, `status`) VALUES
 (1, 'Gready Michael', 1215123156, 1321589494, 'staff@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'AKTIF'),
-(2, 'Joanne Sh', 12334567, 76544332, 'staff2@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'PENDING'),
+(2, 'Joanne Sh', 12334567, 76544332, 'staff2@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'REJECT'),
 (3, 'Staff Garasi', 987654321, 989876543, 'staffgarasi@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'REJECT');
 
 --
