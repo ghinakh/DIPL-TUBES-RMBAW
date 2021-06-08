@@ -13,7 +13,7 @@ class Users extends CI_Controller
 
     public function login()
     {
-        if (!$this->session->userdata('credentials')) :
+        if (!$this->session->userdata('credentials')) : 
             if ($this->input->post('email') && $this->input->post('password')) :
                 $con['returnType'] = 'count';
                 $con['conditions'] = array(

@@ -72,7 +72,7 @@ $route['rating'] = 'Mobil/rate_car';
 
 /* CAR DETAILS */
 $route['cars/detail/(:any)'] = 'Mobil/getDetail/$1';
-$route['payment-rent/(:any)'] = 'Mobil/Buy/$1';
+$route['payment-rent'] = 'Mobil/Buy';
 
 /* Adnub Route */
 $route['admin/staff'] = 'Admin/staff';

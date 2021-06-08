@@ -61,8 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <?php
-                                    if (empty($rate)) {
-                                    } else {
+                                    if (empty($rate)) { } else {
                                         foreach ($rate as $pemakai) {
                                             foreach ($penyewa as $akun) {
                                                 if ($pemakai['id_penyewa'] == $akun['id']) {
@@ -72,7 +71,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                     $comment = $pemakai['note'];
                                                 }
                                             }
-                                    ?>
+                                            ?>
                                             <!-- Rating -->
                                             <div class="media border-bottom pb-4 mb-4">
                                                 <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
@@ -148,7 +147,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <?php if ($data_mobil['full'] == 1) { ?>
                             <button type="button" class="btn btn-success btn-block" disabled>Mobil sedang digunakan</button>
                         <?php } else { ?>
-                            <a href="<?= base_url("/payment-rent/" . $data_mobil['url_view']) ?>" class="btn btn-success btn-block">Rent Now</a>
+                            <form action="<?= base_url('/payment-rent/') ?>" method="POST">
+                                <input type="hidden" name="id_mobil" value="<?= $data_mobil['id'] ?>">
+                                <button class="btn btn-success btn-block">Rent Now</button>
+                            </form>
                         <?php } ?>
                     </div>
                 </div>

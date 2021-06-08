@@ -56,11 +56,14 @@ class Mobil extends CI_Controller
         }
     }
 
-    public function Buy($id_mobil)
+    public function Buy()
     {
         if (!$this->session->userdata('credentials')) :
             redirect(base_url());
         else :
+            $id_mobil = $this->input->post('id_mobil');
+            // var_dump($id_mobil);
+            // exit();
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
             $data['user'] =  $ses[0];
@@ -80,7 +83,7 @@ class Mobil extends CI_Controller
             $data["orderan"] = $this->Database->getData("riwayat", $con);
             $data["foto_profile"] = $foto;
             $con['conditions'] = array(
-                'url_view' => $id_mobil,
+                'id' => $id_mobil,
             );
             $route_url = $this->Database->getData("mobil", $con);
             if ($route_url) {
@@ -106,5 +109,10 @@ class Mobil extends CI_Controller
         ];
         $this->Database->update("riwayat", $data, $id);
         redirect(base_url('history'));
+    }
+
+    public function cek()
+    {
+        var_dump($_POST);
     }
 }

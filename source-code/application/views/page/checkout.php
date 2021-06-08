@@ -19,7 +19,7 @@ $harga_acak = $mobil['harga'] + $rand;
 <div class="py-6">
     <div class="container">
         <div class="row">
-            <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+            <div class="col-lg-8 col-md-12 col-12">
                 <!-- Card -->
                 <div class="card  mb-3 mb-lg-0">
                     <!-- Card header -->
@@ -28,17 +28,47 @@ $harga_acak = $mobil['harga'] + $rand;
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
-                        <form class="form-row" action="" method="post" enctype="multipart/form-data">
-                            <div class="form-group col-12 col-md-6">
+                        <form action="<?= base_url() ?>Mobil/cek" method="POST">
+                            <input type="hidden" name="id_mobil" value="<?= $mobil['id'] ?>">
+                            <div class="form-group col-12 col-md-12">
                                 <label class="form-label" for="nama">Name</label>
-                                <input type="text" name="nama" class="form-control" placeholder="nama" required>
+                                <input type="text" name="nama" id="nama" class="form-control" required>
                             </div>
-                            <div class="form-group col-12 col-md-6">
+                            <div class="form-group col-12 col-md-12">
+                                <label class="form-label" for="hp">Phone</label>
+                                <input type="text" name="hp" id="hp" class="form-control" required>
+                            </div>
+                            <div class="form-group col-12 col-md-12">
                                 <label class="form-label" for="alamat">Address</label>
-                                <input type="text" name="alamat" class="form-control" placeholder="alamat" required>
+                                <input type="text" name="alamat" id="alamat" class="form-control" required>
                             </div>
-
-                            <input type="submit" class="btn btn-success btn-sm" value="Add Car">
+                            <div class="form-group col-12 col-md-12 mb-3">
+                                <label class="form-label" for="tgl_mulai">Start Date</label>
+                                <input type="date" id="tgl_mulai" class="form-control">
+                            </div>
+                            <div class="form-group col-12 col-md-12 mb-3">
+                                <label class="form-label" for="tgl_selesai">End Date</label>
+                                <input type="date" id="tgl_selesai" class="form-control">
+                            </div>
+                            <label class="form-label col-12 col-md-12 mb-2">Method</label>
+                            <div class="form-group custom-control custom-radio custom-control-inline ml-3">
+                                <input type="radio" id="saldo" name="metode" value="saldo" class="custom-control-input">
+                                <label class="custom-control-label " for="saldo"><span class="text-dark">Saldo</span></label>
+                            </div>
+                            <div class="form-group custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="cod" name="metode" value="cod" class="custom-control-input">
+                                <label class="custom-control-label" for="cod"><span class="text-dark">COD</span></label>
+                            </div>
+                            <!-- <div class="form-group col-12 col-md-12">
+                                <label class="form-label" for="kode">Coupon</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter your code" name="kode" id="kode">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="submit" placeholder="Apply">Apply</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="form-group col-12 col-md-12"><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
                         </form>
                     </div>
                 </div>
@@ -70,22 +100,22 @@ $harga_acak = $mobil['harga'] + $rand;
                     </div>
                 </div>
                 <!-- Card -->
-                <div class="card border-0 mb-3 mb-lg-0">
-                    <!-- Card body -->
-                    <div class="card-body">
-                        <h3 class="mb-2">Discount Codes</h3>
-                        <div id="mutiara"></div>
-                        <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="#">
-                            <div class="input-group">
-                                <input type="hidden" name="harganow" value="<?= $harga_acak ?>" id="harganow">
-                                <input type="text" class="form-control" placeholder="Enter your code" name="kode" id="kode">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="submit">Apply</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <!-- <div class="card border-0 mb-3 mb-lg-0"> -->
+                <!-- <div class="card-body"> -->
+                <!-- <h3 class="mb-2">Discount Codes</h3> -->
+                <!-- <div id="mutiara"></div> -->
+                <!-- <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="#"> -->
+                <!-- <div class="input-group"> -->
+                <!-- <input type="hidden" name="harganow" value="<?php //$harga_acak 
+                                                                    ?>" id="harganow"> -->
+                <!-- <input type="text" class="form-control" placeholder="Enter your code" name="kode" id="kode"> -->
+                <!-- <div class="input-group-append"> -->
+                <!-- <input class="btn btn-secondary" type="submit" placeholder="Apply"></input> -->
+                <!-- </div> -->
+                <!-- </div> -->
+                <!-- </form> -->
+                <!-- </div> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
