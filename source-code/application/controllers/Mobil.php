@@ -113,6 +113,12 @@ class Mobil extends CI_Controller
 
     public function cek()
     {
-        var_dump($_POST);
+        if ($_POST['submit'] == 0) {
+            var_dump($_POST);
+        } else {
+            $sess_array = array('kode_promo' => $this->input->post('promo'));
+            $this->session->set_userdata('kode', $sess_array);
+            redirect(base_url('kupon/'));
+        }
     }
 }

@@ -13,7 +13,7 @@ class Users extends CI_Controller
 
     public function login()
     {
-        if (!$this->session->userdata('credentials')) : 
+        if (!$this->session->userdata('credentials')) :
             if ($this->input->post('email') && $this->input->post('password')) :
                 $con['returnType'] = 'count';
                 $con['conditions'] = array(
@@ -180,12 +180,10 @@ class Users extends CI_Controller
                 $data["orderan"] = $this->Database->getData("riwayat", $con);
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
                 /* 
                     <Lihat Riwayat Staff Garasi>
-                */
-            }
+                */ }
             /*
                 Return tampilan beserta variable $data
             */
@@ -249,9 +247,7 @@ class Users extends CI_Controller
                 endif;
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
-            }
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
             /*
                 Return tampilan beserta variable $data
             */
@@ -304,9 +300,7 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
-            }
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
             $this->load->view('include/head', $data);
             $this->load->view('auth/password', $data);
         endif;
@@ -361,9 +355,7 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
-            }
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") { }
             $this->load->view('include/head', $data);
             $this->load->view('auth/profile', $data);
         endif;
@@ -395,7 +387,11 @@ class Users extends CI_Controller
         if (!$this->session->userdata('credentials')) :
             redirect(base_url('login'));
         else :
-            $kode = $this->input->post('kode');
+            // $kode = $this->input->post('promo');
+            $session_data = $this->session->userdata('kode');
+            $kode = $session_data['kode_promo'];
+            // var_dump($session_data['kode_promo']);
+            // exit();
             $con['conditions'] = array(
                 'kode_promo' => $kode,
             );
