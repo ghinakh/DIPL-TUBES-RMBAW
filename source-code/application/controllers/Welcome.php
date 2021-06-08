@@ -29,6 +29,7 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		if (!$this->session->userdata('credentials')) :
+			$data["promo"] = $this->Database->getData("promo");
 			$data["pemilik"] = $this->Database->getData("staff_garasi");
 			$data["mobil"] = $this->Database->getData("mobil");
 			$rekomendasi_by = array("jenis", "harga", "rating");
@@ -54,6 +55,7 @@ class Welcome extends CI_Controller
 				$con['conditions'] = array(
 					'id_penyewa' => $ses[0]["id"],
 				);
+				$data["promo"] = $this->Database->getData("promo");
 				$data["orderan"] = $this->Database->getData("riwayat", $con);
 				$data["foto_profile"] = $foto;
 				$data["pemilik"] = $this->Database->getData("staff_garasi");

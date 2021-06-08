@@ -15,7 +15,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </h1>
                         <p class="text-white-50 mb-4 lead">
                             We give you the best of the best of our services. We provide facts that you need to know. From car rating, what's included and pick-up information
-                        </p> 
+                        </p>
                     </div>
                 </div>
                 <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-right text-center">
@@ -62,6 +62,37 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </div>
     <!-- Main Content -->
+    <div class="pt-lg-12 pb-lg-3">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="mb-0">COUPON PROMO</h2>
+                </div>
+            </div>
+            <?php
+            if (!empty($promo)) {
+                foreach ($promo as $diskon) {
+                    ?>
+                    <div class="position-relative">
+                        <div class="card mb-4 card-hover">
+                            <div class="card-body p-3 pb-0">
+                                <div class="bg mb-3 mr-2">
+                                    <h3 class="mb-0 text-truncate-line-2">Discount <?= $diskon['diskon'] ?>
+                                    </h3>
+                                    <p class="mb-0 text-truncate-line-2">Desc : <?= $diskon['deskripsi'] ?>
+                                    </p>
+                                </div>
+                                <div class="bg mb-1 mr-2">
+                                    <button class="btn btn-success btn-sm"><?= $diskon['kode_promo'] ?></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                }
+            } ?>
+        </div>
+    </div>
     <div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
         <div class="container">
             <div class="row mb-4">
@@ -93,7 +124,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     $punya = $kendaraan['nama_lengkap'];
                                 }
                             }
-                    ?>
+                            ?>
                             <div class="item">
                                 <!-- Card -->
                                 <div class="card mb-4 card-hover">
@@ -162,7 +193,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 $punya = $kendaraan['nama_lengkap'];
                             }
                         }
-                    ?>
+                        ?>
                         <div class="item">
                             <!-- Card -->
                             <div class="card mb-4 card-hover">
