@@ -19,7 +19,7 @@ function tanggal_indonesia($tanggal)
     );
 
     $pecahkan = explode('-', $tanggal);
-    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+    return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
 }
 ?>
 
@@ -28,7 +28,13 @@ function tanggal_indonesia($tanggal)
     <div class="pt-5 pb-5">
         <div class="container">
             <!-- User info -->
-            <?php $this->load->view('include/nav') ?>
+            <?php
+            if ($level == "Penyewa") {
+                $this->load->view('include/nav');
+            } else if ($level == "Staff Garasi") {
+                $this->load->view('include/nav_side');
+            }
+            ?>
             <div class="col-lg-9 col-md-8 col-12">
                 <!-- Card -->
                 <div class="card border-0">
@@ -65,7 +71,7 @@ function tanggal_indonesia($tanggal)
                                         }
                                     } else {
                                         $orderid = "DEPO-" . $data['id'];
-                                        $deskripsi = "Topup by " . $data['pembayaran'];
+                                        $deskripsi = "Send to " . $data['pembayaran'];
                                         $tanggal = tanggal_indonesia($data['tanggal']);
                                     }
                                     if ($data['status'] == "0" || $data['status'] == "2" || $data['status'] == "1") {
@@ -73,7 +79,7 @@ function tanggal_indonesia($tanggal)
                                     } else {
                                         $status = '<span class="badge badge-danger">Waiting for payment</span>';
                                     }
-                                ?>
+                                    ?>
                                     <tr>
                                         <td><a href="<?= base_url('invoice/' . $data['id_url']) ?>">#<?= $orderid ?></a></td>
                                         <td><?= $tanggal ?></td>

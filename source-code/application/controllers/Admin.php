@@ -150,4 +150,42 @@ class Admin extends CI_Controller
         $this->Database->delete("staff_garasi", $id);
         redirect(base_url('admin/staff'));
     }
+
+    public function confirm_payment()
+    {
+        if (!$this->session->userdata('credentials')) :
+            redirect(base_url('login'));
+        else :
+            $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
+            $ses = $this->session->userdata('credentials');
+            $data['user'] =  $ses[0];
+            $n = explode(' ', $ses[0]["nama_lengkap"]);
+            $foto = '';
+            if (count($n) > 1) {
+                $total = 1;
+            } else {
+                $total = count($n) - 1;
+            }
+            for ($x = 0; $x <= $total; $x++) {
+                $foto .= substr($n[$x], 0, 1);
+            }
+            $data["foto_profile"] = $foto;
+            if ($ses[1] == "admin") {
+                $data["orderan"] = $this->Database->getData("riwayat");
+                $data["mobil"] = $this->Database->getData("mobil");
+                $data["penyewa"] = $this->Database->getData("penyewa");
+                $data["level"] = "admin";
+            }
+            $this->load->view('page/admin_confirmpayment', $data);
+        endif;
+    }
+
+    public function confirm($id)
+    {
+        $data = [
+            'status' => 1
+        ];
+        $this->Database->update("riwayat", $data, $id);
+        redirect(base_url('confirm-payment'));
+    }
 }

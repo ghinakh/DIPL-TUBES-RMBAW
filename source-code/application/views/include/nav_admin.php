@@ -38,12 +38,12 @@
         <nav class="navbar-vertical navbar">
             <div class="nav-scroller">
                 <!-- Brand logo -->
-                <a class="navbar-brand" href=""><img src="<?= base_url('assets/images/logo-negative.png') ?>" alt="" width="200" /></a>
+                <a class="navbar-brand" href=""><img src="<?= base_url() ?>assets/images/logo-negative.png" alt="" width="200" /></a>
 
                 <!-- Navbar nav -->
                 <ul class="navbar-nav flex-column" id="sideNavbar">
                     <!-- Nav item -->
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link active" href="<?= base_url() ?>">
                             <i class="nav-icon fa fa-car mr-2"></i>Cars
                         </a>
@@ -62,8 +62,14 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link " href="<?= base_url('admin/promo') ?>">
+                        <a class="nav-link" href="<?= base_url('admin/promo') ?>">
                             <i class="nav-icon fe fe-percent mr-2"></i>Promo
+                        </a>
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="<?= base_url('confirm-payment') ?>">
+                            <i class="nav-icon fe fe-percent mr-2"></i>Confirm Payment
                         </a>
                     </li>
                     <!-- Nav item -->

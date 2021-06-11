@@ -29,7 +29,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/theme.min.css">
 
-    <title>Promos | RentalKuy</title>
+    <title>Payment | RentalKuy</title>
 </head>
 
 <body>
@@ -43,8 +43,8 @@
                 <!-- Navbar nav -->
                 <ul class="navbar-nav flex-column" id="sideNavbar">
                     <!-- Nav item -->
-                    <li class="nav-item ">
-                        <a class="nav-link" href="<?= base_url() ?>">
+                    <li class="nav-item">
+                        <a class="nav-link " href="<?= base_url() ?>">
                             <i class="nav-icon fa fa-car mr-2"></i>Cars
                         </a>
                     </li>
@@ -62,13 +62,13 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= base_url('admin/promo') ?>">
+                        <a class="nav-link" href="<?= base_url('admin/promo') ?>">
                             <i class="nav-icon fe fe-percent mr-2"></i>Promo
                         </a>
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link " href="<?= base_url('confirm-payment') ?>">
+                        <a class="nav-link active" href="<?= base_url('confirm-payment') ?>">
                             <i class="nav-icon fe fe-percent mr-2"></i>Confirm Payment
                         </a>
                     </li>
@@ -131,119 +131,96 @@
                         <!-- Page Header -->
                         <div class="border-bottom pb-4 mb-4 d-lg-flex align-items-center justify-content-between">
                             <div class="mb-2 mb-lg-0">
-                                <h1 class="mb-1 h2 font-weight-bold">Renters</h1>
+                                <h1 class="mb-1 h2 font-weight-bold">Ongoing</h1>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-4">
                     <div class="col-lg-12 col-md-12 col-12">
                         <!-- Card -->
                         <div class="card rounded-lg">
                             <!-- Card header -->
                             <div class="card-header border-bottom-0 p-0 bg-white">
                             </div>
-                            <div class="p-4 row">
-                                <a href="" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambah_promo">Add Promo</a>
-                                <!-- Modal -->
-                                <div class="modal fade" id="tambah_promo" role="dialog">
-                                    <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Add Promo</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="<?= base_url('tambah_promo') ?>">
-                                                    <div class="form-group">
-                                                        <select name="mobil" id="mobil">
-                                                            <?php
-                                                            foreach ($mobil as $mb) { ?>
-                                                                <option value="<?= $mb['id'] ?>">
-                                                                    <?= $mb['id'] . "-" . $mb['nama_mobil'] ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="kode_promo" class="col-form-label">Code Promo:</label>
-                                                        <input type="text" class="form-control" id="kode_promo" name="kode_promo">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="diskon" class="col-form-label">Discount:</label>
-                                                        <input type="text" class="form-control" id="diskon" name="diskon">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="deskripsi" class="col-form-label">Description:</label>
-                                                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-                                                    </div>
-                                                    <div><button type="submit" class="btn btn-success btn-sm mt-3">Submit</button></div>
-                                                </form>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
                             <div>
                                 <!-- Table -->
                                 <div class="tab-content" id="tabContent">
                                     <!--Tab pane -->
-                                    <div class="tab-pane fade show active" id="renters" role="tabpanel" aria-labelledby="renters-tab">
+                                    <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
                                         <div class="table-responsive border-0 overflow-y-hidden">
                                             <table class="table mb-0 ">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" class="border-0 text-uppercase">
-                                                            (CAR-ID) CAR NAME
+                                                            CAR NAME
                                                         </th>
                                                         <th scope="col" class="border-0 text-uppercase">
-                                                            CODE PROMO
+                                                            RENTER NAME
                                                         </th>
                                                         <th scope="col" class="border-0 text-uppercase">
-                                                            DISCOUNT
+                                                            LOCATION
                                                         </th>
                                                         <th scope="col" class="border-0 text-uppercase">
-                                                            DESCRIPTION
+                                                            PRICE
                                                         </th>
-                                                        <th scope="col" class="border-0 text-uppercase"></th>
+                                                        <th scope="col" class="border-0 text-uppercase">
+                                                            ACTION
+                                                        </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    if (!empty($promo)) {
-                                                        foreach ($promo as $p) {
-                                                            foreach ($mobil as $m) {
-                                                                if ($p['id_mobil'] == $m['id']) {
-                                                                    ?>
-                                                                    <tr>
-                                                                        <td class="align-middle border-top-0">
-                                                                            <div class="d-flex align-items-center">
-                                                                                <h5 class="mb-0"><?= $m['id'] . "-" . $m['nama_mobil'] ?></h5>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="align-middle border-top-0">
-                                                                            <div class="d-flex align-items-center">
-                                                                                <h5 class="mb-0"><?= $p['kode_promo'] ?></h5>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="align-middle border-top-0">
-                                                                            <div class="d-flex align-items-center">
-                                                                                <h5 class="mb-0"><?= $p['diskon'] ?></h5>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="align-middle border-top-0">
-                                                                            <div class="d-flex align-items-center">
-                                                                                <h5 class="mb-0"><?= $p['deskripsi'] ?></h5>
-                                                                            </div>
-                                                                        </td>
+                                                    // status 0 : udah dikembalikan, udah rating
+                                                    // status 1 : udah dikembalikan, belum rating
+                                                    // status 2 : menunggu konfirmasi penyewaan
 
-                                                                    </tr>
+                                                    foreach ($orderan as $sewa) {
+                                                        if (($sewa['status'] == '2')) {
+                                                            foreach ($penyewa as $p) {
+                                                                if ($p['id'] == $sewa['id_penyewa']) {
+                                                                    foreach ($mobil as $kendaraan) {
+                                                                        if ($kendaraan['id'] == $sewa['id_mobil']) {
+                                                                            ?>
+                                                                            <tr>
+                                                                                <td class="border-top-0">
+                                                                                    <div class="text-inherit">
+                                                                                        <div class="d-lg-flex align-items-center">
+                                                                                            <div>
+                                                                                                <img src="<?= base_url() ?>assets/images/mobil/<?= $kendaraan['gambar'] ?>" alt="" class="img-4by3-lg rounded" />
+                                                                                            </div>
+                                                                                            <div class="ml-lg-3 mt-2 mt-lg-0">
+                                                                                                <h4 class="mb-1 text-primary-hover">
+                                                                                                    <?= $kendaraan['nama_mobil'] ?>
+                                                                                                </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="align-middle border-top-0">
+                                                                                    <div class="d-flex align-items-center">
+                                                                                        <?= $p['nama_lengkap'] ?>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="align-middle border-top-0">
+                                                                                    <div class="d-flex align-items-center wrap">
+                                                                                        <?= $p['address'] ?>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="align-middle border-top-0">
+                                                                                    <div class="d-flex align-items-center wrap">
+                                                                                        <?= $kendaraan['harga'] ?>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="align-middle border-top-0">
+                                                                                    <div class="d-flex align-items-center">
+                                                                                        <a href="<?= base_url() ?>/Admin/confirm/<?= $sewa['id'] ?>" class="btn btn-success btn-sm mr-2">Approved</a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
                                                     <?php
+                                                                        }
+                                                                    }
                                                                 }
                                                             }
                                                         }

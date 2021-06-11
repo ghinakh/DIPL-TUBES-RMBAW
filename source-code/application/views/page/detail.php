@@ -19,7 +19,7 @@ function tanggal_indonesia($tanggal)
     );
 
     $pecahkan = explode('-', $tanggal);
-    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+    return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
 }
 ?>
 
@@ -28,7 +28,13 @@ function tanggal_indonesia($tanggal)
     <div class="pt-5 pb-5">
         <div class="container">
             <!-- User info -->
-            <?php $this->load->view('include/nav') ?>
+            <?php
+            if ($level == "Penyewa") {
+                $this->load->view('include/nav');
+            } else if ($level == "Staff Garasi") {
+                $this->load->view('include/nav_side');
+            }
+            ?>
             <div class="col-lg-9 col-md-8 col-12">
                 <!-- Card -->
                 <div class="card border-0" id="invoice">
@@ -38,7 +44,7 @@ function tanggal_indonesia($tanggal)
                             <div>
                                 <!-- Img -->
                                 <h2 class=" mb-0"><?= $web_config['nama_website'] ?></h2>
-                                <small>INVOICE ID: #<?=?></small>
+                                <small>INVOICE ID: #</small>
                             </div>
                         </div>
                         <!-- Row -->

@@ -31,7 +31,13 @@ if ($jumlah > 2) {
 <div class="pt-5 pb-5">
     <div class="container">
         <!-- User info -->
-        <?php $this->load->view('include/nav') ?>
+        <?php
+        if ($level == "Penyewa") {
+            $this->load->view('include/nav');
+        } else if ($level == "Staff Garasi") {
+            $this->load->view('include/nav_side');
+        }
+        ?>
         <div class="col-lg-9 col-md-8 col-12">
             <!-- Card -->
             <div class="card">

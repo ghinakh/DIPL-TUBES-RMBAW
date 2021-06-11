@@ -80,6 +80,7 @@ $route['admin/change-status'] = 'Admin/change_status';
 $route['admin/penyewa'] = 'Admin/penyewa';
 $route['admin/promo'] = 'Admin/promo';
 $route['tambah_promo'] = 'Admin/tambah_promo';
+$route['confirm-payment'] = 'Admin/confirm_payment';
 
 /* Staff Route */
 $route['staff/new-car'] = 'Staff/insert';

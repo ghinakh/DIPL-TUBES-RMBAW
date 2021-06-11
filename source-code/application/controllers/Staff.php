@@ -12,8 +12,7 @@ class Staff extends CI_Controller
     }
 
     public function index()
-    {
-    }
+    { }
 
     public function insert()
     {
@@ -60,7 +59,7 @@ class Staff extends CI_Controller
                         'jenis' => $this->input->post('tipe'),
                         'harga' => $this->input->post('harga'),
                         'gambar' => $image,
-                        'status' => NULL,
+                        'status' => 'Aktif',
                         'rating' => '0',
                         'url_view' => md5('mobilview' . rand(00000, 99999)),
                     );
