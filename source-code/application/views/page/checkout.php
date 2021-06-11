@@ -28,7 +28,7 @@ $harga_acak = $mobil['harga'] + $rand;
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
-                        <form action="<?= base_url() ?>Mobil/cek" method="POST">
+                        <form action="<?= base_url("paynow") ?>" method="POST">
                             <input type="hidden" name="id_mobil" value="<?= $mobil['id'] ?>">
                             <!-- <div class="form-group col-12 col-md-12">
                                 <label class="form-label" for="promo">Promo</label>
@@ -68,17 +68,21 @@ $harga_acak = $mobil['harga'] + $rand;
                                 <input type="radio" id="cod" name="metode" value="cod" class="custom-control-input">
                                 <label class="custom-control-label" for="cod"><span class="text-dark">COD</span></label>
                             </div>
-                            <div class="form-group col-12 col-md-12">
-                                <label class="form-label" for="promo">Coupon</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter your code" name="promo" id="promo">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-secondary" name="submit" value="1" placeholder="Apply">Apply</button>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="form-group col-12 col-md-12"><button name="submit" value="0" class="btn btn-success btn-sm">Submit</button></div>
                         </form>
+                        <div class="form-group col-12 col-md-12">
+                            <div id="mutiara"></div>
+                            <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="#">
+                                <input type="hidden" name="harganow" value="<?= $harga_acak ?>" id="harganow">
+                                <label class="form-label" for="promo">Coupon</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter your code" name="kode" id="kode">
+                                    <div class="input-group-append">
+                                        <input class="btn btn-secondary" type="submit" placeholder="Apply"></input>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,30 +105,14 @@ $harga_acak = $mobil['harga'] + $rand;
                     </div>
                     <hr class="m-0">
                     <div class="form-group col-12">
-                        <select class="selectpicker" id="hari" data-width="100%" onchange="test(<?= $harga_acak ?>)">
+                        <input type="hidden" value="<?= $harga_acak ?>" id="harga_awal">
+                        <select class="selectpicker" id="hari" data-width="100%" onchange="test()">
                             <option value="1">1 Day</option>
                             <option value="2">2 Day</option>
                             <option value="3">3 Day</option>
                         </select>
                     </div>
                 </div>
-                <!-- Card -->
-                <!-- <div class="card border-0 mb-3 mb-lg-0"> -->
-                <!-- <div class="card-body"> -->
-                <!-- <h3 class="mb-2">Discount Codes</h3> -->
-                <!-- <div id="mutiara"></div> -->
-                <!-- <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="#"> -->
-                <!-- <div class="input-group"> -->
-                <!-- <input type="hidden" name="harganow" value="<?php //$harga_acak 
-                                                                    ?>" id="harganow"> -->
-                <!-- <input type="text" class="form-control" placeholder="Enter your code" name="kode" id="kode"> -->
-                <!-- <div class="input-group-append"> -->
-                <!-- <input class="btn btn-secondary" type="submit" placeholder="Apply"></input> -->
-                <!-- </div> -->
-                <!-- </div> -->
-                <!-- </form> -->
-                <!-- </div> -->
-                <!-- </div> -->
             </div>
         </div>
     </div>
@@ -189,8 +177,9 @@ $harga_acak = $mobil['harga'] + $rand;
                         $("button").removeAttr("disabled", "disabled");
                         $("#btn-login").html('Masuk');
                         $("#mutiara").html(hasil.result ? "<div class='alert alert-success' role='alert'>" + hasil.content + "</div>" : "<div class='alert alert-warning' role='alert'>" + hasil.content + "</div>")
-                        var harga_sekarang = $('#harga').attr("value");
-                        $("#harga").html(harga_sekarang - hasil.price);
+                        var harga_sekarang = $('#harganow').attr("value");
+                        $("#harga").html(numberWithCommas(harga_sekarang - hasil.price));
+                        $("#harga_awal").attr('value', harga_sekarang - hasil.price);
                         console.log(harga_sekarang);
                         console.log(hasil.price);
                     },
@@ -205,11 +194,13 @@ $harga_acak = $mobil['harga'] + $rand;
         })
     });
 
-    function test(harga_awal) {
+    function test() {
         var total = 0;
         var day = document.getElementById('hari').value;
-        var harga = document.getElementById('harga').innerHTML;
-        total = day * harga_awal;
+        var harga = document.getElementById('harga_awal').value;
+        total = day * harga;
+        console.log(total);
+        console.log(harga);
         $("#harga").html(numberWithCommas(total));
         $('#harga').attr('value', total);
     }
