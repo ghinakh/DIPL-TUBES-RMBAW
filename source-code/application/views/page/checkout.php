@@ -67,12 +67,13 @@ $harga_acak = $mobil['harga'] + $rand;
                             <div class="form-group custom-control custom-radio custom-control-inline">
                                 <input type="radio" id="cod" name="metode" value="cod" class="custom-control-input">
                                 <label class="custom-control-label" for="cod"><span class="text-dark">COD</span></label>
+                                <input type="hidden" value="<?= $harga_acak ?>" id="harga">
                             </div>
                             <div class="form-group col-12 col-md-12"><button name="submit" value="0" class="btn btn-success btn-sm">Submit</button></div>
                         </form>
                         <div class="form-group col-12 col-md-12">
                             <div id="mutiara"></div>
-                            <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="#">
+                            <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="codekupon">
                                 <input type="hidden" name="harganow" value="<?= $harga_acak ?>" id="harganow">
                                 <label class="form-label" for="promo">Coupon</label>
                                 <div class="input-group">
@@ -162,7 +163,7 @@ $harga_acak = $mobil['harga'] + $rand;
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
     $(document).ready(function() {
-        $("form").submit(function() {
+        $("#codekupon").submit(function() {
             if ($('#kode').val().length > 3) {
                 var pdata = $(this).serialize();
                 var purl = $(this).attr('action');
@@ -176,12 +177,14 @@ $harga_acak = $mobil['harga'] + $rand;
                         $("#kode").removeAttr("disabled", "disabled");
                         $("button").removeAttr("disabled", "disabled");
                         $("#btn-login").html('Masuk');
-                        $("#mutiara").html(hasil.result ? "<div class='alert alert-success' role='alert'>" + hasil.content + "</div>" : "<div class='alert alert-warning' role='alert'>" + hasil.content + "</div>")
-                        var harga_sekarang = $('#harganow').attr("value");
-                        $("#harga").html(numberWithCommas(harga_sekarang - hasil.price));
-                        $("#harga_awal").attr('value', harga_sekarang - hasil.price);
-                        console.log(harga_sekarang);
-                        console.log(hasil.price);
+                        $("#mutiara").html(hasil.price ? "<div class='alert alert-success' role='alert'>" + hasil.content + "</div>" : "<div class='alert alert-warning' role='alert'>" + hasil.content + "</div>")
+                        if (hasil.price) {
+                            var harga_sekarang = $('#harganow').attr("value");
+                            $("#harga").html(numberWithCommas(harga_sekarang - hasil.price));
+                            $("#harga_awal").attr('value', harga_sekarang - hasil.price);
+                            console.log(harga_sekarang);
+                            console.log(hasil.price);
+                        }
                     },
                     error: function(a, b, c) {
                         $("#kode").removeAttr("disabled", "disabled");
