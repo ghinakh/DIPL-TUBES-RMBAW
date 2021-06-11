@@ -418,11 +418,7 @@ class Users extends CI_Controller
         if (!$this->session->userdata('credentials')) :
             redirect(base_url('login'));
         else :
-            // $kode = $this->input->post('promo');
-            $session_data = $this->session->userdata('kode');
-            $kode = $session_data['kode_promo'];
-            // var_dump($session_data['kode_promo']);
-            // exit();
+            $kode = $this->input->post('kode');
             $con['conditions'] = array(
                 'kode_promo' => $kode,
             );
