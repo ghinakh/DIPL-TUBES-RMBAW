@@ -28,7 +28,7 @@ $harga_acak = $mobil['harga'] + $rand;
                     </div>
                     <!-- Card body -->
                     <div class="card-body">
-                        <form action="<?= base_url("paynow") ?>" method="POST">
+                        <form action="<?= base_url() ?>Mobil/cek" method="POST">
                             <input type="hidden" name="id_mobil" value="<?= $mobil['id'] ?>">
                             <!-- <div class="form-group col-12 col-md-12">
                                 <label class="form-label" for="promo">Promo</label>
@@ -68,21 +68,17 @@ $harga_acak = $mobil['harga'] + $rand;
                                 <input type="radio" id="cod" name="metode" value="cod" class="custom-control-input">
                                 <label class="custom-control-label" for="cod"><span class="text-dark">COD</span></label>
                             </div>
-                            <div class="form-group col-12 col-md-12"><button name="submit" value="0" class="btn btn-success btn-sm">Submit</button></div>
-                        </form>
-                        <div class="form-group col-12 col-md-12">
-                            <div id="mutiara"></div>
-                            <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="#">
-                                <input type="hidden" name="harganow" value="<?= $harga_acak ?>" id="harganow">
+                            <div class="form-group col-12 col-md-12">
                                 <label class="form-label" for="promo">Coupon</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter your code" name="kode" id="kode">
+                                    <input type="text" class="form-control" placeholder="Enter your code" name="promo" id="promo">
                                     <div class="input-group-append">
-                                        <input class="btn btn-secondary" type="submit" placeholder="Apply"></input>
+                                        <button class="btn btn-secondary" name="submit" value="1" placeholder="Apply">Apply</button>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-group col-12 col-md-12"><button name="submit" value="0" class="btn btn-success btn-sm">Submit</button></div>
+                        </form>
                     </div>
                 </div>
             </div>
