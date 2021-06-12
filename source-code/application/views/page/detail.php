@@ -21,6 +21,7 @@ function tanggal_indonesia($tanggal)
     $pecahkan = explode('-', $tanggal);
     return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
 }
+$harga = number_format((int)$detail_mobil['harga'], 0, ',', '.');
 ?>
 <!-- Page Content -->
 <div class="pt-5 pb-5">
@@ -58,40 +59,39 @@ function tanggal_indonesia($tanggal)
                             <thead>
                                 <tr>
                                     <th scope="col">Item</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Unit Price</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                     <th scope="col">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="text-dark">
-                                    <td class="py-2">Monthly <span class="font-size-xs text-muted">(1 Jan,2020
-                                            to 1 Feb, 2020)</span></td>
-                                    <td class="py-2">1</td>
-                                    <td class="py-2">$39.00</td>
-                                    <td class="py-2">$39.00</td>
+                                    <?php if ($detail_mobil['tipe_riwayat'] == "Rent") { ?>
+                                        <td class="py-2"><?= $detail_mobil[''] ?> <span class="font-size-xs text-muted">(<?= $detail_mobil['tanggal_mulai'] ?>
+                                                to <?= $detail_mobil['tanggal_selesai'] ?>)</span></td>
+                                        <td class="py-2"></td>
+                                        <td class="py-2"></td>
+                                        <td class="py-2">IDR <?= $harga ?></td>
+                                    <?php } ?>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr class="text-dark">
                                     <td colspan="2" class="py-2"></td>
                                     <td colspan="1" class="pb-0">Total</td>
-                                    <td class="pb-0">$39.00</td>
+                                    <td class="pb-0">IDR <?= $harga ?></td>
                                 </tr>
                                 <tr class="text-dark">
-                                    <td colspan="2" class="py-2"></td>
-                                    <td colspan="1" class="py-0">Net Amount</td>
-                                    <td class="py-0">$37.00</td>
                                 </tr>
                                 <tr class="text-dark">
                                     <td colspan="2" class="py-2"></td>
                                     <td colspan="1" class="pt-0">Tax*</td>
-                                    <td class="pt-0">$2.00</td>
+                                    <td class="pt-0">IDR <?= explode(".", $harga)[1] ?></td>
                                 </tr>
                                 <tr class="text-dark">
                                     <td colspan="2" class="py-2"></td>
                                     <td colspan="1" class="border-top py-1 font-weight-bold">Grand Total</td>
-                                    <td class="border-top py-1 font-weight-bold">$478.50</td>
+                                    <td class="border-top py-1 font-weight-bold">IDR <?= $harga ?></td>
                                 </tr>
                             </tfoot>
                         </table>

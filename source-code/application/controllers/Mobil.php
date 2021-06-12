@@ -46,7 +46,6 @@ class Mobil extends CI_Controller
                 $data['total_pemesanan'] = 0;
             }
             $data['rate'] = $riwayat;
-            $data['bintang'] = $this->Database->avg_data("riwayat", $route_url[0]['id']);
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $data['data_mobil'] = $route_url[0];
             $data['penyewa'] = $this->Database->getData("penyewa");
