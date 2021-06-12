@@ -90,18 +90,111 @@
         <div id="page-content">
             <div class="header">
                 <!-- navbar -->
-                <nav class="navbar-default navbar navbar-expand-lg">
-                    <a id="nav-toggle" href=""><i class="fe fe-menu"></i></a>
-                    <ul class="navbar-nav navbar-right-wrap ml-auto  d-flex nav-top-wrap ">
-                        <li class="dropdown ml-2">
-                            <a class="rounded-circle " href="<?= base_url('edit/profile') ?>" role="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="avatar avatar-md">
-                                    <span class="rounded-circle avatar-warning">
-                                        <span class="avatar-initials rounded-circle"><?= $foto_profile ?></span>
-                                    </span>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                <nav class="navbar navbar-expand-lg navbar-default">
+                    <div class="container-fluid px-0">
+                        <!-- Mobile view nav wrap -->
+                        <?php
+                        if (!empty($user)) {
+                            ?>
+                            <ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap ">
+                                <li class="dropdown ml-2">
+                                    <div class="dropdown-item">
+                                        <div class="d-flex">
+                                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                                <span class="rounded-circle avatar-warning">
+                                                    <span class="avatar-initials rounded-circle"><?= $foto_profile ?></span>
+                                                </span>
+                                            </div>
+                                            <div class="ml-3 lh-1">
+                                                <h5 class="mb-1"><?= $user["nama_lengkap"] ?></h5>
+                                                <p class="mb-0 text-muted"><?= $user["email"] ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="dropdownUser">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a class="dropdown-item" href="./index.html">
+                                                    <i class="fe fe-power mr-2"></i>Sign Out
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php } ?>
+                        <!-- Button -->
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar top-bar mt-0"></span>
+                            <span class="icon-bar middle-bar"></span>
+                            <span class="icon-bar bottom-bar"></span>
+                        </button>
+                        <!-- Collapse -->
+                        <div class="collapse navbar-collapse" id="navbar-default">
+
+
+                            <?php
+                            if (empty($user)) {
+                                ?>
+                                <ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
+                                    <li class="dropdown d-inline-block stopevent">
+                                        <a href="<?= base_url('login') ?>" class="btn btn-primary">Login</a>
+                                    </li>
+                                    <li class="dropdown ml-2 d-inline-block">
+                                        <a href="<?= base_url('register') ?>" class="btn btn-white">Register</a>
+                                    </li>
+                                </ul>
+                            <?php } else { ?>
+                                <ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
+                                    <li class="dropdown ml-2 d-inline-block">
+                                        <a class="rounded-circle" href="#!" role="button" id="dropdownUserProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                                <span class="rounded-circle avatar-warning">
+                                                    <span class="avatar-initials rounded-circle"><?= $foto_profile ?></span>
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUserProfile">
+                                            <div class="dropdown-item">
+                                                <div class="d-flex">
+                                                    <div class="avatar avatar-md avatar-indicators avatar-online">
+                                                        <span class="rounded-circle avatar-warning">
+                                                            <span class="avatar-initials rounded-circle"><?= $foto_profile ?></span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="ml-3 lh-1">
+                                                        <h5 class="mb-1"><?= $user["nama_lengkap"] ?></h5>
+                                                        <p class="mb-0 text-muted"><?= $user["email"] ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <ul class="list-unstyled">
+                                                <?php
+                                                    if (($level == "Penyewa") || ($level == "Staff Garasi")) {
+                                                        ?>
+                                                    <li>
+                                                        <a class="dropdown-item" href="<?= base_url('edit/profile') ?>">
+                                                            <i class="fe fe-user mr-2"></i>Profile
+                                                        </a>
+                                                    </li>
+                                                <?php
+                                                    }
+                                                    ?>
+                                            </ul>
+                                            <div class="dropdown-divider"></div>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a class="dropdown-item" href="<?= base_url('logout') ?>">
+                                                        <i class="fe fe-power mr-2"></i>Sign Out
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            <?php } ?>
+                        </div>
+                    </div>
                 </nav>
             </div>

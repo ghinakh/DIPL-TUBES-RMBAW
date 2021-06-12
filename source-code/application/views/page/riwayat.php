@@ -91,6 +91,8 @@ function tanggal_indonesia($tanggal)
                                                                             $status = '<span class="badge badge-success">Returned</span>';
                                                                         } else if ((int) $sewa['status'] == 0) {
                                                                             $status = '<span class="badge badge-success">Returned</span>';
+                                                                        } else if ((int) $sewa['status'] == 2) {
+                                                                            $status = '<span class="badge badge-warning">Waiting</span>';
                                                                         }
                                                                         echo $status;
                                                                         ?>
@@ -101,6 +103,8 @@ function tanggal_indonesia($tanggal)
                                                                             $button = '<a href="javascript:;" data-toggle="modal" data-target="#edit-data' . $sewa['id'] . '" class="btn btn-sm btn-success">Rate Now</a>';
                                                                         } else if ((int) $sewa['status'] == 0) {
                                                                             $button = '<span class="text-warning">' . $sewa['rate'] . '<i class="mdi mdi-star"></i></span>';
+                                                                        } else {
+                                                                            $button = '';
                                                                         }
                                                                         echo $button; ?>
                                                         </td>

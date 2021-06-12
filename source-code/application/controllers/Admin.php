@@ -160,32 +160,78 @@ class Admin extends CI_Controller
             $ses = $this->session->userdata('credentials');
             $data['user'] =  $ses[0];
             $n = explode(' ', $ses[0]["nama_lengkap"]);
+            $data["nama_dipisah"] = $n;
             $foto = '';
-            if (count($n) > 1) {
-                $total = 1;
-            } else {
-                $total = count($n) - 1;
-            }
-            for ($x = 0; $x <= $total; $x++) {
+            for ($x = 0; $x <= 1; $x++) {
                 $foto .= substr($n[$x], 0, 1);
             }
             $data["foto_profile"] = $foto;
+            /* 
+                Pengecekan LEVEL User (Penyewa, Staff Garasi, atau Admin)
+            */
             if ($ses[1] == "admin") {
-                $data["orderan"] = $this->Database->getData("riwayat");
+                $con['conditions'] = array(
+                    'status' => 2,
+                );
+                $orderan = $this->Database->getData("riwayat", $con);
+                $saldo = $this->Database->getData("saldo", $con);
+                if ($saldo && $orderan) {
+                    $data['database'] = array_merge($orderan, $saldo);
+                } else if ($saldo) {
+                    $data['database'] = $saldo;
+                } else {
+                    $data['database'] = $orderan;
+                }
                 $data["mobil"] = $this->Database->getData("mobil");
-                $data["penyewa"] = $this->Database->getData("penyewa");
                 $data["level"] = "admin";
             }
+            /*
+                Return tampilan beserta variable $data
+            */
+            $this->load->view('include/head', $data);
             $this->load->view('page/admin_confirmpayment', $data);
         endif;
     }
 
     public function confirm($id)
     {
-        $data = [
-            'status' => 1
-        ];
-        $this->Database->update("riwayat", $data, $id);
+        $order = explode("-", $id);
+        if ($order[0] == "SEWA") {
+            $data = [
+                'status' => 1
+            ];
+            $this->Database->update("riwayat", $data, $order[1]);
+        } else if ($order[0] == "DEPO") {
+            $data = [
+                'status' => 0
+            ];
+            $this->Database->update("saldo", $data, $order[1]);
+            $con['conditions'] = array(
+                'id' => $order[1],
+            );
+            $saldo = $this->Database->getData("saldo", $con);
+            if ($saldo[0]['id_penyewa'] != null) {
+                $con['conditions'] = array(
+                    'id' => $saldo[0]['id_penyewa'],
+                );
+                $penyewa = $this->Database->getData("penyewa", $con);
+                $update_saldo = $penyewa[0]['saldo'] + $saldo[0]['nominal'];
+                $update = [
+                    'saldo' => $update_saldo
+                ];
+                $this->Database->update("penyewa", $update, $penyewa[0]['id']);
+            } else if ($saldo[0]['id_staff'] != null) {
+                $con['conditions'] = array(
+                    'id' => $saldo[0]['id_staff'],
+                );
+                $staff = $this->Database->getData("staff_garasi", $con);
+                $update_saldo = $staff[0]['saldo'] + $saldo[0]['nominal'];
+                $update = [
+                    'saldo' => $update_saldo
+                ];
+                $this->Database->update("staff_garasi", $update, $staff[0]['id']);
+            }
+        }
         redirect(base_url('confirm-payment'));
     }
 }

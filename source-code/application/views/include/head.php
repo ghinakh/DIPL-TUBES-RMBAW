@@ -41,7 +41,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- Mobile view nav wrap -->
             <?php
             if (!empty($user)) {
-            ?>
+                ?>
                 <ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap ">
                     <li class="dropdown stopevent">
                         <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary" href="#!" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -252,7 +252,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                 <?php
                 if (empty($user)) {
-                ?>
+                    ?>
                     <ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
                         <li class="dropdown d-inline-block stopevent">
                             <a href="<?= base_url('login') ?>" class="btn btn-primary">Login</a>
@@ -287,16 +287,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <ul class="list-unstyled">
-                                    <li>
-                                        <a class="dropdown-item" href="<?= base_url('edit/profile') ?>">
-                                            <i class="fe fe-user mr-2"></i>Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="./pages/student-subscriptions.html">
-                                            <i class="fe fe-star mr-2"></i>Subscription
-                                        </a>
-                                    </li>
+                                    <?php
+                                        if (($level == "Penyewa") || ($level == "Staff Garasi")) {
+                                            ?>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= base_url('edit/profile') ?>">
+                                                <i class="fe fe-user mr-2"></i>Profile
+                                            </a>
+                                        </li>
+                                    <?php
+                                        }
+                                        ?>
                                 </ul>
                                 <div class="dropdown-divider"></div>
                                 <ul class="list-unstyled">

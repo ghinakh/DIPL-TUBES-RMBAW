@@ -71,7 +71,11 @@ function tanggal_indonesia($tanggal)
                                         }
                                     } else {
                                         $orderid = "DEPO-" . $data['id'];
-                                        $deskripsi = "Send to " . $data['pembayaran'];
+                                        if ($level == "Penyewa") {
+                                            $deskripsi = "Pay with " . $data['pembayaran'];
+                                        } else if ($level == "Staff Garasi") {
+                                            $deskripsi = "Send to " . $data['pembayaran'];
+                                        }
                                         $tanggal = tanggal_indonesia($data['tanggal']);
                                     }
                                     if ($data['status'] == "0" || $data['status'] == "2" || $data['status'] == "1") {

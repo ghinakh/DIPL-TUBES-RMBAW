@@ -89,42 +89,6 @@
     <!-- sidebar -->
     <!-- Page Content -->
     <div id="page-content">
-      <div class="header">
-        <!-- navbar -->
-        <nav class="navbar-default navbar navbar-expand-lg">
-          <a id="nav-toggle" href="#!"><i class="fe fe-menu"></i></a>
-          <ul class="navbar-nav navbar-right-wrap ml-auto  d-flex nav-top-wrap ">
-            <li class="dropdown ml-2">
-              <a class="rounded-circle " href="#!" role="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-md">
-                  <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
-                </div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
-                <div class="dropdown-item">
-                  <div class="d-flex">
-                    <div class="avatar avatar-md">
-                      <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
-                    </div>
-                    <div class="ml-3 lh-1">
-                      <h5 class="mb-1"><?= $user['nama_lengkap'] ?></h5>
-                      <p class="mb-0 text-muted"><?= $user['email'] ?></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-divider"></div>
-                <ul class="list-unstyled">
-                  <li class="nav-item">
-                    <a class="nav-link " href="<?= base_url('logout') ?>">
-                      <i class="nav-icon fe fe-power mr-2"></i>Sign Out
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
       <!-- Container fluid -->
       <div class="container-fluid p-4">
         <div class="row">

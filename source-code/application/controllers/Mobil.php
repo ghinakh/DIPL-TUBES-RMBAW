@@ -33,6 +33,7 @@ class Mobil extends CI_Controller
                     $foto .= substr($n[$x], 0, 1);
                 }
                 $data["foto_profile"] = $foto;
+                $data['level'] = "Penyewa";
             endif;
             $con['conditions'] = array(
                 'id_mobil' => $route_url[0]['id'],
@@ -82,6 +83,7 @@ class Mobil extends CI_Controller
             );
             $data["orderan"] = $this->Database->getData("riwayat", $con);
             $data["foto_profile"] = $foto;
+            $data['level'] = "Penyewa";
             $con['conditions'] = array(
                 'id' => $id_mobil,
             );

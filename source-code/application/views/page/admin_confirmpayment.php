@@ -31,6 +31,30 @@
 
     <title>Payment | RentalKuy</title>
 </head>
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+error_reporting(0);
+function tanggal_indonesia($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+
+    $pecahkan = explode('-', $tanggal);
+    return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+}
+?>
 
 <body>
     <div id="db-wrapper">
@@ -88,42 +112,6 @@
         </nav>
         <!-- Page Content -->
         <div id="page-content">
-            <div class="header">
-                <!-- navbar -->
-                <nav class="navbar-default navbar navbar-expand-lg">
-                    <a id="nav-toggle" href=""><i class="fe fe-menu"></i></a>
-                    <ul class="navbar-nav navbar-right-wrap ml-auto  d-flex nav-top-wrap ">
-                        <li class="dropdown ml-2">
-                            <a class="rounded-circle " href="#!" role="button" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUser">
-                                <div class="dropdown-item">
-                                    <div class="d-flex">
-                                        <div class="avatar avatar-md">
-                                            <img alt="avatar" src="<?= $foto_profile ?>" class="rounded-circle">
-                                        </div>
-                                        <div class="ml-3 lh-1">
-                                            <h5 class="mb-1"><?= $user['nama_lengkap'] ?></h5>
-                                            <p class="mb-0 text-muted"><?= $user['email'] ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-divider"></div>
-                                <ul class="list-unstyled">
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="<?= base_url('logout') ?>">
-                                            <i class="nav-icon fe fe-power mr-2"></i>Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
             <!-- Container fluid -->
             <div class="container-fluid p-4">
                 <div class="row">
@@ -144,93 +132,50 @@
                             <div class="card-header border-bottom-0 p-0 bg-white">
                             </div>
                             <div>
-                                <!-- Table -->
-                                <div class="tab-content" id="tabContent">
-                                    <!--Tab pane -->
-                                    <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
-                                        <div class="table-responsive border-0 overflow-y-hidden">
-                                            <table class="table mb-0 ">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col" class="border-0 text-uppercase">
-                                                            CAR NAME
-                                                        </th>
-                                                        <th scope="col" class="border-0 text-uppercase">
-                                                            RENTER NAME
-                                                        </th>
-                                                        <th scope="col" class="border-0 text-uppercase">
-                                                            LOCATION
-                                                        </th>
-                                                        <th scope="col" class="border-0 text-uppercase">
-                                                            PRICE
-                                                        </th>
-                                                        <th scope="col" class="border-0 text-uppercase">
-                                                            ACTION
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    // status 0 : udah dikembalikan, udah rating
-                                                    // status 1 : udah dikembalikan, belum rating
-                                                    // status 2 : menunggu konfirmasi penyewaan
 
-                                                    foreach ($orderan as $sewa) {
-                                                        if (($sewa['status'] == '2')) {
-                                                            foreach ($penyewa as $p) {
-                                                                if ($p['id'] == $sewa['id_penyewa']) {
-                                                                    foreach ($mobil as $kendaraan) {
-                                                                        if ($kendaraan['id'] == $sewa['id_mobil']) {
-                                                                            ?>
-                                                                            <tr>
-                                                                                <td class="border-top-0">
-                                                                                    <div class="text-inherit">
-                                                                                        <div class="d-lg-flex align-items-center">
-                                                                                            <div>
-                                                                                                <img src="<?= base_url() ?>assets/images/mobil/<?= $kendaraan['gambar'] ?>" alt="" class="img-4by3-lg rounded" />
-                                                                                            </div>
-                                                                                            <div class="ml-lg-3 mt-2 mt-lg-0">
-                                                                                                <h4 class="mb-1 text-primary-hover">
-                                                                                                    <?= $kendaraan['nama_mobil'] ?>
-                                                                                                </h4>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="align-middle border-top-0">
-                                                                                    <div class="d-flex align-items-center">
-                                                                                        <?= $p['nama_lengkap'] ?>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="align-middle border-top-0">
-                                                                                    <div class="d-flex align-items-center wrap">
-                                                                                        <?= $p['address'] ?>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="align-middle border-top-0">
-                                                                                    <div class="d-flex align-items-center wrap">
-                                                                                        <?= $kendaraan['harga'] ?>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td class="align-middle border-top-0">
-                                                                                    <div class="d-flex align-items-center">
-                                                                                        <a href="<?= base_url() ?>/Admin/confirm/<?= $sewa['id'] ?>" class="btn btn-success btn-sm mr-2">Approved</a>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                    <?php
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
+                                <!-- Table 2 -->
+                                <div class="table-invoice table-responsive border-0">
+                                    <table class="table mb-0 text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="border-bottom-0">ORDER ID</th>
+                                                <th scope="col" class="border-bottom-0">DATE</th>
+                                                <th scope="col" class="border-bottom-0">DESCRIPTION</th>
+                                                <th scope="col" class="border-bottom-0">STATUS</th>
+                                                <th scope="col" class="border-bottom-0">ACTION</th>
+                                                <th scope="col" class="border-bottom-0"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($database as $data) {
+                                                if ($data['tanggal_mulai']) {
+                                                    $orderid = "SEWA-" . $data['id'];
+                                                    $tanggal = tanggal_indonesia($data['tanggal_mulai']);
+                                                    $button = '<a href="' . base_url() . 'Admin/confirm/' . $orderid . '" class="btn btn-success btn-sm">Confirm</a>';
+                                                    foreach ($mobil as $kendaraan) {
+                                                        if ($data['id_mobil'] == $kendaraan['id'])
+                                                            $deskripsi = "Rental " . $kendaraan['nama_mobil'] . " - " . $kendaraan['id'];
                                                     }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!--Tab pane -->
+                                                } else {
+                                                    $orderid = "DEPO-" . $data['id'];
+                                                    $deskripsi = $data['pembayaran'];
+                                                    $tanggal = tanggal_indonesia($data['tanggal']);
+                                                    $button = '<a href="' . base_url() . 'Admin/confirm/' . $orderid . '" class="btn btn-success btn-sm">Confirm</a>';
+                                                }
+                                                if ($data['status'] == "2") {
+                                                    $status = '<span class="badge badge-warning">Not Confirmed</span>';
+                                                }
+                                                ?>
+                                                <tr>
+                                                    <td><a href="">#<?= $orderid ?></a></td>
+                                                    <td><?= $tanggal ?></td>
+                                                    <td><?= $deskripsi ?></td>
+                                                    <td><?= $status ?></td>
+                                                    <td><?= $button ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

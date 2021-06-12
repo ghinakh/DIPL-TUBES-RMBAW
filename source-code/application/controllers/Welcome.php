@@ -58,6 +58,7 @@ class Welcome extends CI_Controller
 				$data["promo"] = $this->Database->getData("promo");
 				$data["orderan"] = $this->Database->getData("riwayat", $con);
 				$data["foto_profile"] = $foto;
+				$data['level'] = "Penyewa";
 				$data["pemilik"] = $this->Database->getData("staff_garasi");
 				$datamobil['conditions'] = array(
 					'status' => "Aktif",
@@ -81,6 +82,7 @@ class Welcome extends CI_Controller
 					$foto .= substr($n[$x], 0, 1);
 				}
 				$data["foto_profile"] = $foto;
+				$data['level'] = "Staff Garasi";
 				$con['conditions'] = array(
 					'id_staff' => $ses[0]["id"],
 					'status' => 'Aktif',
