@@ -105,12 +105,24 @@ class Mobil extends CI_Controller
     public function rate_car()
     {
         $id  = $this->input->post('id_sewa');
-        $data = [
-            'rate' => $this->input->post('rating'),
-            'status' => 0
-        ];
-        $this->Database->update("riwayat", $data, $id);
-        redirect(base_url('history'));
+        $con['conditions'] = array(
+            'id' => $id,
+        );
+        $riwayat = $this->Database->getData("riwayat", $con)[0];
+        if ($riwayat) {
+            $mobil = [
+                'rate' => $this->input->post('rating'),
+                'status' => 0
+            ];
+            $this->Database->update("riwayat", $mobil, $id);
+            $data = [
+                'full' => null,
+            ];
+            $this->Database->update("mobil", $data, $riwayat['id_mobil']);
+            redirect(base_url('history'));
+        } else {
+            redirect(show_404());
+        }
     }
 
     public function cek()
@@ -118,7 +130,40 @@ class Mobil extends CI_Controller
         if (!$this->session->userdata('credentials')) :
             redirect(show_404());
         else :
-            if ($this->input->post('id_mobil') && $this->input->post('harga') && $this->input->post('nama') && $this->input->post('service') && $this->input->post('alamat') && $this->input->post('sewanya') && $this->input->post('metode')) {
+            if ($this->input->post('id_mobil') && $this->input->post('mulainya') && $this->input->post('harga') && $this->input->post('nama') && $this->input->post('service') && $this->input->post('alamat') && $this->input->post('sewanya') && $this->input->post('metode')) {
+                $tgl1 = new DateTime(date("Y-m-d"));
+                $tgl2 = new DateTime(date("Y-m-d"));
+                $d = $tgl2->diff($tgl1)->days + 1;
+                $con['conditions'] = array(
+                    'id' => $this->input->post('id_mobil'),
+                );
+                $riwayat = $this->Database->getData("mobil", $con)[0];
+                if ($riwayat) {
+                    $total_biaya = $d * $this->input->post('harga');
+                    $ses = $this->session->userdata('credentials')[0];
+                    $data = [
+                        'full' => 1
+                    ];
+                    $this->Database->update("mobil", $data, $this->input->post('id_mobil'));
+                    $md5view = md5("riwayatrental" . rand(000, 999));
+                    $sql = array(
+                        'id_mobil' => $this->input->post('id_mobil'),
+                        'id_penyewa' => $ses['id'],
+                        'tipe_riwayat' => "Penyewa",
+                        'tanggal_mulai' => $this->input->post('mulainya'),
+                        'tanggal_selesai' => $this->input->post('sewanya'),
+                        'harga' => $total_biaya,
+                        'status' => 1,
+                        'rate' => NULL,
+                        'note' => NULL,
+                        'id_url' => $md5view,
+                    );
+                    $this->Database->insert("riwayat", $sql);
+                    var_dump($riwayat);
+                    var_dump($_POST);
+                } else {
+                    redirect(show_404());
+                }
             } else {
                 redirect(show_404());
             }

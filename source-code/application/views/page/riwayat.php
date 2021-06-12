@@ -55,7 +55,7 @@ function tanggal_indonesia($tanggal)
                                                 STATUS
                                             </th>
                                             <th scope="col" class="border-0 text-uppercase">
-                                                ACTION
+                                                RATE
                                             </th>
                                         </tr>
                                     </thead>
@@ -68,7 +68,7 @@ function tanggal_indonesia($tanggal)
                                                     $jenis = $kendaraan['jenis'];
                                                     $gambar = $kendaraan['gambar'];
 
-                                                    ?>
+                                        ?>
                                                     <tr>
                                                         <td class="border-top-0">
                                                             <div class="text-inherit">
@@ -87,26 +87,26 @@ function tanggal_indonesia($tanggal)
                                                         </td>
                                                         <td class="align-middle border-top-0">
                                                             <?php
-                                                                        if ((int) $sewa['status'] == 1) {
-                                                                            $status = '<span class="badge badge-success">Returned</span>';
-                                                                        } else if ((int) $sewa['status'] == 0) {
-                                                                            $status = '<span class="badge badge-success">Returned</span>';
-                                                                        } else if ((int) $sewa['status'] == 2) {
-                                                                            $status = '<span class="badge badge-warning">Waiting</span>';
-                                                                        }
-                                                                        echo $status;
-                                                                        ?>
+                                                            if ((int) $sewa['status'] == 1) {
+                                                                $status = '<span class="badge badge-success">Returned</span>';
+                                                            } else if ((int) $sewa['status'] == 0) {
+                                                                $status = '<span class="badge badge-success">Returned</span>';
+                                                            } else if ((int) $sewa['status'] == 2) {
+                                                                $status = '<span class="badge badge-warning">Waiting</span>';
+                                                            } else if ((int) $sewa['status'] == 3) {
+                                                                $status = '<span class="badge badge-danger">Late</span>';
+                                                            }
+                                                            echo $status;
+                                                            ?>
                                                         </td>
                                                         <td class="align-middle border-top-0">
                                                             <?php
-                                                                        if ((int) $sewa['status'] == 1) {
-                                                                            $button = '<a href="javascript:;" data-toggle="modal" data-target="#edit-data' . $sewa['id'] . '" class="btn btn-sm btn-success">Rate Now</a>';
-                                                                        } else if ((int) $sewa['status'] == 0) {
-                                                                            $button = '<span class="text-warning">' . $sewa['rate'] . '<i class="mdi mdi-star"></i></span>';
-                                                                        } else {
-                                                                            $button = '';
-                                                                        }
-                                                                        echo $button; ?>
+                                                            if ((int) $sewa['status'] == 1 || (int) $sewa['status'] == 3) {
+                                                                $button = '<a href="javascript:;" data-toggle="modal" data-target="#edit-data' . $sewa['id'] . '" class="btn btn-sm btn-success">Rate Now</a>';
+                                                            } else if ((int) $sewa['status'] == 0) {
+                                                                $button = '<span class="text-warning">' . $sewa['rate'] . '<i class="mdi mdi-star"></i></span>';
+                                                            }
+                                                            echo $button; ?>
                                                         </td>
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="edit-data<?= $sewa['id'] ?>" role="dialog">
