@@ -180,10 +180,12 @@ class Users extends CI_Controller
                 $data["orderan"] = $this->Database->getData("riwayat", $con);
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 /* 
                     <Lihat Riwayat Staff Garasi>
-                */ }
+                */
+            }
             /*
                 Return tampilan beserta variable $data
             */
@@ -247,7 +249,8 @@ class Users extends CI_Controller
                 endif;
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 $con['conditions'] = array(
                     'id_staff' => $ses[0]["id"],
                 );
@@ -306,7 +309,8 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 $data["level"] = "Staff Garasi";
             }
             $this->load->view('include/head', $data);
@@ -363,7 +367,8 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 $data["level"] = "Staff Garasi";
             }
             $this->load->view('include/head', $data);
@@ -424,9 +429,9 @@ class Users extends CI_Controller
             );
             $orderan = $this->Database->getData("promo", $con);
             if ($orderan) {
-                print json_encode(array("result" => 1, "content" => "Promo berhasil ditambahkan", "price" => $orderan[0]['diskon']));
+                print json_encode(array("result" => 1, "content" => "Promotion successfully added", "price" => $orderan[0]['diskon']));
             } else {
-                print json_encode(array("result" => 0, "content" => 'Kode promo tidak ditemukan.'));
+                print json_encode(array("result" => 0, "content" => 'Promo code not found.'));
             }
         endif;
     }

@@ -30,10 +30,7 @@ $harga_acak = $mobil['harga'] + $rand;
                     <div class="card-body">
                         <form action="<?= base_url() ?>Mobil/cek" method="POST">
                             <input type="hidden" name="id_mobil" value="<?= $mobil['id'] ?>">
-                            <!-- <div class="form-group col-12 col-md-12">
-                                <label class="form-label" for="promo">Promo</label>
-                                <input type="text" name="promo" id="promo" class="form-control" required>
-                            </div> -->
+                            <input type="hidden" name="harga" value="<?= $harga_acak ?>" id="hargainput">
                             <div class="form-group col-12 col-md-12">
                                 <label class="form-label" for="nama">Name</label>
                                 <input type="text" name="nama" id="nama" class="form-control" required>
@@ -68,16 +65,20 @@ $harga_acak = $mobil['harga'] + $rand;
                                 <input type="radio" id="cod" name="metode" value="cod" class="custom-control-input">
                                 <label class="custom-control-label" for="cod"><span class="text-dark">COD</span></label>
                             </div>
+                            <div class="form-group col-12 col-md-12"><button name="submit" value="0" class="btn btn-success btn-sm">Submit</button></div>
+                        </form>
+                        <form class="form-header" action="http://127.0.0.1/rpl/source-code/kupon/" role="form" method="POST" id="kuponmobil">
                             <div class="form-group col-12 col-md-12">
+                                <div id="mutiara"></div>
+                                <input type="hidden" name="harganow" value="<?= $harga_acak ?>" id="harganow">
                                 <label class="form-label" for="promo">Coupon</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter your code" name="promo" id="promo">
+                                    <input type="text" class="form-control" placeholder="Enter your code" name="kode" id="kode">
                                     <div class="input-group-append">
                                         <button class="btn btn-secondary" name="submit" value="1" placeholder="Apply">Apply</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-12 col-md-12"><button name="submit" value="0" class="btn btn-success btn-sm">Submit</button></div>
                         </form>
                     </div>
                 </div>
@@ -98,15 +99,6 @@ $harga_acak = $mobil['harga'] + $rand;
                             <div class="display-4 font-weight-bold text-primary" id="harga"><?= number_format($harga_acak, 0, ',', '.') ?></div>
                             <span class=" align-self-end mb-1">/day</span>
                         </div>
-                    </div>
-                    <hr class="m-0">
-                    <div class="form-group col-12">
-                        <input type="hidden" value="<?= $harga_acak ?>" id="harga_awal">
-                        <select class="selectpicker" id="hari" data-width="100%" onchange="test()">
-                            <option value="1">1 Day</option>
-                            <option value="2">2 Day</option>
-                            <option value="3">3 Day</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -158,7 +150,7 @@ $harga_acak = $mobil['harga'] + $rand;
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
     $(document).ready(function() {
-        $("form").submit(function() {
+        $("#kuponmobil").submit(function() {
             if ($('#kode').val().length > 3) {
                 var pdata = $(this).serialize();
                 var purl = $(this).attr('action');
@@ -173,11 +165,14 @@ $harga_acak = $mobil['harga'] + $rand;
                         $("button").removeAttr("disabled", "disabled");
                         $("#btn-login").html('Masuk');
                         $("#mutiara").html(hasil.result ? "<div class='alert alert-success' role='alert'>" + hasil.content + "</div>" : "<div class='alert alert-warning' role='alert'>" + hasil.content + "</div>")
-                        var harga_sekarang = $('#harganow').attr("value");
-                        $("#harga").html(numberWithCommas(harga_sekarang - hasil.price));
-                        $("#harga_awal").attr('value', harga_sekarang - hasil.price);
-                        console.log(harga_sekarang);
-                        console.log(hasil.price);
+                        if (hasil.price) {
+                            var harga_sekarang = $('#harganow').attr("value");
+                            $("#harga").html(numberWithCommas(harga_sekarang - hasil.price));
+                            $("#harga_awal").attr('value', harga_sekarang - hasil.price);
+                            $("#hargainput").attr('value', harga_sekarang - hasil.price);
+                            console.log(harga_sekarang);
+                            console.log(hasil.price);
+                        }
                     },
                     error: function(a, b, c) {
                         $("#kode").removeAttr("disabled", "disabled");
