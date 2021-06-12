@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jun 2021 pada 13.06
+-- Waktu pembuatan: 12 Jun 2021 pada 13.57
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -86,7 +86,7 @@ CREATE TABLE `mobil` (
 --
 
 INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `harga`, `gambar`, `status`, `full`, `url_view`) VALUES
-(2, 3, 5001155, 'Toyota Avanza', 'Bensin', 180000, 'avanza-preview.png', 'Aktif', NULL, 'f7b9537b861317161e2cb9eec8462698'),
+(2, 3, 5001155, 'Toyota Avanza', 'Bensin', 180000, 'avanza-preview.png', 'Aktif', 1, 'f7b9537b861317161e2cb9eec8462698'),
 (3, 1, 125415111, 'Toyota Fortuner', 'Diesel', 320000, 'portuner-preview.png', 'Aktif', NULL, '8f99136e6dd0a0e50f191c54236049ac'),
 (4, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977897-image.jpg', 'Aktif', NULL, 'd93e37d3c844cde1acf6d969c9c1eda7'),
 (5, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977908-image.jpg', 'Aktif', NULL, '8e1fcc833a20d91d3694ce10c2eb1ff4');
@@ -116,7 +116,7 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `saldo`, `email`, `password`) VALUES
-(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '1000000', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '344813', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
 (2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
@@ -153,8 +153,10 @@ CREATE TABLE `riwayat` (
   `id_mobil` int(11) NOT NULL,
   `id_penyewa` int(11) NOT NULL,
   `tipe_riwayat` varchar(255) NOT NULL,
-  `tanggal_mulai` date NOT NULL,
-  `tanggal_selesai` date NOT NULL,
+  `alamat` text DEFAULT NULL,
+  `tanggal_mulai` date DEFAULT NULL,
+  `tanggal_selesai` date DEFAULT NULL,
+  `service` varchar(255) DEFAULT NULL,
   `harga` int(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `rate` varchar(50) DEFAULT NULL,
@@ -165,8 +167,9 @@ CREATE TABLE `riwayat` (
 -- Dumping data untuk tabel `riwayat`
 --
 
-INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `tanggal_mulai`, `tanggal_selesai`, `harga`, `status`, `rate`, `id_url`) VALUES
-(1, 2, 1, 'Penyewa', '2021-06-01', '2021-06-19', 180880, '0', '4', '53b6bee084f103e8d22419f6bbe9de48');
+INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `alamat`, `tanggal_mulai`, `tanggal_selesai`, `service`, `harga`, `status`, `rate`, `id_url`) VALUES
+(1, 2, 1, 'Rent', 'Jl Telkom No 1', '2021-06-01', '2021-06-19', NULL, 180880, '0', '4', '53b6bee084f103e8d22419f6bbe9de48'),
+(2, 2, 1, 'Rent', 'Jl Telkom No 2', '2021-06-12', '2021-06-13', 'Staff Service', 155187, '1', NULL, '5d7cea7c5e027a4c27808f9070a912de');
 
 -- --------------------------------------------------------
 
@@ -318,7 +321,7 @@ ALTER TABLE `promo`
 -- AUTO_INCREMENT untuk tabel `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `saldo`
