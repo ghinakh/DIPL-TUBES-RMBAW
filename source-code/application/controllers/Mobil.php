@@ -141,26 +141,27 @@ class Mobil extends CI_Controller
                 if ($riwayat) {
                     $total_biaya = $d * $this->input->post('harga');
                     $ses = $this->session->userdata('credentials')[0];
-                    $data = [
-                        'full' => 1
-                    ];
-                    $this->Database->update("mobil", $data, $this->input->post('id_mobil'));
-                    $md5view = md5("riwayatrental" . rand(000, 999));
-                    $sql = array(
-                        'id_mobil' => $this->input->post('id_mobil'),
-                        'id_penyewa' => $ses['id'],
-                        'tipe_riwayat' => "Penyewa",
-                        'tanggal_mulai' => $this->input->post('mulainya'),
-                        'tanggal_selesai' => $this->input->post('sewanya'),
-                        'harga' => $total_biaya,
-                        'status' => 1,
-                        'rate' => NULL,
-                        'note' => NULL,
-                        'id_url' => $md5view,
-                    );
-                    $this->Database->insert("riwayat", $sql);
-                    var_dump($riwayat);
-                    var_dump($_POST);
+                    if ($ses["saldo"] >= $total_biaya) {
+                        $data = [
+                            'full' => 1
+                        ];
+                        $this->Database->update("mobil", $data, $this->input->post('id_mobil'));
+                        $md5view = md5("riwayatrental" . rand(000, 999));
+                        $sql = array(
+                            'id_mobil' => $this->input->post('id_mobil'),
+                            'id_penyewa' => $ses['id'],
+                            'tipe_riwayat' => "Penyewa",
+                            'tanggal_mulai' => $this->input->post('mulainya'),
+                            'tanggal_selesai' => $this->input->post('sewanya'),
+                            'harga' => $total_biaya,
+                            'status' => 1,
+                            'rate' => NULL,
+                            'note' => NULL,
+                            'id_url' => $md5view,
+                        );
+                        $this->Database->insert("riwayat", $sql);
+                        redirect(base_url('invoice' . $md5view));
+                    }
                 } else {
                     redirect(show_404());
                 }

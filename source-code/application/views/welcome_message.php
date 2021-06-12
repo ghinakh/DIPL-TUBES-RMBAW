@@ -72,7 +72,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<?php
 		if (!empty($promo)) {
 			foreach ($promo as $diskon) {
-				?>
+		?>
 				<div class="position-relative">
 					<div class="card mb-4 card-hover">
 						<div class="card-body p-3 pb-0">
@@ -101,13 +101,12 @@ if (!empty($orderan)) {
 				$nama_ken = $sewa['nama_mobil'];
 				$jenis = $sewa['jenis'];
 				$gambar = $sewa['gambar'];
-				$rate = $sewa['rating'];
 				$price = $sewa['harga'];
 				$view_detail = $sewa['url_view'];
 				$punya = $kendaraan['nama_lengkap'];
 			}
 		}
-		?>
+?>
 		<div class="pt-lg-12 pb-lg-3 pt-8 pb-6">
 			<div class="container">
 				<div class="row mb-4">
@@ -140,8 +139,6 @@ if (!empty($orderan)) {
 												<span class="font-size-xs text-muted mr-2"><?= $punya ?></span>
 												<i class="fe fe-bar-chart mr-1"></i>
 												<span class="font-size-xs text-muted mr-2"><?= $jenis ?></span><br />
-												<i class="mdi mdi-star text-warning "></i>
-												<span class="text-warning"><?= $rate ?></span>
 											</span>
 										</div>
 										<div class="bg mb-3 mr-2">
@@ -156,8 +153,8 @@ if (!empty($orderan)) {
 							</div>
 						</div>
 				<?php
-					}
-				}
+			}
+		}
 				?>
 					</div>
 				</div>
@@ -187,13 +184,12 @@ if (!empty($orderan)) {
 									$nama_ken = $sewa['nama_mobil'];
 									$jenis = $sewa['jenis'];
 									$gambar = $sewa['gambar'];
-									$rate = $sewa['rating'];
 									$price = $sewa['harga'];
 									$view_detail = $sewa['url_view'];
 									$punya = $kendaraan['nama_lengkap'];
 								}
 							}
-							?>
+						?>
 							<div class="item">
 								<!-- Card -->
 								<div class="card mb-4 card-hover">
@@ -209,8 +205,6 @@ if (!empty($orderan)) {
 													<span class="font-size-xs text-muted mr-2"><?= $punya ?></span>
 													<i class="fe fe-bar-chart mr-1"></i>
 													<span class="font-size-xs text-muted mr-2"><?= $jenis ?></span><br />
-													<i class="mdi mdi-star text-warning "></i>
-													<span class="text-warning"><?= $rate ?></span>
 												</span>
 											</div>
 											<div class="bg mb-3 mr-2">

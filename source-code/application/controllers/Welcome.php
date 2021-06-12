@@ -64,7 +64,7 @@ class Welcome extends CI_Controller
 					'status' => "Aktif",
 				);
 				$data["mobil"] = $this->Database->getData("mobil", $datamobil);
-				$rekomendasi_by = array("jenis", "harga", "rating");
+				$rekomendasi_by = array("jenis", "harga");
 				$rekomendasi = array_rand($rekomendasi_by);
 				$data["mobil_rekomendasi"] = $this->Database->urut_secara("mobil", "rand", $rekomendasi_by[$rekomendasi]);
 				$this->load->view('include/head', $data);
