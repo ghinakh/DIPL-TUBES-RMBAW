@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jun 2021 pada 13.57
+-- Waktu pembuatan: 12 Jun 2021 pada 14.41
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.15
 
@@ -116,7 +116,7 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `saldo`, `email`, `password`) VALUES
-(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '344813', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '258986', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
 (2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
@@ -160,16 +160,16 @@ CREATE TABLE `riwayat` (
   `harga` int(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `rate` varchar(50) DEFAULT NULL,
-  `id_url` varchar(255) NOT NULL
+  `id_url` varchar(255) NOT NULL,
+  `dibuat` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `riwayat`
 --
 
-INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `alamat`, `tanggal_mulai`, `tanggal_selesai`, `service`, `harga`, `status`, `rate`, `id_url`) VALUES
-(1, 2, 1, 'Rent', 'Jl Telkom No 1', '2021-06-01', '2021-06-19', NULL, 180880, '0', '4', '53b6bee084f103e8d22419f6bbe9de48'),
-(2, 2, 1, 'Rent', 'Jl Telkom No 2', '2021-06-12', '2021-06-13', 'Staff Service', 155187, '1', NULL, '5d7cea7c5e027a4c27808f9070a912de');
+INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `tipe_riwayat`, `alamat`, `tanggal_mulai`, `tanggal_selesai`, `service`, `harga`, `status`, `rate`, `id_url`, `dibuat`) VALUES
+(1, 2, 1, 'Rent', 'Jl Telkom No 1', '2021-06-12', '2021-06-14', 'Self Service', 541014, '1', NULL, '78e2ac6284b3bed97d53097a32b63711', '2021-06-12');
 
 -- --------------------------------------------------------
 
@@ -187,16 +187,6 @@ CREATE TABLE `saldo` (
   `status` int(5) NOT NULL,
   `id_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `saldo`
---
-
-INSERT INTO `saldo` (`id`, `id_penyewa`, `id_staff`, `nominal`, `pembayaran`, `tanggal`, `status`, `id_url`) VALUES
-(2, 1, NULL, 999999, 'OVO Payment', '2021-04-26', 0, 'a2b7b07a571b0a6de1794a3153cea321'),
-(4, 1, NULL, 1, 'DANA Payment', '2021-06-04', 0, ''),
-(5, NULL, 1, 100000, 'OVO Payment', '2021-06-23', 0, ''),
-(8, NULL, 1, 29800, 'GOPAY Payment', '2021-06-09', 0, '');
 
 -- --------------------------------------------------------
 
@@ -321,13 +311,13 @@ ALTER TABLE `promo`
 -- AUTO_INCREMENT untuk tabel `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `saldo`
 --
 ALTER TABLE `saldo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `staff_garasi`

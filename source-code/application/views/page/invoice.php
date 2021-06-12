@@ -64,7 +64,7 @@ function tanggal_indonesia($tanggal)
                                 <?php foreach ($database as $data) {
                                     if ($data['tanggal_mulai']) {
                                         $orderid = "SEWA-" . $data['id'];
-                                        $tanggal = tanggal_indonesia($data['tanggal_mulai']);
+                                        $tanggal = tanggal_indonesia($data['dibuat']);
                                         foreach ($mobil as $kendaraan) {
                                             if ($data['id_mobil'] == $kendaraan['id'])
                                                 $deskripsi = "Do car rental " . $kendaraan['nama_mobil'];
@@ -76,14 +76,14 @@ function tanggal_indonesia($tanggal)
                                         } else if ($level == "Staff Garasi") {
                                             $deskripsi = "Send to " . $data['pembayaran'];
                                         }
-                                        $tanggal = tanggal_indonesia($data['tanggal']);
+                                        $tanggal = tanggal_indonesia($data['dibuat']);
                                     }
                                     if ($data['status'] == "0" || $data['status'] == "2" || $data['status'] == "1") {
                                         $status = '<span class="badge badge-success">Success</span>';
                                     } else {
                                         $status = '<span class="badge badge-danger">Waiting for payment</span>';
                                     }
-                                    ?>
+                                ?>
                                     <tr>
                                         <td><a href="<?= base_url('invoice/' . $data['id_url']) ?>">#<?= $orderid ?></a></td>
                                         <td><?= $tanggal ?></td>

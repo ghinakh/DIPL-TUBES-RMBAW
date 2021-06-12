@@ -1,3 +1,7 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+$db_saldo = $this->Database->getData($sql, array("id" => $user['id']));
+?>
 <div class="row align-items-center">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12">
         <!-- Bg -->
@@ -43,7 +47,7 @@
                 <!-- Card header -->
                 <div class="card-header">
                     <span>My Saldo</span>
-                    <h3 class="mb-1">Rp. <?= number_format($user["saldo"], 0, ',', '.') ?></h3>
+                    <h3 class="mb-1">Rp. <?= number_format($db_saldo["saldo"], 0, ',', '.') ?></h3>
                     <a type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#modal_topup">Top Up</a>
                     <!-- Modal "Topup"-->
                     <div class="modal fade" id="modal_topup" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -61,14 +65,10 @@
                                     <form class="form-row" method="POST" action="<?= base_url('topup') ?>">
                                         <!-- Full name  -->
                                         <input type="hidden" class="form-control mb-2" name="id_penyewa" id="id_penyewa" value="<?= $user['id'] ?>">
-
-                                        <div class="form-group col-12 col-md-12">
-                                            <label class="form-label" for="saldo">Saldo Sekarang</label>
-                                            <input type="text" class="form-control mb-2" name="saldo" id="saldo" value="<?= $user['saldo'] ?>" readonly="readonly" style="border: 0">
-                                        </div>
                                         <div class="form-group col-12 col-md-12">
                                             <label class="form-label" for="nominal">Nominal</label>
                                             <input type="number" id="nominal" name="nominal" class="form-control" placeholder="Nominal" value="" required>
+                                            <input type="hidden" class="form-control mb-2" name="saldo" id="saldo" value="<?= $db_saldo['saldo'] ?>" readonly="readonly" style="border: 0">
                                         </div>
                                         <!-- Radio -->
                                         <h4 class="form-label col-12 col-md-12 mb-2">Payment Method</h4>

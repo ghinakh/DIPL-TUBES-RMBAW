@@ -1,10 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
-foreach ($rate as $pemakai) {
-    $bintang = 0;
-    $bintang .= $bintang + $pemakai['rate'];
-    $total_bintang =  $bintang / count($rate);
+if (empty($rate)) {
+    $total_bintang = 0;
+} else {
+    foreach ($rate as $pemakai) {
+        $bintang = 0;
+        $bintang .= $bintang + $pemakai['rate'];
+        $total_bintang =  $bintang / count($rate);
+    }
 }
 ?>
 <!-- Page header -->

@@ -130,9 +130,9 @@ class Mobil extends CI_Controller
             redirect(show_404());
         else :
             if ($this->input->post('id_mobil') && $this->input->post('mulainya') && $this->input->post('harga') && $this->input->post('nama') && $this->input->post('service') && $this->input->post('alamat') && $this->input->post('sewanya') && $this->input->post('metode')) {
-                $tgl1 = new DateTime(date("Y-m-d"));
-                $tgl2 = new DateTime(date("Y-m-d"));
-                $d = $tgl2->diff($tgl1)->days + 1;
+                $tgl1 = new DateTime($this->input->post('mulainya'));
+                $tgl2 = new DateTime($this->input->post('sewanya'));
+                $d = $tgl2->diff($tgl1)->days;
                 $con['conditions'] = array(
                     'id' => $this->input->post('id_mobil'),
                 );
@@ -163,6 +163,7 @@ class Mobil extends CI_Controller
                             'status' => 1,
                             'rate' => NULL,
                             'id_url' => $md5view,
+                            'dibuat' => date("Y-m-d"),
                         );
                         $this->Database->insert("riwayat", $sql);
                         redirect(base_url('invoice/' . $md5view));

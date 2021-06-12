@@ -22,6 +22,9 @@ function tanggal_indonesia($tanggal)
     return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
 }
 $harga = number_format((int)$detail_mobil['harga'], 0, ',', '.');
+if ($detail_mobil['tipe_riwayat'] == "Rent") {
+    $mobil = $this->Database->getData("mobil", array("id" => $detail_mobil['id_mobil']));
+}
 ?>
 <!-- Page Content -->
 <div class="pt-5 pb-5">
@@ -67,8 +70,8 @@ $harga = number_format((int)$detail_mobil['harga'], 0, ',', '.');
                             <tbody>
                                 <tr class="text-dark">
                                     <?php if ($detail_mobil['tipe_riwayat'] == "Rent") { ?>
-                                        <td class="py-2"><?= $detail_mobil[''] ?> <span class="font-size-xs text-muted">(<?= $detail_mobil['tanggal_mulai'] ?>
-                                                to <?= $detail_mobil['tanggal_selesai'] ?>)</span></td>
+                                        <td class="py-2"><?= $mobil['nama_mobil'] ?> <span class="font-size-xs text-muted">(<?= tanggal_indonesia($detail_mobil['tanggal_mulai']) ?>
+                                                to <?= tanggal_indonesia($detail_mobil['tanggal_selesai']) ?>)</span></td>
                                         <td class="py-2"></td>
                                         <td class="py-2"></td>
                                         <td class="py-2">IDR <?= $harga ?></td>

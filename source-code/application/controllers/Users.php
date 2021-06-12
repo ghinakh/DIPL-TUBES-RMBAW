@@ -160,6 +160,7 @@ class Users extends CI_Controller
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
             $data['user'] =  $ses[0];
+            $data['sql'] =  $ses[1];
             $n = explode(' ', $ses[0]["nama_lengkap"]);
             $data["nama_dipisah"] = $n;
             $foto = '';
@@ -180,10 +181,12 @@ class Users extends CI_Controller
                 $data["orderan"] = $this->Database->getData("riwayat", $con);
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 /* 
                     <Lihat Riwayat Staff Garasi>
-                */ }
+                */
+            }
             /*
                 Return tampilan beserta variable $data
             */
@@ -221,6 +224,7 @@ class Users extends CI_Controller
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
             $data['user'] =  $ses[0];
+            $data['sql'] =  $ses[1];
             $n = explode(' ', $ses[0]["nama_lengkap"]);
             $data["nama_dipisah"] = $n;
             $foto = '';
@@ -247,7 +251,8 @@ class Users extends CI_Controller
                 endif;
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 $con['conditions'] = array(
                     'id_staff' => $ses[0]["id"],
                 );
@@ -269,6 +274,7 @@ class Users extends CI_Controller
         else :
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
+            $data['sql'] =  $ses[1];
             if ($this->input->post('oldpass') && $this->input->post('newpass') && $this->input->post('cpass')) :
                 $old = md5($this->input->post('oldpass'));
                 $new = md5($this->input->post('newpass'));
@@ -306,7 +312,8 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 $data["level"] = "Staff Garasi";
             }
             $this->load->view('include/head', $data);
@@ -327,6 +334,7 @@ class Users extends CI_Controller
         else :
             $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
             $ses = $this->session->userdata('credentials');
+            $data['sql'] =  $ses[1];
             if ($this->input->post('fname') && $this->input->post('lname') && $this->input->post('phone') && $this->input->post('address') && $this->input->post('city')) :
                 $sql = array(
                     'nama_lengkap' => $this->input->post('fname') . ' ' . $this->input->post('lname'),
@@ -363,7 +371,8 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") {
+            } else if ($ses[1] == "staff_garasi") {
                 $data["level"] = "Staff Garasi";
             }
             $this->load->view('include/head', $data);
@@ -394,7 +403,7 @@ class Users extends CI_Controller
         $tanggal = date('Y-m-d H:i:s');
         $data = [
             'id_staff' => $id,
-            'nominal' => -($this->input->post('nominal')),
+            'nominal' => - ($this->input->post('nominal')),
             'pembayaran' => $this->input->post('pay'),
             'tanggal' => $tanggal,
             'status' => 2
