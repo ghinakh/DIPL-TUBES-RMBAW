@@ -141,7 +141,12 @@ class Mobil extends CI_Controller
                 if ($riwayat) {
                     $total_biaya = $d * $this->input->post('harga');
                     $ses = $this->session->userdata('credentials')[0];
-                    if ($ses["saldo"] >= $total_biaya) {
+                    $user = $this->Database->getData("penyewa", array("id" => $ses['id']));
+                    if ($user["saldo"] >= $total_biaya) {
+                        $saldo_min = [
+                            'saldo' => $user['saldo'] - $total_biaya,
+                        ];
+                        $this->Database->update("penyewa", $saldo_min, $user['id']);
                         $data = [
                             'full' => 1
                         ];
@@ -149,18 +154,21 @@ class Mobil extends CI_Controller
                         $md5view = md5("riwayatrental" . rand(000, 999));
                         $sql = array(
                             'id_mobil' => $this->input->post('id_mobil'),
-                            'id_penyewa' => $ses['id'],
-                            'tipe_riwayat' => "Penyewa",
+                            'id_penyewa' => $user['id'],
+                            'tipe_riwayat' => "Rent",
+                            'alamat' => $this->input->post('alamat'),
                             'tanggal_mulai' => $this->input->post('mulainya'),
                             'tanggal_selesai' => $this->input->post('sewanya'),
+                            'service' => $this->input->post('service'),
                             'harga' => $total_biaya,
                             'status' => 1,
                             'rate' => NULL,
-                            'note' => NULL,
                             'id_url' => $md5view,
                         );
                         $this->Database->insert("riwayat", $sql);
-                        redirect(base_url('invoice' . $md5view));
+                        redirect(base_url('invoice/' . $md5view));
+                    } else {
+                        redirect(base_url("cars/detail/" . $riwayat['url_view'] . "?error_type=saldo"));
                     }
                 } else {
                     redirect(show_404());

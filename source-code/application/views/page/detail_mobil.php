@@ -1,5 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
+foreach ($rate as $pemakai) {
+    $bintang = 0;
+    $bintang .= $bintang + $pemakai['rate'];
+    $total_bintang =  $bintang / count($rate);
+}
 ?>
 <!-- Page header -->
 <div class="pt-lg-8 pb-lg-16 pt-8 pb-12 bg-primary">
@@ -61,17 +67,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <?php
-                                    if (empty($rate)) { } else {
+                                    if (empty($rate)) {
+                                    } else {
                                         foreach ($rate as $pemakai) {
                                             foreach ($penyewa as $akun) {
                                                 if ($pemakai['id_penyewa'] == $akun['id']) {
                                                     $nama = $akun['nama_lengkap'];
                                                     $sewa = $pemakai['tanggal_mulai'];
                                                     $reting = $pemakai['rate'];
-                                                    $comment = $pemakai['note'];
                                                 }
                                             }
-                                            ?>
+                                    ?>
                                             <!-- Rating -->
                                             <div class="media border-bottom pb-4 mb-4">
                                                 <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
@@ -83,7 +89,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                     <div class="font-size-xs mb-2">
                                                         <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
                                                     </div>
-                                                    <p><?= $comment ?></p>
                                                 </div>
                                             </div>
                                     <?php
@@ -142,7 +147,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="mb-3">
                             <span class="text-dark font-weight-bold h2">Rp. <?= number_format($data_mobil['harga'], 0, ',', '.') ?></span><br />
                             <hr class="mx-3" />
-                            <span class="font-size-medium"><span class="text-warning">4.5</span><span class="mdi mdi-star text-warning mr-2"></span>
+                            <span class="font-size-medium"><span class="text-warning"><?= $total_bintang ?></span><span class="mdi mdi-star text-warning mr-2"></span>
                         </div>
                         <?php if ($data_mobil['full'] == 1) { ?>
                             <button type="button" class="btn btn-success btn-block" disabled>Mobil sedang digunakan</button>

@@ -37,11 +37,11 @@ $harga_acak = $mobil['harga'] + $rand;
                             </div>
                             <label class="form-label col-12 col-md-12 mb-2">Services</label>
                             <div class="form-group custom-control custom-radio custom-control-inline ml-3">
-                                <input type="radio" id="self" name="service" value="self" class="custom-control-input">
+                                <input type="radio" id="self" name="service" value="Self Service" class="custom-control-input">
                                 <label class="custom-control-label " for="self"><span class="text-dark">Self Service</span></label>
                             </div>
                             <div class="form-group custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="staff" name="service" value="staff" class="custom-control-input">
+                                <input type="radio" id="staff" name="service" value="Staff Service" class="custom-control-input">
                                 <label class="custom-control-label" for="staff"><span class="text-dark">Staff Service</span></label>
                             </div>
                             <div class="form-group col-12 col-md-12">
