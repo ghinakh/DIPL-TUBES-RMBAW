@@ -118,12 +118,9 @@ class Mobil extends CI_Controller
         if (!$this->session->userdata('credentials')) :
             redirect(show_404());
         else :
-            if ($_POST['submit'] == 0) {
-                var_dump($_POST);
+            if ($this->input->post('id_mobil') && $this->input->post('harga') && $this->input->post('nama') && $this->input->post('service') && $this->input->post('alamat') && $this->input->post('sewanya') && $this->input->post('metode')) {
             } else {
-                $sess_array = array('kode_promo' => $this->input->post('promo'));
-                $this->session->set_userdata('kode', $sess_array);
-                redirect(base_url('kupon/'));
+                redirect(show_404());
             }
         endif;
     }
