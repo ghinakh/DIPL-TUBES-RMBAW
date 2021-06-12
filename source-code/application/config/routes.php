@@ -66,7 +66,7 @@ $route['change/password'] = 'Users/Password';
 $route['invoice'] = 'Users/Invoice';
 $route['invoice/(:any)'] = 'Payment/Detail/$1';
 $route['kupon'] = 'Users/kupon/';
-$route['pay'] = 'Payment/rent/';
+// $route['pay'] = 'Payment/rent/';
 
 $route['topup'] = 'Users/topup';
 $route['rating'] = 'Mobil/rate_car';

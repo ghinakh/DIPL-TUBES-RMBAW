@@ -49,12 +49,8 @@ $harga_acak = $mobil['harga'] + $rand;
                                 <input type="text" name="alamat" id="alamat" class="form-control" required>
                             </div>
                             <div class="form-group col-12 col-md-12 mb-3">
-                                <label class="form-label" for="tgl_mulai">Start Date</label>
-                                <input type="date" id="tgl_mulai" class="form-control" required>
-                            </div>
-                            <div class="form-group col-12 col-md-12 mb-3">
                                 <label class="form-label" for="tgl_selesai">End Date</label>
-                                <input type="date" id="tgl_selesai" class="form-control" required>
+                                <input type="date" id="tgl_selesai" class="form-control" name="sewanya" required>
                             </div>
                             <label class="form-label col-12 col-md-12 mb-2">Method</label>
                             <div class="form-group custom-control custom-radio custom-control-inline ml-3">
