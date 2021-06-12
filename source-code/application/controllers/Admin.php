@@ -200,6 +200,19 @@ class Admin extends CI_Controller
             $data = [
                 'status' => 1
             ];
+            // Belum 
+            $con['conditions'] = array(
+                'id' => $order[1],
+            );
+            $riwayat = $this->database->update("riwayat", $con);
+            $con_car['conditions'] = array(
+                'id' => $riwayat[0]['id_mobil'],
+            );
+            $con_renter['conditions'] = array(
+                'id' => $riwayat[0]['id_mobil'],
+            );
+            $mobil = $this->database->update("mobil", $con_car);
+            $penyewa = $this->database->update("penyewa", $con_renter);
             $this->Database->update("riwayat", $data, $order[1]);
         } else if ($order[0] == "DEPO") {
             $data = [
