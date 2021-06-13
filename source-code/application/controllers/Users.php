@@ -383,9 +383,11 @@ class Users extends CI_Controller
         $data = [
             'id_penyewa' => $id,
             'id_mobil' => null,
+            'id_staff' => null,
             'tipe_riwayat' => 'Topup',
             'harga' => $this->input->post('nominal'),
-            'service' => $this->input->post('pay'),
+            'service' => null,
+            'pembayaran' => $this->input->post('pay'),
             'dibuat' => $tanggal,
             'status' => 2
         ];
@@ -401,9 +403,11 @@ class Users extends CI_Controller
         $data = [
             'id_staff' => $id,
             'id_mobil' => null,
+            'id_penyewa' => null,
             'tipe_riwayat' => 'Withdraw',
             'harga' => -($this->input->post('nominal')),
-            'service' => $this->input->post('pay'),
+            'service' => null,
+            'pembayaran' => $this->input->post('pay'),
             'dibuat' => $tanggal,
             'status' => 2
         ];

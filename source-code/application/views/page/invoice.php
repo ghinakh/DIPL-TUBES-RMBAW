@@ -72,9 +72,9 @@ function tanggal_indonesia($tanggal)
                                     } else {
                                         $orderid = "DEPO-" . $data['id'];
                                         if ($level == "Penyewa") {
-                                            $deskripsi = "Pay with " . $data['service'];
+                                            $deskripsi = "Pay with " . $data['pembayaran'];
                                         } else if ($level == "Staff Garasi") {
-                                            $deskripsi = "Send to " . $data['service'];
+                                            $deskripsi = "Send to " . $data['pembayaran'];
                                         }
                                         $tanggal = tanggal_indonesia($data['dibuat']);
                                     }

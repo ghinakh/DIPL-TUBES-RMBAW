@@ -159,9 +159,9 @@ function tanggal_indonesia($tanggal)
                                                 } else {
                                                     $orderid = "DEPO-" . $data['id'];
                                                     if ($data['tipe_riwayat'] == 'Topup') {
-                                                        $deskripsi = "Pay with " . $data['service'];
-                                                    } else if ($data['tipe_riwayat'] == 'Withdraw'){
-                                                        $deskripsi = "Send to " . $data['service'];
+                                                        $deskripsi = "Pay with " . $data['pembayaran'];
+                                                    } else if ($data['tipe_riwayat'] == 'Withdraw') {
+                                                        $deskripsi = "Send to " . $data['pembayaran'];
                                                     }
                                                     $tanggal = tanggal_indonesia($data['dibuat']);
                                                     $button = '<a href="' . base_url() . 'Admin/confirm/' . $orderid . '" class="btn btn-success btn-sm">Confirm</a>';

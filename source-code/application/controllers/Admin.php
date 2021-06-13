@@ -193,6 +193,33 @@ class Admin extends CI_Controller
             $data = [
                 'status' => 1
             ];
+            $this->Database->update("riwayat", $data, $order[1]);
+            $con['conditions'] = array(
+                'id' => $order[1],
+            );
+            $orderan = $this->Database->getData("riwayat", $con);
+            if ($orderan[0]['pembayaran'] == 'Saldo') {
+                $con['conditions'] = array(
+                    'id' => $orderan[0]['id_penyewa'],
+                );
+                $penyewa = $this->Database->getData("penyewa", $con);
+                $ambil = $penyewa[0]['saldo'];
+                $kirim = $orderan[0]['harga'];
+                if ($kirim <= $ambil) {
+                    $update = [
+                        'saldo' => $ambil - $kirim
+                    ];
+                    $this->Database->update("penyewa", $update, $penyewa[0]['id']);
+                    $con['conditions'] = array(
+                        'id' => $orderan[0]['id_staff'],
+                    );
+                    $staff = $this->Database->getData("staff_garasi", $con);
+                    $update = [
+                        'saldo' => $staff[0]['saldo'] + $kirim
+                    ];
+                    $this->Database->update("staff_garasi", $update, $staff[0]['id']);
+                }
+            }
         } else if ($order[0] == "DEPO") {
             $data = [
                 'status' => 0
