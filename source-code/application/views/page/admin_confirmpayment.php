@@ -93,7 +93,7 @@ function tanggal_indonesia($tanggal)
                     <!-- Nav item -->
                     <li class="nav-item">
                         <a class="nav-link active" href="<?= base_url('confirm-payment') ?>">
-                            <i class="nav-icon fe fe-percent mr-2"></i>Confirm Payment
+                            <i class="nav-icon fe fe-check mr-2"></i>Confirm Payment
                         </a>
                     </li>
                     <!-- Nav item -->
@@ -158,8 +158,12 @@ function tanggal_indonesia($tanggal)
                                                     }
                                                 } else {
                                                     $orderid = "DEPO-" . $data['id'];
-                                                    $deskripsi = $data['pembayaran'];
-                                                    $tanggal = tanggal_indonesia($data['tanggal']);
+                                                    if ($data['tipe_riwayat'] == 'Topup') {
+                                                        $deskripsi = "Pay with " . $data['service'];
+                                                    } else if ($data['tipe_riwayat'] == 'Withdraw'){
+                                                        $deskripsi = "Send to " . $data['service'];
+                                                    }
+                                                    $tanggal = tanggal_indonesia($data['dibuat']);
                                                     $button = '<a href="' . base_url() . 'Admin/confirm/' . $orderid . '" class="btn btn-success btn-sm">Confirm</a>';
                                                 }
                                                 if ($data['status'] == "2") {

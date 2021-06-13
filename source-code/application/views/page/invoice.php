@@ -72,9 +72,9 @@ function tanggal_indonesia($tanggal)
                                     } else {
                                         $orderid = "DEPO-" . $data['id'];
                                         if ($level == "Penyewa") {
-                                            $deskripsi = "Pay with " . $data['pembayaran'];
+                                            $deskripsi = "Pay with " . $data['service'];
                                         } else if ($level == "Staff Garasi") {
-                                            $deskripsi = "Send to " . $data['pembayaran'];
+                                            $deskripsi = "Send to " . $data['service'];
                                         }
                                         $tanggal = tanggal_indonesia($data['dibuat']);
                                     }
@@ -83,7 +83,7 @@ function tanggal_indonesia($tanggal)
                                     } else {
                                         $status = '<span class="badge badge-danger">Waiting for payment</span>';
                                     }
-                                ?>
+                                    ?>
                                     <tr>
                                         <td><a href="<?= base_url('invoice/' . $data['id_url']) ?>">#<?= $orderid ?></a></td>
                                         <td><?= $tanggal ?></td>

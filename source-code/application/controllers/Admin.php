@@ -174,14 +174,7 @@ class Admin extends CI_Controller
                     'status' => 2,
                 );
                 $orderan = $this->Database->getData("riwayat", $con);
-                $saldo = $this->Database->getData("saldo", $con);
-                if ($saldo && $orderan) {
-                    $data['database'] = array_merge($orderan, $saldo);
-                } else if ($saldo) {
-                    $data['database'] = $saldo;
-                } else {
-                    $data['database'] = $orderan;
-                }
+                $data['database'] = $orderan;
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "admin";
             }
@@ -200,45 +193,31 @@ class Admin extends CI_Controller
             $data = [
                 'status' => 1
             ];
-            // Belum 
-            $con['conditions'] = array(
-                'id' => $order[1],
-            );
-            $riwayat = $this->database->update("riwayat", $con);
-            $con_car['conditions'] = array(
-                'id' => $riwayat[0]['id_mobil'],
-            );
-            $con_renter['conditions'] = array(
-                'id' => $riwayat[0]['id_mobil'],
-            );
-            $mobil = $this->database->update("mobil", $con_car);
-            $penyewa = $this->database->update("penyewa", $con_renter);
-            $this->Database->update("riwayat", $data, $order[1]);
         } else if ($order[0] == "DEPO") {
             $data = [
                 'status' => 0
             ];
-            $this->Database->update("saldo", $data, $order[1]);
+            $this->Database->update("riwayat", $data, $order[1]);
             $con['conditions'] = array(
                 'id' => $order[1],
             );
-            $saldo = $this->Database->getData("saldo", $con);
-            if ($saldo[0]['id_penyewa'] != null) {
+            $orderan = $this->Database->getData("riwayat", $con);
+            if ($orderan[0]['tipe_riwayat'] == 'Topup') {
                 $con['conditions'] = array(
-                    'id' => $saldo[0]['id_penyewa'],
+                    'id' => $orderan[0]['id_penyewa'],
                 );
                 $penyewa = $this->Database->getData("penyewa", $con);
-                $update_saldo = $penyewa[0]['saldo'] + $saldo[0]['nominal'];
+                $update_saldo = $penyewa[0]['saldo'] + $orderan[0]['harga'];
                 $update = [
                     'saldo' => $update_saldo
                 ];
                 $this->Database->update("penyewa", $update, $penyewa[0]['id']);
-            } else if ($saldo[0]['id_staff'] != null) {
+            } else if ($orderan[0]['tipe_riwayat'] == 'Withdraw') {
                 $con['conditions'] = array(
-                    'id' => $saldo[0]['id_staff'],
+                    'id' => $orderan[0]['id_staff'],
                 );
                 $staff = $this->Database->getData("staff_garasi", $con);
-                $update_saldo = $staff[0]['saldo'] + $saldo[0]['nominal'];
+                $update_saldo = $staff[0]['saldo'] + $orderan[0]['harga'];
                 $update = [
                     'saldo' => $update_saldo
                 ];

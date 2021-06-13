@@ -181,12 +181,10 @@ class Users extends CI_Controller
                 $data["orderan"] = $this->Database->getData("riwayat", $con);
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
                 /* 
                     <Lihat Riwayat Staff Garasi>
-                */
-            }
+                */ }
             /*
                 Return tampilan beserta variable $data
             */
@@ -251,12 +249,11 @@ class Users extends CI_Controller
                 endif;
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
                 $con['conditions'] = array(
                     'id_staff' => $ses[0]["id"],
                 );
-                $data["database"] = $this->Database->getData("saldo", $con);
+                $data["database"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Staff Garasi";
             }
             /*
@@ -312,8 +309,7 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
                 $data["level"] = "Staff Garasi";
             }
             $this->load->view('include/head', $data);
@@ -371,8 +367,7 @@ class Users extends CI_Controller
                 );
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
-            } else if ($ses[1] == "admin") {
-            } else if ($ses[1] == "staff_garasi") {
+            } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
                 $data["level"] = "Staff Garasi";
             }
             $this->load->view('include/head', $data);
@@ -387,13 +382,15 @@ class Users extends CI_Controller
         $tanggal = date('Y-m-d H:i:s');
         $data = [
             'id_penyewa' => $id,
-            'nominal' => $this->input->post('nominal'),
-            'pembayaran' => $this->input->post('pay'),
-            'tanggal' => $tanggal,
+            'id_mobil' => null,
+            'tipe_riwayat' => 'Topup',
+            'harga' => $this->input->post('nominal'),
+            'service' => $this->input->post('pay'),
+            'dibuat' => $tanggal,
             'status' => 2
         ];
-        $this->Database->insert("saldo", $data);
-        redirect(base_url('history'));
+        $this->Database->insert("riwayat", $data);
+        redirect(base_url('invoice'));
     }
 
     public function tarik_saldo()
@@ -403,12 +400,14 @@ class Users extends CI_Controller
         $tanggal = date('Y-m-d H:i:s');
         $data = [
             'id_staff' => $id,
-            'nominal' => - ($this->input->post('nominal')),
-            'pembayaran' => $this->input->post('pay'),
-            'tanggal' => $tanggal,
+            'id_mobil' => null,
+            'tipe_riwayat' => 'Withdraw',
+            'harga' => -($this->input->post('nominal')),
+            'service' => $this->input->post('pay'),
+            'dibuat' => $tanggal,
             'status' => 2
         ];
-        $this->Database->insert("saldo", $data);
+        $this->Database->insert("riwayat", $data);
         redirect(base_url('invoice'));
     }
 
