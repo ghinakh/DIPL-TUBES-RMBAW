@@ -67,8 +67,8 @@ $db_saldo = $this->Database->getData($sql, array("id" => $user['id']));
                                         <input type="hidden" class="form-control mb-2" name="id_staff" id="id_staff" value="<?= $user['id'] ?>">
 
                                         <div class="form-group col-12 col-md-12">
-                                            <label class="form-label" for="saldo">Saldo Sekarang</label>
-                                            <input type="text" class="form-control mb-2" name="saldo" id="saldo" value="<?= $db_saldo['saldo'] ?>" readonly="readonly" style="border: 0">
+
+                                            <input type="hidden" class="form-control mb-2" name="saldo" id="saldo" value="<?= $db_saldo['saldo'] ?>" readonly="readonly" style="border: 0">
                                         </div>
                                         <div class="form-group col-12 col-md-12">
                                             <label class="form-label" for="nominal">Nominal</label>

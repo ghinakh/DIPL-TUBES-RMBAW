@@ -88,6 +88,12 @@ class Welcome extends CI_Controller
 					'status' => 'Aktif',
 				);
 				$data["mobil"] = $this->Database->getData("mobil", $con);
+				$orderan = $this->Database->getData("riwayat");
+				$data['database'] = $orderan;
+				$con['conditions'] = array(
+					'id' => $data['database'][0]['id_penyewa'],
+				);
+				$data['penyewa'] = $this->Database->getData("penyewa", $con);
 				$this->load->view('include/nav_staff', $data);
 				$this->load->view('page/dashboard_staff', $data);
 			} else if ($ses[1] == "admin") {

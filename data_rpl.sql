@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2021 at 04:59 AM
+-- Generation Time: Jun 13, 2021 at 08:55 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -116,7 +116,7 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `saldo`, `email`, `password`) VALUES
-(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '128986', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '138986', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
 (2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
@@ -174,8 +174,12 @@ INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `id_staff`, `tipe_riwayat
 (1, 2, 1, 1, 'Rent', 'Jl Telkom No 1', '2021-06-12', '2021-06-14', 'Self Service', 'COD', 541014, '1', NULL, '78e2ac6284b3bed97d53097a32b63711', '2021-06-12'),
 (4, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'DANA Payment', 10000, '0', NULL, '', '2021-06-13'),
 (5, NULL, NULL, 1, 'Withdraw', NULL, NULL, NULL, NULL, 'GOPAY Payment', -200, '0', NULL, '', '2021-06-13'),
-(6, 3, 1, 1, 'Rent', 'Jl. Telekomunikasi', '2021-06-24', '2021-06-25', 'Staff Service', 'Saldo', 640000, '1', NULL, '', '2021-06-13'),
-(7, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'OVO Payment', 500000, '0', NULL, '', '2021-06-13');
+(6, 3, 1, 1, 'Rent', 'Jl. Telekomunikasi', '2021-06-24', '2021-06-25', 'Staff Service', 'Saldo', 640000, '1.5', NULL, '', '2021-06-13'),
+(7, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'OVO Payment', 500000, '0', NULL, '', '2021-06-13'),
+(8, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'OVO Payment', 10000, '0', NULL, '', '2021-06-13'),
+(9, NULL, NULL, 1, 'Withdraw', NULL, NULL, NULL, NULL, 'GOPAY Payment', -10000, '0', NULL, '', '2021-06-13'),
+(10, NULL, NULL, 1, 'Withdraw', NULL, NULL, NULL, NULL, 'GOPAY Payment', -45678, '2', NULL, '', '2021-06-16'),
+(11, 4, 1, 1, 'Rent', 'Jl. Bojongsoang\r\n', '2021-06-29', '2021-06-30', 'Self Service', 'COD', 450000, '2', NULL, '', '2021-06-13');
 
 -- --------------------------------------------------------
 
@@ -216,7 +220,7 @@ CREATE TABLE `staff_garasi` (
 --
 
 INSERT INTO `staff_garasi` (`id`, `nama_lengkap`, `nik`, `sim`, `saldo`, `email`, `password`, `status`) VALUES
-(1, 'Gready Michael', 1215123156, 1321589494, 710000, 'staff@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'AKTIF'),
+(1, 'Gready Michael', 1215123156, 1321589494, 700000, 'staff@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'AKTIF'),
 (2, 'Joanne Sh', 12334567, 76544332, 0, 'staff2@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'REJECT'),
 (3, 'Staff Garasi', 987654321, 989876543, 0, 'staffgarasi@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'REJECT');
 
@@ -318,7 +322,7 @@ ALTER TABLE `promo`
 -- AUTO_INCREMENT for table `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `saldo`

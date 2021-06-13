@@ -143,20 +143,12 @@ function tanggal_indonesia($tanggal)
                                                 <th scope="col" class="border-bottom-0">DESCRIPTION</th>
                                                 <th scope="col" class="border-bottom-0">STATUS</th>
                                                 <th scope="col" class="border-bottom-0">ACTION</th>
-                                                <th scope="col" class="border-bottom-0"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($database as $data) {
-                                                if ($data['tanggal_mulai']) {
-                                                    $orderid = "SEWA-" . $data['id'];
-                                                    $tanggal = tanggal_indonesia($data['tanggal_mulai']);
-                                                    $button = '<a href="' . base_url() . 'Admin/confirm/' . $orderid . '" class="btn btn-success btn-sm">Confirm</a>';
-                                                    foreach ($mobil as $kendaraan) {
-                                                        if ($data['id_mobil'] == $kendaraan['id'])
-                                                            $deskripsi = "Rental " . $kendaraan['nama_mobil'] . " - " . $kendaraan['id'];
-                                                    }
-                                                } else {
+                                            <?php
+                                            foreach ($database as $data) {
+                                                if (($data['tipe_riwayat'] == "Topup") || ($data['tipe_riwayat'] == "Withdraw")) {
                                                     $orderid = "DEPO-" . $data['id'];
                                                     if ($data['tipe_riwayat'] == 'Topup') {
                                                         $deskripsi = "Pay with " . $data['pembayaran'];
@@ -164,20 +156,19 @@ function tanggal_indonesia($tanggal)
                                                         $deskripsi = "Send to " . $data['pembayaran'];
                                                     }
                                                     $tanggal = tanggal_indonesia($data['dibuat']);
-                                                    $button = '<a href="' . base_url() . 'Admin/confirm/' . $orderid . '" class="btn btn-success btn-sm">Confirm</a>';
-                                                }
-                                                if ($data['status'] == "2") {
                                                     $status = '<span class="badge badge-warning">Not Confirmed</span>';
-                                                }
-                                                ?>
-                                                <tr>
-                                                    <td><a href="">#<?= $orderid ?></a></td>
-                                                    <td><?= $tanggal ?></td>
-                                                    <td><?= $deskripsi ?></td>
-                                                    <td><?= $status ?></td>
-                                                    <td><?= $button ?></td>
-                                                </tr>
-                                            <?php } ?>
+                                                    $button = '<a href="' . base_url() . 'Admin/confirm/' . $orderid . '" class="btn btn-success btn-sm">Confirm</a>';
+                                                    ?>
+                                                    <tr>
+                                                        <td><a href="">#<?= $orderid ?></a></td>
+                                                        <td><?= $tanggal ?></td>
+                                                        <td><?= $deskripsi ?></td>
+                                                        <td><?= $status ?></td>
+                                                        <td><?= $button ?></td>
+                                                    </tr>
+
+                                            <?php }
+                                            } ?>
                                         </tbody>
                                     </table>
                                 </div>

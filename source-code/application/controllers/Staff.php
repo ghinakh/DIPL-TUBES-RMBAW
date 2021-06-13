@@ -103,4 +103,28 @@ class Staff extends CI_Controller
             $this->load->view('page/show_ratecar', $data);
         endif;
     }
+
+    public function confirm($id)
+    {
+        $order = explode("-", $id);
+        if ($order[0] == "SEWA") {
+            $data = [
+                'status' => 1.5
+            ];
+            $this->Database->update("riwayat", $data, $order[1]);
+        }
+        redirect(base_url());
+    }
+
+    public function returned($id)
+    {
+        $order = explode("-", $id);
+        if ($order[0] == "SEWA") {
+            $data = [
+                'status' => 1
+            ];
+            $this->Database->update("riwayat", $data, $order[1]);
+        }
+        redirect(base_url());
+    }
 }

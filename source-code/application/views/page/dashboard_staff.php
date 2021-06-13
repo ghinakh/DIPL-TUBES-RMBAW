@@ -1,5 +1,124 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+error_reporting(0);
+function tanggal_indonesia($tanggal)
+{
+  $bulan = array(
+    1 =>   'Januari',
+    'Februari',
+    'Maret',
+    'April',
+    'Mei',
+    'Juni',
+    'Juli',
+    'Agustus',
+    'September',
+    'Oktober',
+    'November',
+    'Desember'
+  );
+
+  $pecahkan = explode('-', $tanggal);
+  return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+}
+?>
 <!-- Container fluid -->
 <div class="container-fluid p-4">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-12">
+      <!-- Page Header -->
+      <div class="border-bottom pb-4 mb-4 d-lg-flex align-items-center justify-content-between">
+        <div class="mb-2 mb-lg-0">
+          <h1 class="mb-1 h2 font-weight-bold">Ongoing</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-lg-12 col-md-12 col-12">
+      <!-- Card -->
+      <div class="card rounded-lg">
+        <!-- Card header -->
+        <div class="card-header border-bottom-0 p-0 bg-white">
+        </div>
+        <div>
+          <!-- Table -->
+          <div class="tab-content" id="tabContent">
+            <!--Tab pane -->
+            <div class="tab-pane fade show active" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+              <div class="table-responsive border-0 overflow-y-hidden">
+                <table class="table mb-0 ">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="border-0 text-uppercase">
+                        CAR NAME
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        DATE
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        DESCRIPTION
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        SERVICE
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        ADDRESS
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        STATUS
+                      </th>
+                      <th scope="col" class="border-0 text-uppercase">
+                        ACTION
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    foreach ($database as $data) {
+                      if ($data['tipe_riwayat'] == "Rent") {
+                        if (($data['status'] == 2) || ($data['status'] == 1.5)) {
+                          $orderid = "SEWA-" . $data['id'];
+                          $tanggal = tanggal_indonesia($data['dibuat']);
+                          $service = $data['service'];
+                          $alamat = $data['alamat'];
+                          if ($data['pembayaran'] == "Saldo") {
+                            $deskripsi = "Pay with " . $data['pembayaran'];
+                          } else {
+                            $deskripsi = "Pay " . $data['pembayaran'];
+                          }
+                          if ($data['status'] == 2) {
+                            $status = '<span class="badge badge-warning">Waiting</span>';
+                            $button = '<a href="' . base_url() . 'Staff/confirm/' . $orderid . '" class="btn btn-warning btn-sm">Confirm</a>';
+                          } else if ($data['status'] == 1.5) {
+                            $status = '<span class="badge badge-warning">Wait for Return</span>';
+                            $button = '<a href="' . base_url() . 'Staff/returned/' . $orderid . '" class="btn btn-success btn-sm">Return</a>';
+                          }
+                          ?>
+                          <tr>
+                            <td><a href="">#<?= $orderid ?></a></td>
+                            <td><?= $tanggal ?></td>
+                            <td><?= $deskripsi ?></td>
+                            <td><?= $service ?></td>
+                            <td><?= $alamat ?></>
+                            <td><?= $status ?></td>
+                            <td><?= $button ?></td>
+                          </tr>
+
+                    <?php
+                        }
+                      }
+                    } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!--Tab pane -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-lg-12 col-md-12 col-12">
       <!-- Page Header -->
@@ -10,7 +129,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row ">
     <div class="col-lg-12 col-md-12 col-12">
       <!-- Card -->
       <div class="card rounded-lg">
@@ -37,9 +156,6 @@
                       </th>
                       <th scope="col" class="border-0 text-uppercase">
                         TYPE
-                      </th>
-                      <th scope="col" class="border-0 text-uppercase">
-                        RATING
                       </th>
                     </tr>
                   </thead>
@@ -75,13 +191,6 @@
                             <?= $pemilik['jenis'] ?>
                           </div>
                         </td>
-                        <td class="align-middle border-top-0">
-                          <div class="d-flex align-items-center">
-                            <p class="mdi mdi-star mr-n1 text-warning">
-                              <?= $pemilik['rating'] ?></p>
-                          </div>
-                        </td>
-
                       </tr>
                     <?php } ?>
                   </tbody>
@@ -94,6 +203,7 @@
       </div>
     </div>
   </div>
+
 </div>
 </div>
 </div>
