@@ -371,6 +371,26 @@ class Users extends CI_Controller
                 $data["total_orderan"] = $this->Database->getData("riwayat", $con);
                 $data["level"] = "Penyewa";
             } else if ($ses[1] == "admin") { } else if ($ses[1] == "staff_garasi") {
+                $ses = $this->session->userdata('credentials');
+                $data['sql'] =  $ses[1];
+                if ($this->input->post('fname') && $this->input->post('lname')) :
+                    $sql = array(
+                        'nama_lengkap' => $this->input->post('fname') . ' ' . $this->input->post('lname'),
+                    );
+                    $update = json_decode($this->Database->update($ses[1], $sql, $ses[0]['id']));
+                    if ($update) :
+                        $data['laporan'] = '<div class="alert alert-success" role="alert">The data has been updated successfully, make sure the data is valid.</div>';
+                    else :
+                        $data['laporan'] = '<div class="alert alert-danger" role="alert">There is data that is still blank, please fill in first.</div>';
+                    endif;
+                    $con['returnType'] = 'single';
+                    $con['conditions'] = array(
+                        'id' => $ses[0]['id'],
+                    );
+                    $info_akun = $this->Database->getData($ses[1], $con);
+                    $this->session->set_userdata('credentials', array($info_akun, $ses[1]));
+                    $ses = $this->session->userdata('credentials');
+                endif;
                 $data["level"] = "Staff Garasi";
             }
             $this->load->view('include/head', $data);
