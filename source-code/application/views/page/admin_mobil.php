@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+?>
 <!-- Container fluid -->
 <div class="container-fluid p-4">
   <div class="row">
@@ -57,55 +60,61 @@
                   </thead>
                   <tbody>
                     <?php
-                    foreach ($mobil as $kendaraan) {
-                      foreach ($pemilik as $staff) {
+                    foreach ($pemilik as $staff) {
+                      foreach ($mobil as $kendaraan) {
                         if ($kendaraan['id_staff'] == $staff['id']) {
-                          ?>
-                          <tr>
-                            <td class="border-top-0">
-                              <div class="text-inherit">
-                                <div class="d-lg-flex align-items-center">
-                                  <div>
-                                    <img src="<?= base_url() ?>assets/images/mobil/<?= $kendaraan['gambar'] ?>" alt="" class="img-4by3-lg rounded" />
+                          foreach ($rating as $rate) {
+                            $r = 0;
+                            if ($kendaraan['id'] == $rate['id_mobil']) {
+                              $r = $rate['avg'];
+                              ?>
+                              <tr>
+                                <td class="border-top-0">
+                                  <div class="text-inherit">
+                                    <div class="d-lg-flex align-items-center">
+                                      <div>
+                                        <img src="<?= base_url() ?>assets/images/mobil/<?= $kendaraan['gambar'] ?>" alt="" class="img-4by3-lg rounded" />
+                                      </div>
+                                      <div class="ml-lg-3 mt-2 mt-lg-0">
+                                        <h4 class="mb-1 text-primary-hover">
+                                          (CAR-<?= $kendaraan['id'] ?>) <?= $kendaraan['nama_mobil'] ?>
+                                        </h4>
+                                        <span class="text-inherit">Added on 27 March, 2021</span>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="ml-lg-3 mt-2 mt-lg-0">
-                                    <h4 class="mb-1 text-primary-hover">
-                                      (CAR-<?= $kendaraan['id'] ?>) <?= $kendaraan['nama_mobil'] ?>
-                                    </h4>
-                                    <span class="text-inherit">Added on 27 March, 2021</span>
+                                </td>
+                                <td class="align-middle border-top-0">
+                                  <div class="d-flex align-items-center">
+                                    <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-xs mr-2" />
+                                    <h5 class="mb-0"><?= $staff['nama_lengkap'] ?></h5>
                                   </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-xs mr-2" />
-                                <h5 class="mb-0"><?= $staff['nama_lengkap'] ?></h5>
-                              </div>
-                            </td>
-                            <!-- ce -->
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                <h5 class="mb-0"><?= $kendaraan['stnk'] ?></h5>
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                <h5 class="mb-0"><?= $kendaraan['jenis'] ?></h5>
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                <h5 class="mb-0"><?= $kendaraan['harga'] ?></h5>
-                              </div>
-                            </td>
-                            <td class="align-middle border-top-0">
-                              <div class="d-flex align-items-center">
-                                <h5 class="mb-0"><?= $kendaraan['rating'] ?></h5>
-                              </div>
-                            </td>
-                          </tr>
+                                </td>
+                                <!-- ce -->
+                                <td class="align-middle border-top-0">
+                                  <div class="d-flex align-items-center">
+                                    <h5 class="mb-0"><?= $kendaraan['stnk'] ?></h5>
+                                  </div>
+                                </td>
+                                <td class="align-middle border-top-0">
+                                  <div class="d-flex align-items-center">
+                                    <h5 class="mb-0"><?= $kendaraan['jenis'] ?></h5>
+                                  </div>
+                                </td>
+                                <td class="align-middle border-top-0">
+                                  <div class="d-flex align-items-center">
+                                    <h5 class="mb-0"><?= $kendaraan['harga'] ?></h5>
+                                  </div>
+                                </td>
+                                <td class="align-middle border-top-0">
+                                  <div class="d-flex align-items-center">
+                                    <h5 class="mb-0"><?= $r ?><span class="mdi mdi-star text-warning ml-2"></span></h5>
+                                  </div>
+                                </td>
+                              </tr>
                     <?php
+                            }
+                          }
                         }
                       }
                     } ?>

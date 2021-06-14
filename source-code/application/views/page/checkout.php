@@ -49,7 +49,7 @@ $harga_acak = $mobil['harga'] + $rand;
                                 <input type="text" name="alamat" id="alamat" class="form-control" required>
                             </div>
                             <div class="form-group col-12 col-md-12 mb-3">
-                                <label class="form-label" for="tgl_mulai">End Date</label>
+                                <label class="form-label" for="tgl_mulai">Start Date</label>
                                 <input type="date" id="tgl_mulai" class="form-control" name="mulainya" required>
                             </div>
                             <div class="form-group col-12 col-md-12 mb-3">
@@ -58,11 +58,11 @@ $harga_acak = $mobil['harga'] + $rand;
                             </div>
                             <label class="form-label col-12 col-md-12 mb-2">Method</label>
                             <div class="form-group custom-control custom-radio custom-control-inline ml-3">
-                                <input type="radio" id="saldo" name="metode" value="saldo" class="custom-control-input">
+                                <input type="radio" id="saldo" name="metode" value="Saldo" class="custom-control-input">
                                 <label class="custom-control-label " for="saldo"><span class="text-dark">Saldo</span></label>
                             </div>
                             <div class="form-group custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="cod" name="metode" value="cod" class="custom-control-input">
+                                <input type="radio" id="cod" name="metode" value="COD" class="custom-control-input">
                                 <label class="custom-control-label" for="cod"><span class="text-dark">COD</span></label>
                             </div>
                             <div class="form-group col-12 col-md-12"><button name="submit" value="0" class="btn btn-success btn-sm">Submit</button></div>

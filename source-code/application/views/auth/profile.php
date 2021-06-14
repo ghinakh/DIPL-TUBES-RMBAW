@@ -34,8 +34,10 @@ if ($jumlah > 2) {
         <?php
         if ($level == "Penyewa") {
             $this->load->view('include/nav');
+            $ket = "required";
         } else if ($level == "Staff Garasi") {
             $this->load->view('include/nav_side');
+            $ket = "disabled";
         }
         ?>
         <div class="col-lg-9 col-md-8 col-12">
@@ -67,15 +69,15 @@ if ($jumlah > 2) {
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class="form-label" for="phone">Phone</label>
-                                <input type="text" name="phone" class="form-control" placeholder="Phone" value="<?= $user["phone"] ?>" required />
+                                <input type="text" name="phone" class="form-control" placeholder="Phone" value="<?= $user["phone"] ?>" <?= $ket ?> />
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <label class="form-label" for="address">Address</label>
-                                <input type="text" name="address" class="form-control" placeholder="Address" value="<?= $user["address"] ?>" required />
+                                <input type="text" name="address" class="form-control" placeholder="Address" value="<?= $user["address"] ?>" <?= $ket ?> />
                             </div>
                             <div class="form-group col-12 col-md-12">
                                 <label class="form-label">City</label>
-                                <input type="text" name="city" class="form-control" placeholder="Address" value="<?= $user["city"] ?>" required />
+                                <input type="text" name="city" class="form-control" placeholder="Address" value="<?= $user["city"] ?>" <?= $ket ?> />
                             </div>
                             <div class="form-group col-12 col-md-12">
                                 <label class="form-label">NIK</label>

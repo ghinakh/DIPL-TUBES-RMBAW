@@ -59,7 +59,7 @@ class Mobil extends CI_Controller
     public function Buy()
     {
         if (!$this->session->userdata('credentials')) :
-            redirect(base_url());
+            redirect(base_url('login'));
         else :
             $id_mobil = $this->input->post('id_mobil');
             // var_dump($id_mobil);
@@ -111,11 +111,12 @@ class Mobil extends CI_Controller
         if ($riwayat) {
             $mobil = [
                 'rate' => $this->input->post('rating'),
-                'status' => 0
+                'status' => 0,
+                'note' => $this->input->post('note')
             ];
             $this->Database->update("riwayat", $mobil, $id);
             $data = [
-                'full' => null,
+                'full' => 0,
             ];
             $this->Database->update("mobil", $data, $riwayat['id_mobil']);
             redirect(base_url('history'));
@@ -139,36 +140,82 @@ class Mobil extends CI_Controller
                 $riwayat = $this->Database->getData("mobil", $con)[0];
                 if ($riwayat) {
                     $total_biaya = $d * $this->input->post('harga');
+                    $con['conditions'] = array(
+                        'id' => $riwayat['id_staff'],
+                    );
+                    $staff = $this->Database->getData("staff_garasi", $con)[0];
                     $ses = $this->session->userdata('credentials')[0];
                     $user = $this->Database->getData("penyewa", array("id" => $ses['id']));
-                    if ($user["saldo"] >= $total_biaya) {
-                        $saldo_min = [
-                            'saldo' => $user['saldo'] - $total_biaya,
-                        ];
-                        $this->Database->update("penyewa", $saldo_min, $user['id']);
+                    if ($this->input->post('metode') == "Saldo") {
+                        if ($user["saldo"] >= $total_biaya) {
+                            $saldo_min = [
+                                'saldo' => $user['saldo'] - $total_biaya,
+                            ];
+                            $this->Database->update("penyewa", $saldo_min, $user['id']);
+                            $saldo_send = [
+                                'saldo' => $staff['saldo'] + $total_biaya
+                            ];
+                            $this->Database->update("staff_garasi", $saldo_send, $staff['id']);
+                            $data = [
+                                'full' => 1
+                            ];
+                            $this->Database->update("mobil", $data, $this->input->post('id_mobil'));
+                            $con['conditions'] = array(
+                                'id' => $this->input->post('id_mobil'),
+                            );
+                            $mobil = $this->Database->getData("mobil", $con);
+                            $md5view = md5("riwayatrental" . rand(000, 999));
+                            $sql = array(
+                                'id_mobil' => $this->input->post('id_mobil'),
+                                'id_penyewa' => $user['id'],
+                                'id_staff' => $mobil[0]['id_staff'],
+                                'tipe_riwayat' => "Rent",
+                                'alamat' => $this->input->post('alamat'),
+                                'tanggal_mulai' => $this->input->post('mulainya'),
+                                'tanggal_selesai' => $this->input->post('sewanya'),
+                                'service' => $this->input->post('service'),
+                                'pembayaran' => $this->input->post('metode'),
+                                'harga' => $total_biaya,
+                                'status' => 2,
+                                'rate' => NULL,
+                                'note' => NULL,
+                                'id_url' => $md5view,
+                                'dibuat' => date("Y-m-d"),
+                            );
+                            $this->Database->insert("riwayat", $sql);
+                            redirect(base_url('invoice/' . $md5view));
+                        } else {
+                            redirect(base_url("cars/detail/" . $riwayat['url_view'] . "?error_type=saldo"));
+                        }
+                    } else if ($this->input->post('metode') == "COD") {
                         $data = [
                             'full' => 1
                         ];
                         $this->Database->update("mobil", $data, $this->input->post('id_mobil'));
+                        $con['conditions'] = array(
+                            'id' => $this->input->post('id_mobil'),
+                        );
+                        $mobil = $this->Database->getData("mobil", $con);
                         $md5view = md5("riwayatrental" . rand(000, 999));
                         $sql = array(
                             'id_mobil' => $this->input->post('id_mobil'),
                             'id_penyewa' => $user['id'],
+                            'id_staff' => $mobil[0]['id_staff'],
                             'tipe_riwayat' => "Rent",
                             'alamat' => $this->input->post('alamat'),
                             'tanggal_mulai' => $this->input->post('mulainya'),
                             'tanggal_selesai' => $this->input->post('sewanya'),
                             'service' => $this->input->post('service'),
+                            'pembayaran' => $this->input->post('metode'),
                             'harga' => $total_biaya,
-                            'status' => 1,
+                            'status' => 2,
                             'rate' => NULL,
+                            'note' => NULL,
                             'id_url' => $md5view,
                             'dibuat' => date("Y-m-d"),
                         );
                         $this->Database->insert("riwayat", $sql);
                         redirect(base_url('invoice/' . $md5view));
-                    } else {
-                        redirect(base_url("cars/detail/" . $riwayat['url_view'] . "?error_type=saldo"));
                     }
                 } else {
                     redirect(show_404());

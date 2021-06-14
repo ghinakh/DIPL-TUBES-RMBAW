@@ -36,6 +36,7 @@ class Admin extends CI_Controller
                 $data["pemilik"] = $this->Database->getData("staff_garasi");
                 $data["level"] = "admin";
             }
+            $this->load->view('include/head', $data);
             $this->load->view('page/admin_staffgarasi', $data);
         endif;
     }
@@ -63,6 +64,7 @@ class Admin extends CI_Controller
                 $data["penyewa"] = $this->Database->getData("penyewa");
                 $data["level"] = "admin";
             }
+            $this->load->view('include/head', $data);
             $this->load->view('page/admin_penyewa', $data);
         endif;
     }
@@ -91,6 +93,7 @@ class Admin extends CI_Controller
                 $data["mobil"] = $this->Database->getData("mobil");
                 $data["level"] = "admin";
             }
+            $this->load->view('include/head', $data);
             $this->load->view('page/admin_promo', $data);
         endif;
     }

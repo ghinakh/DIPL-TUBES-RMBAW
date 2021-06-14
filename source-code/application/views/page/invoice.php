@@ -78,7 +78,7 @@ function tanggal_indonesia($tanggal)
                                         }
                                         $tanggal = tanggal_indonesia($data['dibuat']);
                                     }
-                                    if ($data['status'] == "0" || $data['status'] == "2" || $data['status'] == "1") {
+                                    if ($data['status'] == "0" || $data['status'] == "2" || $data['status'] == "1.5" || $data['status'] == "1") {
                                         $status = '<span class="badge badge-success">Success</span>';
                                     } else {
                                         $status = '<span class="badge badge-danger">Waiting for payment</span>';

@@ -32,7 +32,7 @@ class Welcome extends CI_Controller
 			$data["promo"] = $this->Database->getData("promo");
 			$data["pemilik"] = $this->Database->getData("staff_garasi");
 			$data["mobil"] = $this->Database->getData("mobil");
-			$rekomendasi_by = array("jenis", "harga", "rating");
+			$rekomendasi_by = array("jenis", "harga");
 			$rekomendasi = array_rand($rekomendasi_by);
 			$data["mobil_rekomendasi"] = $this->Database->urut_secara("mobil", "rand", $rekomendasi_by[$rekomendasi]);
 			$this->load->view('include/head', $data);
@@ -108,15 +108,14 @@ class Welcome extends CI_Controller
 				for ($x = 0; $x <= $total; $x++) {
 					$foto .= substr($n[$x], 0, 1);
 				}
-				$data["mobil"] = $this->Database->getData("mobil");
 				$data["pemilik"] = $this->Database->getData("staff_garasi");
 				$data["level"] = "admin";
 				$data["foto_profile"] = $foto;
 				$con['conditions'] = array(
-					'id_staff' => $ses[0]["id"],
 					'status' => 'Aktif',
 				);
 				$data["mobil"] = $this->Database->getData("mobil", $con);
+				$data["rating"] = $this->Database->average_rate();
 				$this->load->view('include/nav_admin', $data);
 				$this->load->view('page/admin_mobil', $data);
 			}

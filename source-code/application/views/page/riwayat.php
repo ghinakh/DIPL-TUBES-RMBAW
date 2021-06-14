@@ -61,97 +61,105 @@ function tanggal_indonesia($tanggal)
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($orderan as $sewa) {
-                                            foreach ($mobil as $kendaraan) {
-                                                if ($kendaraan['id'] ==  $sewa['id_mobil']) {
-                                                    $nama_ken = $kendaraan['nama_mobil'];
-                                                    $jenis = $kendaraan['jenis'];
-                                                    $gambar = $kendaraan['gambar'];
+                                        if (!empty($orderan)) {
+                                            foreach ($orderan as $sewa) {
+                                                foreach ($mobil as $kendaraan) {
+                                                    if ($kendaraan['id'] ==  $sewa['id_mobil']) {
+                                                        $nama_ken = $kendaraan['nama_mobil'];
+                                                        $jenis = $kendaraan['jenis'];
+                                                        $gambar = $kendaraan['gambar'];
 
-                                                    ?>
-                                                    <tr>
-                                                        <td class="border-top-0">
-                                                            <div class="text-inherit">
-                                                                <div class="d-lg-flex align-items-center">
-                                                                    <div>
-                                                                        <img src="assets/images/mobil/<?= $gambar ?>" alt="" class="img-4by3-lg rounded" />
-                                                                    </div>
-                                                                    <div class="ml-lg-3 mt-2 mt-lg-0">
-                                                                        <h4 class="mb-1 text-primary-hover">
-                                                                            (CAR-<?= $kendaraan['id'] ?>) <?= $nama_ken ?>
-                                                                        </h4>
-                                                                        <span class="text-inherit">Returned on <?= tanggal_indonesia($sewa['tanggal_selesai']); ?></span>
+                                                        ?>
+                                                        <tr>
+                                                            <td class="border-top-0">
+                                                                <div class="text-inherit">
+                                                                    <div class="d-lg-flex align-items-center">
+                                                                        <div>
+                                                                            <img src="assets/images/mobil/<?= $gambar ?>" alt="" class="img-4by3-lg rounded" />
+                                                                        </div>
+                                                                        <div class="ml-lg-3 mt-2 mt-lg-0">
+                                                                            <h4 class="mb-1 text-primary-hover">
+                                                                                (CAR-<?= $kendaraan['id'] ?>) <?= $nama_ken ?>
+                                                                            </h4>
+                                                                            <span class="text-inherit">Returned on <?= tanggal_indonesia($sewa['tanggal_selesai']); ?></span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="align-middle border-top-0">
-                                                            <?php
-                                                                        if ((int) $sewa['status'] == 1) {
-                                                                            $status = '<span class="badge badge-success">Returned</span>';
-                                                                        } else if ((int) $sewa['status'] == 0) {
-                                                                            $status = '<span class="badge badge-success">Returned</span>';
-                                                                        } else if ((int) $sewa['status'] == 2) {
-                                                                            $status = '<span class="badge badge-warning">Waiting</span>';
-                                                                        } else if ((int) $sewa['status'] == 3) {
-                                                                            $status = '<span class="badge badge-danger">Late</span>';
-                                                                        }
-                                                                        echo $status;
-                                                                        ?>
-                                                        </td>
-                                                        <td class="align-middle border-top-0">
-                                                            <?php
-                                                                        if ((int) $sewa['status'] == 1 || (int) $sewa['status'] == 3) {
-                                                                            $button = '<a href="javascript:;" data-toggle="modal" data-target="#edit-data' . $sewa['id'] . '" class="btn btn-sm btn-success">Rate Now</a>';
-                                                                        } else if ((int) $sewa['status'] == 0) {
-                                                                            $button = '<span class="text-warning">' . $sewa['rate'] . '<i class="mdi mdi-star"></i></span>';
-                                                                        } else {
-                                                                            $button = '';
-                                                                        }
-                                                                        echo $button; ?>
-                                                        </td>
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="edit-data<?= $sewa['id'] ?>" role="dialog">
-                                                            <div class="modal-dialog">
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title">Rate Now</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form method="POST" action="<?= base_url('rating') ?>">
-                                                                            <input type="hidden" class="form-control mb-2" name="id_sewa" id="id_sewa" value="<?= $sewa['id'] ?>">
-                                                                            <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang1" value="1">
-                                                                                <label class="form-check-label" for="bintang1">1</label>
-                                                                            </div>
-                                                                            <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang2" value="2">
-                                                                                <label class="form-check-label" for="bintang2">2</label>
-                                                                            </div>
-                                                                            <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang3" value="3">
-                                                                                <label class="form-check-label" for="bintang3">3</label>
-                                                                            </div>
-                                                                            <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang4" value="4">
-                                                                                <label class="form-check-label" for="bintang4">4</label>
-                                                                            </div>
-                                                                            <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="rating" id="bintang5" value="5">
-                                                                                <label class="form-check-label" for="bintang5">5</label>
-                                                                            </div>
-                                                                            <div><button type="submit" class="btn btn-success btn-sm mt-3">Submit</button></div>
-                                                                        </form>
+                                                            </td>
+                                                            <td class="align-middle border-top-0">
+                                                                <?php
+                                                                                if ($sewa['status'] == 1) {
+                                                                                    $status = '<span class="badge badge-success">Returned</span>';
+                                                                                } else if ($sewa['status'] == 0) {
+                                                                                    $status = '<span class="badge badge-success">Returned</span>';
+                                                                                } else if ($sewa['status'] == 1.5) {
+                                                                                    $status = '<span class="badge badge-warning">Ongoing</span>';
+                                                                                } else if ($sewa['status'] == 2) {
+                                                                                    $status = '<span class="badge badge-warning">Waiting</span>';
+                                                                                } else if ($sewa['status'] == 3) {
+                                                                                    $status = '<span class="badge badge-danger">Late</span>';
+                                                                                }
+                                                                                echo $status;
+                                                                                ?>
+                                                            </td>
+                                                            <td class="align-middle border-top-0">
+                                                                <?php
+                                                                                if ($sewa['status'] == 1 || $sewa['status'] == 3) {
+                                                                                    $button = '<a href="javascript:;" data-toggle="modal" data-target="#edit-data' . $sewa['id'] . '" class="btn btn-sm btn-success">Rate Now</a>';
+                                                                                } else if ((int) $sewa['status'] == 0) {
+                                                                                    $button = '<span class="text-warning">' . $sewa['rate'] . '<i class="mdi mdi-star"></i></span>';
+                                                                                } else {
+                                                                                    $button = '';
+                                                                                }
+                                                                                echo $button; ?>
+                                                            </td>
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="edit-data<?= $sewa['id'] ?>" role="dialog">
+                                                                <div class="modal-dialog">
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title">Rate Now</h4>
+                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form method="POST" action="<?= base_url('rating') ?>">
+                                                                                <input type="hidden" class="form-control mb-2" name="id_sewa" id="id_sewa" value="<?= $sewa['id'] ?>">
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="rating" id="bintang1" value="1">
+                                                                                    <label class="form-check-label" for="bintang1">1</label>
+                                                                                </div>
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="rating" id="bintang2" value="2">
+                                                                                    <label class="form-check-label" for="bintang2">2</label>
+                                                                                </div>
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="rating" id="bintang3" value="3">
+                                                                                    <label class="form-check-label" for="bintang3">3</label>
+                                                                                </div>
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="rating" id="bintang4" value="4">
+                                                                                    <label class="form-check-label" for="bintang4">4</label>
+                                                                                </div>
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="rating" id="bintang5" value="5">
+                                                                                    <label class="form-check-label" for="bintang5">5</label>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="note">Review</label>
+                                                                                    <textarea class="form-control" id="note" rows="3" name="note"></textarea>
+                                                                                </div>
+                                                                                <div><button type="submit" class="btn btn-success btn-sm mt-3">Submit</button></div>
+                                                                            </form>
+                                                                        </div>
+
                                                                     </div>
 
                                                                 </div>
-
                                                             </div>
-                                                        </div>
-                                                    </tr>
+                                                        </tr>
                                         <?php }
+                                                }
                                             }
                                         } ?>
                                     </tbody>

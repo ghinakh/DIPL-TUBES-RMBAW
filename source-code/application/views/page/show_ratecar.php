@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+?>
 <!-- Container fluid -->
 <div class="container-fluid p-4">
     <div class="row">
@@ -33,7 +36,7 @@
                                                 RENTER NAME
                                             </th>
                                             <th scope="col" class="border-0 text-uppercase">
-                                                COMMENT
+                                                NOTE
                                             </th>
                                             <th scope="col" class="border-0 text-uppercase">
                                                 RATE
@@ -41,47 +44,52 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($riwayat as $bintang) {
-                                            foreach ($mobil as $pemilik) {
-                                                if ($bintang['id_mobil'] == $pemilik['id']) {
-                                                    $this->db->from('penyewa');
-                                                    $this->db->where("id", $bintang['id_penyewa']);
-                                                    $query = $this->db->get();
-                                                    $result = $query->result_array()[0];
-                                        ?>
-                                                    <tr>
-                                                        <td class="border-top-0">
-                                                            <div class="text-inherit">
-                                                                <div class="d-lg-flex align-items-center">
-                                                                    <div>
-                                                                        <img src="<?= base_url('assets/images/mobil/' . $pemilik['gambar']) ?>" alt="<?= $pemilik['nama_mobil'] ?>" class="img-4by3-lg rounded" />
+                                        <?php
+                                        if (!empty($riwayat)) {
+                                            foreach ($riwayat as $bintang) {
+                                                if (!empty($mobil)) {
+                                                    foreach ($mobil as $pemilik) {
+                                                        if ($bintang['id_mobil'] == $pemilik['id']) {
+                                                            $this->db->from('penyewa');
+                                                            $this->db->where("id", $bintang['id_penyewa']);
+                                                            $query = $this->db->get();
+                                                            $result = $query->result_array()[0];
+                                                            ?>
+                                                            <tr>
+                                                                <td class="border-top-0">
+                                                                    <div class="text-inherit">
+                                                                        <div class="d-lg-flex align-items-center">
+                                                                            <div>
+                                                                                <img src="<?= base_url('assets/images/mobil/' . $pemilik['gambar']) ?>" alt="<?= $pemilik['nama_mobil'] ?>" class="img-4by3-lg rounded" />
+                                                                            </div>
+                                                                            <div class="ml-lg-3 mt-2 mt-lg-0">
+                                                                                <h4 class="mb-1 text-primary-hover">
+                                                                                    <?= $pemilik['nama_mobil'] ?>
+                                                                                </h4>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="ml-lg-3 mt-2 mt-lg-0">
-                                                                        <h4 class="mb-1 text-primary-hover">
-                                                                            Toyota Avanza
-                                                                        </h4>
+                                                                </td>
+                                                                <td class="align-middle border-top-0">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <?= substr($result['nama_lengkap'], 0, 5) . '***' ?>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="align-middle border-top-0">
-                                                            <div class="d-flex align-items-center">
-                                                                <?= substr($result['nama_lengkap'], 0, 5) . '***' ?>
-                                                            </div>
-                                                        </td>
-                                                        <td class="align-middle border-top-0">
-                                                            <div class="d-flex align-items-center wrap">
-                                                                <?= $bintang['note'] ?>
-                                                            </div>
-                                                        </td>
-                                                        <td class="align-middle border-top-0">
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mdi mdi-star mr-n1 text-warning">
-                                                                    <?= $bintang['rate'] ?></p>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                                </td>
+                                                                <td class="align-middle border-top-0">
+                                                                    <div class="d-flex align-items-center wrap">
+                                                                        <?= $bintang['note'] ?>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="align-middle border-top-0">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <p class="mdi mdi-star mr-n1 text-warning">
+                                                                            <?= $bintang['rate'] ?></p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
                                         <?php }
+                                                    }
+                                                }
                                             }
                                         } ?>
                                     </tbody>

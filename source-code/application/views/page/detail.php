@@ -21,7 +21,7 @@ function tanggal_indonesia($tanggal)
     $pecahkan = explode('-', $tanggal);
     return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
 }
-$harga = number_format((int)$detail_mobil['harga'], 0, ',', '.');
+$harga = number_format((int) $detail_mobil['harga'], 0, ',', '.');
 if ($detail_mobil['tipe_riwayat'] == "Rent") {
     $mobil = $this->Database->getData("mobil", array("id" => $detail_mobil['id_mobil']));
 }
@@ -30,13 +30,6 @@ if ($detail_mobil['tipe_riwayat'] == "Rent") {
 <div class="pt-5 pb-5">
     <div class="container">
         <!-- User info -->
-        <?php
-        if ($level == "Penyewa") {
-            $this->load->view('include/nav');
-        } else if ($level == "Staff Garasi") {
-            $this->load->view('include/nav_side');
-        }
-        ?>
         <div class="col-lg-12">
             <!-- Card -->
             <div class="card border-0" id="invoice">

@@ -78,6 +78,7 @@ class Users extends CI_Controller
                         'nama_lengkap' => $this->input->post('nama'),
                         'nik' => $this->input->post('nik'),
                         'sim' => $this->input->post('sim'),
+                        'saldo' => 0,
                         'email' => $this->input->post('email'),
                         'password' => md5($this->input->post('password')),
                     );
@@ -106,7 +107,7 @@ class Users extends CI_Controller
                 $con['conditions'] = array(
                     'email' => $this->input->post('email'),
                 );
-                $cek_user = $this->Database->getData("penyewa", $con);
+                $cek_user = $this->Database->getData("staff_garasi", $con);
                 if ($cek_user == 1) :
                     $data['notif_error'] = 'Email is already registered, please log in.';
                 else :
@@ -114,10 +115,12 @@ class Users extends CI_Controller
                         'nama_lengkap' => $this->input->post('nama'),
                         'nik' => $this->input->post('nik'),
                         'sim' => $this->input->post('sim'),
+                        'saldo' => 0,
                         'email' => $this->input->post('email'),
                         'password' => md5($this->input->post('password')),
+                        'status' => "PENDING"
                     );
-                    $insert = json_decode($this->Database->insert("penyewa", $sql));
+                    $insert = json_decode($this->Database->insert("staff_garasi", $sql));
                     if ($insert) :
                         $data['notif_sukses'] = 'Email registered successfully.';
                     else :

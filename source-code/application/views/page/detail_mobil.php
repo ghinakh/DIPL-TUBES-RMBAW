@@ -70,17 +70,17 @@ if (empty($rate)) {
                                         </div>
                                     </div>
                                     <?php
-                                    if (empty($rate)) {
-                                    } else {
+                                    if (empty($rate)) { } else {
                                         foreach ($rate as $pemakai) {
                                             foreach ($penyewa as $akun) {
                                                 if ($pemakai['id_penyewa'] == $akun['id']) {
                                                     $nama = $akun['nama_lengkap'];
                                                     $sewa = $pemakai['tanggal_mulai'];
                                                     $reting = $pemakai['rate'];
+                                                    $note = $pemakai['note'];
                                                 }
                                             }
-                                    ?>
+                                            ?>
                                             <!-- Rating -->
                                             <div class="media border-bottom pb-4 mb-4">
                                                 <img src="<?= base_url() ?>assets/images/avatar/avatar-2.jpg" alt="" class="rounded-circle avatar-lg" />
@@ -91,6 +91,9 @@ if (empty($rate)) {
                                                     </h4>
                                                     <div class="font-size-xs mb-2">
                                                         <i class="mdi mdi-star mr-n1 text-warning"></i> <?= $reting ?>
+                                                    </div>
+                                                    <div class="font-size-xs mb-2">
+                                                        <?= $note ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +132,7 @@ if (empty($rate)) {
                                     </div>
                                     <div class="mb-4">
                                         <h4>How do I return the car?</h4>
-                                        <p>On the web you can go to Car History > Return Car and fill out the return form. </p>
+                                        <p>You can contact the staff </p>
                                     </div>
                                 </div>
                             </div>

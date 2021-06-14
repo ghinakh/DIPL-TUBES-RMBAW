@@ -60,7 +60,7 @@ class Staff extends CI_Controller
                         'harga' => $this->input->post('harga'),
                         'gambar' => $image,
                         'status' => 'Aktif',
-                        'rating' => '0',
+                        'full' => '0',
                         'url_view' => md5('mobilview' . rand(00000, 99999)),
                     );
                     $insert = json_decode($this->Database->insert("mobil", $sql));
@@ -94,11 +94,16 @@ class Staff extends CI_Controller
                 $foto .= substr($n[$x], 0, 1);
             }
             $data["foto_profile"] = $foto;
-            $data["riwayat"] = $this->Database->getData("riwayat");
+            $con['conditions'] = array(
+                'status' => 0,
+                'tipe_riwayat' => 'Rent'
+            );
+            $data["riwayat"] = $this->Database->getData("riwayat", $con);
             $con['conditions'] = array(
                 'id_staff' => $ses[0]["id"],
             );
             $data["mobil"] = $this->Database->getData("mobil", $con);
+            $data["rating"] = $this->Database->average_rate();
             $this->load->view('include/nav_staff', $data);
             $this->load->view('page/show_ratecar', $data);
         endif;
@@ -124,6 +129,14 @@ class Staff extends CI_Controller
                 'status' => 1
             ];
             $this->Database->update("riwayat", $data, $order[1]);
+            $con['conditions'] = array(
+                'id' => $order[1],
+            );
+            $riwayat = $this->Database->getData("riwayat", $con);
+            $data = [
+                'full' => 0
+            ];
+            $this->Database->update("mobil", $data,  $riwayat[0]['id_mobil']);
         }
         redirect(base_url());
     }

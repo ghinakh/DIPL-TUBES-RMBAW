@@ -34,14 +34,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <body>
     <!-- Navbar -->
-
+    <?php
+    if (!empty($user)) {
+        if (($level == "Penyewa") || ($level == "Staff Garasi")) {
+            $ket = "";
+        } else if ($level == "admin") {
+            $ket = "hidden";
+        }
+    }
+    ?>
     <nav class="navbar navbar-expand-lg navbar-default">
         <div class="container-fluid px-0">
             <a class="navbar-brand" href="<?= base_url() ?>"><img src="<?= base_url('assets/images/logo.png') ?>" alt="" width="200" /></a>
             <!-- Mobile view nav wrap -->
             <?php
             if (!empty($user)) {
-            ?>
+                ?>
                 <ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap ">
                     <li class="dropdown stopevent">
                         <a class="btn btn-light btn-icon rounded-circle text-muted indicator indicator-primary" href="#!" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -252,7 +260,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                 <?php
                 if (empty($user)) {
-                ?>
+                    ?>
                     <ul class="navbar-nav navbar-right-wrap ml-auto d-none d-lg-block">
                         <li class="dropdown d-inline-block stopevent">
                             <a href="<?= base_url('login') ?>" class="btn btn-primary">Login</a>
@@ -286,7 +294,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     </div>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <ul class="list-unstyled">
+                                <ul class="list-unstyled" <?= $ket ?>>
                                     <li>
                                         <a class="dropdown-item" href="<?= base_url('edit/profile') ?>">
                                             <i class="fe fe-user mr-2"></i>Profile

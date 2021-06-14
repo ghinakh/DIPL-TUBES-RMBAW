@@ -14,6 +14,7 @@ class Payment extends CI_Controller
     {
         $data['web_config'] = $this->Database->getData("konfigurasi_web", array('id' => 1));
         $ses = $this->session->userdata('credentials');
+        $data["level"] = "Penyewa";
         $data['user'] =  $ses[0];
         $n = explode(' ', $ses[0]["nama_lengkap"]);
         $data["nama_dipisah"] = $n;
@@ -26,6 +27,7 @@ class Payment extends CI_Controller
             'id_url' => $id,
         );
         $riwayat = $this->Database->getData("riwayat", $con);
+
         if ($riwayat) {
             $data['detail_mobil'] = $riwayat[0];
             $this->load->view('include/head', $data);

@@ -80,4 +80,16 @@ class Database extends CI_Model
         $result = $query->result_array();
         return $result[0]["rate"];
     }
+
+    public function average_rate()
+    {
+        $query = $this->db
+            ->select('id_mobil, AVG(rate) as avg')
+            ->where("tipe_riwayat", "Rent")
+            ->where("status", 0)
+            ->group_by('id_mobil')
+            ->get('riwayat');
+        $result = $query->result_array();
+        return $result;
+    }
 }
