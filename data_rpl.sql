@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2021 at 08:55 AM
+-- Generation Time: Jun 14, 2021 at 10:18 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -86,10 +86,11 @@ CREATE TABLE `mobil` (
 --
 
 INSERT INTO `mobil` (`id`, `id_staff`, `stnk`, `nama_mobil`, `jenis`, `harga`, `gambar`, `status`, `full`, `url_view`) VALUES
-(2, 3, 5001155, 'Toyota Avanza', 'Bensin', 180000, 'avanza-preview.png', 'Aktif', 1, 'f7b9537b861317161e2cb9eec8462698'),
-(3, 1, 125415111, 'Toyota Fortuner', 'Diesel', 320000, 'portuner-preview.png', 'Aktif', NULL, '8f99136e6dd0a0e50f191c54236049ac'),
-(4, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977897-image.jpg', 'Aktif', NULL, 'd93e37d3c844cde1acf6d969c9c1eda7'),
-(5, 1, 1231231, 'asa', 'Bensin', 123123123, '1622977908-image.jpg', 'Aktif', NULL, '8e1fcc833a20d91d3694ce10c2eb1ff4');
+(2, 3, 5001155, 'Toyota Avanza', 'Bensin', 180000, 'avanza-preview.png', 'Aktif', 0, 'f7b9537b861317161e2cb9eec8462698'),
+(3, 1, 125415111, 'Toyota Fortuner', 'Diesel', 320000, 'portuner-preview.png', 'Aktif', 0, '8f99136e6dd0a0e50f191c54236049ac'),
+(4, 1, 1231231, 'Sedan1', 'Bensin', 100000, '1622977897-image.jpg', 'Aktif', 0, 'd93e37d3c844cde1acf6d969c9c1eda7'),
+(5, 1, 1231231, 'Sedan2', 'Bensin', 250000, '1622977908-image.jpg', 'Aktif', 0, '8e1fcc833a20d91d3694ce10c2eb1ff4'),
+(7, 6, 2147483647, 'Hyundai', 'Diesel', 200000, '1623650110-hyundai.png', 'Aktif', 0, '209fa85ba779793cc7048cfb44f8d4a5');
 
 -- --------------------------------------------------------
 
@@ -116,8 +117,10 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`id`, `nama_lengkap`, `phone`, `address`, `city`, `province`, `nik`, `sim`, `saldo`, `email`, `password`) VALUES
-(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '138986', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
-(2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99');
+(1, 'Ghina Kharunisa', '081312161412', 'Jl Pasar Bandung', 'Buah Batu', 'Jawa Barat', 1234567890, 1234567890, '538088', 'user@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(2, 'Aku Cinta', '081203182', 'Jl Sejiwa', 'Bandung', 'Jawa Barat', 12312313, 123121222, '0', 'user@aku.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(3, 'Sari Roti', '085279630555', 'Jl. Sukabirus', 'Kab. Bandung', '', 123456789, 123456789, '200000', 'user2@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
+(4, 'Masker masker', '', '', '', '', 2147483647, 2147483647, '198336', 'masker@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
 -- --------------------------------------------------------
 
@@ -140,7 +143,8 @@ CREATE TABLE `promo` (
 
 INSERT INTO `promo` (`id`, `id_mobil`, `id_admin`, `kode_promo`, `diskon`, `deskripsi`) VALUES
 (1, 2, 1, 'RENTALKUY', '100000', 'ini deskripsi dari kode promo'),
-(2, 3, 1, 'ZXCASD', '25000', 'aaavvvvbbbbbnnnnmmmmmm');
+(2, 3, 1, 'ZXCASD', '25000', 'aaavvvvbbbbbnnnnmmmmmm'),
+(4, 7, 1, 'ASDFGHJ', '20000', 'aaaaaaaaa');
 
 -- --------------------------------------------------------
 
@@ -162,6 +166,7 @@ CREATE TABLE `riwayat` (
   `harga` int(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `rate` varchar(50) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,
   `id_url` varchar(255) NOT NULL,
   `dibuat` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -170,16 +175,16 @@ CREATE TABLE `riwayat` (
 -- Dumping data for table `riwayat`
 --
 
-INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `id_staff`, `tipe_riwayat`, `alamat`, `tanggal_mulai`, `tanggal_selesai`, `service`, `pembayaran`, `harga`, `status`, `rate`, `id_url`, `dibuat`) VALUES
-(1, 2, 1, 1, 'Rent', 'Jl Telkom No 1', '2021-06-12', '2021-06-14', 'Self Service', 'COD', 541014, '1', NULL, '78e2ac6284b3bed97d53097a32b63711', '2021-06-12'),
-(4, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'DANA Payment', 10000, '0', NULL, '', '2021-06-13'),
-(5, NULL, NULL, 1, 'Withdraw', NULL, NULL, NULL, NULL, 'GOPAY Payment', -200, '0', NULL, '', '2021-06-13'),
-(6, 3, 1, 1, 'Rent', 'Jl. Telekomunikasi', '2021-06-24', '2021-06-25', 'Staff Service', 'Saldo', 640000, '1.5', NULL, '', '2021-06-13'),
-(7, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'OVO Payment', 500000, '0', NULL, '', '2021-06-13'),
-(8, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'OVO Payment', 10000, '0', NULL, '', '2021-06-13'),
-(9, NULL, NULL, 1, 'Withdraw', NULL, NULL, NULL, NULL, 'GOPAY Payment', -10000, '0', NULL, '', '2021-06-13'),
-(10, NULL, NULL, 1, 'Withdraw', NULL, NULL, NULL, NULL, 'GOPAY Payment', -45678, '2', NULL, '', '2021-06-16'),
-(11, 4, 1, 1, 'Rent', 'Jl. Bojongsoang\r\n', '2021-06-29', '2021-06-30', 'Self Service', 'COD', 450000, '2', NULL, '', '2021-06-13');
+INSERT INTO `riwayat` (`id`, `id_mobil`, `id_penyewa`, `id_staff`, `tipe_riwayat`, `alamat`, `tanggal_mulai`, `tanggal_selesai`, `service`, `pembayaran`, `harga`, `status`, `rate`, `note`, `id_url`, `dibuat`) VALUES
+(18, NULL, 3, NULL, 'Topup', NULL, NULL, NULL, NULL, 'GOPAY Payment', 200000, '0', NULL, '', '', '2021-06-14'),
+(20, 4, 3, 1, 'Rent', 'Jl. Sukabirus', '2021-06-15', '2021-06-16', 'Staff Service', 'COD', 100066, '0', '5', 'mobil bagus, staff ramah', '64c9b472467659b6370434716426cf2a', '2021-06-14'),
+(23, 4, 1, 1, 'Rent', 'Jl. Telekomunikasi', '2021-06-25', '2021-06-26', 'Staff Service', 'Saldo', 100276, '0', '3', 'ini text', 'be56ee5ad270cef252e211496f6e45b1', '2021-06-14'),
+(24, NULL, 1, NULL, 'Topup', NULL, NULL, NULL, NULL, 'DANA Payment', 500000, '0', NULL, NULL, '', '2021-06-14'),
+(25, NULL, 4, NULL, 'Topup', NULL, NULL, NULL, NULL, 'OVO Payment', 600000, '0', NULL, NULL, '', '2021-06-14'),
+(26, 7, 4, 6, 'Rent', 'Jl. Sukapura', '2021-06-14', '2021-06-16', 'Self Service', 'Saldo', 401664, '0', '2', 'bad', '0d95a1a2ab7a7ab44b13f3a875452d02', '2021-06-14'),
+(27, 7, 3, 6, 'Rent', 'Jl. Sukabirus', '2021-06-30', '2021-07-01', 'Staff Service', 'COD', 200168, '0', '5', 'good', 'd591f435de7d0f01c714d4bd03827b89', '2021-06-14'),
+(28, 3, 3, 1, 'Rent', 'Jl. Sukabirus', '2021-07-09', '2021-07-10', 'Self Service', 'COD', 320715, '0', '4', 'nice', '458572391772812e0ee89e26fc5d1683', '2021-06-14'),
+(29, NULL, NULL, 6, 'Withdraw', NULL, NULL, NULL, NULL, 'GOPAY Payment', -200000, '0', NULL, NULL, '', '2021-06-14');
 
 -- --------------------------------------------------------
 
@@ -220,9 +225,9 @@ CREATE TABLE `staff_garasi` (
 --
 
 INSERT INTO `staff_garasi` (`id`, `nama_lengkap`, `nik`, `sim`, `saldo`, `email`, `password`, `status`) VALUES
-(1, 'Gready Michael', 1215123156, 1321589494, 700000, 'staff@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'AKTIF'),
-(2, 'Joanne Sh', 12334567, 76544332, 0, 'staff2@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'REJECT'),
-(3, 'Staff Garasi', 987654321, 989876543, 0, 'staffgarasi@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'REJECT');
+(1, 'Gready Michael', 1215123156, 1321589494, 800276, 'staff@email.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'AKTIF'),
+(3, 'Staff Garasi', 987654321, 989876543, 0, 'staffgarasi@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'PENDING'),
+(6, 'Julia Ch', 1209837465, 1209837465, 201664, 'julia@gmail.com', 'c2e285cb33cecdbeb83d2189e983a8c0', 'AKTIF');
 
 --
 -- Indexes for dumped tables
@@ -304,25 +309,25 @@ ALTER TABLE `konfigurasi_web`
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `penyewa`
 --
 ALTER TABLE `penyewa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `promo`
 --
 ALTER TABLE `promo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `saldo`
@@ -334,7 +339,7 @@ ALTER TABLE `saldo`
 -- AUTO_INCREMENT for table `staff_garasi`
 --
 ALTER TABLE `staff_garasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -360,13 +365,6 @@ ALTER TABLE `riwayat`
   ADD CONSTRAINT `riwayat_mobil_fk1` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `riwayat_penyewa_fk2` FOREIGN KEY (`id_penyewa`) REFERENCES `penyewa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `riwayat_staff_fk3` FOREIGN KEY (`id_staff`) REFERENCES `staff_garasi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `saldo`
---
-ALTER TABLE `saldo`
-  ADD CONSTRAINT `saldo_penyewa_fk1` FOREIGN KEY (`id_penyewa`) REFERENCES `penyewa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `saldo_staff_fk2` FOREIGN KEY (`id_staff`) REFERENCES `staff_garasi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
